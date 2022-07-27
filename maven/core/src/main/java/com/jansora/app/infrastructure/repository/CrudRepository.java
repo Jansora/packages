@@ -1,6 +1,7 @@
 package com.jansora.app.infrastructure.repository;
 
-import com.jansora.app.infrastructure.entity.BaseEntity;
+import com.jansora.app.infrastructure.carrier.req.BaseReq;
+import com.jansora.app.infrastructure.carrier.vo.BaseVo;
 import com.jansora.app.infrastructure.exception.dao.DataLogicErrorException;
 import com.jansora.app.infrastructure.exception.dao.DataNotFoundException;
 import com.jansora.app.infrastructure.exception.dao.DataOperationException;
@@ -16,7 +17,7 @@ import com.jansora.app.infrastructure.exception.web.InvalidArgumentException;
  * @see com.jansora.app.infrastructure.repository <br>
  * @since 1.0 <br>
  */
-public interface SaveRepository<E extends BaseEntity, R extends BaseEntity> {
+public interface CrudRepository<E extends BaseVo, R extends BaseReq> {
 
 
     /**

@@ -1,4 +1,4 @@
-package com.jansora.app.infrastructure.dto;
+package com.jansora.app.infrastructure.carrier.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jansora.app.infrastructure.exception.BaseAppException;
@@ -15,7 +15,7 @@ import java.util.Objects;
  * @see com.jansora <br>
  * @since <br>
  */
-public class ResultDto<T> implements Serializable {
+public class ResultDto<T> extends BaseDto implements Serializable {
 
     public ResultDto() {
 

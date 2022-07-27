@@ -1,20 +1,14 @@
-package com.jansora.app.infrastructure.entity;
+package com.jansora.app.infrastructure.carrier.valobj;
 
-/**
- * <Description> Description for AuthEntity <br>
- *
- * @author jansora (zhang.yangyuan) <br>
- * @version 1.0 <br>
- * @transId null
- * @CreateDate 2021/12/1 09:25:23 <br>
- * @see com.jansora.app.infrastructure.entity <br>
- * @since 1.0 <br>
- */
-public class AuthEntity extends BaseEntity {
+import java.io.Serializable;
+
+public class AuthValObj implements Serializable {
 
     Long authId;
 
     String authToken;
+
+
 
     public Long getAuthId() {
         return authId;
@@ -31,6 +25,7 @@ public class AuthEntity extends BaseEntity {
     public void setAuthToken(String authToken) {
         this.authToken = authToken;
     }
+
 
 
 }

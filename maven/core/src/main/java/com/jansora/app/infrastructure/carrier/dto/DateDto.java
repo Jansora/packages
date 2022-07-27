@@ -1,4 +1,4 @@
-package com.jansora.app.infrastructure.dto;
+package com.jansora.app.infrastructure.carrier.dto;
 
 import java.io.Serializable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @CreateDate 2022/3/22 18:41 <br>
  * @since 1.0 <br>
  */
-public class DateDto implements Serializable {
+public class DateDto extends BaseDto implements Serializable {
 
     Integer year;
 
