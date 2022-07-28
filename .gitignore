@@ -3,3 +3,9 @@
 
 # Ada Library Information
 *.ali
+
+
+.idea
+*.iml
+
+target
