@@ -17,7 +17,7 @@ import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepository<E extends BaseVo, R extends BaseReq> {
+public interface CrudRepository<E extends BaseVo, R extends BaseReq> extends BaseRepository {
 
     /**
      * 根据主键查找
