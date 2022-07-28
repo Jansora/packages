@@ -13,9 +13,6 @@
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
-	<modules>
-		<module>core</module>
-	</modules>
 	<properties>
 		<java.version>17</java.version>
 		<javac.src.version>17</javac.src.version>

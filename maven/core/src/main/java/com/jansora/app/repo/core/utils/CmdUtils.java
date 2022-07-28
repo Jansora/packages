@@ -83,14 +83,8 @@ public class CmdUtils {
         }
     }
 
-    private static class StreamGobbler implements Runnable {
-        private final InputStream inputStream;
-        private final Consumer<String> consumer;
-
-        public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
-            this.inputStream = inputStream;
-            this.consumer = consumer;
-        }
+    private record StreamGobbler(InputStream inputStream,
+                                 Consumer<String> consumer) implements Runnable {
 
         @Override
         public void run() {
