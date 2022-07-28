@@ -1,50 +1,37 @@
-package com.jansora.app.infrastructure.entity;
+package com.jansora.app.infrastructure.carrier.req;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 
-public class PageEntity extends AuthEntity {
-
+/**
+ * <Description> Description for PageReq <br>
+ *
+ * @author jansora (zhang.yangyuan) <br>
+ * @version 1.0 <br>
+ * @email zhangyue1936@gmail.com
+ * @transId null
+ * @CreateDate 2022/7/28 AM09:36 <br>
+ * @since 1.0 <br>
+ */
+public class PageReq implements Serializable {
+    
     /**
      * 每页大小 <br>
      */
-    @JsonIgnore
     protected int pageSize;
 
     /**
      * 当前页数, 从 1 开始 <br>
      */
-    @JsonIgnore
     protected int pageNum;
-
-    /**
-     * 每页大小 <br>
-     */
-    @JsonIgnore
-    protected int limit;
-
-    /**
-     * 当前页数, 从 0 开始 <br>
-     */
-    @JsonIgnore
-    protected int offset;
-
-    /**
-     * 总数 <br>
-     */
-    @JsonIgnore
-    protected long total;
-
 
     /**
      * 排序方式 ASC / DESC <br>
      */
-    @JsonIgnore
     protected String sort;
 
     /**
      * 排序字段 <br>
      */
-    @JsonIgnore
     protected String orderBy;
 
     public int getPageSize() {
@@ -63,29 +50,7 @@ public class PageEntity extends AuthEntity {
         this.pageNum = pageNum;
     }
 
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
-    public int getOffset() {
-        return offset;
-    }
-
-    public void setOffset(int offset) {
-        this.offset = offset;
-    }
-
-    public long getTotal() {
-        return total;
-    }
-
-    public void setTotal(long total) {
-        this.total = total;
-    }
+    
 
     public String getSort() {
         return sort;

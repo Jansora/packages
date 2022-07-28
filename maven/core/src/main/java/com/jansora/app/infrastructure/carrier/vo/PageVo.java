@@ -1,54 +1,60 @@
-package com.jansora.app.infrastructure.dto.page;
+package com.jansora.app.infrastructure.carrier.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.List;
 
+
 /**
- * <Description> <br>
+ * <Description> Description for PageVo <br>
  *
- * @author zhang.yangyuan <br>
+ * @author jansora (zhang.yangyuan) <br>
  * @version 1.0 <br>
-
- * @since <br>
+ * @email zhangyue1936@gmail.com
+ * @transId null
+ * @CreateDate 2022/7/28 AM09:30 <br>
+ * @since 1.0 <br>
  */
-public class PageDto<T> implements Serializable {
-
+public class PageVo<T> extends BaseVo implements Serializable {
     /**
      * 每页大小 <br>
      */
-    private int pageSize;
+    @JsonIgnore
+    protected int pageSize;
 
     /**
      * 当前页数, 从 1 开始 <br>
      */
-    private int pageNum;
+    @JsonIgnore
+    protected int pageNum;
+
 
     /**
      * 总数 <br>
      */
-    private long total;
+    protected long total;
+
 
     /**
-     * 总数 <br>
+     * 载荷 <br>
      */
     @JsonProperty("data")
     private List<T> data;
 
-    public PageDto() {
+    public PageVo() {
     }
 
-
-    public static <T> PageDto<T> build(List<T> data, long total) {
-        PageDto<T> pageDto = new PageDto<>();
+    public static <T> PageVo<T> build(List<T> data, long total) {
+        PageVo<T> pageDto = new PageVo();
         pageDto.setData(data);
         pageDto.setTotal(total);
         return pageDto;
     }
 
     public int getPageSize() {
-        return pageSize;
+        return this.pageSize;
     }
 
     public void setPageSize(int pageSize) {
@@ -56,7 +62,7 @@ public class PageDto<T> implements Serializable {
     }
 
     public int getPageNum() {
-        return pageNum;
+        return this.pageNum;
     }
 
     public void setPageNum(int pageNum) {
@@ -64,7 +70,7 @@ public class PageDto<T> implements Serializable {
     }
 
     public long getTotal() {
-        return total;
+        return this.total;
     }
 
     public void setTotal(long total) {

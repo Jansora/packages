@@ -1,4 +1,4 @@
-package com.jansora.app.infrastructure.dto;
+package com.jansora.app.infrastructure.carrier.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jansora.app.infrastructure.exception.BaseAppException;
@@ -7,13 +7,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * <Description>Spring Controller Standard Result <br>
+ * <Description> Description for ResultDto <br>
  *
- * @author zhang.yangyuan <br>
+ * @author jansora (zhang.yangyuan) <br>
  * @version 1.0 <br>
-
- * @see com.jansora <br>
- * @since <br>
+ * @email zhangyue1936@gmail.com
+ * @transId null
+ * @CreateDate 2022/7/28 AM09:33 <br>
+ * @since 1.0 <br>
  */
 public class ResultDto<T> implements Serializable {
 

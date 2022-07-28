@@ -20,7 +20,7 @@ public interface BaseRepository<E extends BaseEntity, R extends BaseEntity> {
     /**
      * 保存实体
      * 有实体主键则更新， 没有则保存
-     * @param t 实体
+     * @param req 实体
      * @return 实体
      */
     E save(R req) throws InvalidArgumentException, DataNotFoundException, DataOperationException;
