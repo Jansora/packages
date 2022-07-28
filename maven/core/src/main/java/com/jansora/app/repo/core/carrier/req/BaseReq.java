@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.carrier.req;
 
-import java.io.Serializable;
+import com.jansora.app.repo.core.carrier.dto.BaseDto;
 
 /**
  * <Description> Description for BaseReq <br>
@@ -12,5 +12,5 @@ import java.io.Serializable;
  * @CreateDate 2022/7/28 AM09:35 <br>
  * @since 1.0 <br>
  */
-public class BaseReq implements Serializable {
+public class BaseReq extends BaseDto {
 }

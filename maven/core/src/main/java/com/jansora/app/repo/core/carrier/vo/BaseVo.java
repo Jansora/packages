@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.carrier.vo;
 
-import java.io.Serializable;
+import com.jansora.app.repo.core.carrier.dto.BaseDto;
 
 /**
  * <Description> Description for BaseVo <br>
@@ -12,7 +12,6 @@ import java.io.Serializable;
  * @CreateDate 2022/7/28 AM09:30 <br>
  * @since 1.0 <br>
  */
-public class BaseVo implements Serializable {
-    public BaseVo() {
-    }
+public class BaseVo extends BaseDto {
+
 }

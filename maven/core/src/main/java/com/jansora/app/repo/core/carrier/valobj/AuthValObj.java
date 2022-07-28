@@ -1,6 +1,8 @@
 package com.jansora.app.repo.core.carrier.valobj;
 
 
+import com.jansora.app.repo.core.utils.JsonUtils;
+
 import java.io.Serializable;
 
 /**
@@ -14,5 +16,10 @@ import java.io.Serializable;
  * @since 1.0 <br>
  */
 public record AuthValObj(Long authId, String authToken) implements Serializable {
+
+    @Override
+    public String toString() {
+        return JsonUtils.toJsonIgnoreError(this);
+    }
 
 }

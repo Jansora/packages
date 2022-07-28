@@ -7,12 +7,11 @@
 		<artifactId>repo-parent</artifactId>
 		<version>0.2.0</version>
 	</parent>
-<!--	<groupId>com.jansora.repo</groupId>-->
-	<artifactId>core</artifactId>
+	<artifactId>spring</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>core</name>
-	<description>core</description>
+	<name>spring</name>
+	<description>spring</description>
 
 
 	<dependencies>
@@ -27,13 +26,13 @@
 			<version>1.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-json</artifactId>
-			<version>${spring.boot.version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-logging</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 			<version>${spring.boot.version}</version>
 		</dependency>
 	</dependencies>

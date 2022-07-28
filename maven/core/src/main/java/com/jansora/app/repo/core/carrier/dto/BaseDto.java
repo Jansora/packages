@@ -1,5 +1,9 @@
 package com.jansora.app.repo.core.carrier.dto;
 
+import com.jansora.app.repo.core.utils.JsonUtils;
+
+import java.io.Serializable;
+
 /**
  * <Description> Description for BaseDto <br>
  *
@@ -10,5 +14,10 @@ package com.jansora.app.repo.core.carrier.dto;
  * @CreateDate 2022/7/28 AM09:33 <br>
  * @since 1.0 <br>
  */
-public class BaseDto {
+public class BaseDto implements Serializable {
+
+    @Override
+    public String toString() {
+        return JsonUtils.toJsonIgnoreError(this);
+    }
 }

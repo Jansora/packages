@@ -18,6 +18,7 @@ import java.util.List;
  * @since 1.0 <br>
  */
 public class PageVo<T> extends BaseVo implements Serializable {
+
     /**
      * 每页大小 <br>
      */
@@ -30,12 +31,10 @@ public class PageVo<T> extends BaseVo implements Serializable {
     @JsonIgnore
     protected int pageNum;
 
-
     /**
      * 总数 <br>
      */
     protected long total;
-
 
     /**
      * 载荷 <br>
@@ -47,7 +46,7 @@ public class PageVo<T> extends BaseVo implements Serializable {
     }
 
     public static <T> PageVo<T> build(List<T> data, long total) {
-        PageVo<T> pageDto = new PageVo();
+        PageVo<T> pageDto = new PageVo<>();
         pageDto.setData(data);
         pageDto.setTotal(total);
         return pageDto;
