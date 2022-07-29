@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.44</version>
+	<version>0.1.45</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -21,7 +21,7 @@
 		<javac.target.version>17</javac.target.version>
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.44</repo.version>
+		<repo.version>0.1.45</repo.version>
 		<spring-cloud.version>Hoxton.SR10</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
 	</properties>
