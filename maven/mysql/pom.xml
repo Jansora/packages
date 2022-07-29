@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.41</version>
+		<version>0.1.42</version>
 	</parent>
 	<artifactId>mysql</artifactId>
 	<version>${repo.version}</version>
@@ -60,8 +60,8 @@
 			<artifactId>mybatis-activerecord</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper-spring-boot-starter</artifactId>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
