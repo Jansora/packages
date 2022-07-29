@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
+		<version>2.3.12.RELEASE</version>
 	</parent>
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.45</version>
+	<version>0.1.46</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -19,9 +19,9 @@
 		<java.version>17</java.version>
 		<javac.src.version>17</javac.src.version>
 		<javac.target.version>17</javac.target.version>
-		<spring.boot.version>2.7.2</spring.boot.version>
+		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.45</repo.version>
+		<repo.version>0.1.46</repo.version>
 		<spring-cloud.version>Hoxton.SR10</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
 	</properties>
