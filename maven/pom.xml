@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.36</version>
+	<version>0.1.37</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -21,7 +21,7 @@
 		<javac.target.version>17</javac.target.version>
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.36</repo.version>
+		<repo.version>0.1.37</repo.version>
 	</properties>
 
 	<modules>

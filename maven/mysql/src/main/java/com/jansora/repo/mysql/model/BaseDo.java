@@ -1,6 +1,7 @@
 package com.jansora.repo.mysql.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jansora.app.repo.core.utils.JsonUtils;
 import tk.mybatis.mapper.annotation.KeySql;
 import tk.mybatis.mapper.code.IdentityDialect;
 
@@ -53,12 +54,9 @@ public abstract class BaseDo {
         this.updatedAt = updatedAt;
     }
 
+
     @Override
     public String toString() {
-        return "BaseDo{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
+        return JsonUtils.toJsonIgnoreError(this);
     }
 }
