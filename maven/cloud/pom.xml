@@ -7,11 +7,11 @@
 		<artifactId>repo-parent</artifactId>
 		<version>0.1.44</version>
 	</parent>
-	<artifactId>spring</artifactId>
+	<artifactId>cloud</artifactId>
 	<version>${repo.version}</version>
 	<packaging>jar</packaging>
-	<name>spring</name>
-	<description>spring</description>
+	<name>cloud</name>
+	<description>cloud</description>
 
 
 	<dependencies>
@@ -33,6 +33,51 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+
+		<!-- dubbo && 依赖的 zk -->
+		<!--		<dependency>-->
+		<!--			<groupId>org.apache.dubbo</groupId>-->
+		<!--			<artifactId>dubbo-spring-boot-starter</artifactId>-->
+		<!--			<version>3.0.6</version>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.apache.dubbo</groupId>-->
+		<!--			<artifactId>dubbo-registry-nacos</artifactId>-->
+		<!--			<version>3.0.6</version>-->
+		<!--		</dependency>-->
+
+
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-dubbo</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+
+		<!--		<dependency>-->
+		<!--			<groupId>org.apache.curator</groupId>-->
+		<!--			<artifactId>curator-framework</artifactId>-->
+		<!--			<version>4.0.1</version>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.apache.curator</groupId>-->
+		<!--			<artifactId>curator-recipes</artifactId>-->
+		<!--			<version>4.0.1</version>-->
+		<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>com.alibaba.boot</groupId>-->
+		<!--			<artifactId>nacos-config-spring-boot-starter</artifactId>-->
+		<!--			<version>0.2.10</version>-->
+		<!--		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba.spring</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>1.0.11</version>
 		</dependency>
 	</dependencies>
 
