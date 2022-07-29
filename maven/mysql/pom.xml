@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.38</version>
+		<version>0.1.39</version>
 	</parent>
 	<artifactId>mysql</artifactId>
 	<version>${repo.version}</version>
@@ -46,8 +46,18 @@
 		</dependency>
 
 		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper-spring-boot-starter</artifactId>
+			<groupId>io.mybatis</groupId>
+			<artifactId>mybatis-mapper</artifactId>
+		</dependency>
+		<!-- 使用 Service 层封装时 -->
+		<dependency>
+			<groupId>io.mybatis</groupId>
+			<artifactId>mybatis-service</artifactId>
+		</dependency>
+		<!-- 使用 ActiveRecord 模式时 -->
+		<dependency>
+			<groupId>io.mybatis</groupId>
+			<artifactId>mybatis-activerecord</artifactId>
 		</dependency>
 
 		<dependency>

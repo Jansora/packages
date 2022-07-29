@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.38</version>
+	<version>0.1.39</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -21,7 +21,7 @@
 		<javac.target.version>17</javac.target.version>
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.38</repo.version>
+		<repo.version>0.1.39</repo.version>
 	</properties>
 
 	<modules>
@@ -87,10 +87,23 @@
 				<version>2.13.3</version>
 			</dependency>
 
+			<!--  MyBatis  -->
 			<dependency>
-				<groupId>tk.mybatis</groupId>
-				<artifactId>mapper-spring-boot-starter</artifactId>
-				<version>2.1.5</version>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-mapper</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- 使用 Service 层封装时 -->
+			<dependency>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-service</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- 使用 ActiveRecord 模式时 -->
+			<dependency>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-activerecord</artifactId>
+				<version>1.2.2</version>
 			</dependency>
 
 			<dependency>

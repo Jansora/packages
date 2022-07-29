@@ -2,10 +2,8 @@ package com.jansora.repo.mysql.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jansora.app.repo.core.utils.JsonUtils;
-import tk.mybatis.mapper.annotation.KeySql;
-import tk.mybatis.mapper.code.IdentityDialect;
+import io.mybatis.provider.Entity;
 
-import javax.persistence.Id;
 import java.util.Date;
 
 /**
@@ -18,10 +16,10 @@ import java.util.Date;
  * @CreateDate 2022/7/29 PM01:50 <br>
  * @since 1.0 <br>
  */
+@Entity.Table(value = "base", remark = "系统用户", autoResultMap = true)
 public abstract class BaseDo {
 
-    @Id
-    @KeySql(useGeneratedKeys = true, dialect = IdentityDialect.MYSQL)
+    @Entity.Column(id = true, remark = "主键", updatable = false, insertable = false)
     protected Long id;
 
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
