@@ -2,25 +2,168 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-<!--	<parent>-->
-<!--		<groupId>org.springframework.boot</groupId>-->
-<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-<!--		<version>2.7.2</version>-->
-<!--	</parent>-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.2</version>
+	</parent>
+
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.47</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
-	<modules>
-		<module>core</module>
-	</modules>
+
 	<properties>
 		<java.version>17</java.version>
 		<javac.src.version>17</javac.src.version>
-		<javac.target.version>1.8</javac.target.version>
+		<javac.target.version>17</javac.target.version>
+		<spring.boot.version>2.7.2</spring.boot.version>
+		<rocketmq.version>2.2.2</rocketmq.version>
+		<repo.version>0.1.45</repo.version>
+		<spring-cloud.version>2021.0.1.0</spring-cloud.version>
+		<spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
 	</properties>
+
+	<modules>
+		<module>core</module>
+		<module>cache</module>
+		<module>demo</module>
+		<module>rocketmq</module>
+		<module>spring</module>
+		<module>mysql</module>
+		<module>cloud</module>
+	</modules>
+
+
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>core</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>cache</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>demo</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>rocketmq</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>spring</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>mysql</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>cloud</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.13.3</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>1.0.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.13.3</version>
+			</dependency>
+
+			<!--  MyBatis  -->
+			<dependency>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-mapper</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- 使用 Service 层封装时 -->
+			<dependency>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-service</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- 使用 ActiveRecord 模式时 -->
+			<dependency>
+				<groupId>io.mybatis</groupId>
+				<artifactId>mybatis-activerecord</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>2.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.28</version>
+			</dependency>
+
+			<!-- cloud native -->
+
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-spring-boot-starter</artifactId>
+				<version>3.0.10</version>
+			</dependency>
+
+<!--			<dependency>-->
+<!--				<groupId>com.alibaba.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-starter-dubbo</artifactId>-->
+<!--				<version>${spring-cloud-alibaba.version}</version>-->
+<!--			</dependency>-->
+
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>org.springframework.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--				<version>2.2.9.RELEASE</version>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>com.alibaba.spring</groupId>-->
+<!--				<artifactId>spring-context-support</artifactId>-->
+<!--				<version>1.0.11</version>-->
+<!--			</dependency>-->
+
+
+			<!-- 爬虫需要 -->
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>1.14.3</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<distributionManagement>
 		<repository>
@@ -53,17 +196,31 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
 				<configuration>
-					<source>8</source>
-					<target>8</target>
+					<source>17</source>
+					<target>17</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>2.8.2</version>
 				<configuration>
-
+<!--					<skip>true</skip>-->
 				</configuration>
 			</plugin>
 		</plugins>
