@@ -7,11 +7,11 @@
 		<artifactId>repo-parent</artifactId>
 		<version>0.1.54</version>
 	</parent>
-	<artifactId>core</artifactId>
+	<artifactId>web</artifactId>
 	<version>${repo.version}</version>
 	<packaging>jar</packaging>
-	<name>core</name>
-	<description>core</description>
+	<name>spring-web</name>
+	<description>spring-web</description>
 
 
 	<dependencies>
@@ -26,19 +26,19 @@
 			<version>1.0.2</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-json</artifactId>
-			<version>${spring.boot.version}</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.36</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-logging</artifactId>
-			<version>${spring.boot.version}</version>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-			<version>${spring.boot.version}</version>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>spring</artifactId>
 		</dependency>
 	</dependencies>
 
