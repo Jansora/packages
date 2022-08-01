@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @CreateDate 2022/7/28 AM09:36 <br>
  * @since 1.0 <br>
  */
-public class PageReq implements Serializable {
+public class PageReq extends BaseReq implements Serializable {
     
     /**
      * 每页大小 <br>
