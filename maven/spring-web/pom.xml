@@ -5,9 +5,9 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.54</version>
+		<version>0.1.57</version>
 	</parent>
-	<artifactId>web</artifactId>
+	<artifactId>spring-web</artifactId>
 	<version>${repo.version}</version>
 	<packaging>jar</packaging>
 	<name>spring-web</name>
@@ -34,6 +34,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
 		</dependency>
 
 		<dependency>
