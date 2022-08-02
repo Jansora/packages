@@ -1,6 +1,5 @@
 package com.jansora.app.repo.core.carrier.vo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
@@ -22,14 +21,12 @@ public class PageVo<T> extends BaseVo implements Serializable {
     /**
      * 每页大小 <br>
      */
-    @JsonIgnore
-    protected int pageSize;
+    private int pageSize;
 
     /**
      * 当前页数, 从 1 开始 <br>
      */
-    @JsonIgnore
-    protected int pageNum;
+    private int pageNum;
 
     /**
      * 总数 <br>

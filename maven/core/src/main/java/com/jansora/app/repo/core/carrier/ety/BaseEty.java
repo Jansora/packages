@@ -17,6 +17,13 @@ public class BaseEty extends BaseDto {
     /**
      * 唯一标识
      */
-    Long id;
+    private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
