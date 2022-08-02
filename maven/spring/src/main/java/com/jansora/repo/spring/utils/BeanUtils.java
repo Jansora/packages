@@ -4,7 +4,7 @@ import com.jansora.app.repo.core.exception.transform.FormatException;
 import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.app.repo.core.utils.AssertUtils;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -96,7 +96,7 @@ public final class BeanUtils {
         }
 
         // 如果是 String. 判断字符串是否为空
-        if (overrideValue instanceof String && ObjectUtils.isEmpty(overrideValue)) {
+        if (overrideValue instanceof String overrideStringValue && !StringUtils.hasText(overrideStringValue)) {
             return;
         }
 
@@ -106,7 +106,7 @@ public final class BeanUtils {
         }
 
         // 如果是集合. 判断集合是否为空
-        if (overrideValue instanceof Collection && CollectionUtils.isEmpty((Collection<?>) overrideValue)) {
+        if (overrideValue instanceof Collection<?> overrideCollectionStringValue && CollectionUtils.isEmpty(overrideCollectionStringValue)) {
             return;
         }
 
