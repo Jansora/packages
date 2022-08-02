@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Arrays;
+
 /**
  * <Description> <br>
  *
@@ -20,23 +22,22 @@ public class PulsarDemo {
     private static final Logger LOGGER = LoggerFactory.getLogger(PulsarDemo.class);
 
     @Autowired
-    private PulsarTemplate<String> producer;
+    private PulsarTemplate<byte[]> producer;
 
     @Bean
     public ProducerFactory producerFactory() {
         return new ProducerFactory()
-//                .addProducer("my-topic", MyMsg.class)
-                .addProducer("other-topic", String.class);
+                .addProducer("topic1")
+                .addProducer("topic2");
     }
 
-    void send() throws PulsarClientException {
-        producer.send("other-topic", "Hello world!");
+    void send(String topic, byte[] data) throws PulsarClientException {
+        producer.send(topic, data);
     }
 
-    @PulsarConsumer(topic="my-topic", clazz=String.class)
-    void consumer(String msg) {
-        // TODO process your message
-        System.out.println(msg);
+    @PulsarConsumer(topic="topic1")
+    void consumer(byte[] msg) {
+        System.out.println(Arrays.toString(msg));
     }
 
 
