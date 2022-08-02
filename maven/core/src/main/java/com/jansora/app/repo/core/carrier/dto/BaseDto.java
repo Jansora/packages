@@ -16,6 +16,8 @@ import java.io.Serializable;
  */
 public class BaseDto implements Serializable {
 
+
+
     @Override
     public String toString() {
         return this.getClass().getTypeName() + ":" + JsonUtils.toJsonIgnoreError(this);

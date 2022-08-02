@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.carrier.req;
 
-import com.jansora.app.repo.core.carrier.dto.BaseDto;
+import com.jansora.app.repo.core.carrier.ety.BaseEty;
 
 /**
  * <Description> Description for BaseReq <br>
@@ -12,5 +12,5 @@ import com.jansora.app.repo.core.carrier.dto.BaseDto;
  * @CreateDate 2022/8/1 AM11:58 <br>
  * @since 1.0 <br>
  */
-public class BaseReq extends BaseDto {
+public class BaseReq extends BaseEty {
 }

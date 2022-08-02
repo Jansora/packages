@@ -13,4 +13,10 @@ import com.jansora.app.repo.core.carrier.dto.BaseDto;
  * @since 1.0 <br>
  */
 public class BaseEty extends BaseDto {
+
+    /**
+     * 唯一标识
+     */
+    Long id;
+
 }
