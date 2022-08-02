@@ -1,7 +1,5 @@
 package com.jansora.app.repo.core.carrier.vo;
 
-import com.jansora.app.repo.core.carrier.ety.BaseEty;
-
 /**
  * <Description> Description for BaseEtyVo <br>
  *
@@ -12,6 +10,9 @@ import com.jansora.app.repo.core.carrier.ety.BaseEty;
  * @CreateDate 2022/8/1 AM11:59 <br>
  * @since 1.0 <br>
  */
-public class BaseEtyVo extends BaseEty {
-
+public class BaseEtyVo extends BaseVo {
+    /**
+     * 唯一标识
+     */
+    private Long id;
 }
