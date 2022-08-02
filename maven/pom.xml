@@ -24,6 +24,8 @@
 		<repo.version>0.1.60-SNAPSHOT</repo.version>
 		<spring-cloud.version>2021.0.1.0</spring-cloud.version>
 		<spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+		<dubbo.version>3.0.10</dubbo.version>
+
 	</properties>
 
 	<modules>
@@ -35,6 +37,7 @@
 		<module>mysql</module>
 		<module>cloud</module>
 		<module>pulsar</module>
+		<module>dubbo</module>
 		<module>spring-web</module>
 	</modules>
 
@@ -89,7 +92,11 @@
 				<artifactId>spring-web</artifactId>
 				<version>${repo.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
@@ -165,6 +172,22 @@
 <!--				<artifactId>spring-context-support</artifactId>-->
 <!--				<version>1.0.11</version>-->
 <!--			</dependency>-->
+
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-bom</artifactId>
+				<version>${dubbo.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-dependencies-zookeeper</artifactId>
+				<version>${dubbo.version}</version>
+				<type>pom</type>
+			</dependency>
+
 
 			<dependency>
 				<groupId>io.github.majusko</groupId>
