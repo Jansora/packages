@@ -24,6 +24,12 @@
 			<groupId>io.github.majusko</groupId>
 			<artifactId>pulsar-java-spring-boot-starter</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.tencent.cloud</groupId>
+			<artifactId>spring-cloud-starter-tencent-polaris-config</artifactId>
+		</dependency>
+
 	</dependencies>
 
 

@@ -96,7 +96,7 @@ public final class BeanUtils {
         }
 
         // 如果是 String. 判断字符串是否为空
-        if (overrideValue instanceof String overrideStringValue && !StringUtils.hasText(overrideStringValue)) {
+        if (overrideValue instanceof String && !StringUtils.hasText((CharSequence) overrideValue)) {
             return;
         }
 
@@ -106,7 +106,7 @@ public final class BeanUtils {
         }
 
         // 如果是集合. 判断集合是否为空
-        if (overrideValue instanceof Collection<?> overrideCollectionStringValue && CollectionUtils.isEmpty(overrideCollectionStringValue)) {
+        if (overrideValue instanceof Collection<?> && CollectionUtils.isEmpty((Collection<?>) overrideValue)) {
             return;
         }
 
