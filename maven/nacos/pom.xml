@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.60-SNAPSHOT</version>
+		<version>0.1.62-SNAPSHOT</version>
 	</parent>
 	<artifactId>nacos</artifactId>
 	<version>${repo.version}</version>
@@ -23,7 +23,10 @@
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
 		</dependency>
-
+<!--		<dependency>-->
+<!--			<groupId>org.apache.dubbo</groupId>-->
+<!--			<artifactId>dubbo-registry-nacos</artifactId>-->
+<!--		</dependency>-->
 <!--		<dependency>-->
 <!--			<groupId>com.alibaba.boot</groupId>-->
 <!--			<artifactId>nacos-config-spring-boot-starter</artifactId>-->
