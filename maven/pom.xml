@@ -38,6 +38,7 @@
 		<module>cloud</module>
 		<module>pulsar</module>
 		<module>dubbo</module>
+		<module>nacos</module>
 		<module>spring-web</module>
 	</modules>
 
@@ -97,6 +98,13 @@
 				<artifactId>dubbo</artifactId>
 				<version>${repo.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>nacos</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-annotations</artifactId>
