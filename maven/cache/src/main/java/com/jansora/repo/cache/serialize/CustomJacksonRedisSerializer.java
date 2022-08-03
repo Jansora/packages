@@ -10,7 +10,9 @@ import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
 
 public class CustomJacksonRedisSerializer<T> implements RedisSerializer<T> {
+
     private final Type type;
+
     private final ObjectMapper objectMapper;
 
     public CustomJacksonRedisSerializer(Type type) {

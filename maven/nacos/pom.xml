@@ -21,10 +21,14 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo-registry-nacos</artifactId>
-			<!--			<version>${dubbo.version}</version>-->
+			<groupId>com.alibaba.boot</groupId>
+			<artifactId>nacos-config-spring-boot-starter</artifactId>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.dubbo</groupId>-->
+<!--			<artifactId>dubbo-registry-nacos</artifactId>-->
+<!--			&lt;!&ndash;			<version>${dubbo.version}</version>&ndash;&gt;-->
+<!--		</dependency>-->
 <!--		<dependency>-->
 <!--			<groupId>com.alibaba.cloud</groupId>-->
 <!--			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
