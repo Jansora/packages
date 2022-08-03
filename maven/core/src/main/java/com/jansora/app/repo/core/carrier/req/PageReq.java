@@ -17,22 +17,22 @@ public class PageReq extends BaseReq implements Serializable {
     /**
      * 每页大小 <br>
      */
-    private int pageSize;
+    protected int pageSize;
 
     /**
      * 当前页数, 从 1 开始 <br>
      */
-    private int pageNum;
+    protected int pageNum;
 
     /**
      * 排序方式 ASC / DESC <br>
      */
-    private String sort;
+    protected String sort;
 
     /**
      * 排序字段 <br>
      */
-    private String orderBy;
+    protected String orderBy;
 
     public int getPageSize() {
         return pageSize;

@@ -17,7 +17,7 @@ public class BaseEty extends BaseDto {
     /**
      * 唯一标识
      */
-    private Long id;
+    protected Long id;
 
     public Long getId() {
         return id;

@@ -14,11 +14,11 @@ public class BaseEtyVo extends BaseVo {
     /**
      * 唯一标识
      */
-    private Long id;
+    protected Long id;
 
-    private String createdAt;
+    protected String createdAt;
 
-    private String updatedAt;
+    protected String updatedAt;
 
     public Long getId() {
         return id;
