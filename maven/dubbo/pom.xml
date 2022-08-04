@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.66</version>
+		<version>0.1.67</version>
 	</parent>
 	<artifactId>dubbo</artifactId>
 	<version>${repo.version}</version>
@@ -19,6 +19,11 @@
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
+			<type>pom</type>
 		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.apache.dubbo</groupId>-->
