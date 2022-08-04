@@ -26,7 +26,7 @@
 		<repo.version>0.1.65-SNAPSHOT</repo.version>
 <!--		<spring-cloud.version>2021.0.1.0</spring-cloud.version>-->
 <!--		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
-<!--		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>-->
+		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>
 		<dubbo.version>3.0.10</dubbo.version>
 
 	</properties>
@@ -39,10 +39,11 @@
 		<module>spring</module>
 		<module>mysql</module>
 <!--		<module>cloud</module>-->
-<!--		<module>pulsar</module>-->
+		<module>pulsar</module>
 		<module>dubbo</module>
 		<module>nacos</module>
 		<module>spring-web</module>
+		<module>polaris</module>
 	</modules>
 
 
@@ -86,11 +87,11 @@
 <!--				<artifactId>cloud</artifactId>-->
 <!--				<version>${repo.version}</version>-->
 <!--			</dependency>-->
-<!--			<dependency>-->
-<!--				<groupId>com.jansora.repo</groupId>-->
-<!--				<artifactId>pulsar</artifactId>-->
-<!--				<version>${repo.version}</version>-->
-<!--			</dependency>-->
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>pulsar</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>spring-web</artifactId>
@@ -107,6 +108,13 @@
 				<artifactId>nacos</artifactId>
 				<version>${repo.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>polaris</artifactId>
+				<version>${repo.version}</version>
+			</dependency>
+
 
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -231,13 +239,13 @@
 
 
 
-<!--			<dependency>-->
-<!--				<groupId>com.tencent.cloud</groupId>-->
-<!--				<artifactId>spring-cloud-tencent-dependencies</artifactId>-->
-<!--				<version>${spring-cloud-tencent.version}</version>-->
-<!--				<type>pom</type>-->
-<!--				<scope>import</scope>-->
-<!--			</dependency>-->
+			<dependency>
+				<groupId>com.tencent.cloud</groupId>
+				<artifactId>spring-cloud-tencent-dependencies</artifactId>
+				<version>${spring-cloud-tencent.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 
 
 			<!-- 爬虫需要 -->

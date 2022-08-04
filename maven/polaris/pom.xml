@@ -7,11 +7,11 @@
 		<artifactId>repo-parent</artifactId>
 		<version>0.1.65-SNAPSHOT</version>
 	</parent>
-	<artifactId>pulsar</artifactId>
+	<artifactId>polaris</artifactId>
 	<version>${repo.version}</version>
 	<packaging>jar</packaging>
-	<name>pulsar</name>
-	<description>pulsar</description>
+	<name>polaris</name>
+	<description>polaris</description>
 
 
 	<dependencies>
@@ -19,9 +19,15 @@
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>io.github.majusko</groupId>
-			<artifactId>pulsar-java-spring-boot-starter</artifactId>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>spring</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tencent.cloud</groupId>
+			<artifactId>spring-cloud-starter-tencent-polaris-config</artifactId>
 		</dependency>
 
 	</dependencies>
