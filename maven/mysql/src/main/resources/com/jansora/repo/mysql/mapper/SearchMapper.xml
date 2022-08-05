@@ -13,7 +13,7 @@
         </choose>
     </sql>
 
-    <select id="search" resultType="com.jansora.app.repo.core.carrier.vo.SearchVo">
+    <select id="search" resultType="com.jansora.app.repo.core.payload.vo.SearchVo">
         SELECT * FROM ${tableName} WHERE 1 = 1
         <choose><when test="id != null"> AND id = #{req.id}</when></choose>
         <choose><when test="classify != null and classify != ''"> AND classify = #{req.classify}</when></choose>
@@ -28,11 +28,11 @@
         <choose><when test="limit != null and offset != null and limit != 0 and offset >= 0"> LIMIT #{req.limit} OFFSET #{req.offset} </when></choose>
 
     </select>
-    <select id="fetchClassifyCounts" resultType="com.jansora.app.repo.core.carrier.dto.KVDto">
+    <select id="fetchClassifyCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
         select a.classify as name , count(a.classify) as count from ${tableName} a where 1 = 1    AND <include refid="auth" /> group by a.classify;
     </select>
 
-    <select id="findTagCounts" resultType="com.jansora.app.repo.core.carrier.dto.KVDto">
+    <select id="findTagCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
         select tag as name, count(*) as count from action a
         where 1 = 1
         AND <include refid="auth" />

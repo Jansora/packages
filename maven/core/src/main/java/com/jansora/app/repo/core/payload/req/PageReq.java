@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.carrier.req;
+package com.jansora.app.repo.core.payload.req;
 
 import java.io.Serializable;
 

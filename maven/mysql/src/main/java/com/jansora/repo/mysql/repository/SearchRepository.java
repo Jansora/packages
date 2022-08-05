@@ -1,9 +1,9 @@
 package com.jansora.repo.mysql.repository;
 
-import com.jansora.app.repo.core.carrier.dto.KVDto;
-import com.jansora.app.repo.core.carrier.req.SearchReq;
-import com.jansora.app.repo.core.carrier.vo.PageVo;
-import com.jansora.app.repo.core.carrier.vo.SearchVo;
+import com.jansora.app.repo.core.payload.dto.KVDto;
+import com.jansora.app.repo.core.payload.req.SearchReq;
+import com.jansora.app.repo.core.payload.vo.PageVo;
+import com.jansora.app.repo.core.payload.vo.SearchVo;
 import com.jansora.app.repo.core.utils.NumberUtils;
 import com.jansora.repo.mysql.mapper.SearchMapper;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.carrier.dto;
+package com.jansora.app.repo.core.payload.dto;
 
 import com.jansora.app.repo.core.utils.JsonUtils;
 

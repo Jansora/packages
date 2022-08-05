@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.carrier.dto;
+package com.jansora.app.repo.core.payload.dto;
 
 /**
  * <Description> Description for KVDto <br>

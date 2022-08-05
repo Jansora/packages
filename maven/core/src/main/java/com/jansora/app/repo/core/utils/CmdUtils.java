@@ -1,7 +1,7 @@
 package com.jansora.app.repo.core.utils;
 
-import com.jansora.app.repo.core.carrier.dto.ResultDto;
 import com.jansora.app.repo.core.exception.system.CommandException;
+import com.jansora.app.repo.core.payload.dto.ResultDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;

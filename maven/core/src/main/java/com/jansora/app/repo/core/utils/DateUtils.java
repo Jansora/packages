@@ -1,7 +1,7 @@
 package com.jansora.app.repo.core.utils;
 
-import com.jansora.app.repo.core.carrier.dto.DateDto;
-import com.jansora.app.repo.core.carrier.dto.DatetimeDto;
+import com.jansora.app.repo.core.payload.dto.DateDto;
+import com.jansora.app.repo.core.payload.dto.DatetimeDto;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

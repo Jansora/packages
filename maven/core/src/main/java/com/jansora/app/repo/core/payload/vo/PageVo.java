@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.carrier.vo;
+package com.jansora.app.repo.core.payload.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

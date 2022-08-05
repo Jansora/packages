@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.utils;
 
-import com.jansora.app.repo.core.carrier.dto.KVDto;
+import com.jansora.app.repo.core.payload.dto.KVDto;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;

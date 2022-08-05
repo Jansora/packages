@@ -1,11 +1,11 @@
 package com.jansora.app.repo.core.repository;
 
-import com.jansora.app.repo.core.carrier.req.BaseReq;
-import com.jansora.app.repo.core.carrier.vo.BaseVo;
 import com.jansora.app.repo.core.exception.dao.DataLogicErrorException;
 import com.jansora.app.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.app.repo.core.exception.dao.DataOperationException;
 import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.app.repo.core.payload.req.BaseReq;
+import com.jansora.app.repo.core.payload.vo.BaseVo;
 
 /**
  * <Description> Description for CrudRepository <br>

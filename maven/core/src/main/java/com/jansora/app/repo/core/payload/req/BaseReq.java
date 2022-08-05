@@ -1,6 +1,6 @@
-package com.jansora.app.repo.core.carrier.req;
+package com.jansora.app.repo.core.payload.req;
 
-import com.jansora.app.repo.core.carrier.dto.BaseDto;
+import com.jansora.app.repo.core.payload.dto.BaseDto;
 
 /**
  * <Description> Description for BaseReq <br>

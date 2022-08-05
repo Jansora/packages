@@ -1,6 +1,6 @@
-package com.jansora.app.repo.core.carrier.vo;
+package com.jansora.app.repo.core.payload.vo;
 
-import com.jansora.app.repo.core.carrier.dto.BaseDto;
+import com.jansora.app.repo.core.payload.dto.BaseDto;
 
 /**
  * <Description> Description for BaseVo <br>
