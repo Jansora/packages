@@ -34,7 +34,7 @@ public class NumberUtils {
         return reqs;
     }
 
-    public List<KVDto<Long>> buildCounts(List<KVDto<Long>> counts ) {
+    public static List<KVDto<Long>> buildCounts(List<KVDto<Long>> counts ) {
         return counts.stream()
                 .map(KVDto::getKey)
                 .filter(StringUtils::hasLength)
