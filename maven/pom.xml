@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.67</version>
+	<version>0.1.68</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -23,7 +23,7 @@
 <!--		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>-->
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.67</repo.version>
+		<repo.version>0.1.68</repo.version>
 <!--		<spring-cloud.version>2021.0.1.0</spring-cloud.version>-->
 <!--		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
 		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>
