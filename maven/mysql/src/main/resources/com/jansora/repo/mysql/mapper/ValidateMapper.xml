@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jansora.repo.mysql.mapper.ValidateMapper">
+
+    <sql id="auth">
+        <choose>
+            <when test="authId != null">
+                (enabled = TRUE or (enabled = FALSE AND user_id = #{req.authId}))
+            </when>
+            <otherwise>
+                enabled = TRUE
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="search" resultType="com.jansora.app.repo.core.payload.vo.SearchVo">
+        SELECT * FROM ${tableName} WHERE 1 = 1
+        <choose><when test="id != null"> AND id = #{req.id}</when></choose>
+        <choose><when test="classify != null and classify != ''"> AND classify = #{req.classify}</when></choose>
+
+        <choose><when test="userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="name != null and name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="tag != null and tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        AND <include refid="auth" />
+        ORDER BY
+        <choose><when test="orderBy != null and orderBy != '' "> ${req.orderBy} </when><otherwise> updated_at </otherwise></choose>
+        <choose><when test="sort != null and sort != ''  "> ${req.sort} </when><otherwise> ASC </otherwise></choose>
+        <choose><when test="limit != null and offset != null and limit != 0 and offset >= 0"> LIMIT #{req.limit} OFFSET #{req.offset} </when></choose>
+
+    </select>
+    <select id="fetchClassifyCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
+        select a.classify as name , count(a.classify) as count from ${tableName} a where 1 = 1    AND <include refid="auth" /> group by a.classify;
+    </select>
+
+    <select id="findTagCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
+        select tag as name, count(*) as count from action a
+        where 1 = 1
+        AND <include refid="auth" />
+        <choose><when test="classify != null and classify != ''"> AND a.classify = #{req.classify}</when></choose>
+        group by a.tag;
+    </select>
+    <select id="searchCount" resultType="java.lang.Long">
+        SELECT count(*) FROM ${tableName} WHERE 1 = 1
+        <choose><when test="id != null"> AND id = #{req.id}</when></choose>
+        <choose><when test="classify != null and classify != ''"> AND classify = #{req.classify}</when></choose>
+
+        <choose><when test="userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="name != null and name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="tag != null and tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        AND <include refid="auth" />
+    </select>
+    <select id="isExist" resultType="java.lang.Boolean">
+        SELECT COUNT(*) FROM ${tableName}
+        WHERE
+
+        <choose>
+            <when test="conditions != null ">
+                <foreach item="condition" collection="conditions" open="" separator="" close="">
+                    AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
+                </foreach>
+            </when>
+        </choose>
+        AND STATE != 'X'
+
+    </select>
+
+</mapper>
