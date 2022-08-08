@@ -58,7 +58,7 @@ public class ValidateRepository {
     /**
      * 校验归属
      */
-    public void validateOwner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
+    public void owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
         String existUserId = queryMapper.queryOne(tableName, "userId", List.of(new ConditionSQLDto("id", "=", id)));
         if (!StringUtils.hasText(existUserId)) {
             throw new DataNotFoundException();
@@ -73,7 +73,7 @@ public class ValidateRepository {
     /**
      * 校验可读性
      */
-    public void validateReadability(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
+    public void readable(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
 
         String enabled = queryMapper.queryOne(tableName, "enabled", List.of(new ConditionSQLDto("id", "=", id)));
 
@@ -83,7 +83,7 @@ public class ValidateRepository {
         }
 
         // 不公开的话, 校验拥有者
-        this.validateOwner(tableName, id, ownerId);
+        this.owner(tableName, id, ownerId);
 
     }
 
