@@ -17,16 +17,23 @@ import java.util.List;
  * @since 1.0 <br>
  */
 @Repository
-public class ValidateRepository {
+public class QueryRepository {
 
     @Autowired
     QueryMapper queryMapper;
 
     /**
-     * 是否存在
+     * 查询一条数据
      */
-    public Boolean isExist(String tableName, List<ConditionSQLDto> conditions) {
-        return queryMapper.isExist(tableName, conditions);
+    public String queryOne(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
+        return queryMapper.queryOne(tableName, fieldName, conditions);
+    }
+
+    /**
+     * 查询多条数据
+     */
+    public List<String> query(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
+        return queryMapper.query(tableName, fieldName, conditions);
     }
 
 }

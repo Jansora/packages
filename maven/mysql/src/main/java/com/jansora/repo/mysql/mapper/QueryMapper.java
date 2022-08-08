@@ -14,8 +14,10 @@ import java.util.List;
  * @date 2022/8/8 AM10:29 <br>
  * @since 1.0 <br>
  */
-public interface ValidateMapper {
+public interface QueryMapper {
 
     Boolean isExist(@Param("tableName") String tableName, @Param("conditions") List<ConditionSQLDto> conditions);
+    String queryOne(@Param("tableName") String tableName, @Param("fieldName") String fieldName, @Param("conditions") List<ConditionSQLDto> conditions);
+    List<String> query(@Param("tableName") String tableName, @Param("fieldName") String fieldName, @Param("conditions") List<ConditionSQLDto> conditions);
 
 }
