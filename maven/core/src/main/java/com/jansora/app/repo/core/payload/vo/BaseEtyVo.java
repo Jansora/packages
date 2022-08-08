@@ -1,5 +1,8 @@
 package com.jansora.app.repo.core.payload.vo;
 
+import com.jansora.app.repo.core.payload.model.BaseDo;
+import com.jansora.app.repo.core.utils.DateUtils;
+
 /**
  * <Description> Description for BaseEtyVo <br>
  *
@@ -19,6 +22,12 @@ public class BaseEtyVo extends BaseVo {
     protected String createdAt;
 
     protected String updatedAt;
+
+    public static <T extends BaseEtyVo, S extends BaseDo> void override(T target, S source) {
+        target.setId(source.getId());
+        target.setCreatedAt(DateUtils.format(source.getCreatedAt()));
+        target.setUpdatedAt(DateUtils.format(source.getUpdatedAt()));
+    }
 
     public Long getId() {
         return id;

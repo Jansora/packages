@@ -1,4 +1,4 @@
-package com.jansora.repo.mysql.model;
+package com.jansora.app.repo.core.payload.model;
 
 import io.mybatis.provider.Entity;
 

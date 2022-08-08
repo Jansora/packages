@@ -140,6 +140,11 @@
 				<artifactId>mybatis-mapper</artifactId>
 				<version>1.2.2</version>
 			</dependency>
+			<dependency>
+				<artifactId>mybatis-provider</artifactId>
+				<groupId>io.mybatis</groupId>
+				<version>1.1.1</version>
+			</dependency>
 			<!-- 使用 Service 层封装时 -->
 			<dependency>
 				<groupId>io.mybatis</groupId>

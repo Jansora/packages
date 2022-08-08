@@ -1,5 +1,7 @@
 package com.jansora.app.repo.core.payload.vo;
 
+import com.jansora.app.repo.core.payload.model.SearchDo;
+
 /**
  * <Description> Description for SearchVo <br>
  *
@@ -46,6 +48,23 @@ public class SearchVo extends BaseEtyVo {
      * 标签
      */
     protected Long userId;
+
+    public static <T extends SearchVo, S extends SearchDo> void override(T target, S source) {
+
+        BaseEtyVo.override(target, source);
+
+        // 搜索信息
+        target.setName(source.getName());
+        target.setUserId(source.getUserId());
+        target.setClassify(source.getClassify());
+        target.setTag(source.getTag());
+
+        // 搜索表信息
+        target.setEnabled(source.getEnabled());
+        target.setDescription(source.getDescription());
+        target.setLogo(source.getLogo());
+
+    }
 
     public String getName() {
         return name;

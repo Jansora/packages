@@ -1,4 +1,4 @@
-package com.jansora.repo.mysql.model;
+package com.jansora.app.repo.core.payload.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jansora.app.repo.core.utils.JsonUtils;

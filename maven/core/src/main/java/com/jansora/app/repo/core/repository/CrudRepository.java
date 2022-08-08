@@ -1,9 +1,6 @@
 package com.jansora.app.repo.core.repository;
 
-import com.jansora.app.repo.core.exception.dao.DataLogicErrorException;
-import com.jansora.app.repo.core.exception.dao.DataNotFoundException;
-import com.jansora.app.repo.core.exception.dao.DataOperationException;
-import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.payload.req.BaseReq;
 import com.jansora.app.repo.core.payload.vo.BaseVo;
 
@@ -24,7 +21,7 @@ public interface CrudRepository<E extends BaseVo, R extends BaseReq> extends Bas
      * @param id 主键
      * @return 返回值
      */
-    E findById(Long id) throws DataNotFoundException, InvalidArgumentException;
+    E findById(Long id) throws BaseAppException;
 
     /**
      * 保存实体
@@ -32,13 +29,13 @@ public interface CrudRepository<E extends BaseVo, R extends BaseReq> extends Bas
      * @param req req
      * @return 实体
      */
-    E save(R req) throws DataOperationException, DataNotFoundException, InvalidArgumentException;
+    E save(R req) throws BaseAppException;
 
     /**
      * 删除实体
      * @param id 主键
      * @return 被删除的实体
      */
-    E deleteById(Long id) throws DataNotFoundException, InvalidArgumentException, DataOperationException, DataLogicErrorException;
+    E deleteById(Long id) throws BaseAppException;
 
 }

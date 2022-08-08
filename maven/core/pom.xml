@@ -40,6 +40,10 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 			<version>${spring.boot.version}</version>
 		</dependency>
+		<dependency>
+			<artifactId>mybatis-provider</artifactId>
+			<groupId>io.mybatis</groupId>
+		</dependency>
 	</dependencies>
 
 
