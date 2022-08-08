@@ -3,6 +3,8 @@ package com.jansora.repo.mysql.repository;
 import com.jansora.app.repo.core.exception.auth.ForbiddenException;
 import com.jansora.app.repo.core.exception.dao.DataConflictException;
 import com.jansora.app.repo.core.exception.dao.DataNotFoundException;
+import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.app.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,9 @@ public class ValidateRepository {
     /**
      * 是否存在
      */
-    public void exist(String tableName, List<ConditionSQLDto> conditions) throws DataNotFoundException {
+    public void exist(String tableName, List<ConditionSQLDto> conditions) throws DataNotFoundException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.collectionNonNull(conditions);
         if (!queryMapper.isExist(tableName, conditions)) {
             throw new DataNotFoundException();
         }
@@ -39,7 +43,9 @@ public class ValidateRepository {
      * 存在
      *
      */
-    public void existId(String tableName, Long id) throws DataConflictException {
+    public void existId(String tableName, Long id) throws DataConflictException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.nonNull(id);
         if (!queryMapper.isExist(tableName, List.of(new ConditionSQLDto("id", "=", id)))) {
             throw new DataConflictException();
         }
@@ -48,7 +54,9 @@ public class ValidateRepository {
     /**
      * 不存在
      */
-    public void notExistId(String tableName, Long id) throws DataNotFoundException {
+    public void notExistId(String tableName, Long id) throws DataNotFoundException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.nonNull(id);
         if (queryMapper.isExist(tableName, List.of(new ConditionSQLDto("id", "=", id)))) {
             throw new DataNotFoundException();
         }
@@ -58,7 +66,10 @@ public class ValidateRepository {
     /**
      * 校验归属
      */
-    public void owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
+    public void owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.nonNull(id, ownerId);
+
         String existUserId = queryMapper.queryOne(tableName, "userId", List.of(new ConditionSQLDto("id", "=", id)));
         if (!StringUtils.hasText(existUserId)) {
             throw new DataNotFoundException();
@@ -73,7 +84,9 @@ public class ValidateRepository {
     /**
      * 校验可读性
      */
-    public void readable(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException {
+    public void readable(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.nonNull(id, ownerId);
 
         String enabled = queryMapper.queryOne(tableName, "enabled", List.of(new ConditionSQLDto("id", "=", id)));
 
