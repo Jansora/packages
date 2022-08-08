@@ -4,8 +4,10 @@ import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <Description> <br>
@@ -34,6 +36,27 @@ public class QueryRepository {
      */
     public List<String> query(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
         return queryMapper.query(tableName, fieldName, conditions);
+    }
+
+
+    /**
+     * 查询多条数据
+     */
+    public Long nextSeq(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
+        String seq = queryMapper.queryOne(tableName, fieldName, conditions);
+        return this.nextSeq(StringUtils.hasText(seq) ? Long.parseLong(seq) : 0L);
+    }
+
+    /**
+     * 或许下一个序号, 如果有, 则加一, 如果无则为一
+     * @param seq
+     * @return
+     */
+    private Long nextSeq(Long seq) {
+        if (Objects.isNull(seq)) {
+            return 1L;
+        }
+        return ++seq;
     }
 
 }

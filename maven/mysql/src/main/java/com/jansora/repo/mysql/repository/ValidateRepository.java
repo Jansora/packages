@@ -52,6 +52,33 @@ public class ValidateRepository {
     }
 
     /**
+     * 不存在编码
+     */
+    public void notExistCode(String tableName, String code) throws DataConflictException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName, code);
+        AssertUtils.nonNull(code);
+
+        if (queryMapper.isExist(tableName,  List.of(new ConditionSQLDto("code", "=", code)))) {
+            throw new DataConflictException();
+        }
+    }
+
+
+    /**
+     * 不存在编码
+     */
+    public void notExistCode(String tableName, Long id, String code) throws DataConflictException, InvalidArgumentException {
+        AssertUtils.strNonNull(tableName);
+        AssertUtils.nonNull(id);
+
+        String existId = queryMapper.queryOne(tableName, "id", List.of(new ConditionSQLDto("code", "=", code)));
+
+        if (!String.valueOf(id).equals(existId)) {
+            throw new DataConflictException();
+        }
+    }
+
+    /**
      * 不存在
      */
     public void notExistId(String tableName, Long id) throws DataNotFoundException, InvalidArgumentException {
