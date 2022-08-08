@@ -23,7 +23,7 @@ public class BaseEtyVo extends BaseVo {
 
     protected String updatedAt;
 
-    public static <T extends BaseEtyVo, S extends BaseDo> void override(T target, S source) {
+    public static <T extends BaseEtyVo, S extends BaseDo> void overrideBase(T target, S source) {
         target.setId(source.getId());
         target.setCreatedAt(DateUtils.format(source.getCreatedAt()));
         target.setUpdatedAt(DateUtils.format(source.getUpdatedAt()));

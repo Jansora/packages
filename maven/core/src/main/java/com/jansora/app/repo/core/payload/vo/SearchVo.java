@@ -49,9 +49,9 @@ public class SearchVo extends BaseEtyVo {
      */
     protected Long userId;
 
-    public static <T extends SearchVo, S extends SearchDo> void override(T target, S source) {
+    public static <T extends SearchVo, S extends SearchDo> void overrideSearch(T target, S source) {
 
-        BaseEtyVo.override(target, source);
+        BaseEtyVo.overrideBase(target, source);
 
         // 搜索信息
         target.setName(source.getName());
