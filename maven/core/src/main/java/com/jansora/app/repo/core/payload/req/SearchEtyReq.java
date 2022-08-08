@@ -10,25 +10,17 @@ package com.jansora.app.repo.core.payload.req;
  * @CreateDate 2022/8/5 AM11:15 <br>
  * @since 1.0 <br>
  */
-public class SearchReq extends PageReq {
+public class SearchEtyReq extends SearchReq {
 
     /**
-     * 名称
+     * 主键信息
      */
-    protected String name;
-
-
+    protected Long id;
 
     /**
-     * 分类
+     * 是否启用
      */
-    protected String classify;
-
-    /**
-     * 标签
-     */
-    protected String tag;
-
+    protected Boolean enabled;
 
 
     /**
@@ -50,6 +42,13 @@ public class SearchReq extends PageReq {
         this.name = name;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getClassify() {
         return classify;
