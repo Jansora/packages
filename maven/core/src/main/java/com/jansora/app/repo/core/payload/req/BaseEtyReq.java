@@ -23,5 +23,5 @@ public class BaseEtyReq extends BaseReq {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
 }

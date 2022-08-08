@@ -38,11 +38,6 @@ public class SearchEtyReq extends SearchReq {
 
     public static <T extends SearchDo, S extends SearchEtyReq> void overrideSearch(T target, S source) {
 
-
-
-        target.setId(source.getId());
-
-
         // 搜索信息
         target.setName(source.getName());
         target.setUserId(source.getAuthId());
