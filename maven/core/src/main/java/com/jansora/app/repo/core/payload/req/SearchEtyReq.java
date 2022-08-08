@@ -1,5 +1,7 @@
 package com.jansora.app.repo.core.payload.req;
 
+import com.jansora.app.repo.core.payload.model.SearchDo;
+
 /**
  * <Description> Description for SearchReq <br>
  *
@@ -33,6 +35,26 @@ public class SearchEtyReq extends SearchReq {
      */
     protected String logo;
 
+
+    public static <T extends SearchDo, S extends SearchEtyReq> void overrideSearch(T target, S source) {
+
+
+
+        target.setId(source.getId());
+
+
+        // 搜索信息
+        target.setName(source.getName());
+        target.setUserId(source.getAuthId());
+        target.setClassify(source.getClassify());
+        target.setTag(source.getTag());
+
+        // 搜索表信息
+        target.setEnabled(source.getEnabled());
+        target.setDescription(source.getDescription());
+        target.setLogo(source.getLogo());
+
+    }
 
     public String getName() {
         return name;

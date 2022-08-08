@@ -18,7 +18,6 @@ public class SearchReq extends PageReq {
     protected String name;
 
 
-
     /**
      * 分类
      */
@@ -28,18 +27,6 @@ public class SearchReq extends PageReq {
      * 标签
      */
     protected String tag;
-
-
-
-    /**
-     * 标签
-     */
-    protected String description;
-
-    /**
-     * logo
-     */
-    protected String logo;
 
 
     public String getName() {
