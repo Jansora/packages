@@ -1,6 +1,7 @@
 package com.jansora.repo.mysql.repository;
 
 import com.jansora.app.repo.core.exception.auth.ForbiddenException;
+import com.jansora.app.repo.core.exception.dao.DataConflictException;
 import com.jansora.app.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
@@ -28,20 +29,31 @@ public class ValidateRepository {
     /**
      * 是否存在
      */
-    public void validate(String tableName, List<ConditionSQLDto> conditions) throws DataNotFoundException {
+    public void exist(String tableName, List<ConditionSQLDto> conditions) throws DataNotFoundException {
         if (!queryMapper.isExist(tableName, conditions)) {
             throw new DataNotFoundException();
         }
     }
 
     /**
-     * 是否存在
+     * 存在
+     *
      */
-    public void validateId(String tableName, Long id) throws DataNotFoundException {
+    public void existId(String tableName, Long id) throws DataConflictException {
         if (!queryMapper.isExist(tableName, List.of(new ConditionSQLDto("id", "=", id)))) {
+            throw new DataConflictException();
+        }
+    }
+
+    /**
+     * 不存在
+     */
+    public void notExistId(String tableName, Long id) throws DataNotFoundException {
+        if (queryMapper.isExist(tableName, List.of(new ConditionSQLDto("id", "=", id)))) {
             throw new DataNotFoundException();
         }
     }
+
 
     /**
      * 校验归属
