@@ -2,9 +2,7 @@ package com.jansora.repo.dubbo.context.auth.filter;
 
 import com.jansora.repo.dubbo.constants.DubboFilterConstant;
 import com.jansora.repo.dubbo.context.DubboAuthContext;
-import org.apache.dubbo.common.constants.CommonConstants;
-import org.apache.dubbo.common.extension.Activate;
-import org.apache.dubbo.rpc.BaseFilter;
+import org.apache.dubbo.rpc.Filter;
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;
 import org.apache.dubbo.rpc.Result;
@@ -22,23 +20,16 @@ import org.slf4j.LoggerFactory;
  * @date 2022/8/9 PM02:01 <br>
  * @since 1.0 <br>
  */
-@Activate(group = CommonConstants.CONSUMER, value = DubboFilterConstant.AUTH_TOKEN)
-public class AuthConsumerFilter implements BaseFilter {
+//@Activate(group = CommonConstants.CONSUMER, value = DubboFilterConstant.AUTH_TOKEN)
+public class AuthConsumerFilter implements Filter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthConsumerFilter.class);
 
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_TOKEN);
-        try {
-            DubboAuthContext.setContext(Long.parseLong(authId));
-        }
-        catch (NumberFormatException e) {
-            LOGGER.error("validate token failed. ", e);
-            throw new RpcException("validate token failed. ", e);
-        }
-
+        Long token = DubboAuthContext.token();
+        RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_TOKEN, token.toString());
         return invoker.invoke(invocation);
     }
 }
