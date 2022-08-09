@@ -2,6 +2,7 @@ package com.jansora.repo.mysql.mapper;
 
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
+import com.jansora.app.repo.core.payload.valobj.AuthValObj;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,12 +20,12 @@ import java.util.List;
  */
 public interface SearchMapper {
 
-    Long searchCount(SearchReq req, @Param("tableName") String tableName);
+    Long searchCount(@Param("req") SearchReq req, @Param("tableName") String tableName);
 
     List<SearchVo> search(@Param("req") SearchReq req, @Param("tableName") String tableName);
 
-    List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName);
+    List<KVDto<Long>> fetchClassifyCounts(@Param("req") AuthValObj req, @Param("tableName") String tableName);
 
-    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify);
+    List<KVDto<Long>> findTagCounts(@Param("req") AuthValObj req, @Param("tableName") String tableName, @Param("classify") String classify);
 
 }

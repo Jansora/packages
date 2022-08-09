@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.payload.valobj;
 
-import com.jansora.app.repo.core.payload.ety.BaseEty;
+import com.jansora.app.repo.core.payload.dto.BaseDto;
 
 /**
  * <Description> Description for BaseValObj <br>
@@ -12,5 +12,5 @@ import com.jansora.app.repo.core.payload.ety.BaseEty;
  * @CreateDate 2022/8/5 PM05:22 <br>
  * @since 1.0 <br>
  */
-public class BaseValObj extends BaseEty {
+public class BaseValObj extends BaseDto {
 }

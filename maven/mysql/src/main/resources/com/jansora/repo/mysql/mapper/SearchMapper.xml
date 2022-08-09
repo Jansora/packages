@@ -4,7 +4,7 @@
 
     <sql id="auth">
         <choose>
-            <when test="authId != null">
+            <when test="req.authId != null">
                 (enabled = TRUE or (enabled = FALSE AND user_id = #{req.authId}))
             </when>
             <otherwise>

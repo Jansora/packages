@@ -2,6 +2,7 @@ package com.jansora.repo.mysql.repository;
 
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
+import com.jansora.app.repo.core.payload.valobj.AuthValObj;
 import com.jansora.app.repo.core.payload.vo.PageVo;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
 import com.jansora.app.repo.core.utils.NumberUtils;
@@ -40,12 +41,12 @@ public class SearchRepository {
         return result;
     }
 
-    public List<KVDto<Long>> fetchClassifyCounts(String tableName) {
-        return searchMapper.fetchClassifyCounts(tableName);
+    public List<KVDto<Long>> fetchClassifyCounts(String tableName, AuthValObj auth) {
+        return searchMapper.fetchClassifyCounts(auth, tableName);
     }
 
-    public List<KVDto<Long>> fetchTags(String tableName, String classify) {
-        return NumberUtils.buildCounts(searchMapper.findTagCounts(tableName, classify));
+    public List<KVDto<Long>> fetchTags(String tableName, String classify, AuthValObj auth) {
+        return NumberUtils.buildCounts(searchMapper.findTagCounts(auth, tableName, classify));
     }
 
 
