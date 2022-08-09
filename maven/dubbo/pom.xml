@@ -25,6 +25,11 @@
 			<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
 			<type>pom</type>
 		</dependency>
+
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.apache.dubbo</groupId>-->
 <!--			<artifactId>dubbo-registry-nacos</artifactId>-->

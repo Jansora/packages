@@ -16,10 +16,6 @@ public class AuthValObj extends BaseValObj {
      */
     Long authId;
 
-    /**
-     * 认证 token
-     */
-    String authToken;
 
     public AuthValObj() {
 
@@ -28,18 +24,13 @@ public class AuthValObj extends BaseValObj {
         this.authId = authId;
     }
 
-    public AuthValObj(Long authId, String authToken) {
-        this.authId = authId;
-        this.authToken = authToken;
-    }
-
     public Long getAuthId() {
         return authId;
     }
 
-    public String getAuthToken() {
-        return authToken;
-    }
 
+    public void setAuthId(Long authId) {
+        this.authId = authId;
+    }
 
 }
