@@ -1,4 +1,4 @@
 
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.jansora.repo.mysql.autoconfiguration.MysqlAutoConfiguration
+com.jansora.repo.dubbo.autoconfiguration.DubboAutoConfiguration

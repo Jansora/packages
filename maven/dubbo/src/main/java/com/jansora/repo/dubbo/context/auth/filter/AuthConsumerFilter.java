@@ -1,7 +1,7 @@
-package com.jansora.app.repo.dubbo.context.auth.filter;
+package com.jansora.repo.dubbo.context.auth.filter;
 
-import com.jansora.app.repo.dubbo.constants.DubboFilterConstant;
-import com.jansora.app.repo.dubbo.context.DubboAuthContext;
+import com.jansora.repo.dubbo.constants.DubboFilterConstant;
+import com.jansora.repo.dubbo.context.DubboAuthContext;
 import org.apache.dubbo.common.constants.CommonConstants;
 import org.apache.dubbo.common.extension.Activate;
 import org.apache.dubbo.rpc.BaseFilter;

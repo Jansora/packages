@@ -1,4 +1,4 @@
-package com.jansora.app.repo.dubbo.context;
+package com.jansora.repo.dubbo.context;
 
 import java.util.Objects;
 

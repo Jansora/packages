@@ -1,4 +1,4 @@
-package com.jansora.app.repo.dubbo.constants;
+package com.jansora.repo.dubbo.constants;
 
 /**
  * <Description> <br>
