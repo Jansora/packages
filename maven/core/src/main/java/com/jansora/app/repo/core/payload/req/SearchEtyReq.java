@@ -40,7 +40,6 @@ public class SearchEtyReq extends SearchReq {
 
         // 搜索信息
         target.setName(source.getName());
-        target.setUserId(source.getAuthId());
         target.setClassify(source.getClassify());
         target.setTag(source.getTag());
 

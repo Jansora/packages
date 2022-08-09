@@ -20,12 +20,12 @@ import java.util.List;
  */
 public interface SearchMapper {
 
-    Long searchCount(@Param("req") SearchReq req, @Param("tableName") String tableName);
+    Long searchCount(@Param("req") SearchReq req, @Param("tableName") String tableName, @Param("auth") AuthValObj auth);
 
-    List<SearchVo> search(@Param("req") SearchReq req, @Param("tableName") String tableName);
+    List<SearchVo> search(@Param("req") SearchReq req, @Param("tableName") String tableName, @Param("auth") AuthValObj auth);
 
-    List<KVDto<Long>> fetchClassifyCounts(@Param("req") AuthValObj req, @Param("tableName") String tableName);
+    List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValObj auth);
 
-    List<KVDto<Long>> findTagCounts(@Param("req") AuthValObj req, @Param("tableName") String tableName, @Param("classify") String classify);
+    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify,@Param("auth") AuthValObj auth);
 
 }

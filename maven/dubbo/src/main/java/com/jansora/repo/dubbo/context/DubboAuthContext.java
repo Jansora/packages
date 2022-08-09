@@ -1,5 +1,7 @@
 package com.jansora.repo.dubbo.context;
 
+import com.jansora.app.repo.core.payload.valobj.AuthValObj;
+
 import java.util.Objects;
 
 /**
@@ -23,7 +25,7 @@ public class DubboAuthContext {
         context.remove();
     }
 
-    public static Long token() {
+    private static Long token() {
         Long auth = context.get();
 
         if (Objects.isNull(auth)) {
@@ -31,6 +33,14 @@ public class DubboAuthContext {
             return context.get();
         }
         return auth;
+    }
+
+    public static AuthValObj auth() {
+        return AuthValObj.of(token());
+    }
+
+    public static boolean empty() {
+        return -1 == token();
     }
 
 }

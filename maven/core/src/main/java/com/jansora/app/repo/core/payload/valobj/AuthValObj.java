@@ -1,5 +1,9 @@
 package com.jansora.app.repo.core.payload.valobj;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 /**
  * <Description> <br>
  *
@@ -11,15 +15,29 @@ package com.jansora.app.repo.core.payload.valobj;
  */
 public class AuthValObj extends BaseValObj {
 
+    private static final Map<Long, AuthValObj> cache = new HashMap<>();
+
     /**
      * 认证id
      */
     Long authId;
 
+    public static AuthValObj of(Long authId) {
+        if (Objects.nonNull(authId) && authId < 128 && authId > -128) {
+            AuthValObj auth = cache.get(authId);
+            if (Objects.nonNull(auth)) {
+                return auth;
+            }
+            cache.put(authId, new AuthValObj(authId));
+        }
+        return new AuthValObj(authId);
+    }
 
     public AuthValObj() {
 
     }
+
+
     public AuthValObj(Long authId) {
         this.authId = authId;
     }

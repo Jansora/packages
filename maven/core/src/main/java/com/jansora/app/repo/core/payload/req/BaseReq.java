@@ -1,6 +1,6 @@
 package com.jansora.app.repo.core.payload.req;
 
-import com.jansora.app.repo.core.payload.valobj.AuthValObj;
+import com.jansora.app.repo.core.payload.dto.BaseDto;
 
 /**
  * <Description> Description for BaseReq <br>
@@ -12,6 +12,6 @@ import com.jansora.app.repo.core.payload.valobj.AuthValObj;
  * @CreateDate 2022/8/1 AM11:58 <br>
  * @since 1.0 <br>
  */
-public class BaseReq extends AuthValObj {
+public class BaseReq extends BaseDto {
 
 }

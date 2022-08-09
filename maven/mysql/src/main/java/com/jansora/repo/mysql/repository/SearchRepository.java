@@ -34,19 +34,19 @@ public class SearchRepository {
      * @param req
      * @return
      */
-    public PageVo<SearchVo> search(String tableName, SearchReq req) {
+    public PageVo<SearchVo> search(String tableName, SearchReq req, AuthValObj auth) {
         PageVo<SearchVo> result = new PageVo<>();
-        result.setData(searchMapper.search(req, tableName));
-        result.setTotal(searchMapper.searchCount(req, tableName));
+        result.setData(searchMapper.search(req, tableName, auth));
+        result.setTotal(searchMapper.searchCount(req, tableName, auth));
         return result;
     }
 
     public List<KVDto<Long>> fetchClassifyCounts(String tableName, AuthValObj auth) {
-        return searchMapper.fetchClassifyCounts(auth, tableName);
+        return searchMapper.fetchClassifyCounts(tableName, auth);
     }
 
     public List<KVDto<Long>> fetchTags(String tableName, String classify, AuthValObj auth) {
-        return NumberUtils.buildCounts(searchMapper.findTagCounts(auth, tableName, classify));
+        return NumberUtils.buildCounts(searchMapper.findTagCounts(tableName, classify, auth));
     }
 
 

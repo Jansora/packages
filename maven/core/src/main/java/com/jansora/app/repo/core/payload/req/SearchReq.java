@@ -28,6 +28,10 @@ public class SearchReq extends PageReq {
      */
     protected String tag;
 
+    /**
+     * 用户 id
+     */
+    protected Long userId;
 
     public String getName() {
         return name;
@@ -54,4 +58,11 @@ public class SearchReq extends PageReq {
         this.tag = tag;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

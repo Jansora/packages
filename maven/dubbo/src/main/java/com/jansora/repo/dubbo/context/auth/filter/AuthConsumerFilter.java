@@ -28,7 +28,7 @@ public class AuthConsumerFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        Long token = DubboAuthContext.token();
+        Long token = DubboAuthContext.auth().getAuthId();
         RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_TOKEN, token.toString());
         return invoker.invoke(invocation);
     }
