@@ -23,9 +23,11 @@ public abstract class BaseDo {
     protected Long id;
 
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @Entity.Column(value = "created_at", remark = "创建时间")
     protected Date createdAt;
 
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @Entity.Column(value = "updated_at", remark = "更新时间")
     protected Date updatedAt;
 
     public Long getId() {

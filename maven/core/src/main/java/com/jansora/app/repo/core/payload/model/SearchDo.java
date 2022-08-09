@@ -18,36 +18,43 @@ public class SearchDo extends BaseDo {
     /**
      * 名称
      */
+    @Entity.Column(value = "name", remark = "名称")
     protected String name;
 
     /**
      * 是否启用
      */
+    @Entity.Column(value = "name", remark = "启用")
     protected Boolean enabled;
 
     /**
      * 分类
      */
+    @Entity.Column(value = "name", remark = "分类")
     protected String classify;
 
     /**
      * 标签
      */
+    @Entity.Column(value = "name", remark = "标签")
     protected String tag;
 
     /**
      * 标签
      */
+    @Entity.Column(value = "name", remark = "描述")
     protected String description;
 
     /**
      * logo
      */
+    @Entity.Column(value = "logo", remark = "logo")
     protected String logo;
 
     /**
      * 标签
      */
+    @Entity.Column(value = "user_id", remark = "用户信息")
     protected Long userId;
 
     public String getName() {

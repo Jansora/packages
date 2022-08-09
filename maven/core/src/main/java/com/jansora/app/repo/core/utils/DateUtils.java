@@ -22,8 +22,14 @@ public class DateUtils {
 
     private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
+    private static final SimpleDateFormat tf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public static String formatNow() {
         return df.format(new Date());
+    }
+
+    public static String formatTime(Date date) {
+        return tf.format(date);
     }
 
     public static String format(Date date) {

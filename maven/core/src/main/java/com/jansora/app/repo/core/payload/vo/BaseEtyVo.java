@@ -25,8 +25,8 @@ public class BaseEtyVo extends BaseVo {
 
     public static <T extends BaseEtyVo, S extends BaseDo> void overrideBase(T target, S source) {
         target.setId(source.getId());
-        target.setCreatedAt(DateUtils.format(source.getCreatedAt()));
-        target.setUpdatedAt(DateUtils.format(source.getUpdatedAt()));
+        target.setCreatedAt(DateUtils.formatTime(source.getCreatedAt()));
+        target.setUpdatedAt(DateUtils.formatTime(source.getUpdatedAt()));
     }
 
     public Long getId() {
