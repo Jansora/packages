@@ -6,37 +6,40 @@
 
     <select id="isExist" resultType="java.lang.Boolean">
         SELECT COUNT(*) FROM ${tableName}
-        WHERE
-        <choose>
-            <when test="conditions != null ">
-                <foreach item="condition" collection="conditions" open="" separator="" close="">
-                    AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
-                </foreach>
-            </when>
-        </choose>
+        <where>
+            <choose>
+                <when test="conditions != null ">
+                    <foreach item="condition" collection="conditions" open="" separator="" close="">
+                        AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
+                    </foreach>
+                </when>
+            </choose>
+        </where>
     </select>
 
     <select id="queryOne" resultType="java.lang.String">
         SELECT ${fieldName} FROM ${tableName}
-        WHERE
-        <choose>
-            <when test="conditions != null ">
-                <foreach item="condition" collection="conditions" open="" separator="" close="">
-                    AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
-                </foreach>
-            </when>
-        </choose>
+        <where>
+            <choose>
+                <when test="conditions != null ">
+                    <foreach item="condition" collection="conditions" open="" separator="" close="">
+                        AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
+                    </foreach>
+                </when>
+            </choose>
+        </where>
     </select>
     <select id="query" resultType="java.lang.String">
         SELECT ${fieldName} FROM ${tableName}
-        WHERE
-        <choose>
-            <when test="conditions != null ">
-                <foreach item="condition" collection="conditions" open="" separator="" close="">
-                    AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
-                </foreach>
-            </when>
-        </choose>
+        <where>
+            <choose>
+                <when test="conditions != null ">
+                    <foreach item="condition" collection="conditions" open="" separator="" close="">
+                        AND ${condition.fieldName} ${condition.sign} #{condition.fieldValue}
+                    </foreach>
+                </when>
+            </choose>
+        </where>
     </select>
 
 </mapper>

@@ -2,7 +2,6 @@ package com.jansora.repo.web.utils;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.exception.web.BadRequestException;
-import com.jansora.repo.spring.SpringContext;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
@@ -37,7 +36,12 @@ import java.util.Map;
 public class HttpUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpUtils.class);
 
-    private static final RestTemplate restTemplate = SpringContext.context.getBean(RestTemplate.class);
+    private static final RestTemplate restTemplate = new RestTemplate();
+
+
+    static {
+        setConverter(restTemplate);
+    }
 
     public static Map<String, String> getHeaders() {
         Map<String, String> headers = new HashMap<>();
@@ -47,7 +51,7 @@ public class HttpUtils {
 
 
 
-    private void setConverter(RestTemplate restTemplate) {
+    private static void setConverter(RestTemplate restTemplate) {
         List<HttpMessageConverter<?>> converterList = restTemplate.getMessageConverters();
 
         // 重新设置StringHttpMessageConverter字符集为UTF-8，解决中文乱码问题

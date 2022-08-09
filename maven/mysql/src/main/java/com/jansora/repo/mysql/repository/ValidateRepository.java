@@ -97,7 +97,7 @@ public class ValidateRepository {
         AssertUtils.strNonNull(tableName);
         AssertUtils.nonNull(id, ownerId);
 
-        String existUserId = queryMapper.queryOne(tableName, "userId", List.of(new ConditionSQLDto("id", "=", id)));
+        String existUserId = queryMapper.queryOne(tableName, "user_id", List.of(new ConditionSQLDto("id", "=", id)));
         if (!StringUtils.hasText(existUserId)) {
             throw new DataNotFoundException();
         }
