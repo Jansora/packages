@@ -24,25 +24,25 @@ public class SearchDo extends BaseDo {
     /**
      * 是否启用
      */
-    @Entity.Column(value = "name", remark = "启用")
+    @Entity.Column(value = "enabled", remark = "启用")
     protected Boolean enabled;
 
     /**
      * 分类
      */
-    @Entity.Column(value = "name", remark = "分类")
+    @Entity.Column(value = "classify", remark = "分类")
     protected String classify;
 
     /**
      * 标签
      */
-    @Entity.Column(value = "name", remark = "标签")
+    @Entity.Column(value = "tag", remark = "标签")
     protected String tag;
 
     /**
      * 标签
      */
-    @Entity.Column(value = "name", remark = "描述")
+    @Entity.Column(value = "description", remark = "描述")
     protected String description;
 
     /**
