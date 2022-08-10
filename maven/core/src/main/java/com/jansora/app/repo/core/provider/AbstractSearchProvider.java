@@ -6,6 +6,7 @@ import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.valobj.AuthValObj;
 import com.jansora.app.repo.core.payload.vo.PageVo;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
+import com.jansora.app.repo.core.service.SearchServiceFactory;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public abstract class AbstractSearchProvider implements SearchProviderFactory {
 
-    public abstract SearchProviderFactory searchProvider();
+    public abstract SearchServiceFactory searchService();
 
     /**
      * 搜索正文
@@ -30,7 +31,7 @@ public abstract class AbstractSearchProvider implements SearchProviderFactory {
      */
     @Override
     public PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws BaseAppException {
-        return searchProvider().search(req, auth);
+        return searchService().search(req, auth);
     }
 
     /**
@@ -40,7 +41,7 @@ public abstract class AbstractSearchProvider implements SearchProviderFactory {
      */
     @Override
     public List<KVDto<Long>> fetchClassifyCounts(AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchClassifyCounts(auth);
+        return searchService().fetchClassifyCounts(auth);
     }
 
     /**
@@ -51,7 +52,7 @@ public abstract class AbstractSearchProvider implements SearchProviderFactory {
      */
     @Override
     public List<KVDto<Long>> fetchTags(String classify, AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchTags(classify, auth);
+        return searchService().fetchTags(classify, auth);
     }
 
     /**
@@ -61,6 +62,6 @@ public abstract class AbstractSearchProvider implements SearchProviderFactory {
      */
     @Override
     public List<KVDto<String>> fetchLogos(AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchLogos(auth);
+        return searchService().fetchLogos(auth);
     }
 }
