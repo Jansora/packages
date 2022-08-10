@@ -49,5 +49,8 @@ public class SearchRepository {
         return NumberUtils.buildCounts(searchMapper.findTagCounts(tableName, classify, auth));
     }
 
+    public List<KVDto<String>> fetchLogos(String tableName, AuthValObj auth) {
+        return searchMapper.fetchLogos(tableName, auth);
+    }
 
 }

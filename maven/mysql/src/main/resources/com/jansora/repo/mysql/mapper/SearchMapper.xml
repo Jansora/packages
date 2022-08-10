@@ -39,6 +39,9 @@
         <choose><when test="classify != null and classify != ''"> AND a.classify = #{req.classify}</when></choose>
         group by a.tag;
     </select>
+
+
+
     <select id="searchCount" resultType="java.lang.Long">
         SELECT count(*) FROM ${tableName} WHERE 1 = 1
         <choose><when test="id != null"> AND id = #{req.id}</when></choose>
@@ -48,6 +51,12 @@
         <choose><when test="name != null and name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
         <choose><when test="tag != null and tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
         AND <include refid="auth" />
+    </select>
+    <select id="fetchLogos" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
+        SELECT logo as VALUE, name FROM
+        ${tableName}
+        <where><include refid="auth" /></where>
+
     </select>
 
 </mapper>
