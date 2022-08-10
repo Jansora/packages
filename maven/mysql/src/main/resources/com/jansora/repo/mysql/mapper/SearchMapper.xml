@@ -33,10 +33,10 @@
     </select>
 
     <select id="findTagCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
-        select tag as `key`, count(*) as value from action a
+        select tag as `key`, count(*) as value from ${tableName} a
         where 1 = 1
         AND <include refid="auth" />
-        <choose><when test="classify != null and classify != ''"> AND a.classify = #{req.classify}</when></choose>
+        <choose><when test="classify != null and classify != ''"> AND a.classify = #{classify}</when></choose>
         group by a.tag;
     </select>
 

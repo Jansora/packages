@@ -1,5 +1,6 @@
 package com.jansora.app.repo.core.payload.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jansora.app.repo.core.exception.BaseAppException;
 
@@ -73,11 +74,13 @@ public class ResultDto<T> implements Serializable {
     /*
      errorCode should be assigned when status is false;
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorCode;
 
     /*
      errorDesc  should be assigned when status is false;
      */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorDesc;
 
     public ResultDto(Status status, T data, String errorCode, String errorDesc, BaseAppException e) {

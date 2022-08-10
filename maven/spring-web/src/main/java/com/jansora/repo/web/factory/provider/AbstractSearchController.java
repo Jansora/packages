@@ -1,4 +1,4 @@
-package com.jansora.repo.web.factory;
+package com.jansora.repo.web.factory.provider;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.factory.controller.SearchControllerFactory;
@@ -31,7 +31,7 @@ public abstract class AbstractSearchController implements SearchControllerFactor
      * @param req
      */
     @Override
-    @GetMapping
+    @GetMapping("search")
     public ResultDto<PageVo<SearchVo>> search(SearchReq req) throws BaseAppException {
         return ResultDto.SUCCESS(searchProvider().search(req));
     }

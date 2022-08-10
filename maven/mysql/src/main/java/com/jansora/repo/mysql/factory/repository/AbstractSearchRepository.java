@@ -1,4 +1,4 @@
-package com.jansora.repo.mysql.factory;
+package com.jansora.repo.mysql.factory.repository;
 
 import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.app.repo.core.factory.repository.SearchRepositoryFactory;

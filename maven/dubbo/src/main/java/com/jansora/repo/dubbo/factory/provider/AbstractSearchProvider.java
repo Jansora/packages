@@ -1,4 +1,4 @@
-package com.jansora.repo.dubbo.factory;
+package com.jansora.repo.dubbo.factory.provider;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.factory.provider.SearchProviderFactory;
