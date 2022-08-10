@@ -4,10 +4,11 @@ import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <Description> <br>
@@ -43,8 +44,8 @@ public class QueryRepository {
      * 查询多条数据
      */
     public Long nextSeq(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
-        String seq = queryMapper.queryOne(tableName, fieldName, conditions);
-        return this.nextSeq(StringUtils.hasText(seq) ? Long.parseLong(seq) : 0L);
+        List<String> seq = queryMapper.query(tableName, fieldName, conditions).stream().sorted().collect(Collectors.toList());
+        return this.nextSeq(CollectionUtils.isEmpty(seq) ? 0L : Long.parseLong(seq.get(seq.size() - 1)));
     }
 
     /**
