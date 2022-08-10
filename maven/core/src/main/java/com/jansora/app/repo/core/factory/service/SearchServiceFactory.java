@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.repository;
+package com.jansora.app.repo.core.factory.service;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.exception.system.NotImplementException;
@@ -16,10 +16,10 @@ import java.util.List;
  * @author jansora (zhang.yangyuan) <br>
  * @version 1.0 <br>
  * @email zhangyue1936@gmail.com
- * @date 2022/8/10 AM10:38 <br>
+ * @date 2022/8/10 AM10:55 <br>
  * @since 1.0 <br>
  */
-public interface SearchRepositoryFactory {
+public interface SearchServiceFactory {
 
     /**
      * 搜索正文

@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.provider;
+package com.jansora.app.repo.core.factory.provider;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.exception.system.NotImplementException;
@@ -19,9 +19,6 @@ import java.util.List;
  * @since 1.0 <br>
  */
 public interface SearchProviderFactory {
-
-
-
 
     /**
      * 搜索正文

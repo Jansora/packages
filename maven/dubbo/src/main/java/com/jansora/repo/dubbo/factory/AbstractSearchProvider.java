@@ -1,12 +1,12 @@
-package com.jansora.repo.dubbo.provider;
+package com.jansora.repo.dubbo.factory;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
+import com.jansora.app.repo.core.factory.provider.SearchProviderFactory;
+import com.jansora.app.repo.core.factory.service.SearchServiceFactory;
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.vo.PageVo;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
-import com.jansora.app.repo.core.provider.SearchProviderFactory;
-import com.jansora.app.repo.core.service.SearchServiceFactory;
 import com.jansora.repo.dubbo.context.DubboAuthContext;
 
 import java.util.List;

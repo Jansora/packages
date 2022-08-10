@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.repository;
+package com.jansora.app.repo.core.factory.repository;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.exception.system.NotImplementException;

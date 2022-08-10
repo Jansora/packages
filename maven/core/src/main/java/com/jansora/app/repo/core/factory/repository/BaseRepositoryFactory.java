@@ -1,4 +1,4 @@
-package com.jansora.app.repo.core.repository;
+package com.jansora.app.repo.core.factory.repository;
 
 /**
  * <Description> Description for BaseRepository <br>

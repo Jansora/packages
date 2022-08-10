@@ -1,12 +1,12 @@
-package com.jansora.app.repo.core.service;
+package com.jansora.app.repo.core.factory.service;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
+import com.jansora.app.repo.core.factory.repository.SearchRepositoryFactory;
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.valobj.AuthValObj;
 import com.jansora.app.repo.core.payload.vo.PageVo;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
-import com.jansora.app.repo.core.repository.SearchRepositoryFactory;
 
 import java.util.List;
 
