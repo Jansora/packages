@@ -1,13 +1,6 @@
 package com.jansora.app.repo.core.provider;
 
-import com.jansora.app.repo.core.exception.BaseAppException;
-import com.jansora.app.repo.core.payload.dto.KVDto;
-import com.jansora.app.repo.core.payload.req.SearchReq;
-import com.jansora.app.repo.core.payload.valobj.AuthValObj;
-import com.jansora.app.repo.core.payload.vo.PageVo;
-import com.jansora.app.repo.core.payload.vo.SearchVo;
-
-import java.util.List;
+import com.jansora.app.repo.core.service.SearchServiceFactory;
 
 /**
  * <Description> <br>
@@ -15,52 +8,8 @@ import java.util.List;
  * @author jansora (zhang.yangyuan) <br>
  * @version 1.0 <br>
  * @email zhangyue1936@gmail.com
- * @date 2022/8/10 AM10:55 <br>
+ * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public abstract class SearchProviderFactory implements SearchProvider {
-
-    public abstract SearchProvider searchProvider();
-
-    /**
-     * 搜索正文
-     *
-     * @param req
-     * @param auth
-     */
-    @Override
-    public PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws BaseAppException {
-        return searchProvider().search(req, auth);
-    }
-
-    /**
-     * 搜索 classify
-     *
-     * @param auth
-     */
-    @Override
-    public List<KVDto<Long>> fetchClassifyCounts(AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchClassifyCounts(auth);
-    }
-
-    /**
-     * 搜索 tag
-     *
-     * @param classify
-     * @param auth
-     */
-    @Override
-    public List<KVDto<Long>> fetchTags(String classify, AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchTags(classify, auth);
-    }
-
-    /**
-     * 搜索 logo
-     *
-     * @param auth
-     */
-    @Override
-    public List<KVDto<String>> fetchLogos(AuthValObj auth) throws BaseAppException {
-        return searchProvider().fetchLogos(auth);
-    }
+public interface SearchProviderFactory extends SearchServiceFactory {
 }

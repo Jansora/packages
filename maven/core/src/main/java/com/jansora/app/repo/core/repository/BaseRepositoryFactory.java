@@ -9,6 +9,6 @@ package com.jansora.app.repo.core.repository;
  * @CreateDate 2021/11/17 12:18:53 <br>
  * @since 1.0 <br>
  */
-public interface BaseRepository {
+public interface BaseRepositoryFactory {
 
 }

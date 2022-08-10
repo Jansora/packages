@@ -19,7 +19,7 @@ import java.util.List;
  * @date 2022/8/10 AM10:38 <br>
  * @since 1.0 <br>
  */
-public interface SearchRepository {
+public interface SearchRepositoryFactory {
 
     /**
      * 搜索正文

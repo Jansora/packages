@@ -5,7 +5,7 @@ import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.valobj.AuthValObj;
 import com.jansora.app.repo.core.payload.vo.PageVo;
 import com.jansora.app.repo.core.payload.vo.SearchVo;
-import com.jansora.app.repo.core.repository.SearchRepository;
+import com.jansora.app.repo.core.repository.SearchRepositoryFactory;
 import com.jansora.app.repo.core.utils.NumberUtils;
 import com.jansora.repo.mysql.mapper.SearchMapper;
 
@@ -20,17 +20,17 @@ import java.util.List;
  * @date 2022/8/10 AM10:38 <br>
  * @since 1.0 <br>
  */
-public abstract class SearchRepositoryFactory implements SearchRepository {
+public abstract class AbstractSearchRepository implements SearchRepositoryFactory {
     
     /**
      * 获取表名
      */
-    abstract String tableName();
+    public abstract String tableName();
 
     /**
      * search mapper
      */
-    abstract SearchMapper searchMapper();
+    public abstract SearchMapper searchMapper();
 
     /**
      * 搜索正文
