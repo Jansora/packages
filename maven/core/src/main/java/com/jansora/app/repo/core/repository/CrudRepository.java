@@ -1,6 +1,7 @@
 package com.jansora.app.repo.core.repository;
 
 import com.jansora.app.repo.core.exception.BaseAppException;
+import com.jansora.app.repo.core.exception.system.NotImplementException;
 import com.jansora.app.repo.core.payload.req.BaseReq;
 import com.jansora.app.repo.core.payload.vo.BaseVo;
 
@@ -21,7 +22,9 @@ public interface CrudRepository<E extends BaseVo, R extends BaseReq> extends Bas
      * @param id 主键
      * @return 返回值
      */
-    E findById(Long id) throws BaseAppException;
+    default E findById(Long id) throws BaseAppException {
+        throw new NotImplementException();
+    }
 
     /**
      * 保存实体
@@ -29,13 +32,17 @@ public interface CrudRepository<E extends BaseVo, R extends BaseReq> extends Bas
      * @param req req
      * @return 实体
      */
-    E save(R req) throws BaseAppException;
+    default E save(R req) throws BaseAppException {
+        throw new NotImplementException();
+    }
 
     /**
      * 删除实体
      * @param id 主键
      * @return 被删除的实体
      */
-    E deleteById(Long id) throws BaseAppException;
+    default E deleteById(Long id) throws BaseAppException {
+        throw new NotImplementException();
+    }
 
 }
