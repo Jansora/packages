@@ -20,6 +20,9 @@ import java.util.List;
  */
 public interface SearchProviderFactory {
 
+
+
+
     /**
      * 搜索正文
      */

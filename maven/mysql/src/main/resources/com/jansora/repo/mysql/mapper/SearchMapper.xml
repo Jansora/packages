@@ -15,17 +15,17 @@
 
     <select id="search" resultType="com.jansora.app.repo.core.payload.vo.SearchVo">
         SELECT * FROM ${tableName} WHERE 1 = 1
-        <choose><when test="id != null"> AND id = #{req.id}</when></choose>
-        <choose><when test="classify != null and classify != ''"> AND classify = #{req.classify}</when></choose>
 
-        <choose><when test="userId != null"> AND user_id = #{req.userId}</when></choose>
-        <choose><when test="name != null and name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
-        <choose><when test="tag != null and tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
+
+        <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
         AND <include refid="auth" />
         ORDER BY
-        <choose><when test="orderBy != null and orderBy != '' "> ${req.orderBy} </when><otherwise> updated_at </otherwise></choose>
-        <choose><when test="sort != null and sort != ''  "> ${req.sort} </when><otherwise> ASC </otherwise></choose>
-        <choose><when test="limit != null and offset != null and limit != 0 and offset >= 0"> LIMIT #{req.limit} OFFSET #{req.offset} </when></choose>
+        <choose><when test="req.orderBy != null and req.orderBy != '' "> ${req.orderBy} </when><otherwise> updated_at </otherwise></choose>
+        <choose><when test="req.sort != null and req.sort != ''  "> ${req.sort} </when><otherwise> ASC </otherwise></choose>
+        <choose><when test="req.pageSize != null and req.pageNum != null and req.pageSize != 0 and req.pageNum >= 0"> LIMIT #{req.pageSize} OFFSET #{req.pageNum} </when></choose>
 
     </select>
     <select id="fetchClassifyCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
@@ -33,7 +33,7 @@
     </select>
 
     <select id="findTagCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
-        select tag as name, count(*) as count from action a
+        select tag as name, count(*) as value from action a
         where 1 = 1
         AND <include refid="auth" />
         <choose><when test="classify != null and classify != ''"> AND a.classify = #{req.classify}</when></choose>
@@ -44,13 +44,13 @@
 
     <select id="searchCount" resultType="java.lang.Long">
         SELECT count(*) FROM ${tableName} WHERE 1 = 1
-        <choose><when test="id != null"> AND id = #{req.id}</when></choose>
-        <choose><when test="classify != null and classify != ''"> AND classify = #{req.classify}</when></choose>
+        <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
 
-        <choose><when test="userId != null"> AND user_id = #{req.userId}</when></choose>
-        <choose><when test="name != null and name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
-        <choose><when test="tag != null and tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
         AND <include refid="auth" />
+
     </select>
     <select id="fetchLogos" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
         SELECT logo as VALUE, name FROM

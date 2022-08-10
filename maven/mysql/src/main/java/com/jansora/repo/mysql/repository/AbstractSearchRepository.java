@@ -1,5 +1,6 @@
 package com.jansora.repo.mysql.repository;
 
+import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.valobj.AuthValObj;
@@ -36,8 +37,22 @@ public abstract class AbstractSearchRepository implements SearchRepositoryFactor
      * 搜索正文
      */
     @Override
-    public PageVo<SearchVo> search(SearchReq req, AuthValObj auth) {
+    public PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws InvalidArgumentException {
         PageVo<SearchVo> result = new PageVo<>();
+        int pageSize = req.getPageSize();
+        int pageNum = req.getPageNum();
+        if (req.getPageNum() < 1) {
+            throw new InvalidArgumentException("pageNum should be > 0");
+        }
+        if (req.getPageSize() < 1) {
+            throw new InvalidArgumentException("pageSize should be > 0");
+        }
+        if (req.getPageSize() > 10000) {
+            throw new InvalidArgumentException("pageSize should be < 10000");
+        }
+        req.setPageNum(req.getPageNum() - 1);
+        result.setPageSize(pageSize);
+        result.setPageNum(pageNum);
         result.setData(searchMapper().search(req, tableName(), auth));
         result.setTotal(searchMapper().searchCount(req, tableName(), auth));
         return result;

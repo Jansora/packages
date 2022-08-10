@@ -26,7 +26,7 @@ public interface SearchMapper {
 
     List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValObj auth);
 
-    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify,@Param("auth") AuthValObj auth);
+    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify, @Param("auth") AuthValObj auth);
 
     List<KVDto<String>> fetchLogos(@Param("tableName") String tableName, @Param("auth") AuthValObj auth);
 
