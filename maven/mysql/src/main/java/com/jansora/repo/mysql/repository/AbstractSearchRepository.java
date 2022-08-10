@@ -53,6 +53,7 @@ public abstract class AbstractSearchRepository implements SearchRepositoryFactor
         req.setPageNum(req.getPageNum() - 1);
         result.setPageSize(pageSize);
         result.setPageNum(pageNum);
+
         result.setData(searchMapper().search(req, tableName(), auth));
         result.setTotal(searchMapper().searchCount(req, tableName(), auth));
         return result;

@@ -29,11 +29,11 @@
 
     </select>
     <select id="fetchClassifyCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
-        select a.classify as name , count(a.classify) as count from ${tableName} a where 1 = 1    AND <include refid="auth" /> group by a.classify;
+        select a.classify as key , count(a.classify) as value from ${tableName} a where 1 = 1    AND <include refid="auth" /> group by a.classify;
     </select>
 
     <select id="findTagCounts" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
-        select tag as name, count(*) as value from action a
+        select tag as key, count(*) as value from action a
         where 1 = 1
         AND <include refid="auth" />
         <choose><when test="classify != null and classify != ''"> AND a.classify = #{req.classify}</when></choose>
@@ -53,7 +53,7 @@
 
     </select>
     <select id="fetchLogos" resultType="com.jansora.app.repo.core.payload.dto.KVDto">
-        SELECT logo as VALUE, name FROM
+        SELECT logo as VALUE, name as key FROM
         ${tableName}
         <where><include refid="auth" /></where>
 

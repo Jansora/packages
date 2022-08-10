@@ -1,7 +1,9 @@
 package com.jansora.app.repo.core.payload.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jansora.app.repo.core.payload.model.BaseDo;
-import com.jansora.app.repo.core.utils.DateUtils;
+
+import java.util.Date;
 
 /**
  * <Description> Description for BaseEtyVo <br>
@@ -19,14 +21,18 @@ public class BaseEtyVo extends BaseVo {
      */
     protected Long id;
 
-    protected String createdAt;
+    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    protected Date createdAt;
 
-    protected String updatedAt;
+    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    protected Date updatedAt;
+
+
 
     public static <T extends BaseEtyVo, S extends BaseDo> void overrideBase(T target, S source) {
         target.setId(source.getId());
-        target.setCreatedAt(DateUtils.formatTime(source.getCreatedAt()));
-        target.setUpdatedAt(DateUtils.formatTime(source.getUpdatedAt()));
+        target.setCreatedAt(source.getCreatedAt());
+        target.setUpdatedAt(source.getUpdatedAt());
     }
 
     public Long getId() {
@@ -37,19 +43,19 @@ public class BaseEtyVo extends BaseVo {
         this.id = id;
     }
 
-    public String getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
