@@ -157,7 +157,7 @@ public class CacheConfiguration implements ApplicationContextAware {
                 })
                 .forEach(clazz -> {
                             ReflectionUtils.doWithMethods(clazz, method -> {
-                                ReflectionUtils.makeAccessible(method);
+//                                ReflectionUtils.makeAccessible(method);
                                 if (!method.trySetAccessible()) {
                                     LOGGER.debug("buildInitCaches binding method failed. method: {}", method);
                                     return;
