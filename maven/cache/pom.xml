@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.86</version>
+		<version>0.1.87</version>
 	</parent>
 	<artifactId>cache</artifactId>
-	<version>0.1.86</version>
+	<version>0.1.87</version>
 	<packaging>jar</packaging>
 	<name>cache</name>
 	<description>cache</description>
