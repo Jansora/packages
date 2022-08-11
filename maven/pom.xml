@@ -43,7 +43,7 @@
 <!--		<module>cloud</module>-->
 		<module>pulsar</module>
 		<module>dubbo</module>
-<!--		<module>nacos</module>-->
+		<module>nacos</module>
 		<module>spring-web</module>
 		<module>polaris</module>
 		<module>storage</module>
@@ -193,11 +193,11 @@
 <!--				<artifactId>nacos-config-spring-boot-starter</artifactId>-->
 <!--				<version>0.2.12</version>-->
 <!--			</dependency>-->
-<!--			<dependency>-->
-<!--				<groupId>org.apache.dubbo</groupId>-->
-<!--				<artifactId>dubbo-registry-nacos</artifactId>-->
-<!--				<version>${dubbo.version}</version>-->
-<!--			</dependency>-->
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-registry-nacos</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
 
 <!--			<dependency>-->
 <!--				<groupId>com.alibaba.cloud</groupId>-->
