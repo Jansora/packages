@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.87</version>
+		<version>0.1.88</version>
 	</parent>
 	<artifactId>mysql</artifactId>
-	<version>0.1.87</version>
+	<version>0.1.88</version>
 	<packaging>jar</packaging>
 	<name>mysql</name>
 	<description>mysql</description>
