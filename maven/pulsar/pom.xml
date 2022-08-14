@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.88</version>
+		<version>0.1.89</version>
 	</parent>
 	<artifactId>pulsar</artifactId>
-	<version>0.1.88</version>
+	<version>0.1.89</version>
 	<packaging>jar</packaging>
 	<name>pulsar</name>
 	<description>pulsar</description>

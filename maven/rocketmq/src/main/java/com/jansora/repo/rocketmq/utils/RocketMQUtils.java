@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * <Description> <br>
@@ -15,10 +15,10 @@ import org.springframework.stereotype.Component;
  * @author zhang.yangyuan (jansora)
  * 2021/01/20 22:38:48
  */
-@Component
-public class RocketmqUtils {
+@Repository
+public class RocketMQUtils {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RocketmqUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RocketMQUtils.class);
 
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
