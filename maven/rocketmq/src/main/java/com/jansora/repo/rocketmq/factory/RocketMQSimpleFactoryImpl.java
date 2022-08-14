@@ -1,5 +1,7 @@
-package com.jansora.repo.rocketmq.utils;//package com.jansora.app.infrastructure.mq;
+package com.jansora.repo.rocketmq.factory;
 
+import com.jansora.app.repo.core.exception.BaseAppException;
+import com.jansora.app.repo.core.mq.factory.SimpleMQFactory;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
@@ -9,22 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Repository;
 
-/**
- * <Description> <br>
- *
- * @author zhang.yangyuan (jansora)
- * 2021/01/20 22:38:48
- */
 @Repository
-public class RocketMQUtils {
+public class RocketMQSimpleFactoryImpl implements SimpleMQFactory {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(RocketMQUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RocketMQSimpleFactoryImpl.class);
 
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
-
-    public boolean send(String topic, String tags, String message) {
+    @Override
+    public boolean send(String topic, String tags, String message) throws BaseAppException {
         LOGGER.debug("rocketmq send message. topic:[{}]  tags:[{}] message:[{}] .", topic, tags, message);
 
         // springboot不支持使用header传递tags，根据要求，需要在topic后进行拼接 formats: `topicName:tags`，不拼接标识无tag
@@ -37,5 +33,4 @@ public class RocketMQUtils {
         return SendStatus.SEND_OK.equals(sendResult.getSendStatus());
 
     }
-
 }
