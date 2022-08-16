@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.90</version>
+		<version>0.1.91</version>
 	</parent>
 	<artifactId>dubbo</artifactId>
-	<version>0.1.90</version>
+	<version>0.1.91</version>
 	<packaging>jar</packaging>
 	<name>dubbo</name>
 	<description>dubbo</description>
@@ -20,16 +20,16 @@
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
-			<type>pom</type>
-		</dependency>
-
 <!--		<dependency>-->
 <!--			<groupId>org.apache.dubbo</groupId>-->
-<!--			<artifactId>dubbo-registry-nacos</artifactId>-->
+<!--			<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>-->
+<!--			<type>pom</type>-->
 <!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-registry-nacos</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
