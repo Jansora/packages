@@ -53,53 +53,60 @@ const plugins = [
   // Add more plugins here
 ];
 
-export const Editor = ({value, setValue, style, uploadFn}) => {
+export class Editor extends React.Component {
 
-  return (
-      <ByteEditor
-          style={style ? {...style} : {}}
-          // mode="tab"
-          // id="222"
-          value={value}
-          plugins={plugins}
-          onChange={setValue}
-          editorConfig={{}}
-          uploadImages={  async (files) => {
-            // TODO: upload image files and return urls
+    render() {
+        const {value, setValue, style, uploadFn} = this.props;
+        return (
+            <ByteEditor
+                style={style ? {...style} : {}}
+                // mode="tab"
+                // id="222"
+                value={value}
+                plugins={plugins}
+                onChange={setValue}
+                editorConfig={{}}
+                uploadImages={  async (files) => {
+                    // TODO: upload image files and return urls
 
-            let result = [];
-            if (files.length < 1) return ['']
-            await uploadFn(files, (data)=> {
-              result = data.map(file => ({url:file.url, title: file.filename, alt: file.filename}))
-            })
+                    let result = [];
+                    if (files.length < 1) return ['']
+                    await uploadFn(files, (data)=> {
+                        result = data.map(file => ({url:file.url, title: file.filename, alt: file.filename}))
+                    })
 
-            console.log("uploadFn callback", result)
+                    console.log("uploadFn callback", result)
 
-            return result;
-            // const callback = (data) => {
-            //
-            //   result.append({url:data, title: "b.png", alt: data})
-            //   console.log("UploadFile callback", data)
-            //   copyToClipboard(data)
-            // };
-            // await UploadFile(files[0], callback);
-            // console.log("url", url, resp)
+                    return result;
+                    // const callback = (data) => {
+                    //
+                    //   result.append({url:data, title: "b.png", alt: data})
+                    //   console.log("UploadFile callback", data)
+                    //   copyToClipboard(data)
+                    // };
+                    // await UploadFile(files[0], callback);
+                    // console.log("url", url, resp)
 
-          }}
-      />
-  )
-}
-export const Viewer = ({value, style}) => {
-  return (
-      <ByteViewer
-          style={style ? {...style} : {}}
-          value={value}
-          plugins={plugins}
-      />
-  )
+                }}
+            />
+        )
+    }
 }
 
 
 
+export class Viewer extends React.Component {
 
-export default {Viewer, Editor};
+    render() {
+        const {value, style} = this.props;
+        return (
+            <ByteViewer
+                style={style ? {...style} : {}}
+                value={value}
+                plugins={plugins}
+            />
+        )
+    }
+}
+
+
