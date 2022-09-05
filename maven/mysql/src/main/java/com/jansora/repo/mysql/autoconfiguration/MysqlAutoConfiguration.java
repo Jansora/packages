@@ -2,6 +2,7 @@ package com.jansora.repo.mysql.autoconfiguration;
 
 import com.jansora.app.repo.core.generator.CustomBeanNameGenerator;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -16,6 +17,7 @@ import org.springframework.core.annotation.Order;
  */
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
+@ComponentScan(basePackages = "com.jansora.repo.mysql")
 @MapperScan(basePackages = "com.jansora.**.mapper", nameGenerator = CustomBeanNameGenerator.class)
 public class MysqlAutoConfiguration {
 }

@@ -2,6 +2,8 @@ package com.jansora.repo.cache.config;
 
 import com.jansora.repo.cache.constant.CacheDefine;
 import com.jansora.repo.cache.serialize.CustomJacksonRedisSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -31,6 +33,9 @@ import java.util.Objects;
 @EnableCaching
 @ConditionalOnProperty(prefix = "spring.cache", name = "type", havingValue = "redis")
 public class CacheConfiguration implements ApplicationContextAware {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CacheConfiguration.class);
+
 
     ApplicationContext context;
 
@@ -152,7 +157,11 @@ public class CacheConfiguration implements ApplicationContextAware {
                 })
                 .forEach(clazz -> {
                             ReflectionUtils.doWithMethods(clazz, method -> {
-                                ReflectionUtils.makeAccessible(method);
+//                                ReflectionUtils.makeAccessible(method);
+                                if (!method.trySetAccessible()) {
+                                    LOGGER.debug("buildInitCaches binding method failed. method: {}", method);
+                                    return;
+                                }
                                 Cacheable cacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
                                 if (Objects.nonNull(cacheable)) {
                                     for (String cache : cacheable.cacheNames()) {

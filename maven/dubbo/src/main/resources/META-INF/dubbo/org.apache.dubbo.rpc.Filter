@@ -1,0 +1,2 @@
+AuthConsumerFilter=com.jansora.repo.dubbo.context.auth.filter.AuthConsumerFilter
+AuthProviderFilter=com.jansora.repo.dubbo.context.auth.filter.AuthProviderFilter

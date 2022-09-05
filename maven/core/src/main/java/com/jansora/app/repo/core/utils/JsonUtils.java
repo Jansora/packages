@@ -2,10 +2,12 @@ package com.jansora.app.repo.core.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.jansora.app.repo.core.exception.BaseAppException;
 import com.jansora.app.repo.core.exception.transform.FormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -65,6 +68,24 @@ public class JsonUtils {
         }
     }
 
+
+    /**
+     * json字符串转成list
+     * @param json String
+     * @param <T> <br>
+     * @return List
+     * @throws BaseAppException <br>
+     */
+    public static <T> List<T> fromJsonList(String json, Class<?> clazz) throws BaseAppException {
+        JavaType javaType = instance.getTypeFactory().constructParametricType(List.class, clazz);
+        try {
+            return instance.readValue(json, javaType);
+        }
+        catch (IOException e) {
+            throw new FormatException();
+        }
+
+    }
 
     /**
      * json字符串转成对应的对象

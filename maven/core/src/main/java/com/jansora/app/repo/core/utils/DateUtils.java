@@ -1,7 +1,7 @@
 package com.jansora.app.repo.core.utils;
 
-import com.jansora.app.repo.core.carrier.dto.DateDto;
-import com.jansora.app.repo.core.carrier.dto.DatetimeDto;
+import com.jansora.app.repo.core.payload.dto.DateDto;
+import com.jansora.app.repo.core.payload.dto.DatetimeDto;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,8 +22,22 @@ public class DateUtils {
 
     private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
+    private static final SimpleDateFormat tf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static final SimpleDateFormat tm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
     public static String formatNow() {
         return df.format(new Date());
+    }
+
+    public static String formatNowTime() {
+        return tf.format(new Date());
+    }
+    public static String formatNowTimestamp() {
+        return tm.format(new Date());
+    }
+
+    public static String formatTime(Date date) {
+        return tf.format(date);
     }
 
     public static String format(Date date) {

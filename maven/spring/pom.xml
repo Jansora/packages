@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.49</version>
+		<version>0.1.92</version>
 	</parent>
 	<artifactId>spring</artifactId>
-	<version>${repo.version}</version>
+	<version>0.1.92</version>
 	<packaging>jar</packaging>
 	<name>spring</name>
 	<description>spring</description>
@@ -33,6 +33,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>core</artifactId>
 		</dependency>
 	</dependencies>
 

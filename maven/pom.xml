@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>0.1.49</version>
+	<version>0.1.92</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -19,11 +19,18 @@
 		<java.version>17</java.version>
 		<javac.src.version>17</javac.src.version>
 		<javac.target.version>17</javac.target.version>
+		<jdk.compiler.level>17</jdk.compiler.level>
+<!--		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>-->
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>0.1.49</repo.version>
-		<spring-cloud.version>2021.0.1.0</spring-cloud.version>
-		<spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+		<repo.version>0.1.92</repo.version>
+<!--		<spring-cloud.version>2021.0.1.0</spring-cloud.version>-->
+<!--		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
+<!--		<spring-cloud-tencent.version>1.7.0-Hoxton.SR12</spring-cloud-tencent.version>-->
+		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>
+
+		<dubbo.version>3.0.10</dubbo.version>
+
 	</properties>
 
 	<modules>
@@ -33,7 +40,13 @@
 		<module>rocketmq</module>
 		<module>spring</module>
 		<module>mysql</module>
-		<module>cloud</module>
+<!--		<module>cloud</module>-->
+		<module>pulsar</module>
+		<module>dubbo</module>
+		<module>nacos</module>
+		<module>spring-web</module>
+		<module>polaris</module>
+		<module>storage</module>
 	</modules>
 
 
@@ -44,38 +57,65 @@
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>core</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>cache</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>demo</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>rocketmq</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>spring</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>mysql</artifactId>
-				<version>${repo.version}</version>
+				<version>0.1.92</version>
+			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>com.jansora.repo</groupId>-->
+<!--				<artifactId>cloud</artifactId>-->
+<!--				<version>0.1.92</version>-->
+<!--			</dependency>-->
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>pulsar</artifactId>
+				<version>0.1.92</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
-				<artifactId>cloud</artifactId>
-				<version>${repo.version}</version>
+				<artifactId>spring-web</artifactId>
+				<version>0.1.92</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>0.1.92</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>storage</artifactId>
+				<version>0.1.92</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>polaris</artifactId>
+				<version>0.1.92</version>
 			</dependency>
 
 
@@ -102,6 +142,11 @@
 				<artifactId>mybatis-mapper</artifactId>
 				<version>1.2.2</version>
 			</dependency>
+			<dependency>
+				<artifactId>mybatis-provider</artifactId>
+				<groupId>io.mybatis</groupId>
+				<version>1.1.1</version>
+			</dependency>
 			<!-- 使用 Service 层封装时 -->
 			<dependency>
 				<groupId>io.mybatis</groupId>
@@ -124,13 +169,38 @@
 				<artifactId>mysql-connector-java</artifactId>
 				<version>8.0.28</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>5.3.1</version>
+			</dependency>
 			<!-- cloud native -->
 
+<!--			<dependency>-->
+<!--				<groupId>org.apache.dubbo</groupId>-->
+<!--				<artifactId>dubbo-spring-boot-starter</artifactId>-->
+<!--				<version>${dubbo.version}</version>-->
+<!--			</dependency>-->
 			<dependency>
 				<groupId>org.apache.dubbo</groupId>
-				<artifactId>dubbo-spring-boot-starter</artifactId>
-				<version>3.0.10</version>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
+				<version>${dubbo.version}</version>
+				<type>pom</type>
+			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>com.alibaba.boot</groupId>-->
+<!--				<artifactId>nacos-config-spring-boot-starter</artifactId>-->
+<!--				<version>0.2.12</version>-->
+<!--			</dependency>-->
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo-registry-nacos</artifactId>
+				<version>${dubbo.version}</version>
 			</dependency>
 
 <!--			<dependency>-->
@@ -139,21 +209,60 @@
 <!--				<version>${spring-cloud-alibaba.version}</version>-->
 <!--			</dependency>-->
 
-			<dependency>
-				<groupId>com.alibaba.cloud</groupId>
-				<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-				<version>${spring-cloud-alibaba.version}</version>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>com.alibaba.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+<!--				<version>${spring-cloud-alibaba.version}</version>-->
+<!--			</dependency>-->
+
+<!--			<dependency>-->
+<!--				<groupId>com.alibaba.boot</groupId>-->
+<!--				<artifactId>nacos-config-spring-boot-starter</artifactId>-->
+<!--				<version>0.2.12</version>-->
+<!--			</dependency>-->
+
 <!--			<dependency>-->
 <!--				<groupId>org.springframework.cloud</groupId>-->
 <!--				<artifactId>spring-cloud-starter-openfeign</artifactId>-->
 <!--				<version>2.2.9.RELEASE</version>-->
 <!--			</dependency>-->
+			<dependency>
+				<groupId>com.alibaba.spring</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>1.0.11</version>
+			</dependency>
+
 <!--			<dependency>-->
-<!--				<groupId>com.alibaba.spring</groupId>-->
-<!--				<artifactId>spring-context-support</artifactId>-->
-<!--				<version>1.0.11</version>-->
+<!--				<groupId>org.apache.dubbo</groupId>-->
+<!--				<artifactId>dubbo-bom</artifactId>-->
+<!--				<version>${dubbo.version}</version>-->
+<!--				<type>pom</type>-->
+<!--				<scope>import</scope>-->
 <!--			</dependency>-->
+
+<!--			<dependency>-->
+<!--				<groupId>org.apache.dubbo</groupId>-->
+<!--				<artifactId>dubbo-dependencies-zookeeper</artifactId>-->
+<!--				<version>${dubbo.version}</version>-->
+<!--				<type>pom</type>-->
+<!--			</dependency>-->
+
+
+			<dependency>
+				<groupId>io.github.majusko</groupId>
+				<artifactId>pulsar-java-spring-boot-starter</artifactId>
+				<version>1.1.2</version>
+			</dependency>
+
+
+
+			<dependency>
+				<groupId>com.tencent.cloud</groupId>
+				<artifactId>spring-cloud-tencent-dependencies</artifactId>
+				<version>${spring-cloud-tencent.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 
 
 			<!-- 爬虫需要 -->

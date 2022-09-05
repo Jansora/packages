@@ -1,9 +1,10 @@
 package com.jansora.app.repo.core.utils;
 
-import com.jansora.app.repo.core.carrier.dto.ResultDto;
 import com.jansora.app.repo.core.exception.system.CommandException;
+import com.jansora.app.repo.core.payload.dto.ResultDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +12,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
@@ -69,7 +69,7 @@ public class CmdUtils {
             ProcessBuilder builder = new ProcessBuilder();
             System.out.println("cmd exec dir: " + dirPath + "\n cmd:");
             System.out.println(Arrays.toString(cmd));
-            if (Objects.nonNull(dirPath) && !dirPath.isBlank()) {
+            if (StringUtils.hasLength(dirPath)) {
                 builder.directory(new File(dirPath));
             }
 
@@ -83,8 +83,14 @@ public class CmdUtils {
         }
     }
 
-    private record StreamGobbler(InputStream inputStream,
-                                 Consumer<String> consumer) implements Runnable {
+    private static class StreamGobbler implements Runnable {
+        private final InputStream inputStream;
+        private final Consumer<String> consumer;
+
+        public StreamGobbler(InputStream inputStream, Consumer<String> consumer) {
+            this.inputStream = inputStream;
+            this.consumer = consumer;
+        }
 
         @Override
         public void run() {

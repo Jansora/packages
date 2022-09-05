@@ -1,7 +1,9 @@
 package com.jansora.app.repo.core.utils;
 
 import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
+import org.springframework.util.StringUtils;
 
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -48,9 +50,14 @@ public class AssertUtils {
 
     public static void strNonNull(String... os) throws InvalidArgumentException {
         for (String o : os) {
-            if (o == null || o.isBlank()) {
+            if (!StringUtils.hasLength(o)) {
                 throw new InvalidArgumentException();
             }
         }
+    }
+
+    public static void collectionNonNull(Collection<?> collection) throws InvalidArgumentException {
+        AssertUtils.nonNull(collection);
+        AssertUtils.isTrue(collection.size() > 0);
     }
 }
