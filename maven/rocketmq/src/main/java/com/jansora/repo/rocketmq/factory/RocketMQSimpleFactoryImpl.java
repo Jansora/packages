@@ -1,7 +1,7 @@
 package com.jansora.repo.rocketmq.factory;
 
-import com.jansora.app.repo.core.exception.BaseAppException;
-import com.jansora.app.repo.core.mq.factory.SimpleMQFactory;
+import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.mq.factory.SimpleMQFactory;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;

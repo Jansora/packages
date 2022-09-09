@@ -1,7 +1,7 @@
 package com.jansora.repo.demo;
 
-import com.jansora.app.repo.core.function.DoSomethingWithThrowable;
-import com.jansora.app.repo.core.utils.CostUtils;
+import com.jansora.repo.core.function.DoSomethingWithThrowable;
+import com.jansora.repo.core.utils.CostUtils;
 
 /**
  * <Description> Description for AbstractDemoFactory <br>

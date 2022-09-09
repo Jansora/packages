@@ -1,8 +1,8 @@
 package com.jansora.repo.spring.utils;
 
-import com.jansora.app.repo.core.exception.transform.FormatException;
-import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.app.repo.core.utils.AssertUtils;
+import com.jansora.repo.core.exception.transform.FormatException;
+import com.jansora.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.repo.core.utils.AssertUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 

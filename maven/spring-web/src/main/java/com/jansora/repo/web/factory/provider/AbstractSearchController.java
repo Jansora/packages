@@ -1,13 +1,13 @@
 package com.jansora.repo.web.factory.provider;
 
-import com.jansora.app.repo.core.exception.BaseAppException;
-import com.jansora.app.repo.core.factory.controller.SearchControllerFactory;
-import com.jansora.app.repo.core.factory.provider.SearchProviderFactory;
 import com.jansora.app.repo.core.payload.dto.KVDto;
-import com.jansora.app.repo.core.payload.dto.ResultDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
-import com.jansora.app.repo.core.payload.vo.PageVo;
-import com.jansora.app.repo.core.payload.vo.SearchVo;
+import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.factory.controller.SearchControllerFactory;
+import com.jansora.repo.core.factory.provider.SearchProviderFactory;
+import com.jansora.repo.core.payload.dto.ResultDto;
+import com.jansora.repo.core.payload.vo.PageVo;
+import com.jansora.repo.core.payload.vo.SearchVo;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;

@@ -3,7 +3,7 @@ package com.jansora.repo.mysql.mapper;
 import com.jansora.app.repo.core.payload.dto.KVDto;
 import com.jansora.app.repo.core.payload.req.SearchReq;
 import com.jansora.app.repo.core.payload.valobj.AuthValObj;
-import com.jansora.app.repo.core.payload.vo.SearchVo;
+import com.jansora.repo.core.payload.vo.SearchVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
