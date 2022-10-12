@@ -48,6 +48,10 @@ public class DateUtils {
         return date.getYear() + "-" + date.getMonth() + "-" + date.getDay();
     }
 
+    public static String format(Number year, Number month, Number day) {
+        return year + "-" + month + "-" + day;
+    }
+
     public static String formatToday() {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.HOUR_OF_DAY, 0); // same for minutes and seconds
