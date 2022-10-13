@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class PageUtils {
 
@@ -46,6 +47,17 @@ public class PageUtils {
 
         }
         PageHelper.startPage(1, 500, false);
+    }
+
+
+    public static <T> List<T> reduce(List<T> arr, int size) {
+        if (null == arr || arr.size() < size) {
+            return arr;
+        }
+        int spilt = arr.size() / size;
+        AtomicInteger k = new AtomicInteger();
+
+        return arr.stream().filter(i -> k.getAndIncrement() % spilt == 0).collect(Collectors.toList());
     }
 
 }
