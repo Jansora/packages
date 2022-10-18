@@ -22,6 +22,11 @@
 
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
+			<artifactId>polaris</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
 			<artifactId>dubbo</artifactId>
 		</dependency>
 
