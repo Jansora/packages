@@ -1,4 +1,4 @@
-package com.jansora.repo.monitor.autoconfiguration.autoconfiguration;
+package com.jansora.repo.monitor.autoconfiguration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

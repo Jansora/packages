@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>0.1.96</version>
+		<version>0.1.97</version>
 	</parent>
 	<artifactId>monitor</artifactId>
-	<version>0.1.96</version>
+	<version>0.1.97</version>
 	<packaging>jar</packaging>
 	<name>monitor</name>
 	<description>monitor</description>
@@ -19,12 +19,14 @@
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>spring</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
