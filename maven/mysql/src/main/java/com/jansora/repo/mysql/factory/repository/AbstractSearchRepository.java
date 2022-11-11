@@ -41,7 +41,7 @@ public abstract class AbstractSearchRepository implements SearchRepositoryFactor
         PageVo<SearchVo> result = new PageVo<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
-        if (req.getPageNum() < 0) {
+        if (req.getPageNum() < 1) {
             throw new InvalidArgumentException("pageNum should be > 0");
         }
         if (req.getPageSize() < 1) {
@@ -50,7 +50,7 @@ public abstract class AbstractSearchRepository implements SearchRepositoryFactor
         if (req.getPageSize() > 10000) {
             throw new InvalidArgumentException("pageSize should be < 10000");
         }
-        req.setPageNum(req.getPageNum() - 1);
+        req.setPageNum((req.getPageNum() - 1) * req.getPageSize());
         result.setPageSize(pageSize);
         result.setPageNum(pageNum);
 
