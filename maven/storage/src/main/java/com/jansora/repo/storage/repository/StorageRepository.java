@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -46,7 +48,6 @@ public class StorageRepository {
                     aliyunOSSProperties.getAccessKeyId(),
                     aliyunOSSProperties.getAccessKeySecret()
             );
-
         }
 
     }
@@ -84,6 +85,11 @@ public class StorageRepository {
         if(ossClient == null)
             ossClient = new OSSClientBuilder().build(
                     aliyunOSSProperties.getEndPoint(), aliyunOSSProperties.getAccessKeyId(), aliyunOSSProperties.getAccessKeySecret());
+
+
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Cache-Control", "max-age=8640000");
+        headers.put("Expires", "Thu, 01 Dec 2194 16:00:00 GMT");
 
         String Path =  aliyunOSSProperties.getOssReturnPrefix() + username
                 + dateFormat.format(new Date())
