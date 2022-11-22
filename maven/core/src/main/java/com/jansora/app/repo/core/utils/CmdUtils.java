@@ -6,12 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
+import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
@@ -30,31 +27,37 @@ public class CmdUtils {
      */
     public static ResultDto<String> syncRun(String dirPath, String... cmd) {
         try {
-            System.out.println("cmd exec dir: " + dirPath + "\n cmd:");
-            System.out.println(Arrays.toString(cmd));
+            UUID uuid = UUID.randomUUID();
+            LOGGER.info("CMD sync run: uuid: {} \n cmd: [{}] \n pwd: [{}]", uuid, Arrays.toString(cmd), dirPath);
+
             Process process = Runtime.getRuntime().exec(cmd, null, new File(dirPath));
 
+            int exitCode = process.waitFor();
+            boolean status = exitCode == 0;
+
             BufferedReader reader =
-                    new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    new BufferedReader(new InputStreamReader(status ? process.getInputStream() : process.getErrorStream()));
 
             StringBuilder sb = new StringBuilder();
             String line = "";
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append("\n");
             }
-            int exitCode = process.waitFor();
-            boolean status = exitCode == 0;
-            ResultDto<String> result = status ? ResultDto.SUCCESS() : ResultDto.FAIL(new CommandException());
-            result.setData(sb.toString());
+
+            ResultDto<String> result = status ? ResultDto.SUCCESS(sb.toString()) : ResultDto.FAIL(new CommandException(sb.toString()));
+
+
+            LOGGER.info("CMD sync run: uuid: [{}] \n  result: [{}]", Arrays.toString(cmd), result);
             return result;
 
 
         } catch (IOException e) {
             LOGGER.error("exec CmdUtils.run failed. IOException:", e);
+            return ResultDto.FAIL(new CommandException(Arrays.toString(e.getStackTrace())));
         } catch (InterruptedException e) {
             LOGGER.error("exec CmdUtils.run failed. InterruptedException:", e);
+            return ResultDto.FAIL(new CommandException(Arrays.toString(e.getStackTrace())));
         }
-        return ResultDto.FAIL(new CommandException());
     }
 
     /**
