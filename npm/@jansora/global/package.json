@@ -1,6 +1,6 @@
 {
   "name": "@jansora/global",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "@jansora/global React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "nwb": "0.25.x"
   },
-  "author": "",q
+  "author": "",
   "homepage": "",
   "license": "MIT",
   "repository": "",
