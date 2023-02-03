@@ -6,3 +6,8 @@ node_modules
 /umd
 npm-debug.log*
 /demo/node_modules/
+
+
+yarn.lock
+
+package-lock.json
