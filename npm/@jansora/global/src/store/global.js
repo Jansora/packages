@@ -13,7 +13,8 @@ export const defaultValue = {
         role: "",
     },
     // 主题色
-    theme: localStorage.getItem("color") ? localStorage.getItem("color") : 'violet',
+    color: localStorage.getItem("color") ? localStorage.getItem("color") : 'violet',
+    theme: localStorage.getItem("theme") ? localStorage.getItem("theme") : 'light',
     breadcrumb: [],
     title: '',
     description: "",
@@ -27,6 +28,8 @@ const reducer = (state, action) => {
     switch(action.type) {
         case 'user':
             return {...state, user: action.payload};
+        case 'color':
+            return {...state, color: action.payload};
         case 'theme':
             return {...state, theme: action.payload};
         case 'title':
