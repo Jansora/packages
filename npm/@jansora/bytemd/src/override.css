@@ -1,3 +1,8 @@
+/*@import "./github-markdown-dark.css" (prefers-color-scheme: dark);*/
+/*@import "./github-markdown-light.css" (prefers-color-scheme: light);*/
+/*@media (prefers-color-scheme: dark) {*/
+/*    @import "./github-markdown-dark.css";*/
+/*}*/
 
 .markdown-body {
     padding: 24px;
@@ -21,29 +26,30 @@
 }
 .bytemd-body {
     border-color: var(--background-color-2);;
-    //background-color: var(--background-color-2);
+    background-color: var(--background-color-2);
     height: calc(100vh - 220px);
 }
 
 .bytemd-toolbar {
     display: flex;
     background-color: var(--background-color-2);
-
-    svg {
-        color: var(--text-color-1);
-    }
 }
 
+.bytemd-toolbar svg {
+    color: var(--text-color-1);
+}
+
+
 .bytemd-preview {
-    //background-color: var(--background-color-2);
+    background-color: var(--background-color-2);
 }
 
 .CodeMirror-cursor {
     border-left: 1px solid var(--text-color-3);
 }
-body {
-    @import "./github-markdown-dark";
-}
+/*body {*/
+/*    @import "./github-markdown-dark";*/
+/*}*/
 
 
 

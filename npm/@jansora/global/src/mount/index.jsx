@@ -1,5 +1,5 @@
 import React from 'react';
-import MountTheme from "./mount/MountTheme";
+import MountTheme from "./MountTheme";
 import MountColor from "./MountColor";
 
 /**
