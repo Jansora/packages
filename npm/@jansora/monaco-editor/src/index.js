@@ -8,4 +8,4 @@ const InitEditor = () => {
     </div>
 }
 
-export default {DiffEditor, CodeEditor, InitEditor};
+export {DiffEditor, CodeEditor, InitEditor};

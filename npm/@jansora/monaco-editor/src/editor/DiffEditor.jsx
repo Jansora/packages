@@ -22,7 +22,7 @@ const DiffEditor = (props) => {
     const {original, modified} = props;
     const ref = useRef(null);
     const style = props.style ? props.style  : {};
-    // const [editor, setEditor] = useState(null);
+    const [editor, setEditor] = useState(null);
     const [init, setInit] = useState(false);
     const monaco = window.monaco;
 
@@ -36,15 +36,24 @@ const DiffEditor = (props) => {
     useEffect(() => {
         if(ref.current && monaco) {
             const _editor = monaco.editor.createDiffEditor(ref.current, {theme: "vs", readOnly: true})
-            _editor.setModel({
-                original: monaco.editor.createModel(original.data, original.language),
-                modified: monaco.editor.createModel(modified.data, modified.language)
-            });
-            // setEditor(_editor)
+            // _editor.setModel({
+            //     original: monaco.editor.createModel(original.data, original.language),
+            //     modified: monaco.editor.createModel(modified.data, modified.language)
+            // });
+            setEditor(_editor)
         }
     }, [ref, init, monaco]);
 
-    
+    useEffect(() => {
+        console.log(editor, original, modified)
+        if(editor) {
+            editor.setModel({
+                original: monaco.editor.createModel(original.data, original.language),
+                modified: monaco.editor.createModel(modified.data, modified.language)
+            });
+        }
+    }, [editor, modified, original])
+
     return (
         <div id={props.id ? props.id : "monaco-diff"} ref={ref} style={{
             width: '100%', height: '500px',

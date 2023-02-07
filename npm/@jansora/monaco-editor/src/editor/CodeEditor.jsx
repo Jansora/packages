@@ -36,7 +36,7 @@ const CodeEditor = (props) => {
     return (
       <div>
           {
-              loading && <CodeEditorSource {...props} style={style} language={language}/>
+              !loading && <CodeEditorSource {...props} style={style} language={language}/>
           }
       </div>
 
