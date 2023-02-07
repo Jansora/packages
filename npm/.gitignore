@@ -1,5 +1,5 @@
 /coverage
-/demo/dist
+dist
 /es
 /lib
 node_modules
@@ -9,5 +9,7 @@ npm-debug.log*
 
 
 yarn.lock
+yarn-*.lock
+build
 
 package-lock.json

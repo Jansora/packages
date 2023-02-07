@@ -3,9 +3,11 @@ export const TOKEN = 'token';
 
 export const THEME = 'theme';
 
+export const THEME_DARK = 'theme';
+export const THEME_LIGHT = 'light';
 export const THEME_LIST = [
-    {theme:'light', description:'Light'},
-    {theme:'dark', description:'Dark'},
+    {theme:THEME_LIGHT, description:'Light'},
+    {theme:THEME_DARK, description:'Dark'},
 ]
 
 

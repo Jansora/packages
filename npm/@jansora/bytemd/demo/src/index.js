@@ -1,9 +1,14 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 // import {createRoot, render} from 'react-dom'
-import {createRoot} from 'react-dom/client'
 import {Editor} from '../../src'
+import GlobalStoreProvider from "@jansora/global";
+import Mount from "@jansora/global2/lib/mount";
+import {render} from "react-dom";
+// import {GlobalStore} from "@jansora/global/lib/store/global";
+import {GlobalStore} from "@jansora/global2/lib/store/global";
 
 export default function Demo ()  {
+  console.log("store", useContext(GlobalStore))
   const [raw, setRaw] = useState('# Operation OS\n' +
       '## deepin 配置阿里源\n' +
       '> `sudo vim /etc/apt/sources.list`\n' +
@@ -195,7 +200,7 @@ export default function Demo ()  {
 
 
   return <div>
-    {/*<Mount />*/}
+    <Mount />
     <h1>@jansora/bytemd Demo</h1>
     <Editor
         style={{width: "100%"}}
@@ -205,6 +210,6 @@ export default function Demo ()  {
   </div>
 
 }
-createRoot(document.querySelector('#demo')).render(<><Demo/></>);
+// createRoot(document.querySelector('#demo')).render(<GlobalStoreProvider><Demo/></GlobalStoreProvider>);
 
- // render(<GlobalStoreProvider><Demo/></GlobalStoreProvider>, document.querySelector('#demo'))
+ render(<GlobalStoreProvider ><Demo/></GlobalStoreProvider>, document.querySelector('#demo'))

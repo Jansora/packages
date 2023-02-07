@@ -5,13 +5,25 @@
 * @date 2019-12-17 10:39
 */
 import {useContext, useEffect} from 'react';
-import {THEME} from "../constant/global";
+import {THEME, THEME_DARK, THEME_LIGHT} from "../constant/global";
 import {GlobalStore} from "../store/global";
 
 
 const MountTheme = () => {
 
-  const { theme } = useContext(GlobalStore);
+  const { theme, dispatch } = useContext(GlobalStore);
+  const dark = window.matchMedia("(prefers-color-scheme: dark)");
+
+  useEffect(() => {
+    dark.addEventListener("change",e => {
+      if (e.matches) {
+        dispatch({type: 'theme', payload: THEME_DARK});
+      } else {
+        dispatch({type: 'theme', payload: THEME_LIGHT});
+      }
+    });
+  })
+
 
   useEffect(() => {
     // THEME_LIST.forEach(

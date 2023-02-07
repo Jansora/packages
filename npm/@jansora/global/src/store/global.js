@@ -4,7 +4,7 @@ import React, {createContext, useReducer} from 'react';
 export const defaultValue = {
     // 登录用户信息
     user: { //
-        id: "",
+        id: "1222221",
         username: "",
         description: "",
         updatedAt: "",
@@ -46,8 +46,9 @@ const reducer = (state, action) => {
 
 const GlobalStoreProvider = props => {
     const [store, dispatch] = useReducer(reducer, defaultValue);
+    store.dispatch = dispatch
     return (
-        <GlobalStore.Provider value={{...store, dispatch}}>
+        <GlobalStore.Provider value={store}>
             {props.children}
         </GlobalStore.Provider>
     );
