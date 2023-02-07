@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
-import {render} from 'react-dom'
-
+// import {createRoot, render} from 'react-dom'
+import {createRoot} from 'react-dom/client'
 import {Editor} from '../../src'
-import Mount from "@jansora/global/lib/mount";
 
 export default function Demo ()  {
   const [raw, setRaw] = useState('# Operation OS\n' +
@@ -196,7 +195,7 @@ export default function Demo ()  {
 
 
   return <div>
-    <Mount />
+    {/*<Mount />*/}
     <h1>@jansora/bytemd Demo</h1>
     <Editor
         style={{width: "100%"}}
@@ -206,5 +205,6 @@ export default function Demo ()  {
   </div>
 
 }
+createRoot(document.querySelector('#demo')).render(<><Demo/></>);
 
-render(<Demo/>, document.querySelector('#demo'))
+ // render(<GlobalStoreProvider><Demo/></GlobalStoreProvider>, document.querySelector('#demo'))

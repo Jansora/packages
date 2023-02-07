@@ -5,14 +5,21 @@ import highlight from "@bytemd/plugin-highlight"
 // import math from "@bytemd/plugin-math"
 import zoom from "@bytemd/plugin-medium-zoom"
 // import mermaid from "@bytemd/plugin-mermaid"
-import './index.css'
+// import './index.css'
+import 'bytemd/dist/index.css'
+
 import 'highlight.js/styles/vs.css';
-import './override.css'
+// import './override.css'
 // import {UploadFiles} from "../../../request/utils";
 import breaks from '@bytemd/plugin-breaks';
 
-import './github-markdown-dark.css'
 // import './github-markdown-light.css'
+// import './github-markdown-dark.css'
+import './theme/dark.less'
+import './theme/light.less'
+
+import './theme/juejin-markdown-theme-Chinese-red.scss'
+
 // import frontmatter from "@bytemd/plugin-frontmatter"
 // import gemoji from    "@bytemd/plugin-gemoji"
 // import vega from    "@bytemd/plugin-vega"
@@ -32,12 +39,22 @@ const plugins = [
     // gemoji(),
     highlight({init: hljs => {
 
-        // hljs.highlight()
-            ['javascript', 'json', 'xml', 'markdown'].forEach((langName) => {
-                let langModule = require(`highlight.js/lib/languages/${langName}`);
+            const init = ['javascript', 'json', 'xml', 'markdown'];
 
-                hljs.registerLanguage(langName, langModule);
+            hljs.listLanguages().filter(language => !init.includes(language)).forEach((langName) => {
+                // let langModule = require(`highlight.js/lib/languages/${langName}`);
+                // console.log(hljs);
+                // hljs.registerLanguage(langName, langModule);
+                hljs.unregisterLanguage(langName)
             });
+
+
+                // hljs.highlight()
+            // ['javascript', 'json', 'xml', 'markdown'].forEach((langName) => {
+            //     let langModule = require(`highlight.js/lib/languages/${langName}`);
+            //     console.log(hljs);
+            //     hljs.registerLanguage(langName, langModule);
+            // });
         }}),
     // math(),
     zoom(),

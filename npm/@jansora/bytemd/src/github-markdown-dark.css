@@ -1,6 +1,6 @@
 @media (prefers-color-scheme: dark) {
   .markdown-body {
-    color-scheme: light;
+    color-scheme: dark;
     --color-prettylights-syntax-comment: #6e7781;
     --color-prettylights-syntax-constant: #0550ae;
     --color-prettylights-syntax-entity: #8250df;
@@ -49,7 +49,7 @@
 
 @media (prefers-color-scheme: light) {
   .markdown-body {
-    color-scheme: dark;
+    color-scheme: light;
     --color-prettylights-syntax-comment: #8b949e;
     --color-prettylights-syntax-constant: #79c0ff;
     --color-prettylights-syntax-entity: #d2a8ff;

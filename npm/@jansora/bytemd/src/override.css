@@ -1,8 +1,3 @@
-/*@import "./github-markdown-dark.css" (prefers-color-scheme: dark);*/
-/*@import "./github-markdown-light.css" (prefers-color-scheme: light);*/
-/*@media (prefers-color-scheme: dark) {*/
-/*    @import "./github-markdown-dark.css";*/
-/*}*/
 
 .markdown-body {
     padding: 24px;
