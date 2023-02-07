@@ -1,14 +1,33 @@
-@import "code-mirror.css";
+
+
+
+@import "code-mirror";
+@import "./theme/github-markdown";
+@import "./theme/theme.less";
+
 html[theme='dark'] {
-    h1, h2, h3 {
-        color: green !important;
+
+    .cm-header {
+        color: var(--primary-color) ;
     }
+    .cm-link {
+        color: var(--active-color) ;
+    }
+
+    .markdown-body {
+        color: var(--text-color-2);
+    }
+
 }
+
 
 
 
 .markdown-body {
     padding: 24px;
+}
+.markdown-body pre{
+    background: var(--dark-background-color-1);
 }
 
 .markdown-body p > img {
@@ -54,6 +73,9 @@ html[theme='dark'] {
 /*}*/
 
 
-
+.hljs {
+    background: #1e1e1e;
+    color: #dcdcdc;
+}
 
 

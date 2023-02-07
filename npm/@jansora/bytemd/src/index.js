@@ -5,20 +5,16 @@ import highlight from "@bytemd/plugin-highlight"
 // import math from "@bytemd/plugin-math"
 import zoom from "@bytemd/plugin-medium-zoom"
 // import mermaid from "@bytemd/plugin-mermaid"
-// import './index.css'
-import 'bytemd/dist/index.css'
+// import './code-mirror.less'
+// import 'bytemd/dist/index.css'
+import 'highlight.js/styles/vs2015.css';
 
-import 'highlight.js/styles/vs.css';
-import './override.less'
+import './index.less'
 // import {UploadFiles} from "../../../request/utils";
 import breaks from '@bytemd/plugin-breaks';
 
-// import './github-markdown-light.css'
-// import './github-markdown-dark.css'
-import './theme/dark.less'
-import './theme/light.less'
 
-import './theme/juejin-markdown-theme-Chinese-red.scss'
+// import './theme/github-markdown.less'
 
 // import frontmatter from "@bytemd/plugin-frontmatter"
 // import gemoji from    "@bytemd/plugin-gemoji"
