@@ -6,7 +6,7 @@ import {GlobalStore} from "../../es/store/global";
 export default function Demo ()  {
   const [raw, setRaw] = useState('');
   const store = useContext(GlobalStore)
-  console.log("store", store)
+  console.log("store-GlobalStore", store)
 
   return <div>
     <h1>@jansora/global Demo</h1>

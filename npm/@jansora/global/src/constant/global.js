@@ -3,7 +3,7 @@ export const TOKEN = 'token';
 
 export const THEME = 'theme';
 
-export const THEME_DARK = 'theme';
+export const THEME_DARK = 'dark';
 export const THEME_LIGHT = 'light';
 export const THEME_LIST = [
     {theme:THEME_LIGHT, description:'Light'},
