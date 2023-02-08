@@ -10,6 +10,7 @@ npm-debug.log*
 
 yarn.lock
 yarn-*.lock
+yarn-*.log
 build
 
 package-lock.json
