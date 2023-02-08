@@ -1,6 +1,6 @@
 {
   "name": "@jansora/bytemd",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "@jansora/bytemd React component",
   "main": "lib/index.js",
   "module": "es/index.js",
