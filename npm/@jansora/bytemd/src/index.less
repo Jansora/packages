@@ -2,12 +2,14 @@
 
 
 @import "code-mirror";
-@import "./theme/github-markdown";
+//@import "./theme/github-markdown";
 @import "./theme/theme.less";
 
 html[theme='dark'] {
 
-
+    code {
+        background: var(--background-color-1);
+    }
 
 }
 
@@ -81,5 +83,7 @@ html[theme='dark'] {
     background: #1e1e1e;
     color: #dcdcdc;
 }
+
+
 
 
