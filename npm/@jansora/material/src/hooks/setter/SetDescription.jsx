@@ -7,7 +7,6 @@
 
 import {useContext, useEffect} from "react";
 import {GlobalStore} from "@jansora/global/es/store/global";
-import {useLocation} from "react-router-dom";
 
 const SetDescription = (description) => {
 
@@ -15,11 +14,11 @@ const SetDescription = (description) => {
 
     const {title, dispatch} = useContext(GlobalStore);
     document.title = `${description ? description + ' |' : ''} ${title}`
-    const {pathname} = useLocation();
+    // const {pathname} = useLocation();
 
-    if (pathname === "/notebook/ls") {
-        document.title = '11';
-    }
+    // if (pathname === "/notebook/ls") {
+    //     document.title = '11';
+    // }
     useEffect(() => {
         const payload = description;
         dispatch({ type: 'description', payload });

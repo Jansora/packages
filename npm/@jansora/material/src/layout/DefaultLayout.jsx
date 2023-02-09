@@ -1,10 +1,9 @@
 import React from 'react';
 import Header from "./header";
 import StyledLayout from "../components/styled/StyledLayout";
-// import Footer from "./footer";
+import Footer from "./footer";
 import Aside from "./aside";
-import {BrowserRouter} from "react-router-dom";
-import Mount from "@jansora/global/lib/mount";
+import Mount from "@jansora/global/es/mount";
 
 /**
  * <Description> Description for index <br>
@@ -21,16 +20,16 @@ const DefaultLayout = () => {
 
 
 
-  return <BrowserRouter>
+  return <React.Fragment>
     <Mount />
     <Header />
     <Aside />
     <StyledLayout id="layout">
-111
+
     </StyledLayout>
-    {/*<Footer>*/}
-    {/*</Footer>*/}
-  </BrowserRouter>;
+    <Footer>
+    </Footer>
+  </React.Fragment>;
 }
 
 export default DefaultLayout;

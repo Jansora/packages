@@ -16,9 +16,9 @@ const SetTitle = (title) => {
     const {dispatch} = useContext(GlobalStore);
     const {pathname} = useLocation();
 
-    if (pathname === "/notebook/ls") {
-        document.title = '11';
-    }
+    // if (pathname === "/notebook/ls") {
+    //     document.title = '11';
+    // }
 
     useEffect(() => {
         const payload = title;
