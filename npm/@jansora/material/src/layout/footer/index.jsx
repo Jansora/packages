@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import StyledFooter from "../../components/styled/StyledFooter";
 import StyledDescription from "../../components/styled/base/StyledDescription";
-import {Divider, Space, Switch, Tag} from "@arco-design/web-react";
+import {Divider, Space, Switch} from "@arco-design/web-react";
 import StyledIconFont from "../../components/styled/StyledIconFont";
 // import {Image} from "semantic-ui-react";
 import {useResponsive} from "ahooks";
@@ -61,8 +61,8 @@ const DefaultFooter = () => {
                 {/*<Image src='https://cdn.jansora.com/logo/semantic-ui.png'*/}
                 {/*       avatar style={{width: "16px", height: '16px'}}*/}
                 {/*/>*/}
-                <Tag size="small">
-                </Tag>
+                {/*<Tag size="small">*/}
+                {/*</Tag>*/}
               </a>
               <StyledDescription>
                 色彩主题:

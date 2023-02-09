@@ -14,7 +14,7 @@ import './init.less'
 
 // import "@arco-design/web-react/es/style/theme/color/colors.less";
 // import "@arco-design/web-react/es/style/theme/color/css-variables.less";
-import './arco-palette.less'
+// import './arco-palette.less'
 
 configResponsive({
     small: 0,
