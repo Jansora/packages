@@ -7,7 +7,7 @@ import zoom from "@bytemd/plugin-medium-zoom"
 // import mermaid from "@bytemd/plugin-mermaid"
 // import './code-mirror.less'
 // import 'bytemd/dist/index.css'
-import 'highlight.js/styles/vs.css';
+import 'highlight.js/styles/vs2015.css';
 
 import './index.less'
 import "./theme/scrolls.scss";
@@ -36,14 +36,14 @@ const plugins = [
     // gemoji(),
     highlight({init: hljs => {
 
-            const init = ['javascript', 'json', 'xml', 'markdown'];
-
-            hljs.listLanguages().filter(language => !init.includes(language)).forEach((langName) => {
-                // let langModule = require(`highlight.js/lib/languages/${langName}`);
-                // console.log(hljs);
-                // hljs.registerLanguage(langName, langModule);
-                hljs.unregisterLanguage(langName)
-            });
+            // const init = ['javascript', 'json', 'xml', 'markdown'];
+            //
+            // hljs.listLanguages().filter(language => !init.includes(language)).forEach((langName) => {
+            //     // let langModule = require(`highlight.js/lib/languages/${langName}`);
+            //     // console.log(hljs);
+            //     // hljs.registerLanguage(langName, langModule);
+            //     hljs.unregisterLanguage(langName)
+            // });
 
 
                 // hljs.highlight()
