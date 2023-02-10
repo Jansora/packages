@@ -9,16 +9,17 @@ import styled from "styled-components";
 
 const StyledAside = styled.nav`
   position: fixed;
-  //top: calc(var(--header-height) + 2px);
-  top: 0;
+  top: calc(var(--header-height) + 2px);
+  //top: 0;
+  bottom: calc(var(--footer-height) + 2px);
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-1);
   z-index: 1001;
   width: var(--aside-width);
-  height: 100vh;
+  //height: 100vh;
   //height: calc(100vh - var(--header-height) - 2px);
-  
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
   //box-shadow: 0 0 6px 0 rgba(0,0,0,.1);
   
   div.logo {

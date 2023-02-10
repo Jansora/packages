@@ -104,7 +104,7 @@ const DefaultFooter = () => {
               <StyledDescription>
                 Deployed on
               </StyledDescription>
-              <StyledA href="@jansora/material/src/layout/footer/index" target="_blank" rel='noopener noreferrer' >
+              <StyledA href="1" target="_blank" rel='noopener noreferrer' >
                 Kubernetes
               </StyledA>
             </Space>

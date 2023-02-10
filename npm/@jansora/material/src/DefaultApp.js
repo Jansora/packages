@@ -16,7 +16,7 @@ import '@jansora/global/lib/color.less'
 import './init.less'
 
 
-import Mount from "@jansora/global/lib/mount";
+import Mount from "@jansora/global/es/mount";
 
 // import "@arco-design/web-react/es/style/theme/color/colors.less";
 // import "@arco-design/web-react/es/style/theme/color/css-variables.less";

@@ -28,7 +28,7 @@ const DefaultLayout = () => {
 
   const colorPrimaryList = COLOR_LIST.filter(_color => _color.color === color);
     const colorPrimary = colorPrimaryList.length > 0 ? colorPrimaryList[0].color : '#6435c9';
-    console.log("getColor", color, colorPrimary,)
+    console.log("getColor", dark,  color, colorPrimary,)
 //colorPrimary: '#6435c9',
   return <ConfigProvider
       theme={{

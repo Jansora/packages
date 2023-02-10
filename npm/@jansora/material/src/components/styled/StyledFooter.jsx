@@ -14,7 +14,8 @@ import styled from "styled-components";
 const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
-  left: var(--aside-width);
+  //left: var(--aside-width);
+  left: 0;
   right: 0;
   height: var(--footer-height);
   background-color: var(--background-color-1);
@@ -23,6 +24,7 @@ const StyledFooter = styled.footer`
   img {
     width: 18px;
   }
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
 `
 
 export default StyledFooter;
