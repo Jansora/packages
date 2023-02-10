@@ -4,7 +4,7 @@ import React, {createContext, useReducer} from 'react';
 export const defaultValue = {
     // 登录用户信息
     user: { //
-        id: "1222221",
+        id: "",
         username: "",
         description: "",
         updatedAt: "",
@@ -13,8 +13,8 @@ export const defaultValue = {
         role: "",
     },
     // 主题色
-    color: localStorage.getItem("color") ? localStorage.getItem("color") : 'violet',
-    theme: localStorage.getItem("theme") ? localStorage.getItem("theme") : 'light',
+    color: localStorage.getItem("color") ? localStorage.getItem("color") : 'green',
+    theme: localStorage.getItem("theme") ? localStorage.getItem("theme") : 'dark',
     breadcrumb: [],
     title: '',
     description: "",

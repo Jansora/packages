@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from "./header";
 import StyledLayout from "../components/styled/StyledLayout";
 import Footer from "./footer";
 import Aside from "./aside";
-import {theme} from "antd";
+import {ConfigProvider, theme} from "antd";
 import GetTheme from "../hooks/getter/GetTheme";
 import {COLOR_LIST, THEME_DARK} from "@jansora/global/lib/constant/global";
 import GetColor from "../hooks/getter/GetColor";
@@ -20,22 +21,33 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
  */
 
 
-const DefaultLayout = () => {
+const Layout = ({children}) => {
 
   const dark = GetTheme() === THEME_DARK;
   const color = GetColor();
 
   const colorPrimaryList = COLOR_LIST.filter(_color => _color.color === color);
-    const colorPrimary = colorPrimaryList.length > 0 ? colorPrimaryList[0].color : '#6435c9';
-    console.log("getColor", dark,  color, colorPrimary,)
-  return <React.Fragment>
-    <Aside />
-    <StyledLayout id="layout">
+  const colorPrimary = colorPrimaryList.length > 0 ? colorPrimaryList[0].color : '#6435c9';
 
-    </StyledLayout>
+  return <ConfigProvider
+      theme={{
+        algorithm: dark ? darkAlgorithm : defaultAlgorithm,
+        token: { colorPrimary }
+      }}
+  >
+    <Header />
+      {
+          children || <React.Fragment>
+              <Aside />
+              <StyledLayout id="layout">
+
+              </StyledLayout>
+          </React.Fragment>
+      }
+
     <Footer>
     </Footer>
-  </React.Fragment>;
+  </ConfigProvider>;
 }
 
-export default DefaultLayout;
+export default Layout;

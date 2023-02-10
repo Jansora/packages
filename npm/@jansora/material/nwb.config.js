@@ -4,6 +4,17 @@ module.exports = {
     esModules: true,
     umd: false
   },
+  devServer: {
+    // https: true,
+    // enabled: true,
+    // path: '/api',
+    proxy: {
+      '/api': {
+        target: 'https://www.jansora.com/',
+        secure: false,
+      }
+    },
+  },
   webpack: {
     config(config) {
       // Change config as you wish

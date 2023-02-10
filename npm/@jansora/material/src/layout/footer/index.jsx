@@ -49,16 +49,14 @@ const DefaultFooter = () => {
           // style={{display: "flex"}}
           // direction='vertical' align="center"
       >
-        <StyledDescription >
-          Copyright © 2016-2029
-        </StyledDescription>
+        {/*<StyledDescription >*/}
+        {/*  Copyright © 2016-2029*/}
+        {/*</StyledDescription>*/}
 
         {
           responsive.middle && <Space>
-            <Divider type="vertical" style={{margin: "0 1vw"}}/>
-            <StyledDescription >
-              Jansora's Galaxy Space
-            </StyledDescription>
+            {/*<Divider type="vertical" style={{margin: "0 1vw"}}/>*/}
+              <StyledDescription >     Jansora's Galaxy Space          </StyledDescription>
               <Divider type="vertical" style={{margin: "0 1vw"}}/>
               <StyledDescription>
                 暗黑主题:
@@ -74,12 +72,11 @@ const DefaultFooter = () => {
               <Divider type="vertical" style={{margin: "0 1vw"}}/>
               <StyledDescription>
                 色彩主题:
-
               </StyledDescription>
               <div style={{marginTop: 3}}>
                 {COLOR_LIST.map((color) =>
                     <Tooltip title={color.description}>
-                      <Label onMouseEnter={() => SetColor(color.color)} key={color.color}
+                      <Label onClick={() => SetColor(color.color)} key={color.color}
                              title={color.color}
                              circular color={color.color} empty style={{marginRight: 5, cursor: "pointer"}}/>
                     </Tooltip>
@@ -98,7 +95,7 @@ const DefaultFooter = () => {
               </StyledDescription>
 
               <a href="@jansora/material/src/layout/footer/index" target="_blank" rel='noopener noreferrer' >
-                <img style={{width: "16px", marginBottom: "2px", marginTop: "5px"}} src="https://cdn.jansora.com/img/spring.ico" alt={""}/>
+                <img style={{width: "16px", marginBottom: "2px", marginTop: "8px"}} src="https://cdn.jansora.com/img/spring.ico" alt={""}/>
               </a>
               <Divider type="vertical" style={{margin: "0 1vw"}}/>
               <StyledDescription>

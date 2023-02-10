@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledHeader from "../../components/styled/StyledHeader";
-import {Divider, Popover, Space} from 'antd';
+import {Divider, Popover, Space, Typography} from 'antd';
 
 import StyledDescription from "../../components/styled/base/StyledDescription";
 import FlexPadding from "../../components/styled/base/FlexPadding";
@@ -9,11 +9,12 @@ import StyledA from "../../components/styled/StyledA";
 // import User from "../../../view/user";
 import GetTitle from "../../hooks/getter/GetTitle";
 import GetDescription from "../../hooks/getter/GetDescription";
-
-// import {Header as HeaderA} from "semantic-ui-react";
-// import {GithubOutlined} from "@ant-design/icons";
+import {GithubOutlined} from "@ant-design/icons";
 // import Theme from "./Theme";
 import {useResponsive} from "ahooks";
+import {Link} from "react-router-dom";
+import GetDarkMode from "../../hooks/getter/GetDarkMode";
+import User from "./user";
 
 
 /**
@@ -33,10 +34,21 @@ const Header = () => {
   const title = GetTitle();
   const description = GetDescription();
   return <StyledHeader>
-    {/*<HeaderA as={Link} to="/" inverted={true} style={{margin: 0, fontSize: 15}}>{title}</HeaderA>*/}
     {/*<Link to="/"><Typography.Title heading={6} style={{margin: 0, fontSize: 15}}>{title}</Typography.Title></Link>*/}
+    {/*<div style={{background: "var(--light-background-color-1)"}}>*/}
+    {/*</div>*/}
+
+    <Link to="/" inverted={GetDarkMode()} style={{margin: 0}}>
+      <img style={{height: 35, marginRight: 10, marginTop: 5}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
+
+    </Link>
+    <Typography.Title level={5} as={Link} to="/" inverted={GetDarkMode()} style={{margin: 0}}>{title}</Typography.Title>
+    <Divider type="vertical" style={{margin: "0 10px"}}/>
+    <Link to="/"><Typography.Title level={5} style={{margin: 0}}>{description}</Typography.Title></Link>
     <Divider type="vertical" style={{margin: "0 10px"}}/>
     <StyledDescription>{description} </StyledDescription>
+
+
 
     <FlexPadding />
     <Space >
@@ -50,14 +62,14 @@ const Header = () => {
             </Popover>
             <Divider type="vertical"/>
             <StyledA href={"https://github.com/Jansora/app"}>
-              {/*<GithubOutlined style={{fontSize: 16}} />*/}
+              <GithubOutlined style={{fontSize: 16}} />
 
             </StyledA>
 
             <Divider type="vertical"/>
 
-            {/*<Theme />*/}
-            <Divider type="vertical"/>
+            <User />
+            {/*<Divider type="vertical"/>*/}
           </>
       }
 
