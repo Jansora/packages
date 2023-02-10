@@ -1,6 +1,6 @@
 import React from "react";
 // import {Tab, Table} from "semantic-ui-react";
-import {Table, Tabs} from '@arco-design/web-react';
+import {Table, Tabs} from 'antd';
 
 const RenderSqlResult = (result) => {
 

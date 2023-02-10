@@ -5,8 +5,8 @@ import {Compiler, FetchCode, ShareCode} from "../../../components/request/playgr
 import {Viewer} from "@jansora/bytemd";
 import {GlobalStore} from "../../../components/store/global";
 import StyledDescription from "../../../components/styled/base/StyledDescription";
-import {Button, Divider, Grid, Icon, Input, Modal} from "@arco-design/web-react";
-import {IconCode, IconShareInternal} from '@arco-design/web-react/icon';
+import {Button, Divider, Grid, Icon, Input, Modal} from "antd";
+import {IconCode, IconShareInternal} from 'antd/icon';
 
 import StyledPageLoading from "../../../components/styled/StyledLoading";
 import SetDescription from "../../../components/hooks/setter/SetDescription";

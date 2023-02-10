@@ -18,17 +18,17 @@ import {Label} from "semantic-ui-react";
 
 
 const themes = [
-    {color:'red', description:'Red'},
-    {color:'orange', description:'orange'},
-    {color:'yellow', description:'Yellow'},
-    {color:'olive', description:'Olive'},
-    {color:'green', description:'Green'},
-    {color:'blue', description:'Blue'},
-    {color:'violet', description:'Violet'},
-    {color:'purple', description:'Purple'},
-    {color:'pink', description:'Pink'},
-    {color:'brown', description:'Brown'},
-    {color:'grey', description:'Grey'},
+    {color:'red', description:'Red', value: ''},
+    {color:'orange', description:'orange', value: ''},
+    {color:'yellow', description:'Yellow', value: ''},
+    {color:'olive', description:'Olive', value: ''},
+    {color:'green', description:'Green', value: ''},
+    {color:'blue', description:'Blue', value: ''},
+    {color:'violet', description:'Violet', value: ''},
+    {color:'purple', description:'Purple', value: ''},
+    {color:'pink', description:'Pink', value: ''},
+    {color:'brown', description:'Brown', value: ''},
+    {color:'grey', description:'Grey', value: ''},
 ]
 const Theme = () => {
 

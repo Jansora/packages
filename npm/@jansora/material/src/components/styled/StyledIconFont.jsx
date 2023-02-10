@@ -1,9 +1,9 @@
-// import {createFromIconfontCN} from '@ant-design/icons';
-import {Icon} from '@arco-design/web-react';
-
-const StyledIconFont = Icon.addFromIconFontCn({ src: '//at.alicdn.com/t/font_2985185_gmeaummira8.js' });
-
-// const StyledIconFont = createFromIconfontCN({ scriptUrl: '//at.alicdn.com/t/font_2985185_gmeaummira8.js' });
+import {createFromIconfontCN} from '@ant-design/icons';
+// import {Icon} from '@arco-design/web-react';
+//
+// const StyledIconFont = Icon.addFromIconFontCn({ src: '//at.alicdn.com/t/font_2985185_gmeaummira8.js' });
+//
+const StyledIconFont = createFromIconfontCN({ scriptUrl: '//at.alicdn.com/t/font_2985185_gmeaummira8.js' });
 
 /**
  * <Description> Description for StyledFooter <br>

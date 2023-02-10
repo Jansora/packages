@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledHeader from "../../components/styled/StyledHeader";
-import {Divider, Popover, Space} from '@arco-design/web-react';
+import {Divider, Popover, Space} from 'antd';
 
 import StyledDescription from "../../components/styled/base/StyledDescription";
 import FlexPadding from "../../components/styled/base/FlexPadding";

@@ -5,7 +5,7 @@
 * @date 2019-12-17 10:39
 */
 import {useContext, useEffect} from 'react';
-import {THEME, THEME_DARK, THEME_LIGHT} from "../constant/global";
+import {THEME, THEME_DARK, THEME_LIGHT, THEME_LIST} from "../constant/global";
 import {GlobalStore} from "../store/global";
 
 
@@ -26,9 +26,9 @@ const MountTheme = () => {
 
 
   useEffect(() => {
-    // THEME_LIST.forEach(
-    //     cur => document.body.classList.remove([cur.theme]))
-    // document.body.classList.add(theme);
+    THEME_LIST.forEach(
+        cur => document.body.classList.remove([cur.theme]))
+    document.body.classList.add(theme);
 
     document.documentElement.setAttribute(THEME, theme);
     localStorage.setItem(THEME, theme)

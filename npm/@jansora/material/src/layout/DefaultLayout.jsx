@@ -3,7 +3,12 @@ import Header from "./header";
 import StyledLayout from "../components/styled/StyledLayout";
 import Footer from "./footer";
 import Aside from "./aside";
-import Mount from "@jansora/global/es/mount";
+import {ConfigProvider, theme} from "antd";
+import GetTheme from "../hooks/getter/GetTheme";
+import {COLOR_LIST, THEME_DARK} from "@jansora/global/lib/constant/global";
+import GetColor from "../hooks/getter/GetColor";
+
+const { defaultAlgorithm, darkAlgorithm } = theme;
 
 /**
  * <Description> Description for index <br>
@@ -18,18 +23,31 @@ import Mount from "@jansora/global/es/mount";
 
 const DefaultLayout = () => {
 
+  const dark = GetTheme() === THEME_DARK;
+  const color = GetColor();
 
-
-  return <React.Fragment>
-    <Mount />
+  const colorPrimaryList = COLOR_LIST.filter(_color => _color.color === color);
+    const colorPrimary = colorPrimaryList.length > 0 ? colorPrimaryList[0].color : '#6435c9';
+    console.log("getColor", color, colorPrimary,)
+//colorPrimary: '#6435c9',
+  return <ConfigProvider
+      theme={{
+        algorithm: dark ? darkAlgorithm : defaultAlgorithm,
+        token: {
+          // colorPrimary: '#6435c9',
+            colorPrimary,
+            // colorPrimary: ' var(--primary-color) ',
+        }
+      }}
+  >
     <Header />
     <Aside />
     <StyledLayout id="layout">
-
+111
     </StyledLayout>
     <Footer>
     </Footer>
-  </React.Fragment>;
+  </ConfigProvider>;
 }
 
 export default DefaultLayout;

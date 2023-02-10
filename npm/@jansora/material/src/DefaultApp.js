@@ -1,16 +1,22 @@
 import React from 'react';
-
-import {ConfigProvider} from "@arco-design/web-react";
 import {BrowserRouter} from "react-router-dom";
 import DefaultLayout from "./layout/DefaultLayout";
 
 import GlobalStoreProvider from "@jansora/global";
 import {configResponsive} from "ahooks";
 
+import './components/styled/css/semantic.css';
 
-import "@arco-design/web-react/dist/css/arco.css";
+// import "@arco-design/web-react/dist/css/arco.css";
+// import 'antd/dist/antd.css'
+// import 'antd/dist/antd.dark.css';
+import '@jansora/global/lib/theme.less'
+import '@jansora/global/lib/color.less'
 
 import './init.less'
+
+
+import Mount from "@jansora/global/lib/mount";
 
 // import "@arco-design/web-react/es/style/theme/color/colors.less";
 // import "@arco-design/web-react/es/style/theme/color/css-variables.less";
@@ -26,13 +32,12 @@ configResponsive({
 const DefaultApp = () => {
 
     return (
-        <ConfigProvider>
             <GlobalStoreProvider>
                 <BrowserRouter>
+                    <Mount />
                     <DefaultLayout/>
                 </BrowserRouter>
             </GlobalStoreProvider>
-        </ConfigProvider>
     )
 
 }
