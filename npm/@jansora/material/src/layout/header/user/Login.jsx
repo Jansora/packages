@@ -8,7 +8,7 @@ import {GlobalStore} from "@jansora/global/es/store/global";
 import {UserLogin} from "../../../request/user";
 import {Divider, message} from "antd";
 import {Button, Dimmer, Form, Grid, Header, Icon, Loader, Modal, Segment} from "semantic-ui-react";
-import GetTheme from "../../../hooks/getter/GetTheme";
+import GetColor from "../../../hooks/getter/GetColor";
 
 // const FormItem = Form.Item;
 
@@ -21,7 +21,7 @@ const StyledLoginWrapper = styled.section`
 
 const Login = () => {
 
-    const color = GetTheme();
+    const color = GetColor();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [keepLogin, setKeepLogin] = useState(true);

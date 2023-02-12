@@ -1,12 +1,11 @@
 import React from 'react';
 import Header from "./header";
-import StyledLayout from "../components/styled/StyledLayout";
 import Footer from "./footer";
-import Aside from "./aside";
 import {ConfigProvider, theme} from "antd";
 import GetTheme from "../hooks/getter/GetTheme";
 import {COLOR_LIST, THEME_DARK} from "@jansora/global/lib/constant/global";
 import GetColor from "../hooks/getter/GetColor";
+import DefaultLayout from "./DefaultLayout";
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
@@ -37,12 +36,7 @@ const Layout = ({children}) => {
   >
     <Header />
       {
-          children || <React.Fragment>
-              <Aside />
-              <StyledLayout id="layout">
-
-              </StyledLayout>
-          </React.Fragment>
+          children || <DefaultLayout />
       }
 
     <Footer>

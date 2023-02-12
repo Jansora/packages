@@ -1,7 +1,4 @@
 import React from 'react';
-import {BrowserRouter} from "react-router-dom";
-
-import GlobalStoreProvider from "@jansora/global";
 import {configResponsive} from "ahooks";
 import {message} from 'antd';
 
@@ -14,10 +11,8 @@ import '@jansora/global/lib/theme.less'
 import '@jansora/global/lib/color.less'
 
 import './init.less'
-
-
-import MountGlobal from "@jansora/global/es/mount";
-import DefaultApp from "./DefaultApp";
+import Layout from "./layout/Layout";
+import MountUser from "./mount/MountUser";
 
 // import "@arco-design/web-react/es/style/theme/color/colors.less";
 // import "@arco-design/web-react/es/style/theme/color/css-variables.less";
@@ -33,26 +28,22 @@ configResponsive({
 message.config({
     top: 50,
     // right: 0,
-    duration: 200,
+    duration: 2,
     maxCount: 3,
     rtl: true,
     prefixCls: 'ant-custom-message',
 });
 
-const App = ({children}) => {
+const DefaultApp = ({children}) => {
 
     return (
-        <GlobalStoreProvider>
-            <BrowserRouter>
-                <MountGlobal />
-                {
-                    children || <DefaultApp/>
-                }
-            </BrowserRouter>
-        </GlobalStoreProvider>
+        <React.Fragment>
+           <MountUser />
+            <Layout/>
+        </React.Fragment>
     )
 
 }
 
 
-export default App;
+export default DefaultApp;
