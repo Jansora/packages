@@ -6,7 +6,7 @@ import StyledAside from "../../components/styled/StyledAside";
 import DefaultAside from "./DefaultAside";
 
 
-const Aside = ({children}) => {
+const MaterialAside = ({children}) => {
 
   const responsive = useResponsive();
 
@@ -18,4 +18,4 @@ const Aside = ({children}) => {
 
 }
 
-export default Aside;
+export default MaterialAside;

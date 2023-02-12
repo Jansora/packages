@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledLayout from "../components/styled/StyledLayout";
-import Aside from "./aside";
+import MaterialAside from "./aside/MaterialAside";
 
 
 /**
@@ -17,7 +17,7 @@ import Aside from "./aside";
 const DefaultLayout = () => {
 
   return <React.Fragment>
-    <Aside />
+    <MaterialAside />
     <StyledLayout id="layout">
 
     </StyledLayout>

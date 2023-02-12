@@ -1,9 +1,9 @@
 import React from 'react'
 import {createRoot} from 'react-dom/client'
-import App from "../../src/App";
+import MaterialApp from "../../src/MaterialApp";
 
 export default function Demo ()  {
-  return  <App />
+  return  <MaterialApp />
 }
 
 createRoot(document.querySelector('#demo')).render(<><Demo/></>);

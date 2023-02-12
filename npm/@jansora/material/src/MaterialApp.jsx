@@ -39,7 +39,7 @@ message.config({
     prefixCls: 'ant-custom-message',
 });
 
-const App = ({children}) => {
+const MaterialApp = ({children}) => {
 
     return (
         <GlobalStoreProvider>
@@ -55,4 +55,4 @@ const App = ({children}) => {
 }
 
 
-export default App;
+export default MaterialApp;

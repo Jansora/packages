@@ -20,7 +20,7 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
  */
 
 
-const Layout = ({children}) => {
+const MaterialLayout = ({children}) => {
 
   const dark = GetTheme() === THEME_DARK;
   const color = GetColor();
@@ -44,4 +44,4 @@ const Layout = ({children}) => {
   </ConfigProvider>;
 }
 
-export default Layout;
+export default MaterialLayout;
