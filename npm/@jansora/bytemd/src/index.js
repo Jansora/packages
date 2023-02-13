@@ -9,13 +9,14 @@ import zoom from "@bytemd/plugin-medium-zoom"
 // import 'bytemd/dist/index.css'
 import 'highlight.js/styles/vs2015.css';
 
-import './index.less'
-import "./theme/scrolls.scss";
+// import './index.less'
+// import "./theme/scrolls.scss";
 // import {UploadFiles} from "../../../request/utils";
 import breaks from '@bytemd/plugin-breaks';
 
 
-// import './theme/github-markdown.less'
+import './theme/github-markdown.less'
+import './index.less'
 
 // import frontmatter from "@bytemd/plugin-frontmatter"
 // import gemoji from    "@bytemd/plugin-gemoji"
