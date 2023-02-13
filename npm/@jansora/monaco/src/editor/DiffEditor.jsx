@@ -34,7 +34,7 @@ const DiffEditor = (props) => {
        }
     }, 100)
     useEffect(() => {
-        if(ref.current && monaco && !_editor) {
+        if(ref.current && monaco && !editor) {
             const _editor = monaco.editor.createDiffEditor(ref.current, {theme: "vs", readOnly: true})
             // _editor.setModel({
             //     original: monaco.editor.createModel(original.data, original.language),

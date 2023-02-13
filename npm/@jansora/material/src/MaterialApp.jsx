@@ -33,7 +33,7 @@ configResponsive({
 message.config({
     top: 50,
     // right: 0,
-    duration: 200,
+    duration: 2,
     maxCount: 3,
     rtl: true,
     prefixCls: 'ant-custom-message',

@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledHeader from "../../components/styled/StyledHeader";
-import {Divider, Popover, Space, Typography} from 'antd';
+import {Divider, Popover, Space} from 'antd';
 
 import StyledDescription from "../../components/styled/base/StyledDescription";
 import FlexPadding from "../../components/styled/base/FlexPadding";
@@ -15,7 +15,7 @@ import {useResponsive} from "ahooks";
 import {Link} from "react-router-dom";
 import GetDarkMode from "../../hooks/getter/GetDarkMode";
 import User from "./user";
-
+import {Header as HeaderA} from "semantic-ui-react";
 
 /**
  * <Description> Description for index <br>
@@ -39,12 +39,11 @@ const Header = () => {
     {/*</div>*/}
 
     <Link to="/" inverted={GetDarkMode()} style={{margin: 0}}>
-      <img style={{height: 35, marginRight: 10, marginTop: 5}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
-
+      <img style={{height: 35, marginRight: 10, marginTop: 0}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
     </Link>
-    <Typography.Title level={5} as={Link} to="/" inverted={GetDarkMode()} style={{margin: 0}}>{title}</Typography.Title>
-    <Divider type="vertical" style={{margin: "0 10px"}}/>
-    <Link to="/"><Typography.Title level={5} style={{margin: 0}}>{description}</Typography.Title></Link>
+    <HeaderA as={Link} to="/" inverted={GetDarkMode()} style={{marginLeft: 50, marginTop: 15}}>{title}</HeaderA>
+    {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
+    {/*<Link to="/"><Typography.Title level={5} style={{margin: 0}}>{description}</Typography.Title></Link>*/}
     <Divider type="vertical" style={{margin: "0 10px"}}/>
     <StyledDescription>{description} </StyledDescription>
 
