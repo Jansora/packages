@@ -30,7 +30,7 @@ const User = () => {
         return <Login />
     }
 
-    return  <Dropdown overlay={  <Menu>
+    return  <Dropdown menu={  <Menu>
         <Menu.Item key='3' onClick={() => signOut()} > 退出登录 </Menu.Item>
     </Menu>
     }

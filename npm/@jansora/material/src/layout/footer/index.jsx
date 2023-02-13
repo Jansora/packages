@@ -75,7 +75,7 @@ const DefaultFooter = () => {
               </StyledDescription>
               <div style={{marginTop: 3}}>
                 {COLOR_LIST.map((color) =>
-                    <Tooltip title={color.description}>
+                    <Tooltip title={color.description} key={color.color}>
                       <Label onClick={() => SetColor(color.color)} key={color.color}
                              title={color.color}
                              circular color={color.color} empty style={{marginRight: 5, cursor: "pointer"}}/>
