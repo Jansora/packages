@@ -9,13 +9,13 @@ import styled from "styled-components";
 
 const StyledAside = styled.nav`
   position: fixed;
-  top: calc(var(--header-height) + 2px);
+  top: calc(var(--header-height) + 0px);
   //top: 0;
-  bottom: calc(var(--footer-height) + 2px);
+  bottom: calc(var(--footer-height) + 0px);
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-1);
-  z-index: 1001;
+  z-index: 999;
   width: var(--aside-width);
   //height: 100vh;
   //height: calc(100vh - var(--header-height) - 2px);

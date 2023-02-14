@@ -9,6 +9,7 @@ import {UserLogin} from "../../../request/user";
 import {Divider, message} from "antd";
 import {Button, Dimmer, Form, Grid, Header, Icon, Loader, Modal, Segment} from "semantic-ui-react";
 import GetColor from "../../../hooks/getter/GetColor";
+import GetDarkMode from "../../../hooks/getter/GetDarkMode";
 
 // const FormItem = Form.Item;
 
@@ -51,7 +52,7 @@ const Login = () => {
     }
     return  <StyledLoginWrapper>
         <Modal
-            dimmer={'blurring'}
+            // dimmer={'blurring'}
             trigger={<StyledIconFont type="icon-signin" title="登录"
                                      // onClick={() => setVisible(true)}
             />}
@@ -59,13 +60,13 @@ const Login = () => {
         >
 
 
-            <Segment inverted>
+            <Segment inverted={GetDarkMode()}>
                 <Dimmer active={loading}>
                     <Loader active={loading}>登录中</Loader>
                 </Dimmer>
                 <Header as='h3' textAlign='center' style={{margin: "10px"}}>登录</Header>
 
-            <Form style={{padding: "1rem"}} inverted>
+            <Form style={{padding: "1rem"}} inverted={GetDarkMode()}>
                 <Form.Input
                     required
                     label='用户名' placeholder='请输入你的用户名(登录时使用)' type='text'

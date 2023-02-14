@@ -4,7 +4,7 @@ import {useTimeout} from "ahooks";
 
 
 const StyledModuleWrapper = styled.div`
-  padding: 24px;
+  padding: 16px;
   
 `
 

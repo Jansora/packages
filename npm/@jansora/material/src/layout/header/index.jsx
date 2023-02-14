@@ -41,7 +41,7 @@ const Header = () => {
     <Link to="/" inverted={GetDarkMode()} style={{margin: 0}}>
       <img style={{height: 35, marginRight: 10, marginTop: 0}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
     </Link>
-    <HeaderA as={Link} to="/" inverted={GetDarkMode().toString()} style={{marginLeft: 50, marginTop: 15}}>{title}</HeaderA>
+    <HeaderA as={Link} to="/" inverted={GetDarkMode()} style={{marginLeft: 50, marginTop: 15}}>{title}</HeaderA>
     {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
     {/*<Link to="/"><Typography.Title level={5} style={{margin: 0}}>{description}</Typography.Title></Link>*/}
     <Divider type="vertical" style={{margin: "0 10px"}}/>

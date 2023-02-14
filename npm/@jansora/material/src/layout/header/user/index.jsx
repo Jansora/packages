@@ -1,5 +1,5 @@
 import GetLoginStatus from "../../../hooks/getter/GetLoginStatus";
-import {Dropdown, Menu} from "antd";
+import {Dropdown} from "antd";
 import React, {useContext} from "react";
 import GetUser from "../../../hooks/getter/GetUser";
 import Login from "./Login";
@@ -30,10 +30,11 @@ const User = () => {
         return <Login />
     }
 
-    return  <Dropdown menu={  <Menu>
-        <Menu.Item key='3' onClick={() => signOut()} > 退出登录 </Menu.Item>
-    </Menu>
-    }
+    return  <Dropdown menu={ {items: [{
+            key: "退出登录",
+            label: <span onClick={() => signOut()}>退出登录</span>
+        }]
+    }}
                       placement="bottom" arrow>
         <Image src={user.avatar} avatar  style={{cursor: "pointer"}} alt='avatar' />
 
