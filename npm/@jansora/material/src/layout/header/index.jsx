@@ -15,7 +15,7 @@ import {useResponsive} from "ahooks";
 import {Link} from "react-router-dom";
 import GetDarkMode from "../../hooks/getter/GetDarkMode";
 import User from "./user";
-import {Header as HeaderA} from "semantic-ui-react";
+import {Header as HeaderA, Icon} from "semantic-ui-react";
 
 /**
  * <Description> Description for index <br>
@@ -33,19 +33,31 @@ const Header = () => {
   const responsive = useResponsive();
   const title = GetTitle();
   const description = GetDescription();
-  return <StyledHeader>
-    {/*<Link to="/"><Typography.Title heading={6} style={{margin: 0, fontSize: 15}}>{title}</Typography.Title></Link>*/}
-    {/*<div style={{background: "var(--light-background-color-1)"}}>*/}
-    {/*</div>*/}
 
-    <Link to="/" inverted={GetDarkMode()} style={{margin: 0}}>
-      <img style={{height: 35, marginRight: 10, marginTop: 0}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
+
+  return <StyledHeader>
+
+
+    <Link to="/" style={{margin: 0}}>
+      <img style={{height: 35, marginRight: 0, marginTop: 0}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
     </Link>
-    <HeaderA as={Link} to="/" inverted={GetDarkMode()} style={{marginLeft: 50, marginTop: 15}}>{title}</HeaderA>
+
+    <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={GetDarkMode()} />
+
     {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
-    {/*<Link to="/"><Typography.Title level={5} style={{margin: 0}}>{description}</Typography.Title></Link>*/}
-    <Divider type="vertical" style={{margin: "0 10px"}}/>
-    <StyledDescription>{description} </StyledDescription>
+    <HeaderA as="h3" inverted={GetDarkMode()}
+             style={{marginTop: 15}}
+    >
+
+    <HeaderA.Subheader>
+      {title ? title : 'Default'}
+    </HeaderA.Subheader>
+    </HeaderA>
+
+    <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={GetDarkMode()} />
+
+    {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
+    <StyledDescription>{description ? description : 'Default'}</StyledDescription>
 
 
 

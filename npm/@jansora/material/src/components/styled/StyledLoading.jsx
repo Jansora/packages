@@ -19,7 +19,7 @@ const LoadingLeft = styled.div`
   height: 100%;
   background: var(--background-color-1);
   transition: 1000ms width ease-in-out, 1000ms margin ease-in-out;
-  z-index: 1000;
+  z-index: 980;
 `
 
 const LoadingRight = styled.div`
