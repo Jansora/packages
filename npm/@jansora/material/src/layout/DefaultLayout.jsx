@@ -1,6 +1,8 @@
 import React from 'react';
 import StyledLayout from "../components/styled/StyledLayout";
 import MaterialAside from "./aside/MaterialAside";
+import MaterialHeader from "./header/MaterialHeader";
+import MaterialFooter from "./footer/MaterialFooter";
 
 
 /**
@@ -17,10 +19,12 @@ import MaterialAside from "./aside/MaterialAside";
 const DefaultLayout = () => {
 
   return <React.Fragment>
+    <MaterialHeader />
     <MaterialAside />
     <StyledLayout id="layout">
 
     </StyledLayout>
+    <MaterialFooter/>
   </React.Fragment>;
 }
 

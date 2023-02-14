@@ -115,6 +115,7 @@ const StyledAside = styled.nav`
     margin: 5px 0;
   }
   transition: width 500ms;
+  overflow: hidden;
 `;
 
 export default StyledAside;

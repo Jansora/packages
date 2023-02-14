@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from "./header";
-import Footer from "./footer";
 import {ConfigProvider, theme} from "antd";
 import GetTheme from "../hooks/getter/GetTheme";
 import {COLOR_LIST, THEME_DARK} from "@jansora/global/lib/constant/global";
@@ -34,13 +32,12 @@ const MaterialLayout = ({children}) => {
         token: { colorPrimary }
       }}
   >
-    <Header />
+
       {
           children || <DefaultLayout />
       }
 
-    <Footer>
-    </Footer>
+
   </ConfigProvider>;
 }
 

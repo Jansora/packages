@@ -29,7 +29,7 @@ import {Header as HeaderA, Icon} from "semantic-ui-react";
 
 
 
-const Header = () => {
+const MaterialHeader = () => {
   const responsive = useResponsive();
   const title = GetTitle();
   const description = GetDescription();
@@ -90,4 +90,4 @@ const Header = () => {
   </StyledHeader>;
 }
 
-export default Header;
+export default MaterialHeader;

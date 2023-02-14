@@ -25,7 +25,7 @@ import StyledA from "../../components/styled/StyledA";
  */
 
 
-const DefaultFooter = () => {
+const MaterialFooter = () => {
 
   const responsive = useResponsive();
   const theme = GetTheme();
@@ -126,4 +126,4 @@ const DefaultFooter = () => {
   </StyledFooter>;
 }
 
-export default DefaultFooter;
+export default MaterialFooter;
