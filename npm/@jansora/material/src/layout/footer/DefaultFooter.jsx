@@ -1,15 +1,12 @@
 import React, {useContext} from 'react';
-import StyledFooter from "../../components/styled/StyledFooter";
 import StyledDescription from "../../components/styled/base/StyledDescription";
 import {Divider, Space, Switch, Tooltip} from "antd";
-import StyledIconFont from "../../components/styled/StyledIconFont";
 // import {Image} from "semantic-ui-react";
 import {useResponsive} from "ahooks";
 import {COLOR_LIST, THEME_DARK, THEME_LIGHT} from "@jansora/global/lib/constant/global";
 import GetTheme from "../../hooks/getter/GetTheme";
 import {GlobalStore} from "@jansora/global/es/store/global";
 import {Label} from "semantic-ui-react";
-import StyledA from "../../components/styled/StyledA";
 
 // import Header from "../header";
 
@@ -36,7 +33,7 @@ const DefaultFooter = () => {
     dispatch({ type: 'theme', payload });
   };
   const SetColor = (color) => {
-    console.log("color", color)
+    // console.log("color", color)
     const payload = color;
     dispatch({ type: 'color', payload });
   };
