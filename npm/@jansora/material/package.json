@@ -1,6 +1,6 @@
 {
   "name": "@jansora/material",
-  "version": "1.14.12",
+  "version": "1.14.13",
   "description": "@jansora/material React component",
   "main": "lib/index.js",
   "module": "es/index.js",
