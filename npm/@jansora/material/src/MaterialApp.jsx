@@ -9,6 +9,7 @@ import {message} from 'antd';
 import '@jansora/global/lib/theme.less'
 import '@jansora/global/lib/color.less'
 
+import 'magic.css/dist/magic.min.css'
 import './init.less'
 
 

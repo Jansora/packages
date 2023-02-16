@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import React, {useState} from "react";
-import {useTimeout} from "ahooks";
+import React from "react";
 
 
 const StyledModuleWrapper = styled.div`
   padding: 16px;
-  
+  animation-duration: 1000ms;
 `
 
 const LoadingLeft = styled.div`
@@ -36,12 +35,12 @@ const LoadingRight = styled.div`
   transition: 1000ms width ease-in-out, 1000ms margin ease-in-out;
 `
 const StyledPageLoading = ({children}) => {
-    const [loading, setLoading ] = useState(true);
-    useTimeout(() => setLoading(false), 0);
+    // const [loading, setLoading ] = useState(true);
+    // useTimeout(() => setLoading(false), 0);
 
-    return <StyledModuleWrapper >
-        <LoadingLeft Loading={loading} />
-        <LoadingRight Loading={loading} />
+    return <StyledModuleWrapper classname="vanishIn">
+        {/*<LoadingLeft Loading={loading} />*/}
+        {/*<LoadingRight Loading={loading} />*/}
         {children}
     </StyledModuleWrapper>
 }
