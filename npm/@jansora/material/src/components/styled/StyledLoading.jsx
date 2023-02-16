@@ -38,7 +38,7 @@ const StyledPageLoading = ({children}) => {
     // const [loading, setLoading ] = useState(true);
     // useTimeout(() => setLoading(false), 0);
 
-    return <StyledModuleWrapper classname="vanishIn">
+    return <StyledModuleWrapper className="vanishIn">
         {/*<LoadingLeft Loading={loading} />*/}
         {/*<LoadingRight Loading={loading} />*/}
         {children}
