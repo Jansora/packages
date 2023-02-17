@@ -34,11 +34,11 @@ const LoadingRight = styled.div`
   z-index: 1000;
   transition: 1000ms width ease-in-out, 1000ms margin ease-in-out;
 `
-const StyledPageLoading = ({children}) => {
+const StyledPageLoading = ({children, animation}) => {
     // const [loading, setLoading ] = useState(true);
     // useTimeout(() => setLoading(false), 0);
 
-    return <StyledModuleWrapper className="vanishIn">
+    return <StyledModuleWrapper className={animation ? animation : "vanishIn"}>
         {/*<LoadingLeft Loading={loading} />*/}
         {/*<LoadingRight Loading={loading} />*/}
         {children}
