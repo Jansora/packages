@@ -40,7 +40,12 @@ const MaterialHeaderMenu = ({menu}) => {
                         active={pathname.startsWith(item.pathname)}
                         color={pathname.startsWith(item.pathname) ? color : "default"}
                     >
-                        <StyledIconFont type={item.icon} style={{width: 16, height: 16, marginRight: 3, marginBottom: -2}} />
+                        {
+                            item.icon &&
+                            <StyledIconFont type={item.icon} style={{width: 16, height: 16, marginRight: 3, marginBottom: -2}} />
+                        }
+
+
                         <StyledText>{item.name}</StyledText>
                     </Menu.Item>
                 )
