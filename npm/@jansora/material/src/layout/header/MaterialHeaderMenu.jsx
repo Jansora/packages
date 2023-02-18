@@ -38,7 +38,7 @@ const MaterialHeaderMenu = ({menu}) => {
                         key={index}
                         onClick={() => navigate(item.pathname)}
                         active={pathname.startsWith(item.pathname)}
-                        color={pathname.startsWith(item.pathname) ? color : "default"}
+                        color={pathname.startsWith(item.pathname) ? color : null}
                     >
                         {
                             item.icon &&
