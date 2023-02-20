@@ -12,7 +12,6 @@ const DefaultApp = ({children}) => {
             {
                 children || <MaterialLayout />
             }
-            <MaterialLayout/>
         </React.Fragment>
     )
 

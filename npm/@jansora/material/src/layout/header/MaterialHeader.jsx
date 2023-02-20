@@ -1,8 +1,6 @@
 import React from 'react';
 import StyledHeader from "../../components/styled/StyledHeader";
 import {Divider, Popover, Space} from 'antd';
-
-import StyledDescription from "../../components/styled/base/StyledDescription";
 import FlexPadding from "../../components/styled/base/FlexPadding";
 import StyledIconFont from "../../components/styled/StyledIconFont";
 import StyledA from "../../components/styled/StyledA";
@@ -16,6 +14,7 @@ import {Link} from "react-router-dom";
 import GetDarkMode from "../../hooks/getter/GetDarkMode";
 import User from "./user";
 import {Header as HeaderA, Icon} from "semantic-ui-react";
+import StyledColorText from "../../components/styled/base/StyledColorText";
 
 /**
  * <Description> Description for index <br>
@@ -33,31 +32,32 @@ const MaterialHeader = () => {
   const responsive = useResponsive();
   const title = GetTitle();
   const description = GetDescription();
-
+  const dark = GetDarkMode();
 
   return <StyledHeader>
 
-
     <Link to="/" style={{margin: 0}}>
-      <img style={{height: 35, marginRight: 0, marginTop: 0}} src={`https://cdn.jansora.com/logo/${GetDarkMode() ? 'black' : 'main'}.png`}  alt="logo" />
+      <img style={{height: 30, marginRight: 0, marginTop: 3}} src={`https://cdn.jansora.com/logo/${dark ? 'black' : 'main'}.png`}  alt="logo" />
     </Link>
 
-    <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={GetDarkMode()} />
 
-    {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
-    <HeaderA as="h3" inverted={GetDarkMode()}
-             style={{marginTop: 15}}
-    >
+    {
+      title && <React.Fragment>
+          <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={dark} />
+          <HeaderA as="h4" inverted={dark} style={{marginTop: 15}}>
 
-    <HeaderA.Subheader>
-      {title ? title : 'Default'}
-    </HeaderA.Subheader>
-    </HeaderA>
+              {title}
 
-    <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={GetDarkMode()} />
+          </HeaderA>
+        </React.Fragment>
+    }
 
-    {/*<Divider type="vertical" style={{margin: "0 10px"}}/>*/}
-    <StyledDescription>{description ? description : 'Default'}</StyledDescription>
+    {
+        description && <React.Fragment>
+          <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={dark} />
+          <StyledColorText>{ description }</StyledColorText>
+        </React.Fragment>
+    }
 
 
 
@@ -72,19 +72,15 @@ const MaterialHeader = () => {
               <StyledIconFont type="icon-weixin"  />
             </Popover>
             <Divider type="vertical"/>
-            <StyledA href={"https://github.com/Jansora/app"}>
+            <StyledA href={"https://github.com/Jansora"}>
               <GithubOutlined style={{fontSize: 16}} />
-
             </StyledA>
-
             <Divider type="vertical"/>
-
             <User />
-            {/*<Divider type="vertical"/>*/}
+
           </>
       }
 
-      {/*<User />*/}
     </Space>
 
   </StyledHeader>;

@@ -3,6 +3,7 @@ import StyledLayout from "../components/styled/StyledLayout";
 import MaterialAside from "./aside/MaterialAside";
 import MaterialHeader from "./header/MaterialHeader";
 import MaterialFooter from "./footer/MaterialFooter";
+import MaterialSearchView from "./views/market/MaterialSearchView";
 
 
 /**
@@ -22,7 +23,7 @@ const DefaultLayout = () => {
     <MaterialHeader />
     <MaterialAside />
     <StyledLayout id="layout">
-
+        <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
     </StyledLayout>
     <MaterialFooter/>
   </React.Fragment>;
