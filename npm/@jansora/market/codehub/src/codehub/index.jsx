@@ -24,14 +24,14 @@ const StyledCenterHeaderWrapper = styled.div`
     }
 `
 
-const CodeHub = (props) => {
+const MaterialCodeHub = (props) => {
 
     const navigate = useNavigate();
     const color = GetColor();
     const {pathname} = useLocation();
 
     SetTitle('CodeHub')
-    // <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
+
     return <React.Fragment>
 
         <MaterialHeaderMenu menu={[
@@ -53,4 +53,4 @@ const CodeHub = (props) => {
     </React.Fragment>;
 }
 
-export default CodeHub;
+export default MaterialCodeHub;

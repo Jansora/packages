@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
+import {Button, Checkbox, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
 import {useNavigate, useParams} from 'react-router-dom';
 
 import {
@@ -42,10 +42,10 @@ const SaveComponent = (props) => {
   const color = GetColor()
   const [component, componentLoading] = FetchComponent(id)
 
-  const [name, setName] = useState('a');
-  const [code, setCode] = useState('b');
-  const [description, setDescription] = useState( 'c');
-  const [logo, setLogo] = useState( 'd');
+  const [name, setName] = useState('');
+  const [code, setCode] = useState('');
+  const [description, setDescription] = useState( '');
+  const [logo, setLogo] = useState( '');
   const [tag, setTag] = useState([]);
   const [enabled, setEnabled] = useState(true);
   const [classify, setClassify] = useState(1);
@@ -141,9 +141,8 @@ const SaveComponent = (props) => {
 
 
   if(id && componentLoading) {
-    return   <Dimmer inverted>
-      <Loader active inline='centered' />
-    </Dimmer>
+    return <Loader active inline='centered' />
+
   }
 
   return <React.Fragment>

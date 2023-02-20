@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {client} from "./index";
+import {client} from "@jansora/material/es/request/index";
 import {message} from "antd";
 import {stringify} from 'qs'
 
