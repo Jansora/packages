@@ -37,10 +37,10 @@ module.exports = {
       module: {
         rules: [
           {
-          test: /\.mjs$/,
-          include: /node_modules/,
-          type: "javascript/auto"
-        },
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: "javascript/auto"
+          },
           {
             test: /\.less$/i,
             use: [

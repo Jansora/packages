@@ -5,6 +5,9 @@ module.exports = {
     umd: false
   },
   webpack: {
+    html: {
+      template: 'html/index.html'
+    },
     config(config) {
       // Change config as you wish
 

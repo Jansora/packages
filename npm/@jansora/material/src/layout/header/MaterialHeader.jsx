@@ -40,7 +40,6 @@ const MaterialHeader = () => {
       <img style={{height: 30, marginRight: 0, marginTop: 3}} src={`https://cdn.jansora.com/logo/${dark ? 'black' : 'main'}.png`}  alt="logo" />
     </Link>
 
-
     {
       title && <React.Fragment>
           <Icon style={{margin: "0 10px 5px 10px"}} name="triangle right" inverted={dark} />
@@ -58,8 +57,6 @@ const MaterialHeader = () => {
           <StyledColorText>{ description }</StyledColorText>
         </React.Fragment>
     }
-
-
 
     <FlexPadding />
     <Space >
