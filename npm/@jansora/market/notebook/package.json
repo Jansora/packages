@@ -1,7 +1,7 @@
 {
-  "name": "@jansora/market-beike",
+  "name": "@jansora/market-notebook",
   "version": "2.3.1",
-  "description": "@jansora/market-beike React component",
+  "description": "@jansora/market-notebook React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [

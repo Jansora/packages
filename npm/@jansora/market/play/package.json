@@ -1,7 +1,7 @@
 {
-  "name": "@jansora/market-beike",
+  "name": "@jansora/market-codehub",
   "version": "2.3.1",
-  "description": "@jansora/market-beike React component",
+  "description": "@jansora/market-codehub React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
