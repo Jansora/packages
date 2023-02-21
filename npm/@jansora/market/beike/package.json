@@ -1,6 +1,6 @@
 {
   "name": "@jansora/market-beike",
-  "version": "2.3.1",
+  "version": "2.8.0",
   "description": "@jansora/market-beike React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -20,8 +20,8 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@jansora/material": "1.14.22",
-    "@jansora/monaco": "1.16.1",
+    "@jansora/material": "2.8.0",
+    "@jansora/monaco": "2.8.0",
     "css-loader": "^5.0.0",
     "less": "^4.1.3",
     "less-loader": "^5.0.0",
