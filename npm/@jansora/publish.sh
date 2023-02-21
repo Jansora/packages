@@ -1,3 +1,7 @@
+yarn config set version-sign-git-tag false
+yarn config set version-git-tag false
+
+
 echo "yarn publish: $1";
 
 
