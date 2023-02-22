@@ -17,12 +17,15 @@ import {
 import {useDebounceFn} from "ahooks";
 
 import HistoryDocument from "../components/view/HistoryDocument";
-import {Button, Checkbox, Dropdown, Form, Grid, Input, Loader, Segment, Select} from "semantic-ui-react";
+import {Button, Checkbox, Dropdown, Form, Grid, Input, Loader, Select} from "semantic-ui-react";
 import styled from "styled-components";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {Alert} from "antd";
 import {UploadFiles} from "@jansora/material/es/request/utils";
+import CenterHeader from "@jansora/material/es/layout/header/CenterHeader";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 
 
 /**
@@ -40,6 +43,14 @@ const StyledDropdown = styled(Dropdown)`
   
   }
 
+
+
+`
+
+const StyledEditor = styled.div`
+  .bytemd-body {
+    height: calc(100vh - 260px) !important;
+  }
 `
 
 const SaveNote = (props) => {
@@ -48,7 +59,7 @@ const SaveNote = (props) => {
   const navigate = useNavigate();
   const {id} = useParams();
   const color = GetColor();
-
+  const dark = GetDarkMode();
   const [note, noteLoading] = FetchEditableNote(id)
 
   const [name, setName] = useState('');
@@ -112,15 +123,14 @@ const SaveNote = (props) => {
   SetDescription(!id ? "新建笔记" : `更新笔记 - ${name}`)
 
   if (!!id && noteLoading) {
-    return <Segment inverted>
-      <Loader active />
-    </Segment>
+    return <Loader active />
+
   }
-  return <React.Fragment>
+  return <StyledPageLoading>
     <Grid columns='equal'>
 
         <Grid.Column>
-          <Form inverted>
+          <Form inverted={dark}>
             <Form.Group widths='equal'>
               <Form.Field
                   width={4}
@@ -142,7 +152,7 @@ const SaveNote = (props) => {
                   placeholder='请选择分类'
               />
 
-              <Form.Field required width={6}>
+              <Form.Field required width={5}>
                 <label>画像</label>
                 <StyledDropdown
                     loading={tagsLoading}
@@ -165,7 +175,7 @@ const SaveNote = (props) => {
               </Form.Field>
 
 
-              <Form.Field required width={6}>
+              <Form.Field required width={5}>
                 <label>引导图片</label>
                 <StyledDropdown
                     loading={logosLoading}
@@ -174,7 +184,7 @@ const SaveNote = (props) => {
                         setLogos(logos.concat([{value: value, key: value}]))
                       }
                     }}
-                    onChange={(e, { value }) => console.log(value) || setLogo(value)}
+                    onChange={(e, { value }) => setLogo(value)}
                     options={logos.map((l, index) => {return {key: index, text: `${l.key}` ,
                       value: l.value + "___" + l.key}})}
                     placeholder='选择Logo'
@@ -186,11 +196,10 @@ const SaveNote = (props) => {
                 />
               </Form.Field>
               <Form.Field
-                  width={6}
+                  width={5}
                   control={Input}
                   label='简介'
                   placeholder='请输入简介'
-
                   value={description} onChange={event => setDescription(event.target.value)}
               />
 
@@ -203,7 +212,7 @@ const SaveNote = (props) => {
               <Form.Field width={!!id ? 3 : 2}>
                 <label>操作</label>
                 <div style={{display: "flex", alignItems: "center"}}>
-                  <Button style={{marginRight: 20}} color={color} content={'保存'} onClick={() => save()} />
+                  <Button style={{marginRight: 10}} color={color} content={'保存'} onClick={() => save()} />
                   <HistoryDocument id={id} document={raw} setDocument={setRaw} />
                 </div>
               </Form.Field>
@@ -228,13 +237,14 @@ const SaveNote = (props) => {
           }
           {
               rawInit &&
+              <StyledEditor>
+                <Editor
+                    uploadFn={UploadFiles}
+                    value={raw}
+                    setValue={(v) => {setRaw(v); run()}}
+                />
+              </StyledEditor>
 
-              <Editor
-                  uploadFn={UploadFiles}
-                  style={{width: "100%"}}
-                  value={raw}
-                  setValue={(v) => {setRaw(v); run()}}
-              />
           }
         </Grid.Column>
 
@@ -243,7 +253,7 @@ const SaveNote = (props) => {
 
 
 
-  </React.Fragment>;
+  </StyledPageLoading>;
 }
 
 export default SaveNote;

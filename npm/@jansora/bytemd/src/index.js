@@ -30,6 +30,8 @@ import breaks from '@bytemd/plugin-breaks';
 //   }
 //
 // }
+
+
 const plugins = [
     gfm(),
     breaks(),
@@ -71,25 +73,12 @@ export const Editor = ({value, setValue, style, uploadFn}) => {
             onChange={setValue}
             editorConfig={{}}
             uploadImages={  async (files) => {
-
                 let result = [];
                 if (files.length < 1) return ['']
                 await uploadFn(files, (data)=> {
                     result = data.map(file => ({url:file.url, title: file.filename, alt: file.filename}))
                 })
-
-                console.log("UploadFile callbacksss", result)
-
                 return result;
-                // const callback = (data) => {
-                //
-                //   result.append({url:data, title: "b.png", alt: data})
-                //   console.log("UploadFile callback", data)
-                //   copyToClipboard(data)
-                // };
-                // await UploadFile(files[0], callback);
-                // console.log("url", url, resp)
-
             }}
         />
     )

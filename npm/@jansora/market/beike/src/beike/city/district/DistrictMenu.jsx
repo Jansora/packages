@@ -3,7 +3,7 @@ import React from 'react';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {FetchDistricts} from "../../../request/beike";
-import {Dimmer, Label, Loader} from "semantic-ui-react";
+import {Label, Loader} from "semantic-ui-react";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
@@ -21,9 +21,9 @@ const DistrictMenu = ({id}) => {
     const dark = GetDarkMode();
     return <React.Fragment>
         <StyledDescription style={{marginRight: 10}}> 商圈: </StyledDescription>
-        <Dimmer active={loading}>
-            <Loader active={loading}/>
-        </Dimmer>
+
+            <Loader inverted={dark} active={loading}/>
+
 
         {
             districts.map(district => {
