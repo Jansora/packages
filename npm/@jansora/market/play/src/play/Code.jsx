@@ -20,17 +20,11 @@ import StyledText from "@jansora/material/es/components/styled/base/StyledText";
  */
 const Code = () => {
 
-
-
-
-
   const color = GetColor();
-  // const {language: contextLanguage, dispatch } = useContext(GlobalStore);
+
   const {language, hash} = useParams();
 
   SetDescription(`${language}`)
-  // console.log("Code", language, hash)
-  // const [language, setLanguage] = useState(defaultLanguage);
 
   const [name, setName] = useState("");
 
@@ -105,19 +99,10 @@ const Code = () => {
               </Button>
 
               <Modal
-                  // title='分享'
-                  // open={shareVisible}
-                  // onOpen={() => setShareVisible(false)}
-                  // onOk={() => setShareVisible(false)}
-                  // onCancel={() => setShareVisible(false)}
                   style={{width: '50vw'}}
                   trigger={ <Button
                       color="green" basic size="tiny"
                       loading={shareLoading}
-                      // disabled={shareLoading || shareVisible}
-                      // onClick={() => {
-                      //   setShareVisible(true)
-                      // }}
                       style={{marginLeft: 10}} >
                     <Icon name="rss" />
                     分享
@@ -128,18 +113,12 @@ const Code = () => {
                   <Divider horizontal />
                   <div>
 
-                    {/*<Spin loading={shareLoading}>*/}
-                    {/*  /!*<Loader active inline='centered' content="分享中..."/>*!/*/}
-                    {/*</Spin>*/}
-
-
                     <div style={{display: "flex", marginBottom: 20}}>
                       <Input
                           style={{flex: "1 1 auto"}}
                           placeholder="请输入要分享的标题, 必填......"
                           size="mini" value={name} onChange={( event) => setName(event.target.value)} />
                       <Button
-                          // disabled={!name}
                           onClick={share}
                           floated={'right'} color="green"
                           style={{marginLeft: 10}}>分享</Button>

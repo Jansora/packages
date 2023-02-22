@@ -3,7 +3,7 @@ import {createRoot} from "react-dom/client";
 import MaterialApp from "@jansora/material/es/MaterialApp";
 import MountGlobal from "@jansora/global/lib/mount";
 import MountMaterial from "@jansora/material/es/mount";
-import CodeHub from "../../src";
+import Material from "../../src";
 import MaterialHeader from "@jansora/material/es/layout/header/MaterialHeader";
 import MaterialAside from "@jansora/material/es/layout/aside/MaterialAside";
 import StyledLayout from "@jansora/material/es/components/styled/StyledLayout";
@@ -18,7 +18,7 @@ export default function Demo ()  {
       <MaterialHeader />
       <MaterialAside />
       <StyledLayout id="layout">
-        <CodeHub />
+        <Material />
 
       </StyledLayout>
       <MaterialFooter/>
