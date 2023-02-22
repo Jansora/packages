@@ -1,6 +1,6 @@
 {
   "name": "@jansora/monaco",
-  "version": "2.10.0",
+  "version": "2.11.4",
   "description": "@jansora/monaco React component",
   "main": "lib/index.js",
   "module": "es/index.js",

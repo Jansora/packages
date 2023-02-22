@@ -6,7 +6,6 @@ const LazyLoadEditor = () => {
     // const monacoRef = useRef(window.monaco);
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         setLoading(true)
         const interval = setInterval(() => {

@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {CodeEditor} from "@jansora/monaco/lib";
+// import CodeEditor from "../editor/CodeEditor";
+// import DiffEditor from "../editor/DiffEditor";
 import {Compiler, FetchCode, getDefaultLanguageCode, ShareCode} from "../request/playground";
 import {Viewer} from "@jansora/bytemd";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
@@ -11,6 +13,7 @@ import {Button, Divider, Grid, Header, Icon, Input, Modal, Segment} from "semant
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+// import {DiffEditor} from "@jansora/monaco";
 
 
 /**
@@ -82,7 +85,13 @@ const Code = () => {
                 style={{height: 650}}
               />
             }
-
+            {/*{*/}
+            {/*    code != null &&*/}
+            {/*    <DiffEditor*/}
+            {/*        dark={dark}*/}
+            {/*        modified={{data:  "a", language: 'markdown'}}*/}
+            {/*        original={{data: 'document', language: 'markdown'}} />*/}
+            {/*}*/}
 
           </div>
 

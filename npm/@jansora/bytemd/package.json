@@ -1,6 +1,6 @@
 {
   "name": "@jansora/bytemd",
-  "version": "2.9.0",
+  "version": "2.11.0",
   "description": "@jansora/bytemd React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -9,7 +9,7 @@
     "es",
     "lib",
     "umd",
-    "src",
+    "src"
   ],
   "scripts": {
     "build": "nwb build-react-component --copy-files",
@@ -31,7 +31,7 @@
     "@bytemd/plugin-medium-zoom": "1.20.2",
     "@bytemd/plugin-mermaid": "1.20.2",
     "@bytemd/react": "1.20.2",
-    "@jansora/global": "2.9.0",
+    "@jansora/global": "2.11.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

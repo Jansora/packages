@@ -25,19 +25,23 @@ const DiffEditor = (props) => {
     const theme = props.dark ? "vs-dark" : "vs";
     const style = props.style ? props.style  : {};
     const [editor, setEditor] = useState(null);
-    // const [init, setInit] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const monacoLoaded = LazyLoadEditor();
 
     useEffect(() => {
-        if(monacoLoaded && !editor) {
+        setLoading(true)
+        setTimeout(() => setLoading(false), 100)
+    }, [theme])
+
+    useEffect(() => {
+        if(monacoLoaded && !loading) {
             const _editor = window.monaco.editor.createDiffEditor(ref.current, {theme, readOnly: true})
             setEditor(_editor)
         }
-    }, [ref, monacoLoaded]);
+    }, [ref, monacoLoaded, theme, loading]);
 
     useEffect(() => {
-        // console.log(editor, original, modified)
         if(editor) {
             editor.setModel({
                 original: window.monaco.editor.createModel(original.data, original.language),
@@ -46,10 +50,16 @@ const DiffEditor = (props) => {
         }
     }, [editor, modified, original])
 
+    if (loading || !monacoLoaded) {
+        return <></>
+    }
     return (
-        <div id={props.id ? props.id : "monaco-diff"} ref={ref} style={{
-            width: '100%', height: '500px',
-            ...style}} />
+        <div style={{padding: '16px 0', backgroundColor: props.dark ? '#1E1E1E' : '#FFFFFE'}}>
+            <div id={props.id ? props.id : "monaco-diff"} ref={ref} style={{
+                width: '100%', height: '500px',
+                ...style}} />
+        </div>
+
     )
 }
 

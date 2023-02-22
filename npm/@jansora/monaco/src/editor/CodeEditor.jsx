@@ -30,9 +30,12 @@ const CodeEditor = (props) => {
 
 
     useEffect(() => {
+        console.log("xxx", language, theme)
         setLoading(true)
+        // model && model.dispose()
+        // setModel(window.monaco.editor.createModel(value, language))
         setTimeout(() => setLoading(false), 100)
-    }, [language])
+    }, [language, theme])
 
     // const monaco = window.monaco;
 
@@ -44,16 +47,18 @@ const CodeEditor = (props) => {
 
 
     useEffect(() => {
-        if(monacoLoaded && model) {
+        if(monacoLoaded && model && !loading) {
+            console.log("crete editor", "editor", language, theme)
             const editor = window.monaco.editor.create(ref.current, {
                 model, language, theme, ...options, readOnly
             })
             editor.onDidChangeModelContent((event) => onChange && onChange(model.getValue()))
             editor.setModelLanguage && editor.setModelLanguage(model, language)
+            model.setValue(value)
             // setEditor(editor)
         }
         // eslint-disable-next-line
-    }, [ref, model, language]);
+    }, [ref, model, language, theme, loading]);
 
 
     useEffect(() => {
@@ -72,7 +77,7 @@ const CodeEditor = (props) => {
 
 
     return (
-        <div style={{padding: '16px 0', backgroundColor: '#1E1E1E'}}>
+        <div style={{padding: '16px 0', backgroundColor: props.dark ? '#1E1E1E' : '#FFFFFE'}}>
             <div id={id ? id : "monaco"} ref={ref} style={{
                 width: '100%', height: '500px',
                 ...style}}  />

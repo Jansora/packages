@@ -16,6 +16,7 @@ export default function Demo ()  {
     {/*    style={{height: 650}}*/}
     {/*/>*/}
     <DiffEditor
+        dark={true}
         modified={{data: "a" , language: 'markdown'}}
         original={{data: "b", language: 'markdown'}} />
 
