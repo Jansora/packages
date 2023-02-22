@@ -1,18 +1,28 @@
 import React, {useState} from 'react'
-import {render} from 'react-dom'
-// import GlobalStoreProvider from '../../es'
-// import {GlobalStore} from "../../es/store/global";
+import {createRoot} from "react-dom/client";
+import {DiffEditor} from "../../lib";
 
 export default function Demo ()  {
   const [raw, setRaw] = useState('');
-  // const store = useContext(GlobalStore)
-  // console.log("store-GlobalStore", store)
 
-  return <div>
-    <h1>@jansora Demo</h1>
+
+  return <div style={{width: 900, height: 800, padding: 16}}>
+    {/*<CodeEditor*/}
+    {/*    force={false}*/}
+    {/*    id={"code-editor-template"}*/}
+    {/*    language={ "javascript"}*/}
+    {/*    // value={raw}*/}
+    {/*    // onChange={setRaw}*/}
+    {/*    style={{height: 650}}*/}
+    {/*/>*/}
+    <DiffEditor
+        modified={{data: "a" , language: 'markdown'}}
+        original={{data: "b", language: 'markdown'}} />
+
+
   </div>
 
 
 }
 
-render(<><Demo/></>, document.querySelector('#demo'))
+createRoot(document.querySelector('#root')).render(<><Demo/></>);

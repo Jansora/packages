@@ -6,6 +6,7 @@
 
 
 import React, {useEffect, useRef, useState} from "react";
+import LazyLoadEditor from "./LazyLoadEditor";
 // import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // import * as monaco from 'monaco-editor/esm/vs/editor/editor.main';
 // import styled from "styled-components";
@@ -21,35 +22,26 @@ const DiffEditor = (props) => {
 
     const {original, modified} = props;
     const ref = useRef(null);
+    const theme = props.theme === "light" ? "vs" : "vs-dark";
     const style = props.style ? props.style  : {};
     const [editor, setEditor] = useState(null);
-    const [init, setInit] = useState(false);
-    const monaco = window.monaco;
+    // const [init, setInit] = useState(false);
 
+    const monacoLoaded = LazyLoadEditor();
 
-    const interval = setInterval(() => {
-       if (window.monaco) {
-           setInit(true)
-           clearInterval(interval)
-       }
-    }, 100)
     useEffect(() => {
-        if(ref.current && monaco && !editor) {
-            const _editor = monaco.editor.createDiffEditor(ref.current, {theme: "vs", readOnly: true})
-            // _editor.setModel({
-            //     original: monaco.editor.createModel(original.data, original.language),
-            //     modified: monaco.editor.createModel(modified.data, modified.language)
-            // });
+        if(monacoLoaded && !editor) {
+            const _editor = window.monaco.editor.createDiffEditor(ref.current, {theme, readOnly: true})
             setEditor(_editor)
         }
-    }, [ref, init, monaco]);
+    }, [ref, monacoLoaded]);
 
     useEffect(() => {
-        console.log(editor, original, modified)
+        // console.log(editor, original, modified)
         if(editor) {
             editor.setModel({
-                original: monaco.editor.createModel(original.data, original.language),
-                modified: monaco.editor.createModel(modified.data, modified.language)
+                original: window.monaco.editor.createModel(original.data, original.language),
+                modified: window.monaco.editor.createModel(modified.data, modified.language)
             });
         }
     }, [editor, modified, original])

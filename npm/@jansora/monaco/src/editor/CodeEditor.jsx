@@ -5,40 +5,79 @@
 */
 
 
-import React, {useEffect, useState} from "react";
-import CodeEditorSource from "./CodeEditorSource";
+import React, {useEffect, useRef, useState} from "react";
+import LazyLoadEditor from "./LazyLoadEditor";
 
-// const Wrapper = styled.div`
-//   width: 100%;
-//   height: 500px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `
 
 const CodeEditor = (props) => {
 
+    const {onChange, id, force} = props;
+
+    const theme = props.theme === "light" ? "vs" : "vs-dark";
     const language = props.language ? props.language : 'javascript';
 
+    const style = props.style ? props.style  : {};
+    const value = props.value ? props.value : "";
+    const readOnly = !!props.readOnly;
+    const options = props.options ? props.options  : {};
 
+    const monacoLoaded = LazyLoadEditor();
     const [loading, setLoading] = useState(false);
 
-    const style = props.style ? props.style  : {};
+    const ref = useRef(null);
+
+    const [model, setModel] = useState(null);
+
 
     useEffect(() => {
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-        }, 200)
+        setTimeout(() => setLoading(false), 100)
     }, [language])
+
+    // const monaco = window.monaco;
+
+    useEffect(() => {
+        if( monacoLoaded && !model) {
+            setModel(window.monaco.editor.createModel(value, language))
+        }
+    }, [monacoLoaded, model])
+
+
+    useEffect(() => {
+        if(monacoLoaded && model) {
+            const editor = window.monaco.editor.create(ref.current, {
+                model, language, theme, ...options, readOnly
+            })
+            editor.onDidChangeModelContent((event) => onChange && onChange(model.getValue()))
+            editor.setModelLanguage && editor.setModelLanguage(model, language)
+            // setEditor(editor)
+        }
+        // eslint-disable-next-line
+    }, [ref, model, language]);
+
+
+    useEffect(() => {
+        if(monacoLoaded && force) {
+            model.setValue(value);
+        }
+        // eslint-disable-next-line
+    }, [value, force, model]);
+
+
+    useEffect(() => () => model && model.dispose(), [])
+
+    if (loading || !monacoLoaded) {
+        return <></>
+    }
 
 
     return (
-      <div>
-          {
-              !loading && <CodeEditorSource {...props} style={style} language={language}/>
-          }
-      </div>
+        <div style={{padding: '16px 0', backgroundColor: '#1E1E1E'}}>
+            <div id={id ? id : "monaco"} ref={ref} style={{
+                width: '100%', height: '500px',
+                ...style}}  />
+        </div>
+
 
     )
 }
