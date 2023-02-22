@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import {useDebounceFn} from "ahooks";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
  * <Description> Description for Demo <br>
@@ -36,6 +37,7 @@ const Demo = ({component}) => {
 
   const {id} = useParams();
   const color = GetColor()
+  const dark = GetDarkMode();
 
   const [variable, setVariable] = useState(component.variable ? updateVar(component.variable) : {language: "html"});
 
@@ -75,6 +77,7 @@ const Demo = ({component}) => {
         <Segment style={{padding: 0}}>
           <Label attached='top' color={color}>变量</Label>
           <CodeEditor
+            dark={dark}
             force={false}
             id={"component-variable-edit"}
             language={"json"}
@@ -86,6 +89,7 @@ const Demo = ({component}) => {
         <Segment style={{padding: 0}}>
           <Label attached='top' color={color}>模板(不可编辑)</Label>
           <CodeEditor
+              dark={dark}
             force={false}
             readOnly={true}
             id={"component-raw-edit"}

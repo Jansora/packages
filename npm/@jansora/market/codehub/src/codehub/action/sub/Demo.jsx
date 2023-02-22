@@ -9,6 +9,7 @@ import ActionRender from "../ActionRender";
 import {FetchGenerateAction} from "../../request/action";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import StyledText from "@jansora/material/es/components/styled/base/StyledText";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
  * <Description> Description for Demo <br>
@@ -41,7 +42,7 @@ const Demo = ({action}) => {
 
   const {id} = useParams();
   const color = GetColor()
-
+  const dark = GetDarkMode();
   const [variable, setVariable] = useState(action.variable ? updateVar(action.variable) : {language: "html"});
 
   const [raw, setRaw] = useState(action.raw ? action.raw : '');
@@ -115,6 +116,7 @@ const Demo = ({action}) => {
               <Segment style={{padding: 0}} fuild>
                 <Label attached='top' color={color}>变量</Label>
                 <CodeEditor
+                    dark={dark}
                     force={false}
                     id={"action-variable-edit"}
                     language={"json"}
@@ -128,6 +130,7 @@ const Demo = ({action}) => {
               <Segment style={{padding: 0}}>
                 <Label attached='top' color={color}>模板</Label>
                 <CodeEditor
+                    dark={dark}
                     force={false}
                     id={"action-raw-edit"}
                     language={"xml"}

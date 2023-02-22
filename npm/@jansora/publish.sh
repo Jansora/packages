@@ -39,6 +39,7 @@ echo "yarn publish $PWD: $1";
 yarn
 yarn upgrade @jansora/material@$1
 yarn upgrade @jansora/monaco@$1
+yarn upgrade @jansora/bytemd@$1
 yarn publish --new-version $1
 cd ../../
 
@@ -47,6 +48,7 @@ echo "yarn publish $PWD: $1";
 yarn
 yarn upgrade @jansora/material@$1
 yarn upgrade @jansora/monaco@$1
+yarn upgrade @jansora/bytemd@$1
 yarn publish --new-version $1
 cd ../../
 

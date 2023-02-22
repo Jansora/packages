@@ -223,6 +223,7 @@ const SaveAction = (props) => {
             <Segment style={{padding: 0}} fuild>
               <Label attached='top' color={color}>变量</Label>
               <CodeEditor
+                  dark={dark}
                   force={false}
                   id={"action-variable-edit"}
                   language={"json"}

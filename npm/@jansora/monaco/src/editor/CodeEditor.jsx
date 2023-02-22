@@ -13,7 +13,7 @@ const CodeEditor = (props) => {
 
     const {onChange, id, force} = props;
 
-    const theme = props.theme === "light" ? "vs" : "vs-dark";
+    const theme = props.dark ? "vs-dark" : "vs";
     const language = props.language ? props.language : 'javascript';
 
     const style = props.style ? props.style  : {};

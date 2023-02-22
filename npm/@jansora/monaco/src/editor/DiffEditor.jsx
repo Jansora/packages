@@ -22,7 +22,7 @@ const DiffEditor = (props) => {
 
     const {original, modified} = props;
     const ref = useRef(null);
-    const theme = props.theme === "light" ? "vs" : "vs-dark";
+    const theme = props.dark ? "vs-dark" : "vs";
     const style = props.style ? props.style  : {};
     const [editor, setEditor] = useState(null);
     // const [init, setInit] = useState(false);

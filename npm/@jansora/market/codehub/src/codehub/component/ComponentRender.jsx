@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {FetchRenderComponent} from "../request/component";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
  * <Description> Description for ComponentRender <br>
@@ -15,7 +16,7 @@ import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 const ComponentRender = ({template, variable, style}) => {
 
 
-
+  const dark = GetDarkMode();
   // eslint-disable-next-line
   const [raw, _, __, setLoading] = FetchRenderComponent(template, variable);
 
@@ -27,6 +28,7 @@ const ComponentRender = ({template, variable, style}) => {
 
   return <React.Fragment>
     <CodeEditor
+        dark={dark}
       readOnly={true}
       force={true}
       id={"component-raw-render"}

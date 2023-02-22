@@ -18,6 +18,7 @@ import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
  * <Description> <br>
@@ -36,7 +37,7 @@ const StyledDropdown = styled(Dropdown)`
 `
 const SaveComponent = (props) => {
 
-
+  const dark = GetDarkMode();
   const navigate = useNavigate();
   const {id} = useParams();
   const color = GetColor()
@@ -238,6 +239,7 @@ const SaveComponent = (props) => {
           <Segment style={{padding: 0}}>
             <Label attached='top' color={color}>变量</Label>
             <CodeEditor
+                dark={dark}
               force={false}
               id={"component-variable-edit"}
               language={"json"}
@@ -249,6 +251,7 @@ const SaveComponent = (props) => {
           <Segment style={{padding: 0}}>
             <Label attached='top' color={color}>模板</Label>
             <CodeEditor
+                dark={dark}
               force={false}
               id={"component-raw-edit"}
               language={(variable && variable.language) ? variable.language : "html"}

@@ -2,6 +2,7 @@ import React from 'react';
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {Label, Segment} from "semantic-ui-react";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
  * <Description> Description for Guide <br>
@@ -15,10 +16,12 @@ import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 
 const Guide = ({action}) => {
   const color = GetColor()
+  const dark = GetDarkMode();
   return <React.Fragment>
     <Segment style={{padding: 0}}>
       <Label attached='top' color={color}>使用方法</Label>
       <CodeEditor
+          dark={dark}
         force={false}
         readOnly={true}
         id={"action-raw-edit"}

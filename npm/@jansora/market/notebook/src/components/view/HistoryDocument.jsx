@@ -11,6 +11,7 @@ import {momentZh} from "@jansora/material/es/components/utils";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import FlexPadding from "@jansora/material/es/components/styled/base/FlexPadding";
 import StyledText from "@jansora/material/es/components/styled/base/StyledText";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 
 /**
@@ -27,6 +28,7 @@ import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 const HistoryDocument = ({id, document, setDocument}) => {
 
     const color = GetColor()
+    const dark = GetDarkMode();
     const [visible, setVisible] = React.useState(false);
     const [draftVisible, setDraftVisible] = React.useState(false);
     const [documentVersionId, setDocumentVersionId] = React.useState(null);
@@ -107,6 +109,7 @@ const HistoryDocument = ({id, document, setDocument}) => {
                             </Grid.Column>
                             <Grid.Column>
                                 <DiffEditor
+                                    dark={dark}
                                     modified={{data: !!documentVersion ? documentVersion.raw : "", language: 'markdown'}}
                                     original={{data: document, language: 'markdown'}} />
                             </Grid.Column>

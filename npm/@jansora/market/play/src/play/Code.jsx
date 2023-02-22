@@ -10,6 +10,7 @@ import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import {Button, Divider, Grid, Header, Icon, Input, Modal, Segment} from "semantic-ui-react";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledText from "@jansora/material/es/components/styled/base/StyledText";
+import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 
 /**
@@ -21,7 +22,7 @@ import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 const Code = () => {
 
   const color = GetColor();
-
+  const dark = GetDarkMode();
   const {language, hash} = useParams();
 
   SetDescription(`${language}`)
@@ -72,6 +73,7 @@ const Code = () => {
             {
               code != null &&
               <CodeEditor
+                  dark={dark}
                 force={false}
                 id={"code-editor-template"}
                 language={language === "node" ? "javascript" : language}
