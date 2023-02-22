@@ -16,6 +16,7 @@ cd ..
 cd material
 echo "yarn publish $PWD: $1";
 yarn
+yarn upgrade --scope @jansora --latest
 yarn upgrade @jansora/global@$1
 yarn publish --new-version $1
 cd ..
