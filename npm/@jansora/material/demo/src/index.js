@@ -6,6 +6,6 @@ export default function Demo ()  {
   return  <MaterialApp />
 }
 
-createRoot(document.querySelector('#demo')).render(<><Demo/></>);
+createRoot(document.querySelector('#root')).render(<><Demo/></>);
 
 // render(<><Demo/></>, document.querySelector('#demo'))

@@ -69,12 +69,13 @@ const Demo = ({component}) => {
     },
   );
 
+  const shareMD = '```xml' + raw + '\n```'
 
   return <React.Fragment>
     <Grid>
       <Grid.Column width={7} style={{paddingLeft: 0, paddingRight: 0}}>
 
-        <Segment style={{padding: 0}}>
+        <Segment style={{padding: 0}} inverted={dark}>
           <Label attached='top' color={color}>变量</Label>
           <CodeEditor
             dark={dark}
@@ -86,8 +87,9 @@ const Demo = ({component}) => {
             style={{height: 350}}
           />
         </Segment>
-        <Segment style={{padding: 0}}>
+        <Segment style={{padding: 0}} inverted={dark}>
           <Label attached='top' color={color}>模板(不可编辑)</Label>
+          {/*<Viewer value={'```xml\n' + raw + '\n```'} />*/}
           <CodeEditor
               dark={dark}
             force={false}
@@ -104,7 +106,7 @@ const Demo = ({component}) => {
 
       </Grid.Column>
       <Grid.Column width={9}>
-        <Segment style={{padding: 0}}>
+        <Segment style={{padding: 0}} inverted={dark}>
           <Label attached='top' color={color}>预览(不可编辑)</Label>
           <ComponentRender template={raw} variable={variable} style={{height: 745}} />
         </Segment>
