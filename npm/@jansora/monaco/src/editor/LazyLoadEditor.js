@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
-const LazyLoadEditor = () => {
+const LazyLoadEditor = (props) => {
     const documentLoaded = document.querySelector("#init-monaco-editor") != null;
 
     // const monacoRef = useRef(window.monaco);
     const [loading, setLoading] = useState(true);
-
+    const proxyUrl = props.proxyUrl ? props.proxyUrl : (windows.proxyUrl ? windows.proxyUrl : 'https://cdn.jansora.com/lib/monaco-editor/0.21.2/min/vs/monaco-editor-loader-proxy.js')
     useEffect(() => {
         setLoading(true)
         const interval = setInterval(() => {
@@ -25,7 +25,7 @@ const LazyLoadEditor = () => {
         const script = document.createElement('script');
         script.type = 'text/javascript';
         script.async = true;
-        script.src = 'https://cdn.jansora.com/lib/monaco-editor/0.21.2/min/vs/monaco-editor-loader-proxy.js';
+        script.src = proxyUrl;
         wrapper.appendChild(script);
     }
     return !loading;
