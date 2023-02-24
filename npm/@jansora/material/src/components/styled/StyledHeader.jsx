@@ -8,23 +8,17 @@ const StyledHeader = styled.header`
   background-color: var(--background-color-1);
   position: fixed;
   top: 0;
-  //left: var(--aside-width);
+
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
 
-  //border-bottom: 1px inset var(--light-text-color-5);
+
   box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
-  a {
-    //margin-right: 10px;
-  }
+
   div.padding {
     flex: 1 1 auto;
-  }
-  
-  div.logo {
-    
   }
   
   svg {

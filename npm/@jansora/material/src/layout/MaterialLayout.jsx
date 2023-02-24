@@ -1,9 +1,6 @@
 import React from 'react';
-import {ConfigProvider, theme} from "antd";
-import GetTheme from "../hooks/getter/GetTheme";
-import {COLOR_LIST, THEME_DARK} from "@jansora/global/lib/constant/global";
-import GetColor from "../hooks/getter/GetColor";
-import DefaultLayout from "./DefaultLayout";
+import {theme} from "antd";
+import StyledLayout from "../components/styled/StyledLayout";
 
 const { defaultAlgorithm, darkAlgorithm } = theme;
 
@@ -20,25 +17,14 @@ const { defaultAlgorithm, darkAlgorithm } = theme;
 
 const MaterialLayout = ({children}) => {
 
-  const dark = GetTheme() === THEME_DARK;
-  const color = GetColor();
 
-  const colorPrimaryList = COLOR_LIST.filter(_color => _color.color === color);
-  const colorPrimary = colorPrimaryList.length > 0 ? colorPrimaryList[0].color : '#6435c9';
 
-  return <ConfigProvider
-      theme={{
-        algorithm: dark ? darkAlgorithm : defaultAlgorithm,
-        token: { colorPrimary }
-      }}
-  >
-
+  return <StyledLayout>
       {
-          children || <DefaultLayout />
+          children
       }
-
-
-  </ConfigProvider>;
+  </StyledLayout>
+  ;
 }
 
 export default MaterialLayout;

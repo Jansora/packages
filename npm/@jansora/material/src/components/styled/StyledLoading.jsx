@@ -5,6 +5,7 @@ import React from "react";
 const StyledModuleWrapper = styled.div`
   padding: 16px;
   animation-duration: 1000ms;
+  z-index: 990;
 `
 
 const LoadingLeft = styled.div`

@@ -1,9 +1,13 @@
 @import (css) url('https://cdn.jansora.com/lib/semantic-ui-css/custom-2.4.1/semantic-ui-css/semantic.min.css');
 
+body, html {
+  height: unset;
+}
+
 /*// 格式变量配置*/
 body {
-   margin: 0;
-   overflow: auto;
+   margin: unset;
+   //overflow: auto;
 
    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -13,6 +17,8 @@ body {
 
    --header-height: 43px;
    --footer-height: 35px;
+
+   --layout-header-height: 37px;
 
    --aside-width: 50px;
    --aside-height: 50px;
@@ -32,10 +38,11 @@ body {
   //transition: background-color 100ms ease-in-out;
 }
 
-
-#root {
-    height: 100%;
-}
+//
+//#root {
+//    //height: 100%;
+//    margin: 0;
+//}
 
 ::selection {
     background-color: var(--primary-color);
@@ -57,6 +64,7 @@ body {
     width: 6px;
     height: 5px;
     border: 3px;
+    z-index: 10000;
 }
 ::-webkit-scrollbar-thumb {
     width:6px;
@@ -65,6 +73,7 @@ body {
     outline: 1px solid  var(--primary-color);
     outline-offset: -2px;
     border: 3px solid  var(--primary-color);
+
 }
 
 ::-webkit-scrollbar-track {
@@ -73,6 +82,7 @@ body {
 
 ::-webkit-scrollbar {
     /*display: none;*/
+
 }
 
 

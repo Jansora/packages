@@ -1,9 +1,10 @@
 import React from 'react';
-import StyledLayout from "../components/styled/StyledLayout";
 import MaterialAside from "./aside/MaterialAside";
 import MaterialHeader from "./header/MaterialHeader";
 import MaterialFooter from "./footer/MaterialFooter";
 import MaterialSearchView from "./views/market/MaterialSearchView";
+import MaterialLayoutHeader from "./MaterialLayoutHeader";
+import MaterialLayout from "./MaterialLayout";
 
 
 /**
@@ -22,9 +23,18 @@ const DefaultLayout = () => {
   return <React.Fragment>
     <MaterialHeader />
     <MaterialAside />
-    <StyledLayout id="layout">
+    <MaterialLayout>
+      <MaterialLayoutHeader>
+        1212311111111111111111111111
+      </MaterialLayoutHeader>
+      <section>
         <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
-    </StyledLayout>
+
+      </section>
+
+
+    </MaterialLayout>
+
     <MaterialFooter/>
   </React.Fragment>;
 }

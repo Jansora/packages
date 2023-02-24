@@ -15,7 +15,7 @@ const StyledAside = styled.nav`
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-1);
-  z-index: 990;
+  z-index: 1000;
   width: var(--aside-width);
   //height: 100vh;
   //height: calc(100vh - var(--header-height) - 2px);
