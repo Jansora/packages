@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -23,8 +23,8 @@
 <!--		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>-->
 		<spring.boot.version>2.7.2</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>1.0.1</repo.version>
-<!--		<spring-cloud.version>2021.0.1.0</spring-cloud.version>-->
+		<repo.version>1.0.2</repo.version>
+<!--		<spring-cloud.version>2021.0.2.0</spring-cloud.version>-->
 <!--		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
 <!--		<spring-cloud-tencent.version>1.7.0-Hoxton.SR12</spring-cloud-tencent.version>-->
 		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>
@@ -59,76 +59,76 @@
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>core</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>cache</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>demo</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>rocketmq</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>spring</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>mysql</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 <!--			<dependency>-->
 <!--				<groupId>com.jansora.repo</groupId>-->
 <!--				<artifactId>cloud</artifactId>-->
-<!--				<version>1.0.1</version>-->
+<!--				<version>1.0.2</version>-->
 <!--			</dependency>-->
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>pulsar</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>spring-web</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>storage</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>polaris</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>monitor</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>boot</artifactId>
-				<version>1.0.1</version>
+				<version>1.0.2</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -240,7 +240,7 @@
 			<dependency>
 				<groupId>com.alibaba.spring</groupId>
 				<artifactId>spring-context-support</artifactId>
-				<version>1.0.11</version>
+				<version>1.0.21</version>
 			</dependency>
 
 <!--			<dependency>-->
