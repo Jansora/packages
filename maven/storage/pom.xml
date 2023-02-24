@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>1.0.3</version>
+		<version>1.100.3</version>
 	</parent>
 	<artifactId>storage</artifactId>
-	<version>1.0.3</version>
+	<version>1.100.3</version>
 	<packaging>jar</packaging>
 	<name>storage</name>
 	<description>storage</description>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
-			<version>1.0.3</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
