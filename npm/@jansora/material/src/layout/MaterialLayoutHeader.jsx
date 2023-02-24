@@ -1,8 +1,8 @@
 import React from 'react';
-import {theme} from "antd";
 import styled from "styled-components";
+import {Input} from "semantic-ui-react";
+import MaterialLayoutHeaderCenter from "./MaterialLayoutHeaderCenter";
 
-const { defaultAlgorithm, darkAlgorithm } = theme;
 
 /**
  * <Description> Description for index <br>
@@ -33,6 +33,10 @@ const StyledMaterialLayoutHeader = styled.header`
     padding: 6px 32px;
     //z-index: 1980;
   
+  
+    display: flex;
+    align-items: center;
+  
     .left {
       
     }
@@ -42,11 +46,13 @@ const StyledMaterialLayoutHeader = styled.header`
 `
 
 
-
 const MaterialLayoutHeader = ({children}) => {
 
 
     return <StyledMaterialLayoutHeader>
+        <MaterialLayoutHeaderCenter>
+            <Input size="mini" styled={{height: 20}} />
+        </MaterialLayoutHeaderCenter>
         {children}
     </StyledMaterialLayoutHeader>;
 }
