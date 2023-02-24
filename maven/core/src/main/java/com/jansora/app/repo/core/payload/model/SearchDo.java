@@ -12,7 +12,7 @@ import io.mybatis.provider.Entity;
  * @CreateDate 2022/8/5 AM11:18 <br>
  * @since 1.0 <br>
  */
-@Entity.Table(value = "base", remark = "系统用户", autoResultMap = true)
+@Entity.Table(value = "search", remark = "系统用户", autoResultMap = true)
 public class SearchDo extends BaseDo {
 
     /**
