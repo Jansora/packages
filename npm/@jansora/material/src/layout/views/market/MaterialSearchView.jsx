@@ -86,14 +86,18 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                 //     </React.Fragment>
                 // }
                 right={
-                        loginStatus && <React.Fragment>
+                         <React.Fragment>
                         <StyledDescription>{total}</StyledDescription>
                         <Divider type="vertical"  />
                         {PageView}
-                        <Divider type="vertical"  />
-                        <Button inverted={GetDarkMode()} icon size="mini" color={color} as={Link} to={`/${baseUrl}/new`}>
-                            <Icon name='edit' />
-                        </Button>
+                             {
+                                 loginStatus && <><Divider type="vertical"  />
+                                 <Button inverted={dark} icon size="mini" color={color} as={Link} to={`/${baseUrl}/new`}>
+                                 <Icon name='edit' />
+                                 </Button>
+                             </>
+                             }
+
                     </React.Fragment>
 
                 }

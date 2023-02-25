@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {Route, Routes, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 import {Grid, Menu, Segment} from "semantic-ui-react";
 import AreaMenu from "./area/AreaMenu";
@@ -29,8 +29,7 @@ const City = (props) => {
     // 统计菜单
 
     const color = GetColor();
-    const { districtId} = useParams();
-
+    const {cityId, areaId, districtId, addressId} = useParams();
     const statisticsMenus = !districtId ? ["市场供应", "平均房价", "总房价"] : ["平均房价", "总房价"]
 
     const timelineMenus =  !districtId ? ["市场供应序列", "平均房价序列", "总房价序列"] : ["平均房价序列", "总房价序列"]
@@ -82,23 +81,28 @@ const City = (props) => {
                             <AreaMenu />
                         </Grid.Column>
                     </Grid.Row>
-                    <Divider style={{margin: "0"}} />
-                    <Grid.Row >
-                        <Grid.Column>
-                            <Routes>
-                                <Route path="area/:areaId/*" element={<DistrictMenu  />} />
-                            </Routes>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Divider style={{margin: "0"}} />
-                    <Grid.Row >
-                        <Grid.Column>
-                            <Routes>
-                                <Route path="area/:areaId/district/:districtId/address/:addressId/*" element={<AddressMenu  />} />
-                                <Route path="area/:areaId/district/:districtId/*" element={<AddressMenu  />} />
-                            </Routes>
-                        </Grid.Column>
-                    </Grid.Row>
+                {
+                    areaId && <>
+                        <Divider style={{margin: "0"}} />
+                        <Grid.Row >
+                            <Grid.Column>
+                                <DistrictMenu  />
+
+                            </Grid.Column>
+                        </Grid.Row>
+                    </>
+                }
+                {
+                    districtId && <>
+                        <Divider style={{margin: "0"}} />
+                        <Grid.Row >
+                            <Grid.Column>
+                                <AddressMenu  />
+
+                            </Grid.Column>
+                        </Grid.Row>
+                    </>
+                }
 
             </Grid>
         </Segment>

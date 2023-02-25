@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {FetchAddresses} from "../../../request/beike";
-import {Divider, Header, Icon, Label, Loader, Modal, Segment} from "semantic-ui-react";
+import {Label, Loader} from "semantic-ui-react";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
@@ -48,27 +48,28 @@ const AddressMenu = () => {
 
         <Loader inverted={dark} active={loading}/>
 
+        {renderMenu(orderedAddresses)}
 
-            {
-                orderedAddresses.length < 20 ? renderMenu(orderedAddresses) : <>
-                {
-                    renderMenu(orderedAddresses.slice(0, 20))
-                }
-                    <Modal
-                        dimmer={'blurring'}
-                        open={visible}
-                        trigger={<Icon style={{cursor: "pointer"}} name="angle double right" title="更多" onClick={() => setVisible(true)} />}
-                        style={{width: '80%'}}
-                    >
-                        <Segment inverted={dark}>
-                                <Loader active={loading}>选择中</Loader>
-                            <Header as='h3' textAlign='center' style={{margin: "10px"}}>全部小区信息</Header>
-                            <Divider />
-                            {renderMenu(orderedAddresses)}
-                        </Segment>
-                    </Modal>
-                </>
-            }
+            {/*{*/}
+            {/*    orderedAddresses.length < 20 ? renderMenu(orderedAddresses) : <>*/}
+            {/*    {*/}
+            {/*        renderMenu(orderedAddresses.slice(0, 20))*/}
+            {/*    }*/}
+            {/*        <Modal*/}
+            {/*            dimmer={'blurring'}*/}
+            {/*            open={visible}*/}
+            {/*            trigger={<Icon style={{cursor: "pointer"}} name="angle double right" title="更多" onClick={() => setVisible(true)} />}*/}
+            {/*            style={{width: '80%'}}*/}
+            {/*        >*/}
+            {/*            <Segment inverted={dark}>*/}
+            {/*                    <Loader active={loading}>选择中</Loader>*/}
+            {/*                <Header as='h3' textAlign='center' style={{margin: "10px"}}>全部小区信息</Header>*/}
+            {/*                <Divider />*/}
+            {/*                {renderMenu(orderedAddresses)}*/}
+            {/*            </Segment>*/}
+            {/*        </Modal>*/}
+            {/*    </>*/}
+            {/*}*/}
 
     </React.Fragment>;
 }
