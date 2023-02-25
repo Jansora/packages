@@ -5,17 +5,18 @@ import FlexPadding from "../../../components/styled/base/FlexPadding";
 
 const StyledMaterialContainerHeaderCenter = styled.div`
     //position: absolute;
-    width: 50%;
+    width: 20%;
     margin: 0 auto;
     left: 25%;
     display: flex;
     align-items: center;
 `
 
-const MaterialContainerHeaderCenter = ({children}) => {
-    return <StyledMaterialContainerHeaderCenter>
+const MaterialContainerHeaderCenter = (props) => {
+    const style = props.style ? props.style : {};
+    return <StyledMaterialContainerHeaderCenter style={style}>
         <FlexPadding />
-        {children}
+        {props.children}
         <FlexPadding />
     </StyledMaterialContainerHeaderCenter>
 }

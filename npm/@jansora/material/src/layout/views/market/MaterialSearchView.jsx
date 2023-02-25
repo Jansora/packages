@@ -8,11 +8,14 @@ import StyledPageLoading from "../../../components/styled/StyledLoading";
 import {Link} from "react-router-dom";
 import GetLoginStatus from "../../../hooks/getter/GetLoginStatus";
 
-import {Button, Grid, Segment} from "semantic-ui-react";
+import {Button, Grid, Icon, Segment} from "semantic-ui-react";
 import GetColor from "../../../hooks/getter/GetColor";
 import SearchView from "./SearchView";
 import GetDarkMode from "../../../hooks/getter/GetDarkMode";
 import SetTitle from "../../../hooks/setter/SetTitle";
+import MaterialContainerHeader from "../../../components/view/container/MaterialContainerHeader";
+import MaterialContainerContent from "../../../components/view/container/MaterialContainerContent";
+import MaterialContainer from "../../../components/view/container/MaterialContainer";
 // import StyledPageLoading from "../../../components/styledx/StyledLoading";
 
 /**
@@ -43,6 +46,34 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
 
 
     return <React.Fragment>
+        <MaterialContainer>
+            <MaterialContainerHeader
+                leftStyle={{}}
+                centerStyle={{}}
+                rightStyle={{}}
+                left={<React.Fragment>
+
+                </React.Fragment>
+                }
+                center={
+                    TitleView
+                }
+                right={
+                        loginStatus && <React.Fragment>
+                        <Divider type="vertical"  />
+                        <Button icon size="mini" color={color} as={Link} to={`/${baseUrl}/new`}>
+                            <Icon name='edit' />
+                        </Button>
+                    </React.Fragment>
+
+                }
+            />
+
+            <MaterialContainerContent>
+                {/*<MaterialSearchView baseUrl={'notebook'} name={'组件'} description={"组件列表"} title={'CodeHub'} />*/}
+
+
+
         <StyledPageLoading >
             <Segment inverted={dark}>
                 <Grid columns={1} divided>
@@ -74,6 +105,8 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
             <DataView baseUrl={`/${baseUrl}`} />
             {PageView}
         </StyledPageLoading>
+            </MaterialContainerContent>
+        </MaterialContainer>
     </React.Fragment>;
 }
 

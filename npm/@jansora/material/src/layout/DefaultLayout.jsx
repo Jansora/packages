@@ -1,9 +1,9 @@
 import React from 'react';
 import MaterialSearchView from "./views/market/MaterialSearchView";
-import MaterialContainer from "../components/view/container/MaterialContainer";
-import MaterialContainerContent from "../components/view/container/MaterialContainerContent";
-import MaterialContainerHeader from "../components/view/container/MaterialContainerHeader";
-import {Input} from "semantic-ui-react";
+import MaterialFooter from "./footer/MaterialFooter";
+import MaterialLayout from "./MaterialLayout";
+import MaterialHeader from "./header/MaterialHeader";
+import MaterialAside from "./aside/MaterialAside";
 
 
 /**
@@ -20,55 +20,16 @@ import {Input} from "semantic-ui-react";
 const DefaultLayout = () => {
 
   return <React.Fragment>
-    {/*<MaterialHeader />*/}
-    {/*<MaterialAside />*/}
+    <MaterialHeader />
+    <MaterialAside />
 
-    <MaterialContainer>
-      <MaterialContainerHeader
-          left={<div><Input /></div>}
-          center={<div><Input /></div>}
-          right={<div><Input /></div>}
-      />
-      <MaterialContainerContent>
-        <MaterialContainer>
-          <MaterialContainerHeader
-              left={<div><Input /></div>}
-              center={<div><Input /></div>}
-              right={<div><Input /></div>}
-          />
-          <MaterialContainerContent>
-            <MaterialContainer
-                // style={{height: '200px'}}
-            >
-              <MaterialContainerHeader
-                  left={<div><Input /></div>}
-                  center={<div><Input /></div>}
-                  right={<div><Input /></div>}
-              />
-              <MaterialContainerContent>
-                <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
-              </MaterialContainerContent>
+    <MaterialLayout>
 
-            </MaterialContainer>
+      <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
 
-          </MaterialContainerContent>
+    </MaterialLayout>
 
-        </MaterialContainer>
-      </MaterialContainerContent>
-
-    </MaterialContainer>
-
-
-    {/*<MaterialLayout>*/}
-    {/*  <MaterialLayoutHeader>*/}
-    {/*    1212311111111111111111111111*/}
-    {/*  </MaterialLayoutHeader>*/}
-    {/*  <section>*/}
-    {/*  </section>*/}
-
-    {/*</MaterialLayout>*/}
-
-    {/*<MaterialFooter/>*/}
+    <MaterialFooter/>
   </React.Fragment>;
 }
 

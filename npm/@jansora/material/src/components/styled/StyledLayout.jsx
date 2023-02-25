@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 const StyledLayout = styled.main`
-  margin-top: var(--header-height);
-  margin-left: var(--aside-width);
-  margin-bottom: var(--footer-height);
-  width: calc(100vw - var(--aside-width));
+  padding-top: var(--header-height);
+  padding-left: var(--aside-width);
+  //margin-bottom: var(--footer-height);
+  //width: calc(100vw - var(--aside-width));
   height: calc(100vh - var(--footer-height) - var(--header-height));
-  
+  height: calc(100vh - var(--footer-height));
   &:has(> header) {
     //margin-top: calc(var(--header-height) + var(--layout-header-height));
     padding-top:  var(--layout-header-height);
-    //height: calc(100vh - var(--footer-height) - var(--header-height) - var(--layout-header-height));
+    height: calc(100vh - var(--footer-height) - var(--header-height) - var(--layout-header-height));
   }
 
 

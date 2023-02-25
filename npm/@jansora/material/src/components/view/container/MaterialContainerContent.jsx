@@ -9,9 +9,10 @@ const StyledContainerContent = styled.main`
     height: 100%;
 `
 
-const MaterialContainerContent = ({children}) => {
-    return <StyledContainerContent>
-            {children}
+const MaterialContainerContent = (props) => {
+    const style = props.style ? props.style : {};
+    return <StyledContainerContent style={style}>
+            {props.children}
     </StyledContainerContent>
 
 

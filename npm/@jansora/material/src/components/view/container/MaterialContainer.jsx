@@ -13,25 +13,20 @@ const StyledContainer = styled.main`
   }
   
   > main {
-    height: ${props => props.height ? props.height : 'calc(100% - var(--layout-header-height))'};;
+   
     overflow-x: hidden;
     overflow-y: auto;
   }
   
+  height: calc(100%);
   display: flex;
   flex-direction: column;
-
-  height: ${props => props.height ? props.height : 'calc(100% - var(--layout-header-height))'};;
+  
   
 `
 
 
-const MaterialContainerContent = styled.main`
-    //height: 100%;
-`
-
 const MaterialContainer = (props) => {
-    console.log("bbxc", props)
     const style = props.style ? props.style : {};
     return <StyledContainer style={style}>
             {props.children}

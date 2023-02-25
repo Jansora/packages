@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MaterialContainerHeaderCenter from "./MaterialContainerHeaderCenter";
+import FlexPadding from "../../styled/base/FlexPadding";
 
 const StyledMaterialContainerHeader = styled.header`
 
@@ -10,34 +11,50 @@ const StyledMaterialContainerHeader = styled.header`
   background-color: var(--background-color-2);
   box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
 
-  font-size: 14px;
-  font-weight: 500;
+  //font-size: 14px;
+  //font-weight: 500;
   border-bottom: 1px solid #f0f0f0;
   border-bottom: 1px solid rgba(0,0,0,.1);
-  line-height: 20px;
-  padding: 6px 32px;
+  //line-height: 20px;
+  padding: 6px 16px;
 
   display: flex;
   align-items: center;
 
   .left {
-
+    min-width: 100px;
+    display: flex;
+    align-items: center;
   }
   .right {
     float: right;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
   }
 `
 
 
-const MaterialContainerHeader = ({ left, center, right }) => {
-    return <StyledMaterialContainerHeader>
+const MaterialContainerHeader = (props) => {
+    const style = props.style ? props.style : {};
+    const leftStyle = props.leftStyle ? props.leftStyle : {};
+    const centerStyle = props.centerStyle ? props.centerStyle : {};
+    const rightStyle = props.rightStyle ? props.rightStyle : {};
+    const left = props.left ? props.left : <React.Fragment/>;
+    const center = props.center ? props.center : <React.Fragment/>;
+    const right = props.right ? props.right : <React.Fragment/>;
+    return <StyledMaterialContainerHeader style={style}>
+        <div className="left" style={leftStyle}>{left}</div>
+        {
+            center &&  <MaterialContainerHeaderCenter centerStyle={centerStyle}>
+                {center}
+            </MaterialContainerHeaderCenter>
+        }
 
-        <div className="left">{left}</div>
-        {/*<FlexPadding></FlexPadding>*/}
-        <MaterialContainerHeaderCenter>
-            {center}
-        </MaterialContainerHeaderCenter>
-        <div className="right">{right}</div>
+        <div className="right" style={rightStyle}>
+            <FlexPadding />
+            {right}
+        </div>
 
     </StyledMaterialContainerHeader>
 

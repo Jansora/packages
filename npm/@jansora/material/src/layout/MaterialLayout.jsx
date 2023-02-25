@@ -1,8 +1,6 @@
 import React from 'react';
-import {theme} from "antd";
 import StyledLayout from "../components/styled/StyledLayout";
 
-const { defaultAlgorithm, darkAlgorithm } = theme;
 
 /**
  * <Description> Description for index <br>
@@ -19,12 +17,11 @@ const MaterialLayout = ({children}) => {
 
 
 
-  return <StyledLayout>
+  return <StyledLayout className="layout">
       {
           children
       }
   </StyledLayout>
-  ;
 }
 
 export default MaterialLayout;
