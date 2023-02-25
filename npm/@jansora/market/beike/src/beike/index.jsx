@@ -51,7 +51,8 @@ const MaterialBeike = () => {
         <Routes>
 
             <Route path="city/:cityId/*" element={<City  />} />
-
+            <Route path="city/:cityId/area/:areaId/*" element={<City  />} />
+            <Route path="city/:cityId/area/:areaId/district/:districtId/*" element={<City  />} />
         </Routes>
 
     </React.Fragment>;
