@@ -1,10 +1,9 @@
 import React from 'react';
-import MaterialAside from "./aside/MaterialAside";
-import MaterialHeader from "./header/MaterialHeader";
-import MaterialFooter from "./footer/MaterialFooter";
 import MaterialSearchView from "./views/market/MaterialSearchView";
-import MaterialLayoutHeader from "./MaterialLayoutHeader";
-import MaterialLayout from "./MaterialLayout";
+import MaterialContainer from "../components/view/container/MaterialContainer";
+import MaterialContainerContent from "../components/view/container/MaterialContainerContent";
+import MaterialContainerHeader from "../components/view/container/MaterialContainerHeader";
+import {Input} from "semantic-ui-react";
 
 
 /**
@@ -21,21 +20,55 @@ import MaterialLayout from "./MaterialLayout";
 const DefaultLayout = () => {
 
   return <React.Fragment>
-    <MaterialHeader />
-    <MaterialAside />
-    <MaterialLayout>
-      <MaterialLayoutHeader>
-        1212311111111111111111111111
-      </MaterialLayoutHeader>
-      <section>
-        <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
+    {/*<MaterialHeader />*/}
+    {/*<MaterialAside />*/}
 
-      </section>
+    <MaterialContainer>
+      <MaterialContainerHeader
+          left={<div><Input /></div>}
+          center={<div><Input /></div>}
+          right={<div><Input /></div>}
+      />
+      <MaterialContainerContent>
+        <MaterialContainer>
+          <MaterialContainerHeader
+              left={<div><Input /></div>}
+              center={<div><Input /></div>}
+              right={<div><Input /></div>}
+          />
+          <MaterialContainerContent>
+            <MaterialContainer
+                // style={{height: '200px'}}
+            >
+              <MaterialContainerHeader
+                  left={<div><Input /></div>}
+                  center={<div><Input /></div>}
+                  right={<div><Input /></div>}
+              />
+              <MaterialContainerContent>
+                <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
+              </MaterialContainerContent>
+
+            </MaterialContainer>
+
+          </MaterialContainerContent>
+
+        </MaterialContainer>
+      </MaterialContainerContent>
+
+    </MaterialContainer>
 
 
-    </MaterialLayout>
+    {/*<MaterialLayout>*/}
+    {/*  <MaterialLayoutHeader>*/}
+    {/*    1212311111111111111111111111*/}
+    {/*  </MaterialLayoutHeader>*/}
+    {/*  <section>*/}
+    {/*  </section>*/}
 
-    <MaterialFooter/>
+    {/*</MaterialLayout>*/}
+
+    {/*<MaterialFooter/>*/}
   </React.Fragment>;
 }
 
