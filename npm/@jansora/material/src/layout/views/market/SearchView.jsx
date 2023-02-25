@@ -80,8 +80,7 @@ const SearchView = (baseUrl) => {
     const TitleView = <Input
         inverted={GetDarkMode()}
         size="mini"
-        icon={<Icon name="search"/>
-        }
+        icon={<Icon name="search"/>}
         placeholder="请输入标题来进行模糊搜索"
         loading={loading}
         // value={title}
@@ -127,10 +126,12 @@ const SearchView = (baseUrl) => {
         </Label>
     )
 
-    const PageView = <div style={{width: "100%", height: "50px", marginBottom: 20}}>
-        <div style={{float: "right"}}>
-            <StyledDescription style={{marginRight: 10}}> 页码: </StyledDescription>
-            <Pagination
+    const PageView = <div>
+
+            <StyledDescription style={{marginRight: 10}}>页码: </StyledDescription>
+        {/*<StyledDescription>总数: </StyledDescription>*/}
+        {/*<span style={{margin: "3px 3px 0 3px"}}>{total}</span>*/}
+        <Pagination
                 // defaultActivePage={5}
                 inverted={GetDarkMode()}
                 size='mini'
@@ -142,7 +143,6 @@ const SearchView = (baseUrl) => {
                 totalPages={parseInt(total/pageSize) + 1}
                 onPageChange={(e, { activePage }) => setPageNum(activePage)}
             />
-        </div>
     </div>
     const DataView = ({baseUrl}) =>
         <Grid columns={responsive.huge ? 8 : (responsive.large ? 6 : (responsive.middle ? 4 : 1))}>

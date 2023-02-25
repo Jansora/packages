@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import {Route, Routes} from "react-router-dom";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
@@ -14,6 +14,12 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 const City = (props) => {
 
     SetTitle('贝壳房价分析')
+    const statisticsMenus = !districtId ? ["市场供应", "平均房价", "总房价"] : ["平均房价", "总房价"]
+
+    const timelineMenus =  !districtId ? ["市场供应序列", "平均房价序列", "总房价序列"] : ["平均房价序列", "总房价序列"]
+
+    const [active, setActive] = useState(statisticsMenus[0])
+    const dark = GetDarkMode();
 
     return <StyledPageLoading>
 

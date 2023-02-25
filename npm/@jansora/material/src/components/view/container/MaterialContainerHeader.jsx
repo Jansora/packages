@@ -21,12 +21,12 @@ const StyledMaterialContainerHeader = styled.header`
   display: flex;
   align-items: center;
 
-  .left {
+  .container-left {
     min-width: 100px;
     display: flex;
     align-items: center;
   }
-  .right {
+  .container-right {
     float: right;
     min-width: 100px;
     display: flex;
@@ -44,14 +44,14 @@ const MaterialContainerHeader = (props) => {
     const center = props.center ? props.center : <React.Fragment/>;
     const right = props.right ? props.right : <React.Fragment/>;
     return <StyledMaterialContainerHeader style={style}>
-        <div className="left" style={leftStyle}>{left}</div>
+        <div className="container-left" style={leftStyle}>{left}</div>
         {
             center &&  <MaterialContainerHeaderCenter centerStyle={centerStyle}>
                 {center}
             </MaterialContainerHeaderCenter>
         }
 
-        <div className="right" style={rightStyle}>
+        <div className="container-right" style={rightStyle}>
             <FlexPadding />
             {right}
         </div>

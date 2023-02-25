@@ -2,7 +2,6 @@ import React from 'react';
 import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
-import styled from "styled-components";
 import Code from "./Code";
 import MaterialHeaderMenu from "@jansora/material/es/layout/header/MaterialHeaderMenu";
 
@@ -15,12 +14,6 @@ import MaterialHeaderMenu from "@jansora/material/es/layout/header/MaterialHeade
  * @CreateDate 2021/5/4 09:55:14 <br>
  * @since 1.0 <br>
  */
-
-const StyledCenterHeaderWrapper = styled.div`
-    a {
-      color: var(--text-color-3);
-    }
-`
 
 
 const MaterialPlay = () => {

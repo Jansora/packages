@@ -3,16 +3,21 @@ import {DeleteNote, FetchNote} from "../request/notebook";
 import {Link, useNavigate, useParams} from 'react-router-dom';
 // import {Viewer} from "../../../components/editor/md-editor/bytemd";
 import {Viewer} from "@jansora/bytemd/lib/index";
-import {Anchor, message, Popconfirm} from "antd";
+import {Anchor, Divider, message, Popconfirm} from "antd";
 import {useResponsive} from "ahooks";
 
 
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetUser from "@jansora/material/es/hooks/getter/GetUser";
-import {Button, Grid} from "semantic-ui-react";
+import {Button, Grid, Icon, Menu} from "semantic-ui-react";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
+import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
+import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
+import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
+import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 
 
 /**
@@ -30,6 +35,9 @@ const Note = (props) => {
   const user = GetUser();
 
   const [note] = FetchNote(id)
+
+
+    const [showAnchor, setShowAnchor] = useState(true);
   const [Anchors, setAnchors] = useState([]);
 
   SetDescription(note.name)
@@ -57,48 +65,83 @@ const Note = (props) => {
     updateToc()
   }, [note])
 
-  return <StyledPageLoading>
+  return <MaterialContainer>
+      <MaterialContainerHeader
+          leftStyle={{}}
+          centerStyle={{}}
+          rightStyle={{}}
+          left={<React.Fragment>
+            <StyledDescription style={{marginRight: 5}}>目录: </StyledDescription>
 
-
-    <Grid columns='equal'  id="notebook-note">
-      {
-        responsive.large &&  <Grid.Column />
-      }
-
-      <Grid.Column width={responsive.middle ? 9 : 16} >
-          <Viewer value={note.raw} />
-      </Grid.Column>
-      {/*{*/}
-      {/*  responsive.large &&  <Grid.Column />*/}
-      {/*}*/}
-      {
-          responsive.middle &&
-          <Grid.Column width={4}>
-            <div style={{float: 'right', position: "fixed"}}>
-
+            <Menu inverted={GetDarkMode()} size="mini" style={{margin: "0"}}>
               {
-                  user.id === note.userId && <React.Fragment>
-                    <div style={{marginBottom: 29}}>
-                      <Link to={`/notebook/${note.id}/edit`} style={{marginRight: 30}}><Button color={color}
-                                                                                               inverted={GetDarkMode()}> 编辑 </Button></Link>
+                [{name: "显示", value: true},{name: "隐藏", value: false}].map((item, index) =>
+                    <Menu.Item key={index} onClick={() => setShowAnchor(item.value)} active={item.value === showAnchor} color={item.value === showAnchor ? color : null}>
+                      <StyledText>{item.name}</StyledText>
+                    </Menu.Item>
+                )
+              }
+            </Menu>
+            <Divider type="vertical"  />
+
+              <StyledDescription> {note.description}</StyledDescription>
+          </React.Fragment>
+          }
+          center={
+            <React.Fragment>
+                {note.title}
+            </React.Fragment>
+          }
+          right={
+              user.id === note.userId && <React.Fragment>
+
                       <Popconfirm
                           title='你确认要删除吗？'
                           onConfirm={() => {
-                            message.success({content: '删除成功'});
-                            DeleteNote(note.id, () => navigate("/notebook"))
+                              message.success({content: '删除成功'});
+                              DeleteNote(note.id, () => navigate("/notebook"))
                           }}
                           onCancel={() => {
-                            // message.error({ content: 'cancel' });
+                              // message.error({ content: 'cancel' });
                           }}
                       >
-                        <Button color={"red"}> 删除 </Button>
+                          <Button icon size="mini" color={"red"}>
+                              <Icon name='delete' />
+                          </Button>
                       </Popconfirm>
 
-                    </div>
-                  </React.Fragment>
-              }
-              {/*<CustomLabel> 文章大纲 </CustomLabel>*/}
-              <Anchor >
+
+                <Divider type="vertical"  />
+
+                <Button icon size="mini" color={color} as={Link} to={`/notebook/${note.id}/edit`}>
+                  <Icon name='edit' />
+                </Button>
+              </React.Fragment>
+
+          }
+          />
+
+         <MaterialContainerContent>
+             <StyledPageLoading>
+
+    <Grid columns='equal'  id="notebook-note">
+      {
+        responsive.middle &&  <Grid.Column />
+      }
+
+      <Grid.Column width={responsive.middle ? (showAnchor ? 9 : 11) : 16} >
+          <Viewer value={note.raw} />
+      </Grid.Column>
+      {
+          responsive.middle && showAnchor &&
+          <Grid.Column width={3}>
+
+            <div style={{float: 'right', position: "fixed", overflowY: "auto"}}>
+
+                <StyledText> 文章大纲 </StyledText>
+                <Divider style={{margin: "10px 0 15px 0"}}/>
+              <Anchor
+              >
                 {
                   Anchors.map((anchor, index) => {
 
@@ -123,11 +166,17 @@ const Note = (props) => {
 
           </Grid.Column>
       }
+        {
+            responsive.middle &&  <Grid.Column />
+        }
     </Grid>
 
 
 
-  </StyledPageLoading>;
+  </StyledPageLoading>
+
+</MaterialContainerContent>
+</MaterialContainer>;
 }
 
 export default Note;
