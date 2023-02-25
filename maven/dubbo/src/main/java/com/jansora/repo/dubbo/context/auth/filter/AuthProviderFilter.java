@@ -1,13 +1,8 @@
 package com.jansora.repo.dubbo.context.auth.filter;
 
+import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.dubbo.constants.DubboFilterConstant;
-import com.jansora.repo.dubbo.context.DubboAuthContext;
-import org.apache.dubbo.rpc.Filter;
-import org.apache.dubbo.rpc.Invocation;
-import org.apache.dubbo.rpc.Invoker;
-import org.apache.dubbo.rpc.Result;
-import org.apache.dubbo.rpc.RpcContext;
-import org.apache.dubbo.rpc.RpcException;
+import org.apache.dubbo.rpc.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
@@ -29,7 +24,7 @@ public class AuthProviderFilter implements Filter {
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_TOKEN);
         try {
-            DubboAuthContext.setContext(StringUtils.hasLength(authId) ? Long.parseLong(authId) : -1L);
+            AuthContext.setContext(StringUtils.hasLength(authId) ? Long.parseLong(authId) : -1L);
         }
         catch (NumberFormatException e) {
             LOGGER.error("validate token failed. ", e);

@@ -1,16 +1,12 @@
 package com.jansora.repo.web.utils;
 
-import com.jansora.app.repo.core.exception.BaseAppException;
-import com.jansora.app.repo.core.exception.web.BadRequestException;
+import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.web.BadRequestException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;

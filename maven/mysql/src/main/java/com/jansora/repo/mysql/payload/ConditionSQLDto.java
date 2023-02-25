@@ -1,6 +1,6 @@
 package com.jansora.repo.mysql.payload;
 
-import com.jansora.app.repo.core.payload.dto.BaseDto;
+import com.jansora.repo.core.payload.dto.BaseDto;
 
 /**
  * <Description> <br>

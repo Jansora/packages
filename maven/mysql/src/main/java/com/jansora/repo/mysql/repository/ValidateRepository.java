@@ -1,10 +1,10 @@
 package com.jansora.repo.mysql.repository;
 
-import com.jansora.app.repo.core.exception.auth.ForbiddenException;
-import com.jansora.app.repo.core.exception.dao.DataConflictException;
-import com.jansora.app.repo.core.exception.dao.DataNotFoundException;
-import com.jansora.app.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.app.repo.core.utils.AssertUtils;
+import com.jansora.repo.core.exception.auth.ForbiddenException;
+import com.jansora.repo.core.exception.dao.DataConflictException;
+import com.jansora.repo.core.exception.dao.DataNotFoundException;
+import com.jansora.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
 import org.springframework.beans.factory.annotation.Autowired;

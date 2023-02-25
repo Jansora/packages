@@ -6,7 +6,7 @@
 //import com.jansora.app.repo.core.payload.vo.PageVo;
 //import com.jansora.app.repo.core.payload.vo.SearchVo;
 //import com.jansora.app.repo.core.utils.NumberUtils;
-//import com.jansora.repo.mysql.mapper.SearchMapper;
+//import com.jansora.app.repo.core.factory.mapper.SearchMapper;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Repository;
 //

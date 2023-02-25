@@ -1,6 +1,6 @@
 package com.jansora.repo.demo.utils;
 
-import com.jansora.app.repo.core.utils.CostUtils;
+import com.jansora.repo.core.utils.CostUtils;
 import com.jansora.repo.demo.AbstractDemoFactory;
 
 /**
