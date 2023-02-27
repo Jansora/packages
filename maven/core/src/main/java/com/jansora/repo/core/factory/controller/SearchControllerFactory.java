@@ -1,6 +1,5 @@
 package com.jansora.repo.core.factory.controller;
 
-import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.provider.SearchProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
@@ -24,7 +23,6 @@ import java.util.List;
 public interface SearchControllerFactory {
     
     abstract SearchProviderFactory searchFactory();
-    
 
     /**
      * 搜索正文
@@ -33,7 +31,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("search")
     default ResultDto<PageVo<SearchVo>> search(SearchReq req) throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().search(req, AuthContext.auth()));
+        return ResultDto.SUCCESS(searchFactory().search(req));
     }
 
     /**
@@ -41,7 +39,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("classifyCounts")
     default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts(AuthContext.auth()));
+        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
     }
 
     /**
@@ -51,7 +49,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("tags")
     default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().fetchTags(classify, AuthContext.auth()));
+        return ResultDto.SUCCESS(searchFactory().fetchTags(classify));
     }
 
     /**
@@ -59,7 +57,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("logos")
     default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().fetchLogos(AuthContext.auth()));
+        return ResultDto.SUCCESS(searchFactory().fetchLogos());
     }
 
 }

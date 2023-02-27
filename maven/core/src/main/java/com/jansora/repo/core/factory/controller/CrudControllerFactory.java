@@ -7,10 +7,7 @@ import com.jansora.repo.core.factory.provider.CrudProviderFactory;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.req.BaseReq;
 import com.jansora.repo.core.payload.vo.BaseVo;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @description:
@@ -34,7 +31,7 @@ public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends 
      */
     @PutMapping
     @Auth({Role.ADMIN})
-    default ResultDto<RESPONSE> save(REQUEST req) throws BaseAppException {
+    default ResultDto<RESPONSE> save(@RequestBody REQUEST req) throws BaseAppException {
         return ResultDto.SUCCESS(crudFactory().save(req));
     }
 
