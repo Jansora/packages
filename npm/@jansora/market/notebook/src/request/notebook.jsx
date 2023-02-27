@@ -120,7 +120,7 @@ export const FetchRelationTags = (classify) => {
 export const InsertNote = (data, callback) => {
 
 
-  client.post('notebook/note', data)
+  client.post('notebook', data)
       .then(response =>  {
           message.success("添加成功")
           callback && callback(response)
@@ -133,7 +133,7 @@ export const InsertNote = (data, callback) => {
   return null;
 };
 export const UpdateNote = (data, callback) => {
-  client.put('notebook/note', data)
+  client.put('notebook', data)
       .then(response =>  {
         message.success("更新成功")
         callback && callback(response)
@@ -147,7 +147,7 @@ export const UpdateNote = (data, callback) => {
 };
 
 export const UpdateNoteDraft = (data, callback) => {
-  client.post('notebook/note/draft', data)
+  client.post('notebook/draft', data)
       .then(response =>  {
         callback && callback(response)
       }).catch( e => {
@@ -165,7 +165,7 @@ export const FetchNote = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/note/${id}`)
+      client.get(`notebook/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -182,7 +182,7 @@ export const FetchEditableNote = (id, resource) => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
-      client.get(`notebook/note/draft/${id}`)
+      client.get(`notebook/draft/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -213,7 +213,7 @@ export const FetchHistoryNotes = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/note/versions/${id}`)
+      client.get(`notebook/versions/${id}`)
           .then(setNotes).finally(()=> {  setLoading(false)
       })
     }
@@ -258,7 +258,7 @@ export const FetchNotes = (classify, tag, title, pageSize, pageNum, orderBy, sor
 
 export const DeleteNote = (id, callback) => {
 
-  client.delete(`notebook/note/${id}`)
+  client.delete(`notebook/${id}`)
       .then(response => {
         callback && callback()
       }).catch(e => {

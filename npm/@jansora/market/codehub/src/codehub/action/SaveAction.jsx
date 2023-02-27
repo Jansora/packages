@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
 import {useParams} from 'react-router-dom';
 
-import {FetchAction, FetchClassifies, FetchLogos, FetchTags, InsertAction, UpdateAction} from "../request/action";
+import {FetchAction, FetchClassifies, FetchLogos, FetchTags, SaveActionRequest} from "../request/action";
 import styled from 'styled-components'
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {useDebounceFn} from "ahooks";
@@ -109,11 +109,9 @@ const SaveAction = (props) => {
     const callback = (data) => {
       navigate(`/codehub/action/${data.id}`)
     };
-    if(!id) {
-      InsertAction(args, callback);
-    } else {
-      UpdateAction(args, callback);
-    }
+
+    SaveActionRequest(args, callback);
+
   }
 
 

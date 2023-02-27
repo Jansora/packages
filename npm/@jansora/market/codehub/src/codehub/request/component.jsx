@@ -107,22 +107,8 @@ export const FetchRelationTags = (classify) => {
   return [relationTags, relationTagsLoading];
 };
 
-export const InsertComponent = (data, callback) => {
 
-
-  client.post('codehub/component', data)
-      .then(response =>  {
-          message.success("添加成功")
-          callback && callback(response)
-
-      }).catch( e => {
-  }).finally(()=> {
-  })
-
-
-  return null;
-};
-export const UpdateComponent = (data, callback) => {
+export const SaveComponentRequest = (data, callback) => {
   client.put('codehub/component', data)
       .then(response =>  {
         // message.success("更新成功")

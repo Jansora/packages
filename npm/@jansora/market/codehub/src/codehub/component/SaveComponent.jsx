@@ -2,14 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
 import {useNavigate, useParams} from 'react-router-dom';
 
-import {
-  FetchClassifies,
-  FetchComponent,
-  FetchLogos,
-  FetchTags,
-  InsertComponent,
-  UpdateComponent
-} from "../request/component";
+import {FetchClassifies, FetchComponent, FetchLogos, FetchTags, SaveComponentRequest} from "../request/component";
 import styled from 'styled-components'
 
 import {useDebounceFn} from "ahooks";
@@ -118,11 +111,9 @@ const SaveComponent = (props) => {
     const callback = (data) => {
       navigate(`/codehub/component/${data.id}`)
     };
-    if(!id) {
-      InsertComponent(args, callback);
-    } else {
-      UpdateComponent(args, callback);
-    }
+
+    SaveComponentRequest(args, callback);
+
   }
 
   const {run: updateVarDebounce} = useDebounceFn(
