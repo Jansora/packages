@@ -1,5 +1,7 @@
 package com.jansora.repo.core.factory.controller;
 
+import com.jansora.repo.core.auth.Auth;
+import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.provider.CrudProviderFactory;
 import com.jansora.repo.core.payload.dto.ResultDto;
@@ -31,6 +33,7 @@ public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends 
      * 保存
      */
     @PutMapping
+    @Auth({Role.ADMIN})
     default ResultDto<RESPONSE> save(REQUEST req) throws BaseAppException {
         return ResultDto.SUCCESS(crudFactory().save(req));
     }
@@ -39,6 +42,7 @@ public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends 
      * 删除单条数据
      */
     @DeleteMapping
+    @Auth({Role.ADMIN})
     default ResultDto<RESPONSE> deleteById(Long id) throws BaseAppException {
         return ResultDto.SUCCESS(crudFactory().deleteById(id));
     }
