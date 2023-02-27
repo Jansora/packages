@@ -1,9 +1,10 @@
 package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
-import com.jansora.repo.core.exception.system.NotImplementException;
+import com.jansora.repo.core.factory.service.SearchServiceFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.req.SearchReq;
+import com.jansora.repo.core.payload.valobj.AuthValObj;
 import com.jansora.repo.core.payload.vo.PageVo;
 import com.jansora.repo.core.payload.vo.SearchVo;
 
@@ -20,34 +21,35 @@ import java.util.List;
  */
 public interface SearchProviderFactory {
 
+    public abstract SearchServiceFactory searchFactory();
+
+
     /**
      * 搜索正文
      */
-    default PageVo<SearchVo> search(SearchReq req) throws BaseAppException {
-        throw new NotImplementException();
+    default PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws BaseAppException {
+        return searchFactory().search(req, auth);
     }
 
     /**
      * 搜索 classify
      */
-    default List<KVDto<Long>> fetchClassifyCounts() throws BaseAppException {
-        throw new NotImplementException();
+    default List<KVDto<Long>> fetchClassifyCounts(AuthValObj auth) throws BaseAppException {
+        return searchFactory().fetchClassifyCounts(auth);
     }
 
     /**
      * 搜索 tag
      */
-    default List<KVDto<Long>> fetchTags(String classify) throws BaseAppException {
-        throw new NotImplementException();
+    default List<KVDto<Long>> fetchTags(String classify, AuthValObj auth) throws BaseAppException {
+        return searchFactory().fetchTags(classify, auth);
     }
 
     /**
      * 搜索 logo
      */
-    default List<KVDto<String>> fetchLogos() throws BaseAppException {
-        throw new NotImplementException();
+    default List<KVDto<String>> fetchLogos(AuthValObj auth) throws BaseAppException {
+        return searchFactory().fetchLogos(auth);
     }
-
-
 
 }

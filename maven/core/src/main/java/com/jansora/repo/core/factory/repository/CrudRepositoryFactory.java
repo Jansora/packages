@@ -15,7 +15,7 @@ import com.jansora.repo.core.payload.vo.BaseVo;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> extends BaseRepositoryFactory {
+public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
 
     /**
      * 根据主键查找

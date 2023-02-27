@@ -1,5 +1,6 @@
 package com.jansora.repo.core.factory.controller;
 
+import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.provider.SearchProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 public interface SearchControllerFactory {
     
-    abstract SearchProviderFactory searchProvider();
+    abstract SearchProviderFactory searchFactory();
     
 
     /**
@@ -32,7 +33,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("search")
     default ResultDto<PageVo<SearchVo>> search(SearchReq req) throws BaseAppException {
-        return ResultDto.SUCCESS(searchProvider().search(req));
+        return ResultDto.SUCCESS(searchFactory().search(req, AuthContext.auth()));
     }
 
     /**
@@ -40,7 +41,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("classifyCounts")
     default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseAppException {
-        return ResultDto.SUCCESS(searchProvider().fetchClassifyCounts());
+        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts(AuthContext.auth()));
     }
 
     /**
@@ -50,7 +51,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("tags")
     default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseAppException {
-        return ResultDto.SUCCESS(searchProvider().fetchTags(classify));
+        return ResultDto.SUCCESS(searchFactory().fetchTags(classify, AuthContext.auth()));
     }
 
     /**
@@ -58,7 +59,7 @@ public interface SearchControllerFactory {
      */
     @GetMapping("logos")
     default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseAppException {
-        return ResultDto.SUCCESS(searchProvider().fetchLogos());
+        return ResultDto.SUCCESS(searchFactory().fetchLogos(AuthContext.auth()));
     }
 
 }

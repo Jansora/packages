@@ -21,34 +21,34 @@ import java.util.List;
  */
 public interface SearchServiceFactory {
 
-    public abstract SearchRepositoryFactory factory();
+    public abstract SearchRepositoryFactory searchFactory();
 
     /**
      * 搜索正文
      */
     default PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws BaseAppException {
-        return factory().search(req, auth);
+        return searchFactory().search(req, auth);
     }
 
     /**
      * 搜索 classify
      */
     default List<KVDto<Long>> fetchClassifyCounts(AuthValObj auth) throws BaseAppException {
-        return factory().fetchClassifyCounts(auth);
+        return searchFactory().fetchClassifyCounts(auth);
     }
 
     /**
      * 搜索 tag
      */
     default List<KVDto<Long>> fetchTags(String classify, AuthValObj auth) throws BaseAppException {
-        return factory().fetchTags(classify, auth);
+        return searchFactory().fetchTags(classify, auth);
     }
 
     /**
      * 搜索 logo
      */
     default List<KVDto<String>> fetchLogos(AuthValObj auth) throws BaseAppException {
-        return factory().fetchLogos(auth);
+        return searchFactory().fetchLogos(auth);
     }
 
 }

@@ -1,23 +1,19 @@
-package com.jansora.repo.core.factory.service;
+package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
-import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+import com.jansora.repo.core.factory.service.CrudServiceFactory;
 import com.jansora.repo.core.payload.req.BaseReq;
 import com.jansora.repo.core.payload.vo.BaseVo;
 
 /**
- * <Description> Description for CrudRepository <br>
- *
- * @author jansora (zhang.yangyuan) <br>
- * @version 1.0 <br>
- * @email zhangyue1936@gmail.com
- * @transId null
- * @CreateDate 2022/7/28 AM09:41 <br>
- * @since 1.0 <br>
+ * @description:
+ * @author: jansora (zhang.yangyuan)
+ * @date: 2023-02-26 18:32:08
  */
-public interface CrudServiceFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
+public interface CrudProviderFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
 
-    public abstract CrudRepositoryFactory<RESPONSE, REQUEST> crudFactory();
+    public abstract CrudServiceFactory<RESPONSE, REQUEST> crudFactory();
+
 
     /**
      * 根据主键查找
@@ -46,5 +42,6 @@ public interface CrudServiceFactory<RESPONSE extends BaseVo, REQUEST extends Bas
     default RESPONSE deleteById(Long id) throws BaseAppException {
         return crudFactory().deleteById(id);
     }
+
 
 }
