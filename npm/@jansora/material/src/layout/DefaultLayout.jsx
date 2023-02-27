@@ -1,9 +1,9 @@
 import React from 'react';
-import MaterialSearchView from "./views/market/MaterialSearchView";
 import MaterialFooter from "./footer/MaterialFooter";
 import MaterialLayout from "./MaterialLayout";
 import MaterialHeader from "./header/MaterialHeader";
 import MaterialAside from "./aside/MaterialAside";
+import Tree from "./views/tree";
 
 
 /**
@@ -25,7 +25,9 @@ const DefaultLayout = () => {
 
     <MaterialLayout>
 
-      <MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />
+
+      <Tree />
+      {/*<MaterialSearchView baseUrl={'codehub/component'} name={'组件'} description={"组件列表"} title={'组件商场'} />*/}
 
     </MaterialLayout>
 
