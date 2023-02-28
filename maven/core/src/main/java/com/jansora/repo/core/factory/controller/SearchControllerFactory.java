@@ -45,14 +45,6 @@ public interface SearchControllerFactory {
     }
 
     /**
-     * 搜索 classify
-     */
-    @GetMapping("classifyCounts")
-    default ResultDto<List<KVDto<Long>>> fet() throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
-    }
-
-    /**
      * 查询 分类列表
      * @return Optional<EasyCodeDto>
      */

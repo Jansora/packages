@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>1.100.10</version>
+		<version>1.100.15</version>
 	</parent>
 	<artifactId>rocketmq</artifactId>
-	<version>1.100.10</version>
+	<version>1.100.15</version>
 	<packaging>jar</packaging>
 	<name>rocketmq</name>
 	<description>rocketmq</description>

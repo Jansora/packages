@@ -1,4 +1,4 @@
-package com.jansora.repo.core.mq.factory;
+package com.jansora.repo.core.factory.mq;
 
 import com.jansora.repo.core.exception.BaseAppException;
 

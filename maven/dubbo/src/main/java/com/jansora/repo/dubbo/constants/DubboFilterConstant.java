@@ -10,5 +10,7 @@ package com.jansora.repo.dubbo.constants;
  * @since 1.0 <br>
  */
 public final class DubboFilterConstant {
-    public static final String AUTH_TOKEN = "dubboAuthToken";
+
+    public static final String AUTH_ID = "dubboAuthId";
+    public static final String AUTH_ROLE = "dubboAuthRole";
 }

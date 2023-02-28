@@ -18,8 +18,12 @@ public class AuthConsumerFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
-        Long token = AuthContext.auth().getAuthId();
-        RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_TOKEN, token.toString());
+        Long authId = AuthContext.auth().getAuthId();
+        String token = AuthContext.auth().getRole().role();
+
+        RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ID, authId.toString());
+        RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ROLE, token);
+
         return invoker.invoke(invocation);
     }
 }

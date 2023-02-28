@@ -4,6 +4,8 @@ public enum Role {
     ADMIN("A", "管理员"),
     COMMON("C", "一般用户"),
     OAUTH("O", "第三方用户"),
+
+    NULL("N", "NULL"),
     ;
 
     private String role;
@@ -13,19 +15,26 @@ public enum Role {
         this.description = description;
     }
 
-    public String getRole() {
+
+    public static Role of(String role) {
+        if (ADMIN.role.equals(role)) {
+            return ADMIN;
+        }
+        if (COMMON.role.equals(role)) {
+            return COMMON;
+        }
+        if (OAUTH.role.equals(role)) {
+            return OAUTH;
+        }
+        return NULL;
+    }
+
+    public String role() {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

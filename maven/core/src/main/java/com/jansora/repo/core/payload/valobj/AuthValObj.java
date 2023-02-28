@@ -1,5 +1,7 @@
 package com.jansora.repo.core.payload.valobj;
 
+import com.jansora.repo.core.auth.Role;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -22,33 +24,38 @@ public class AuthValObj extends BaseValObj {
      */
     Long authId;
 
-    public static AuthValObj of(Long authId) {
+
+    /**
+     * 角色
+     */
+    Role role;
+
+    public static AuthValObj of(Long authId, String role) {
         if (Objects.nonNull(authId) && authId < 128 && authId > -128) {
             AuthValObj auth = cache.get(authId);
             if (Objects.nonNull(auth)) {
                 return auth;
             }
-            cache.put(authId, new AuthValObj(authId));
+            cache.put(authId, new AuthValObj(authId, role));
         }
-        return new AuthValObj(authId);
+        return new AuthValObj(authId, role);
     }
 
     public AuthValObj() {
-
+        this.authId = -1L;
+        this.role = Role.NULL;
     }
 
-
-    public AuthValObj(Long authId) {
+    public AuthValObj(Long authId, String role) {
         this.authId = authId;
+        this.role = Role.of(role);
     }
 
     public Long getAuthId() {
         return authId;
     }
 
-
-    public void setAuthId(Long authId) {
-        this.authId = authId;
+    public Role getRole() {
+        return role;
     }
-
 }

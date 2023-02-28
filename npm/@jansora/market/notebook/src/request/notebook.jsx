@@ -17,7 +17,7 @@ export const FetchClassifies = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/classifies`)
+      client.get(`notebook/note/classifies`)
           .then(setClassifies).finally(()=> {  setLoading(false)
       })
     }
@@ -37,7 +37,7 @@ export const FetchLogos = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/logos`)
+      client.get(`notebook/note/logos`)
           .then(setLogos).finally(()=> {  setLoading(false)
       })
     }
@@ -56,7 +56,7 @@ export const FetchClassifyCount = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/classifyCounts`)
+      client.get(`notebook/note/classifyCounts`)
           .then(setClassifyCounts).finally(()=> {  setLoading(false)
       })
     }
@@ -75,7 +75,7 @@ export const FetchTags = () => {
 
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/tags`)
+      client.get(`notebook/note/tags`)
           .then(data => setTags(data))
           .finally(()=> {  setLoading(false)
       })
@@ -102,7 +102,7 @@ export const FetchRelationTags = (classify) => {
   useEffect(()=> {
 
     if (relationTagsLoading) {
-      client.get(`notebook/tags?${stringify({classify})}`)
+      client.get(`notebook/note/tags?${stringify({classify})}`)
           .then(data => setRelationTags(data))
           .finally(()=> {  setLoading(false)
           })
@@ -120,7 +120,7 @@ export const FetchRelationTags = (classify) => {
 export const InsertNote = (data, callback) => {
 
 
-  client.post('notebook', data)
+  client.post('notebook/note', data)
       .then(response =>  {
           message.success("添加成功")
           callback && callback(response)
@@ -132,8 +132,8 @@ export const InsertNote = (data, callback) => {
 
   return null;
 };
-export const UpdateNote = (data, callback) => {
-  client.put('notebook', data)
+export const SaveNoteRequest = (data, callback) => {
+  client.put('notebook/note', data)
       .then(response =>  {
         message.success("更新成功")
         callback && callback(response)
@@ -146,8 +146,8 @@ export const UpdateNote = (data, callback) => {
   return null;
 };
 
-export const UpdateNoteDraft = (data, callback) => {
-  client.post('notebook/draft', data)
+export const SaveNoteDraft = (data, callback) => {
+  client.post('notebook/note/draft', data)
       .then(response =>  {
         callback && callback(response)
       }).catch( e => {
@@ -165,7 +165,7 @@ export const FetchNote = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/${id}`)
+      client.get(`notebook/note/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -182,7 +182,7 @@ export const FetchEditableNote = (id, resource) => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
-      client.get(`notebook/draft/${id}`)
+      client.get(`notebook/note/draft/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -213,7 +213,7 @@ export const FetchHistoryNotes = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/versions/${id}`)
+      client.get(`notebook/note/versions/${id}`)
           .then(setNotes).finally(()=> {  setLoading(false)
       })
     }
@@ -221,44 +221,11 @@ export const FetchHistoryNotes = (id, resource) => {
   }, [loading, id]);
   return [notes, loading];
 };
-export const FetchNotes = (classify, tag, title, pageSize, pageNum, orderBy, sort, setPageNum) => {
-
-  const [notes, setNotes] = useState([]);
-  const [total, setTotal] = useState([]);
-  const [lock, setLock] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(()=> {
-    setPageNum(1)
-    setNotes([])
-  },[classify, tag, orderBy, sort, setPageNum])
-
-
-  useEffect(()=> {
-    setLock(false);
-  },[classify, tag, pageNum, orderBy, sort])
-
-  useEffect(()=> {
-    if (!lock) {
-      setLock(true);
-      setLoading(true)
-      const args = {sort, orderBy, tag, pageSize, pageNum, name: title, classify};
-      client.get(`notebook/search?${stringify(args)}`).then(response => {
-        setTotal(response.total)
-        setNotes(response.data);
-
-        // message.success( `获取文章列表, 当前已展示 ${notes.concat(response.data).length} / ${response.total} 条`)
-
-      }).finally(() => setLoading(false));
-    }
-  }, [lock, pageNum, notes, tag, title, setLock, sort, orderBy, classify, pageSize]);
-  return [notes, setNotes, total, setLock, loading];
-};
 
 
 export const DeleteNote = (id, callback) => {
 
-  client.delete(`notebook/${id}`)
+  client.delete(`notebook/note/${id}`)
       .then(response => {
         callback && callback()
       }).catch(e => {
@@ -268,42 +235,3 @@ export const DeleteNote = (id, callback) => {
   return null;
 };
 
-
-export const FetchNotebooks = () => {
-
-  const [notebooks, setNotebooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(()=> {
-    if(loading) {
-      client.get(`notebook/search`)
-           .then(data => setNotebooks(data.sort((a,b) => a.dataIndex - b.dataIndex).map(tag => tag)))
-          .finally(()=> {  setLoading(false)
-      })
-    }
-
-  }, [loading]);
-
-
-
-  return [notebooks, loading];
-};
-
-export const FetchInnerApps = () => {
-
-
-  const [innerApps, setInnerApps] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(()=> {
-    if(loading) {
-      client.get(`innerApp`)
-          .then(data => setInnerApps(data.sort((a,b) => a.dataIndex - b.dataIndex).map(tag => tag)))
-          .finally(()=> {  setLoading(false)
-      })
-    }
-
-  }, [loading]);
-
-
-
-  return [innerApps, setInnerApps, loading];
-};

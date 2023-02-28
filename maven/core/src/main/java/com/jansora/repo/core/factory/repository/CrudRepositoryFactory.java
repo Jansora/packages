@@ -18,6 +18,23 @@ import com.jansora.repo.core.payload.vo.BaseVo;
 public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
 
     /**
+     * 可读性
+     * @param id 主键
+     */
+    default boolean readable(Long id) throws BaseAppException {
+        return true;
+    }
+
+    /**
+     * 可编辑性
+     * @param targetId targetId
+     */
+    default boolean editable(Long targetId) throws BaseAppException {
+        return true;
+    }
+
+
+    /**
      * 根据主键查找
      * @param id 主键
      * @return 返回值

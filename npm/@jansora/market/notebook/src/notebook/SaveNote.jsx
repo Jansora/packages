@@ -5,13 +5,12 @@ import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 
 import {Editor} from "@jansora/bytemd";
 import {
-  FetchClassifies,
-  FetchEditableNote,
-  FetchLogos,
-  FetchTags,
-  InsertNote,
-  UpdateNote,
-  UpdateNoteDraft
+    FetchClassifies,
+    FetchEditableNote,
+    FetchLogos,
+    FetchTags,
+    SaveNoteDraft,
+    SaveNoteRequest
 } from "../request/notebook";
 
 import {useDebounceFn} from "ahooks";
@@ -96,11 +95,9 @@ const SaveNote = (props) => {
       name, description, tag: `${!!tag ? tag.join(",") : ''}`, logo: logo.split("___")[0], raw
     };
     const callback = (data) => navigate(`/notebook/${data.id}`);
-    if(!id) {
-      InsertNote(args, callback);
-    } else {
-      UpdateNote(args, callback);
-    }
+
+    SaveNoteRequest(args, callback);
+
   }
   const autoSaveFn = () => {
     const args = {
@@ -110,7 +107,7 @@ const SaveNote = (props) => {
       setAutoAlert(`自动保存于 ${note.updatedAt}`)
     };
     if(!!id && raw !== note.raw) {
-      UpdateNoteDraft(args, callback);
+      SaveNoteDraft(args, callback);
     }
   }
   const { run } = useDebounceFn(
