@@ -1,6 +1,6 @@
 {
   "name": "@jansora/market-notebook",
-  "version": "2.15.9",
+  "version": "2.15.10",
   "description": "@jansora/market-notebook React component",
   "main": "lib/index.js",
   "module": "es/index.js",

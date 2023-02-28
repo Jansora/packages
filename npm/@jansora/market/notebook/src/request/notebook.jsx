@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import {client} from "@jansora/material/es/request/index";
-import {stringify} from 'qs'
 import {IsNumber} from "@jansora/material/es/components/utils";
 import {message} from "antd";
 
@@ -17,7 +16,7 @@ export const FetchClassifies = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/note/classifies`)
+      client.get(`notebook/classifies`)
           .then(setClassifies).finally(()=> {  setLoading(false)
       })
     }
@@ -37,7 +36,7 @@ export const FetchLogos = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/note/logos`)
+      client.get(`notebook/logos`)
           .then(setLogos).finally(()=> {  setLoading(false)
       })
     }
@@ -56,7 +55,7 @@ export const FetchClassifyCount = () => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/note/classifyCounts`)
+      client.get(`notebook/classifyCounts`)
           .then(setClassifyCounts).finally(()=> {  setLoading(false)
       })
     }
@@ -75,7 +74,7 @@ export const FetchTags = () => {
 
   useEffect(()=> {
     if(loading) {
-      client.get(`notebook/note/tags`)
+      client.get(`notebook/tags`)
           .then(data => setTags(data))
           .finally(()=> {  setLoading(false)
       })
@@ -88,37 +87,8 @@ export const FetchTags = () => {
   return [tags, setTags, loading];
 };
 
-export const FetchRelationTags = (classify) => {
-
-
-  const [relationTags, setRelationTags] = useState([]);
-  const [relationTagsLoading, setLoading] = useState(true);
-
-  useEffect(() =>{
-    setLoading(true)
-  }, [classify])
-
-
-  useEffect(()=> {
-
-    if (relationTagsLoading) {
-      client.get(`notebook/note/tags?${stringify({classify})}`)
-          .then(data => setRelationTags(data))
-          .finally(()=> {  setLoading(false)
-          })
-    }
-
-
-
-  }, [relationTagsLoading, classify]);
-
-
-
-  return [relationTags, relationTagsLoading];
-};
-
 export const SaveNoteRequest = (data, callback) => {
-  client.put('notebook/note', data)
+  client.put('notebook', data)
       .then(response =>  {
         message.success("更新成功")
         callback && callback(response)
@@ -132,7 +102,7 @@ export const SaveNoteRequest = (data, callback) => {
 };
 
 export const SaveNoteDraft = (data, callback) => {
-  client.post('notebook/note/draft', data)
+  client.post('notebook/draft', data)
       .then(response =>  {
         callback && callback(response)
       }).catch( e => {
@@ -142,7 +112,7 @@ export const SaveNoteDraft = (data, callback) => {
 
   return null;
 };
-export const FetchNote = (id, resource) => {
+export const FetchNote = (id) => {
 
 
   const [note, setNote] = useState({});
@@ -150,7 +120,7 @@ export const FetchNote = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/note/${id}`)
+      client.get(`notebook/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -167,7 +137,7 @@ export const FetchEditableNote = (id, resource) => {
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
-      client.get(`notebook/note/draft/${id}`)
+      client.get(`notebook/draft/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
     }
@@ -198,7 +168,7 @@ export const FetchHistoryNotes = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
 
-      client.get(`notebook/note/versions/${id}`)
+      client.get(`notebook/versions/${id}`)
           .then(setNotes).finally(()=> {  setLoading(false)
       })
     }
@@ -210,7 +180,7 @@ export const FetchHistoryNotes = (id, resource) => {
 
 export const DeleteNote = (id, callback) => {
 
-  client.delete(`notebook/note/${id}`)
+  client.delete(`notebook/${id}`)
       .then(response => {
         callback && callback()
       }).catch(e => {

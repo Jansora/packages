@@ -36,7 +36,6 @@ const Note = (props) => {
 
   const [note] = FetchNote(id)
 
-
     const [showAnchor, setShowAnchor] = useState(true);
   const [Anchors, setAnchors] = useState([]);
 

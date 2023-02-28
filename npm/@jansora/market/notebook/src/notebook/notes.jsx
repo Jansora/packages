@@ -21,7 +21,7 @@ const Notes = ({}) => {
     document.title = "记录人生旅途"
 
     return <>
-        <MaterialSearchView baseUrl={'notebook/note'} name={'组件'} description={"组件列表"} title={'CodeHub'} />
+        <MaterialSearchView baseUrl={'notebook'} name={'组件'} description={"组件列表"} title={'CodeHub'} />
     </>;
 }
 
