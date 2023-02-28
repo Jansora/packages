@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jansora.repo.core.factory.mapper.SearchMapper">
+
+    <sql id="auth">
+        <choose>
+            <when test="auth.authId != null">
+                (enabled = TRUE or (enabled = FALSE AND user_id = #{auth.authId}))
+            </when>
+            <otherwise>
+                enabled = TRUE
+            </otherwise>
+        </choose>
+    </sql>
+
+    <select id="search" resultType="com.jansora.repo.core.payload.vo.SearchVo">
+        SELECT * FROM ${tableName} WHERE 1 = 1
+
+        <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
+
+        <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        AND <include refid="auth" />
+        ORDER BY
+        <choose><when test="req.orderBy != null and req.orderBy != '' "> ${req.orderBy} </when><otherwise> updated_at </otherwise></choose>
+        <choose><when test="req.sort != null and req.sort != ''  "> ${req.sort} </when><otherwise> ASC </otherwise></choose>
+        <choose><when test="req.pageSize != null and req.pageNum != null and req.pageSize != 0 and req.pageNum >= 0"> LIMIT #{req.pageSize} OFFSET #{req.pageNum} </when></choose>
+
+    </select>
+    <select id="fetchClassifyCounts" resultType="com.jansora.repo.core.payload.dto.KVDto">
+        select a.classify as `key` , count(a.classify) as value from ${tableName} a where 1 = 1    AND <include refid="auth" /> group by a.classify;
+    </select>
+
+    <select id="findTagCounts" resultType="com.jansora.repo.core.payload.dto.KVDto">
+        select tag as `key`, count(*) as value from ${tableName} a
+        where 1 = 1
+        AND <include refid="auth" />
+        <choose><when test="classify != null and classify != ''"> AND a.classify = #{classify}</when></choose>
+        group by a.tag;
+    </select>
+
+
+
+    <select id="searchCount" resultType="java.lang.Long">
+        SELECT count(*) FROM ${tableName} WHERE 1 = 1
+        <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
+
+        <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
+        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+        <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
+        AND <include refid="auth" />
+
+    </select>
+    <select id="fetchLogos" resultType="com.jansora.repo.core.payload.dto.KVDto">
+        SELECT logo as VALUE, name as `key` FROM
+        ${tableName}
+        <where><include refid="auth" /></where>
+
+    </select>
+
+</mapper>
