@@ -117,21 +117,6 @@ export const FetchRelationTags = (classify) => {
   return [relationTags, relationTagsLoading];
 };
 
-export const InsertNote = (data, callback) => {
-
-
-  client.post('notebook/note', data)
-      .then(response =>  {
-          message.success("添加成功")
-          callback && callback(response)
-
-      }).catch( e => {
-  }).finally(()=> {
-  })
-
-
-  return null;
-};
 export const SaveNoteRequest = (data, callback) => {
   client.put('notebook/note', data)
       .then(response =>  {

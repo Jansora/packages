@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>1.100.15</version>
+		<version>1.100.16</version>
 	</parent>
 	<artifactId>boot</artifactId>
-	<version>1.100.15</version>
+	<version>1.100.16</version>
 	<packaging>jar</packaging>
 	<name>boot</name>
 	<description>boot</description>
@@ -29,7 +29,10 @@
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>dubbo</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
