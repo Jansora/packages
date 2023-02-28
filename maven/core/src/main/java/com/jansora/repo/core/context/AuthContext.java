@@ -16,6 +16,7 @@ import java.util.Objects;
 public class AuthContext {
 
 
+
     private static final ThreadLocal<Long> context = new ThreadLocal<>();
 
     public static void setContext(Long authId) {

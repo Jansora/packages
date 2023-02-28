@@ -1,11 +1,13 @@
 package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.provider.SearchProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.req.SearchReq;
 import com.jansora.repo.core.payload.vo.PageVo;
+import com.jansora.repo.core.payload.vo.PropertyVo;
 import com.jansora.repo.core.payload.vo.SearchVo;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -40,6 +42,23 @@ public interface SearchControllerFactory {
     @GetMapping("classifyCounts")
     default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseAppException {
         return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
+    }
+
+    /**
+     * 搜索 classify
+     */
+    @GetMapping("classifyCounts")
+    default ResultDto<List<KVDto<Long>>> fet() throws BaseAppException {
+        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
+    }
+
+    /**
+     * 查询 分类列表
+     * @return Optional<EasyCodeDto>
+     */
+    @GetMapping("classifies")
+    default ResultDto<List<PropertyVo>> fetchClassifies() throws InvalidArgumentException {
+        return ResultDto.SUCCESS(searchFactory().fetchClassifies());
     }
 
     /**

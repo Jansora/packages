@@ -1,4 +1,4 @@
-package com.jansora.repo.web.utils;
+package com.jansora.repo.core.utils;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.BadRequestException;
