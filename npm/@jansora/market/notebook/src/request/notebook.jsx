@@ -145,9 +145,9 @@ export const FetchEditableNote = (id, resource) => {
   return [note, loading];
 };
 
-export const FetchHistoryNote = (id, resource) => {
+export const FetchHistoryDocumentContent = (id) => {
 
-  const [note, setNote] = useState({});
+  const [raw, setRaw] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true)
@@ -155,11 +155,11 @@ export const FetchHistoryNote = (id, resource) => {
   useEffect(()=> {
     if(loading && !!id  && IsNumber(id)) {
       client.get(`document/version/${id}`)
-          .then(setNote).finally(()=> {  setLoading(false)
+          .then(setRaw).finally(()=> {  setLoading(false)
       })
     }
   }, [loading, id]);
-  return [note, loading];
+  return [raw, loading];
 };
 export const FetchHistoryNotes = (id, resource) => {
 

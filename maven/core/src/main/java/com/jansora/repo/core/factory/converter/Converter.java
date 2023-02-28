@@ -1,6 +1,9 @@
 package com.jansora.repo.core.factory.converter;
 
 import com.jansora.repo.core.payload.model.BaseDo;
+import com.jansora.repo.core.payload.req.BaseReq;
+import com.jansora.repo.core.payload.vo.BaseVo;
+import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import java.util.List;
@@ -10,14 +13,15 @@ import java.util.List;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-28 10:30:54
  */
-public interface Converter<REQUEST, RESPONSE, MODEL extends BaseDo> {
+public interface Converter<REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
 
 
     /**
      * 入参转化为模型
      */
     @Mappings({
-//            @Mapping(target = "createdAt", expression = "java()")
+            @Mapping(target = "createdAt", expression = "java(request.getId() != null ? null : new java.util.Date())"),
+            @Mapping(target = "updatedAt", expression = "java(new java.util.Date())"),
     })
     MODEL toDo(REQUEST request);
 

@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Timeline, Tooltip} from "antd";
-import {FetchHistoryNote, FetchHistoryNotes} from "../../request/notebook";
+import {FetchHistoryDocumentContent, FetchHistoryNotes} from "../../request/notebook";
 import {DiffEditor} from "@jansora/monaco/lib";
 import {Button, Checkbox, Divider, Grid, Header, Label, Modal, Segment} from "semantic-ui-react";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
@@ -33,11 +33,8 @@ const HistoryDocument = ({id, document, setDocument}) => {
 
     const [documentVersions]  = FetchHistoryNotes(id);
 
-    const [documentVersion]  = FetchHistoryNote(documentVersionId);
+    const [raw]  = FetchHistoryDocumentContent(documentVersionId);
 
-    useEffect(() => {
-
-    }, [documentVersion])
 
 
 
@@ -128,7 +125,7 @@ const HistoryDocument = ({id, document, setDocument}) => {
                                 <DiffEditor
                                     // style={{height: "100%"}}
                                     dark={dark}
-                                    modified={{data: !!documentVersion ? documentVersion.raw : "", language: 'markdown'}}
+                                    modified={{data: !!raw ? raw : "", language: 'markdown'}}
                                     original={{data: document, language: 'markdown'}} />
                             </Grid.Column>
                         </Grid>
