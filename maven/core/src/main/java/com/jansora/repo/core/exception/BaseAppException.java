@@ -6,7 +6,7 @@ package com.jansora.repo.core.exception;
  * @author zhang.yangyuan (jansora)
  * 2020/12/02 15:47:59
  */
-public class BaseAppException extends Exception {
+public class BaseAppException extends RuntimeException {
 
     /*
        errorCode

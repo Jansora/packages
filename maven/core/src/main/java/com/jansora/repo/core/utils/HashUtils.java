@@ -1,9 +1,13 @@
 package com.jansora.repo.core.utils;
 
+import com.jansora.repo.core.exception.dao.DataConflictException;
+import com.jansora.repo.core.exception.system.InitializationException;
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Date;
+import java.util.function.Predicate;
 
 /**
  * <Description> Description for HashUtils <br>
@@ -12,7 +16,6 @@ import java.util.Date;
  * @version 1.0 <br>
  * @transId null
  * @CreateDate 2021/9/14 19:05:01 <br>
- * @see com.jansora.app.util <br>
  * @since 1.0 <br>
  */
 public class HashUtils {
@@ -22,22 +25,36 @@ public class HashUtils {
     static {
         try {
             md = MessageDigest.getInstance("MD5");
-        } catch (Exception e) {
-
+        }
+        catch (Exception e) {
+            throw new InitializationException();
         }
     }
 
-    public static String hash(String content) {
+    /**
+     * 唯一性检测
+     */
+    public static String hash(String content, Predicate<String> uniquenessDetect) {
         // 反复调用update输入数据:
 
         content = new Date().getTime() + content;
 
-        try {
-            md.update(content.getBytes(StandardCharsets.UTF_8));
-            return new BigInteger(1, md.digest()).toString(16);
-        } catch (Exception e) {
-            return String.valueOf(new Date().getTime());
+        for (int i = 0; i < 1000; i++) {
+            String hash;
+
+            try {
+                md.update(content.getBytes(StandardCharsets.UTF_8));
+                hash = new BigInteger(1, md.digest()).toString(16);
+            } catch (Exception e) {
+                hash = String.valueOf(new Date().getTime());
+            }
+            if (uniquenessDetect.test(hash)) {
+                return hash;
+            }
         }
+
+        throw new DataConflictException("Hash 冲突异常剧烈");
+
     }
 
 
