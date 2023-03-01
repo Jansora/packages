@@ -3,7 +3,6 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {FetchHouseTotalPrices} from "../../request/beike";
 import {Loader} from "semantic-ui-react";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import ColumnChart from "./charts/ColumnChart";
 
 const CountHouseTotalPrice = () => {
@@ -16,7 +15,7 @@ const CountHouseTotalPrice = () => {
 
 
     return <React.Fragment>
-        <StyledText style={{marginBottom: 10}}> 总房价 (单位： 元) </StyledText>
+        <React.Fragment style={{marginBottom: 10}}> 总房价 (单位： 元) </React.Fragment>
             <Loader active={loading}/>
 
 

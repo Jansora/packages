@@ -8,7 +8,6 @@ import ActionRender from "../ActionRender";
 
 import {FetchGenerateAction} from "../../request/action";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 /**
@@ -92,8 +91,8 @@ const Demo = ({action}) => {
             {
               !!url &&
 
-                <StyledText><Icon name="download" color="green" /><a target='_self' rel='noopener noreferrer' href={url}>{action.name} </a>
-                </StyledText>
+                <><Icon name="download" color="green" /><a target='_self' rel='noopener noreferrer' href={url}>{action.name} </a>
+                </>
             }
           </Modal.Content>
           <Modal.Actions>
@@ -106,7 +105,7 @@ const Demo = ({action}) => {
 
       <Button floated="right" style={{marginTop: -36}} size="" color={color} onClick={() => setDownloadLoading(true)}>
         <Icon name="download" color={color} />
-        <StyledText>下载当前配置结果</StyledText>
+        <>下载当前配置结果</>
          </Button>
     </div>
      <Grid style={{marginTop: 0}} >

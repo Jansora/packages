@@ -3,7 +3,6 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {FetchHouseAveragePriceTimelines} from "../../request/beike";
 import {Loader} from "semantic-ui-react";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import MultiLineChart from "./charts/MultiLineChart";
 
 const CountHouseAveragePriceTimeline = () => {
@@ -13,7 +12,7 @@ const CountHouseAveragePriceTimeline = () => {
 
 
     return <React.Fragment>
-        <StyledText style={{marginBottom: 10}}> 挂牌平均房价时间序列 (单位： 元/平米) </StyledText>
+        <React.Fragment style={{marginBottom: 10}}> 挂牌平均房价时间序列 (单位： 元/平米) </React.Fragment>
             <Loader active={loading}/>
 
 

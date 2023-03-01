@@ -3,7 +3,6 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {FetchHouseCounts} from "../../request/beike";
 import {Loader} from "semantic-ui-react";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import ColumnChart from "./charts/ColumnChart";
 
 const CountHouseNum = () => {
@@ -16,7 +15,7 @@ const CountHouseNum = () => {
 
 
     return <React.Fragment>
-        <StyledText style={{marginBottom: 10}}> 二手房市场挂牌占比 (昨天) </StyledText>
+        <React.Fragment style={{marginBottom: 10}}> 二手房市场挂牌占比 (昨天) </React.Fragment>
 
             <Loader active={loading}/>
 

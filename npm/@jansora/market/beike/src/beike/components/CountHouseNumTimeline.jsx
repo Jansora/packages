@@ -3,7 +3,6 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {FetchHouseCountTimelines} from "../../request/beike";
 import {Loader} from "semantic-ui-react";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import MultiLineChart from "./charts/MultiLineChart";
 
 const CountHouseNumTimeline = () => {
@@ -16,7 +15,7 @@ const CountHouseNumTimeline = () => {
 
 
     return <React.Fragment>
-        <StyledText style={{marginBottom: 10}}> 二手房市场挂牌占比时间序列 </StyledText>
+        <React.Fragment style={{marginBottom: 10}}> 二手房市场挂牌占比时间序列 </React.Fragment>
 
             <Loader active={loading}/>
 

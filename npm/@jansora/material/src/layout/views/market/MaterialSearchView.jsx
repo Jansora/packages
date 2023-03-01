@@ -16,7 +16,6 @@ import SetTitle from "../../../hooks/setter/SetTitle";
 import MaterialContainerHeader from "../../../components/view/container/MaterialContainerHeader";
 import MaterialContainerContent from "../../../components/view/container/MaterialContainerContent";
 import MaterialContainer from "../../../components/view/container/MaterialContainer";
-import StyledText from "../../../components/styled/base/StyledText";
 // import StyledPageLoading from "../../../components/styledx/StyledLoading";
 
 /**
@@ -61,7 +60,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                         {
                             [{name: "名称", value: "name"}, {name: "分类", value: "classify"}, {name: "标签", value: "tag"}].map((item, index) =>
                                 <Menu.Item key={index} onClick={() => setOrderBy(item.value)} active={orderBy === item.value} color={orderBy === item.value ? color : null}>
-                                    <StyledText>{item.name}</StyledText>
+                                    <>{item.name}</>
                                 </Menu.Item>
                             )
                         }
@@ -71,7 +70,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                         {
                             [{name: "正序", value: "ASC"}, {name: "倒序", value: "DESC"}].map((item, index) =>
                                 <Menu.Item key={index} onClick={() => setSort(item.value)} active={sort === item.value} color={sort === item.value ? color : null}>
-                                    <StyledText>{item.name}</StyledText>
+                                    <>{item.name}</>
                                 </Menu.Item>
                             )
                         }

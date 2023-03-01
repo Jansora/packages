@@ -7,7 +7,6 @@ import GetDarkMode from "../../hooks/getter/GetDarkMode";
 import {Menu} from "semantic-ui-react";
 import CenterHeader from "./CenterHeader";
 import GetColor from "../../hooks/getter/GetColor";
-import StyledText from "../../components/styled/base/StyledText";
 
 /**
  * <Description> Description for index <br>
@@ -46,7 +45,7 @@ const MaterialHeaderMenu = ({menu}) => {
                         }
 
 
-                        <StyledText>{item.name}</StyledText>
+                        <>{item.name}</>
                     </Menu.Item>
                 )
             }

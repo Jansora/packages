@@ -12,7 +12,6 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
 import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
 import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
-import StyledText from "@jansora/material/es/components/styled/base/StyledText";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import CountHouseNum from "../components/CountHouseNum";
@@ -48,7 +47,7 @@ const City = (props) => {
                     {
                         statisticsMenus.map((item, index) =>
                             <Menu.Item key={index} onClick={() => setActive(item)} active={item === active} color={item === active ? color : null}>
-                                <StyledText>{item}</StyledText>
+                                <>{item}</>
                             </Menu.Item>
                         )
                     }
@@ -59,7 +58,7 @@ const City = (props) => {
                     {
                         timelineMenus.map((item, index) =>
                             <Menu.Item key={index} onClick={() => setActive(item)} active={item === active} color={item === active ? color : null}>
-                                <StyledText>{item}</StyledText>
+                                <>{item}</>
                             </Menu.Item>
                         )
                     }
