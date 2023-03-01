@@ -3,7 +3,7 @@ import React from 'react';
 import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 import Components from "./components";
-import ComponentContent from "./sub/Component";
+import ComponentContent from "./Component";
 import SaveComponent from "./SaveComponent";
 
 /**
@@ -29,7 +29,8 @@ const Component = (props) => {
         <Routes>
             <Route path="ls" element={<Components />} exact={true}/>
             <Route path="new" element={<SaveComponent id={null} />} />
-            <Route path=":id/*" element={<ComponentContent />} exact={false} />
+            <Route path=":id" element={<ComponentContent />} exact={false} />
+            <Route path=":id/edit" element={<SaveComponent />} />
         </Routes>
 
     </React.Fragment>;

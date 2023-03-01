@@ -171,7 +171,7 @@ const SearchView = (baseUrl) => {
                                             )
                                         }
                                     </div>
-                                    <a href={`${baseUrl}/${item.id}`} rel="noreferrer" target="_blank">
+                                    <a href={`${baseUrl}/${item.id}`} rel="noreferrer" >
                                         <Tooltip placement="bottom" title={item.description}>
                                             <img src={item.logo} alt={item.title}/>
                                         </Tooltip>
@@ -186,11 +186,12 @@ const SearchView = (baseUrl) => {
                                     </a>
                                 </section>
                                 <footer>
-
-                                    <StyledDescription>
-                                        {momentZh(item.updatedAt).fromNow()}
-                                        {/*{note.description}*/}
-                                    </StyledDescription>
+                                    <Tooltip placement="bottom" title={item.updatedAt}>
+                                        <StyledDescription>
+                                            {momentZh(item.updatedAt).fromNow()}
+                                            {/*{note.description}*/}
+                                        </StyledDescription>
+                                    </Tooltip>
                                 </footer>
 
                             </StyledWrapper>

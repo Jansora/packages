@@ -149,7 +149,7 @@ export const FetchRenderComponent = (template, variable) => {
   useEffect(()=> {
     if(loading) {
       const args = {
-        variable: JSON.stringify(variable, null, 2), raw: template,
+        variable: JSON.stringify(variable, null, 2), raw: template ? template : "",
       }
       client.put(`codehub/component/render`, args)
         .then(setRaw).finally(()=> {  setLoading(false)

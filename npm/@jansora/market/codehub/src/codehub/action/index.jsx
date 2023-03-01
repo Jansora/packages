@@ -29,7 +29,8 @@ const Action = (props) => {
         <Routes>
             <Route path="ls" element={<Actions />} exact={true}/>
             <Route path="new" element={<SaveAction id={null} />} />
-            <Route path=":id/*" element={<ActionContent />} exact={false} />
+            <Route path=":id/" element={<ActionContent />} exact={false} />
+            <Route path=":id/edit" element={<SaveAction />} />
         </Routes>
 
     </React.Fragment>;

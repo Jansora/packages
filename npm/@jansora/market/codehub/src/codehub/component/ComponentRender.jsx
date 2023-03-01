@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {FetchRenderComponent} from "../request/component";
-import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import {Viewer} from "@jansora/bytemd";
 
 /**
  * <Description> Description for ComponentRender <br>
@@ -27,15 +27,17 @@ const ComponentRender = ({template, variable, style}) => {
 
 
   return <React.Fragment>
-    <CodeEditor
-        dark={dark}
-      readOnly={true}
-      force={true}
-      id={"component-raw-render"}
-      language={(variable && variable.language) ? variable.language : "html"}
-      value={raw}
-      style={style ? style : {}}
-    />
+    <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' +raw + '\n```'} />
+
+    {/*<CodeEditor*/}
+    {/*    dark={dark}*/}
+    {/*  readOnly={true}*/}
+    {/*  force={true}*/}
+    {/*  id={"component-raw-render"}*/}
+    {/*  language={(variable && variable.language) ? variable.language : "html"}*/}
+    {/*  value={raw}*/}
+    {/*  style={style ? style : {}}*/}
+    {/*/>*/}
   </React.Fragment>;
 }
 

@@ -227,7 +227,7 @@ const SaveComponent = (props) => {
       <Grid>
         <Grid.Column width={7}>
 
-          <Segment style={{padding: 0}}>
+          <Segment style={{padding: '30px 0px 16px 0'}}>
             <Label attached='top' color={color}>变量</Label>
             <CodeEditor
                 dark={dark}
@@ -239,7 +239,7 @@ const SaveComponent = (props) => {
               style={{height: 350}}
             />
           </Segment>
-          <Segment style={{padding: 0}}>
+          <Segment style={{padding: '30px 0px 16px 0'}}>
             <Label attached='top' color={color}>模板</Label>
             <CodeEditor
                 dark={dark}
@@ -256,7 +256,7 @@ const SaveComponent = (props) => {
 
         </Grid.Column>
         <Grid.Column width={9}>
-          <Segment style={{padding: 0}}>
+          <Segment style={{padding: '30px 0px 16px 0'}}>
             <Label attached='top' color={color}>预览</Label>
             <ComponentRender template={raw} variable={variable} style={{height: 745}} />
 

@@ -20,22 +20,6 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
  * @since 1.0 <br>
  */
 
-const updateVar = (value) => {
-
-  try{
-    // eslint-disable-next-line
-    const Var = Function('"use strict";return (' + value + ')')();
-    // console.log("Var", Var)
-    if (!Var.language) {
-      Var.language = "html"
-    }
-    return Var
-
-  } catch (e) {
-
-  }
-  return {}
-}
 
 const Demo = ({action}) => {
 
@@ -112,7 +96,7 @@ const Demo = ({action}) => {
         <Grid.Column width={5}>
           <Grid>
             <Grid.Column width={16} >
-              <Segment style={{padding: 0}} fuild>
+              <Segment style={{padding: '30px 0px 16px 0'}} fuild>
                 <Label attached='top' color={color}>变量</Label>
                 <CodeEditor
                     dark={dark}
@@ -126,7 +110,7 @@ const Demo = ({action}) => {
               </Segment>
             </Grid.Column>
             <Grid.Column width={16}  >
-              <Segment style={{padding: 0}}>
+              <Segment style={{padding: '30px 0px 16px 0'}}>
                 <Label attached='top' color={color}>模板</Label>
                 <CodeEditor
                     dark={dark}

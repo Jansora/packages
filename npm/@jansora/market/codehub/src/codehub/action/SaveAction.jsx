@@ -218,7 +218,7 @@ const SaveAction = (props) => {
       <Grid.Column width={5}>
         <Grid>
           <Grid.Column width={16} >
-            <Segment style={{padding: 0}} fuild>
+            <Segment style={{padding: '30px 0px 16px 0'}} fuild>
               <Label attached='top' color={color}>变量</Label>
               <CodeEditor
                   dark={dark}
@@ -232,7 +232,7 @@ const SaveAction = (props) => {
             </Segment>
           </Grid.Column>
           <Grid.Column width={16}  >
-            <Segment style={{padding: 0}}>
+            <Segment style={{padding: '30px 0px 16px 0'}}>
               <Label attached='top' color={color}>模板</Label>
               <CodeEditor
                   force={false}
