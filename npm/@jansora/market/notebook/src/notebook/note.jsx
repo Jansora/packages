@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {DeleteNote, FetchNote} from "../request/notebook";
+import {DeleteNote, FetchNote, ShareNote} from "../request/notebook";
 import {Link, useNavigate, useParams} from 'react-router-dom';
 // import {Viewer} from "../../../components/editor/md-editor/bytemd";
 import {Viewer} from "@jansora/bytemd/lib/index";
@@ -18,6 +18,8 @@ import MaterialContainer from "@jansora/material/es/components/view/container/Ma
 import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
 import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import StyledText from "@jansora/material/es/components/styled/base/StyledText";
+import StyledA from "@jansora/material/es/components/styled/StyledA";
+// import copy from 'copy-to-clipboard';
 
 
 /**
@@ -94,27 +96,45 @@ const Note = (props) => {
           right={
               user.id === note.userId && <React.Fragment>
 
-                      <Popconfirm
-                          title='你确认要删除吗？'
-                          onConfirm={() => {
-                              message.success({content: '删除成功'});
-                              DeleteNote(note.id, () => navigate("/notebook"))
-                          }}
-                          onCancel={() => {
-                              // message.error({ content: 'cancel' });
-                          }}
-                      >
-                          <Button icon size="mini" color={"red"}>
-                              <Icon name='delete' />
-                          </Button>
-                      </Popconfirm>
 
+
+                  <Popconfirm
+                      title='你确认要分享吗？'
+                      onConfirm={() => {
+                          ShareNote(note.id, (response) => {
+                              message.success({content: <>分享成功 <StyledA href={response}> <>点击打开</>  </StyledA></>});
+                          })
+                      }}
+                      onCancel={() => {
+                          // message.error({ content: 'cancel' });
+                      }}
+                  >
+                      <Button icon size="mini" color={color}>
+                          <Icon name='share' />
+                      </Button>
+                  </Popconfirm>
 
                 <Divider type="vertical"  />
 
                 <Button icon size="mini" color={color} as={Link} to={`/notebook/${note.id}/edit`}>
                   <Icon name='edit' />
                 </Button>
+
+                  <Divider type="vertical"  />
+                  <Popconfirm
+                      title='你确认要删除吗？'
+                      onConfirm={() => {
+                          message.success({content: '删除成功'});
+                          DeleteNote(note.id, () => navigate("/notebook"))
+                      }}
+                      onCancel={() => {
+                          // message.error({ content: 'cancel' });
+                      }}
+                  >
+                      <Button icon size="mini" color={"red"}>
+                          <Icon name='delete' />
+                      </Button>
+                  </Popconfirm>
               </React.Fragment>
 
           }

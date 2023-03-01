@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@jansora/bytemd": "2.16.0",
-    "@jansora/material": "2.16.0",
+    "@jansora/material": "2.16.3",
     "@jansora/monaco": "2.16.0",
     "css-loader": "^5.0.0",
     "less": "^4.1.3",

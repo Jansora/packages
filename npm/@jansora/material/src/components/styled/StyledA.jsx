@@ -1,4 +1,5 @@
 import React from "react";
+import StyledText from "./base/StyledText";
 
 
 // const styledAside = styled.nav`
@@ -6,7 +7,10 @@ import React from "react";
 const StyledA = ({href, children}) => {
     return <a target="_blank"  rel='noopener noreferrer'
                  href={href}>
-        {children}
+        <StyledText>
+            {children}
+        </StyledText>
+
     </a>
 
 

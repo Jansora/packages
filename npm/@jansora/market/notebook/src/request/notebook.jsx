@@ -190,3 +190,14 @@ export const DeleteNote = (id, callback) => {
   return null;
 };
 
+export const ShareNote = (id, callback) => {
+
+  client.post(`notebook/share/${id}`)
+      .then(response => {
+        callback && callback(response)
+      }).catch(e => {
+  }).finally(() => {
+
+  })
+  return null;
+};
