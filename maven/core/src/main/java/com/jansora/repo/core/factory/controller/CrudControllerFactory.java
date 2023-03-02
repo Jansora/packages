@@ -38,7 +38,7 @@ public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends 
     /**
      * 删除单条数据
      */
-    @DeleteMapping
+    @DeleteMapping("{id}")
     @Auth({Role.ADMIN})
     default ResultDto<RESPONSE> deleteById(@PathVariable Long id) throws BaseAppException {
         return ResultDto.SUCCESS(crudFactory().deleteById(id));
