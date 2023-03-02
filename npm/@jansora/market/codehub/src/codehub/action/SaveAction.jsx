@@ -13,7 +13,8 @@ import {useNavigate} from "react-router";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
-import MaterialSaveEntity from "../../../es/codehub/component/MaterialSaveEntity";
+import MaterialSaveEntity from "@jansora/material/es/layout/views/market/MaterialSaveEntity";
+
 
 /**
  * <Description> <br>

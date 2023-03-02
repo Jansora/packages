@@ -40,7 +40,7 @@ public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends 
      */
     @DeleteMapping
     @Auth({Role.ADMIN})
-    default ResultDto<RESPONSE> deleteById(Long id) throws BaseAppException {
+    default ResultDto<RESPONSE> deleteById(@PathVariable Long id) throws BaseAppException {
         return ResultDto.SUCCESS(crudFactory().deleteById(id));
     }
 
