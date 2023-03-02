@@ -3,7 +3,6 @@ import React from 'react';
 import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 import Action from "./action";
-import styled from "styled-components";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import Component from "./component";
 import MaterialHeaderMenu from "@jansora/material/es/layout/header/MaterialHeaderMenu";
@@ -18,11 +17,6 @@ import MaterialHeaderMenu from "@jansora/material/es/layout/header/MaterialHeade
  * @since 1.0 <br>
  */
 
-const StyledCenterHeaderWrapper = styled.div`
-    a {
-      color: var(--text-color-3);
-    }
-`
 
 const MaterialCodeHub = (props) => {
 

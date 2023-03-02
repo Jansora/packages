@@ -133,8 +133,8 @@ const Component = (props) => {
                             zIndex: 1000,
                         }}
                     >
-                        <Header as={'h3'}> 模板 </Header>
-                        <Divider style={{marginBottom: 0 }} />
+                        <Header as={'h3'} textAlign="center"> 模板 </Header>
+                        <Divider style={{marginBottom: 0 , marginTop: 5}} />
                         <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + raw + '\n```'} />
                     </Segment>
                 </Portal>
@@ -162,9 +162,9 @@ const Component = (props) => {
                             zIndex: 1000,
                         }}
                     >
-                        <Header as={'h3'}> 使用说明 </Header>
-                        <Divider style={{marginBottom: 0 }} />
-                        <Viewer value={'```xml\n' + `<${component.code} version=${component.versionId} args=${component.variable} />` + '\n```'} />
+                        <Header as={'h3'} textAlign="center"> 使用说明 </Header>
+                        <Divider style={{marginBottom: 0 , marginTop: 5}} />
+                        <Viewer style={{height: 50}} value={'```xml\n' + `<${component.code} version=${component.versionId} args=${component.variable} />` + '\n```'} />
                     </Segment>
                 </Portal>
             </Menu>

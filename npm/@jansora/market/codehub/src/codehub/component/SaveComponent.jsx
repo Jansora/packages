@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Checkbox, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
+import {Dropdown, Form, Grid, Label, Loader, Segment} from "semantic-ui-react";
 import {useNavigate, useParams} from 'react-router-dom';
 
 import {FetchClassifies, FetchComponent, FetchLogos, FetchTags, SaveComponentRequest} from "../request/component";
@@ -8,10 +8,14 @@ import styled from 'styled-components'
 import {useDebounceFn} from "ahooks";
 import ComponentRender from "./ComponentRender";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
-import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import MaterialSaveEntity from "./MaterialSaveEntity";
+import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
+import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
+import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
+import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
 
 /**
  * <Description> <br>
@@ -46,19 +50,18 @@ const SaveComponent = (props) => {
 
   const [variable, setVariable] = useState({language: "html"});
 
-
+  const [tags, setTags, tagsLoading] = FetchTags();
+  const [classifies, classifiesLoading] = FetchClassifies();
 
 
   const [raw, setRaw] = useState('f');
   // const [rawInit, setRawInit] = useState(!id);
   const [logos] = FetchLogos();
-  const [tags, setTags, tagsLoading] = FetchTags();
-  const [classifies, classifiesLoading] = FetchClassifies();
+
 
 
   useEffect(() => {
 
-    // console.log("????AAA", component)
     if(!!id && !!component.id) {
       setName(component.name);
       setCode(component.code);
@@ -77,6 +80,8 @@ const SaveComponent = (props) => {
 
 
   },[id, component])
+
+
 
 
   const updateVar = (value) => {
@@ -116,6 +121,9 @@ const SaveComponent = (props) => {
 
   }
 
+
+
+
   const {run: updateVarDebounce} = useDebounceFn(
     (value) => updateVar(value),
     {
@@ -132,98 +140,45 @@ const SaveComponent = (props) => {
   SetDescription(!id ? "新建组件" : `更新组件 - ${name}`)
 
 
+  const entities = { save, tag, setTag, tags, setTags, logos, classifies, name, setName, description, setDescription, logo, setLogo, classify, setClassify, enabled, setEnabled};
+
+
+
   if(id && componentLoading) {
     return <Loader active inline='centered' />
 
   }
 
-  return <React.Fragment>
+  return <MaterialContainer>
+    <MaterialContainerHeader
+      leftStyle={{width: "100%"}}
+      left={
 
-    <Grid columns='equal'>
+        <>
+      {/*<Grid columns='equal'>*/}
+        <div style={{display: "flex", alignItems: "center", width: "100%"}}>
 
-      <Grid.Column>
-        <Form inverted inline>
-          <Form.Group widths='equal'>
-            <Form.Field
-                width={3}
-              control={Input}
-              label='名称'
-              value={name}
-              onChange={event => setName(event.target.value)}
-              placeholder='请输入名称'
-            />
-            <Form.Field
-                width={3}
-              control={Input}
-              label={'编码' + (!!id && '  (不可编辑)')}
-              disabled={!!id}
-              value={code}
-              onChange={event => setCode(event.target.value)}
-              placeholder='请输入名称'
-            />
-            <Form.Field
-                width={2}
-              loading={classifiesLoading}
-              control={Select}
-              label='分类'
-              value={classify}
-              onChange={(event, {value}) => console.log(value) || setClassify(value)}
-              options={classifies.map(classify_ => ({key: classify_.id, text: classify_.av, value: classify_.bv}))}
-              placeholder='请选择分类'
-            />
-            <Form.Field required
-                        width={3}>
-              <label>画像</label>
-              <StyledDropdown
-                loading={tagsLoading}
-                onAddItem={(e, { value }) => {
-                  if(tags.filter(tag => tag.key === value).length === 0) {
-                    setTags(tags.concat([{key: value, value: 1}]))
-                  }
-                }}
-                onChange={(e, { value }) => setTag(value)  }
-                options={tags.map(tag_ => {return {key: tag_.key, text: tag_.key, value: tag_.key}})}
-                placeholder={'添加画像'}
-                search
-                selection
-                multiple
-                allowAdditions
-                additionLabel={<StyledDescription>自定义标签</StyledDescription>}
-                value={tag}
-                renderLabel={(label) => ({ content: label.text,})}
-              />
-            </Form.Field>
-            <Form.Field required
-                        width={2}>
-              <label>引导图片</label>
-              <StyledDropdown
-                  // loading={logosLoading}
-                  onChange={(e, { value }) => setLogo(value)}
-                  options={logos.map((l, index) => {return {key: index, text: `${l.key}` ,
-                    value: l.value}})}
-                  placeholder='选择Logo'
-                  search
-                  selection
-                  additionLabel={<StyledDescription>自定义标签</StyledDescription>}
-                  value={logo}
-              />
-            </Form.Field>
-            <Form.Field width={2}>
-              <label>{"权限"}</label>
-              <div style={{display: "flex", alignItems: "center", height: "38px"}}>
-                <Checkbox label={"公开"} checked={enabled} onChange={(_, {checked}) => setEnabled(checked)} />
-              </div>
-            </Form.Field>
-            <Form.Field width={!!id ? 3 : 2}>
-              <label>操作</label>
-              <div style={{display: "flex", alignItems: "center"}}>
-                <Button style={{marginRight: 20}} color={color} content={!id ? '新建组件' : "更新组件"} onClick={() => save()} />
-              </div>
-            </Form.Field>
-          </Form.Group>
-          </Form>
-      </Grid.Column>
-    </Grid>
+          <Form.Field style={{marginRight: 10}}>
+            {/*<label style={{width: 50}}>{'编码' + (!!id && '  (不可编辑)')}: </label>*/}
+            {/*<Input*/}
+            {/*    style={{width: 150}}*/}
+            {/*    // label={'编码' + (!!id && '  (不可编辑)')}*/}
+            {/*    disabled={!!id}*/}
+            {/*    value={code}*/}
+            {/*    onChange={event => setCode(event.target.value)}*/}
+            {/*    placeholder='请输入名称'*/}
+            {/*/>*/}
+          </Form.Field>
+        <MaterialSaveEntity {...entities} />
+
+
+        </div>
+        </>
+      }
+      />
+    <MaterialContainerContent>
+      <StyledPageLoading>
+    {/*</Grid>*/}
       <Grid>
         <Grid.Column width={7}>
 
@@ -265,8 +220,8 @@ const SaveComponent = (props) => {
         </Grid.Column>
       </Grid>
 
-
-  </React.Fragment>;
+  </StyledPageLoading></MaterialContainerContent>
+  </MaterialContainer>;
 }
 
 export default SaveComponent;

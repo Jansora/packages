@@ -95,14 +95,11 @@ const Note = (props) => {
           }
           right={
               user.id === note.userId && <React.Fragment>
-
-
-
                   <Popconfirm
                       title='你确认要分享吗？'
                       onConfirm={() => {
                           ShareNote(note.id, (response) => {
-                              message.success({content: <>分享成功 <StyledA href={response}> <>点击打开</>  </StyledA></>});
+                              message.success({content: <span>分享成功 <StyledA href={response}> <>点击打开</>  </StyledA></span>});
                           })
                       }}
                       onCancel={() => {

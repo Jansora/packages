@@ -12,6 +12,7 @@ import {useResponsive} from "ahooks";
 import StyledDescription from "../../../components/styled/base/StyledDescription";
 import StyledIconFont from "../../../components/styled/StyledIconFont";
 import GetDarkMode from "../../../hooks/getter/GetDarkMode";
+import {Link} from "react-router-dom";
 
 
 const StyledWrapper = styled.div`
@@ -171,25 +172,24 @@ const SearchView = (baseUrl) => {
                                             )
                                         }
                                     </div>
-                                    <a href={`${baseUrl}/${item.id}`} rel="noreferrer" >
+                                    <Link to={`${baseUrl}/${item.id}`} rel="noreferrer" >
                                         <Tooltip placement="bottom" title={item.description}>
                                             <img src={item.logo} alt={item.title}/>
                                         </Tooltip>
-                                    </a>
+                                    </Link>
                                 </header>
                                 <section>
-                                    <a href={`${baseUrl}/${item.id}`} rel="noreferrer" target="_blank">
+                                    <Link to={`${baseUrl}/${item.id}`} rel="noreferrer" target="_blank">
                                         <Tooltip placement="bottom" title={item.name}>
                                             <span title={item.name}
                                                   style={{color: item.enabled ? "none" : "var(--primary-color)"}}>{item.name}</span>
                                         </Tooltip>
-                                    </a>
+                                    </Link>
                                 </section>
                                 <footer>
                                     <Tooltip placement="bottom" title={item.updatedAt}>
                                         <StyledDescription>
                                             {momentZh(item.updatedAt).fromNow()}
-                                            {/*{note.description}*/}
                                         </StyledDescription>
                                     </Tooltip>
                                 </footer>

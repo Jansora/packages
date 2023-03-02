@@ -10,7 +10,7 @@ const StyledText = styled.span`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: var(--primary-color);
+  color: var(--text-color-2);
   //font-size: .75rem;
   //height: 100%;
   //line-height: 100%;

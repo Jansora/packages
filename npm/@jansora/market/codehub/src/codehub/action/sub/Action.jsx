@@ -100,8 +100,8 @@ const Action = () => {
                   trigger={<Menu.Item>变量</Menu.Item>}
               >
                 <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000, width: '50vw'}}>
-                  <Header as={'h3'}> 变量 </Header>
-                  <Divider style={{marginBottom: 0 }} />
+                  <Header as={'h3'} textAlign="center"> 变量 </Header>
+                  <Divider style={{marginBottom: 0 , marginTop: 5}} />
 
                 </Segment>
               </Portal>
@@ -111,8 +111,8 @@ const Action = () => {
                   trigger={<Menu.Item>模板</Menu.Item>}
               >
                 <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000,}}>
-                  <Header as={'h3'}> 模板 </Header>
-                  <Divider style={{marginBottom: 0 }} />
+                  <Header as={'h3'} textAlign="center"> 模板 </Header>
+                  <Divider style={{marginBottom: 0 , marginTop: 5}} />
                   <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + action.raw + '\n```'} />
                 </Segment>
               </Portal>
@@ -122,8 +122,8 @@ const Action = () => {
                   trigger={<Menu.Item>使用说明</Menu.Item>}
               >
                 <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000,}}>
-                  <Header as={'h3'}> 使用说明 </Header>
-                  <Divider style={{marginBottom: 0 }} />
+                  <Header as={'h3'} textAlign="center"> 使用说明 </Header>
+                  <Divider style={{marginBottom: 0 , marginTop: 5}} />
                   <Viewer value={'```xml\n' + `<${action.actionCode} version=${action.versionId} args=${action.variable} />` + '\n```'} />
                 </Segment>
               </Portal>
