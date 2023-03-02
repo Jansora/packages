@@ -3,7 +3,7 @@ import React from 'react';
 import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 import Actions from "./actions";
-import ActionContent from "./sub/Action";
+import ActionContent from "./Action";
 import SaveAction from "./SaveAction";
 
 /**

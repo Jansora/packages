@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Dimmer, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
 import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
-import {Divider, message, Popconfirm} from "antd";
-import {DeleteAction, FetchAction, FetchGenerateAction} from "../../request/action";
+import {Divider, message, Popconfirm, Tooltip} from "antd";
+import {DeleteAction, FetchAction, FetchGenerateAction} from "../request/action";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import {useDebounceFn, useResponsive} from "ahooks";
@@ -14,7 +14,8 @@ import {CodeEditor} from "@jansora/monaco";
 import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
 import {Viewer} from "@jansora/bytemd";
 import GetTheme from "@jansora/material/es/hooks/getter/GetTheme";
-import ActionRender from "../ActionRender";
+import ActionRender from "./ActionRender";
+import StyledColorText from "@jansora/material/es/components/styled/base/StyledColorText";
 
 /**
  * <Description> <br>
@@ -57,7 +58,10 @@ const Action = () => {
 
   const [raw, setRaw] = useState(action.raw ? action.raw : '');
 
-  const [url, setUrl, downloadLoading, setDownloadLoading] = FetchGenerateAction(raw, variable);
+
+  const [url, setUrl, downloadLoading, setDownloadLoading] = FetchGenerateAction(raw, variable, () => {
+    message.success(<span><a target='_self' rel='noopener noreferrer' href={url}><StyledColorText>点击下载 {action.name}.zip </StyledColorText> </a> </span>)
+  });
 
   useEffect(() => {
 
@@ -92,7 +96,6 @@ const Action = () => {
     <MaterialContainerHeader
         left={
           <>
-
             <Menu inverted={dark} size="mini" style={{margin: "0"}}>
               <Portal
                   closeOnTriggerClick
@@ -129,18 +132,6 @@ const Action = () => {
               </Portal>
 
             </Menu>
-
-
-            {/*<Popup*/}
-            {/*    inverted={dark}*/}
-            {/*    trigger={*/}
-            {/*        <StyledDescription>使用说明</StyledDescription>*/}
-            {/*    }*/}
-            {/*    content={<div style={{width: 500}}>*/}
-            {/*        <Viewer value={'```xml\n' + `<${component.code} version=${component.versionId} args=${component.variable} />` + '\n```'} />*/}
-            {/*    </div>}*/}
-            {/*    // position='bottom left'*/}
-            {/*/>*/}
           </>
         }
         center={
@@ -149,16 +140,25 @@ const Action = () => {
           </React.Fragment>
         }
         right={
-            user.id === action.userId && <React.Fragment>
+
+          <React.Fragment>
+            <Tooltip placement="bottom" title={'获取下载链接'}>
+              <Button icon size="mini" color={"green"} onClick={() => setDownloadLoading(true)} >
+                <Icon name="download" />
+              </Button>
+            </Tooltip>
+
+            {
+              user.id === action.userId && <React.Fragment>
 
 
-              <Divider type="vertical"  />
+              <Divider type="vertical"/>
 
               <Button icon size="mini" color={color} as={Link} to={`/codehub/action/${id}/edit`}>
-                <Icon name='edit' />
+                <Icon name='edit'/>
               </Button>
 
-              <Divider type="vertical"  />
+              <Divider type="vertical"/>
               <Popconfirm
                   title='你确认要删除吗？'
                   onConfirm={() => {
@@ -172,21 +172,21 @@ const Action = () => {
                   }}
               >
                 <Button icon size="mini" color={"red"}>
-                  <Icon name='delete' />
+                  <Icon name='delete'/>
                 </Button>
               </Popconfirm>
             </React.Fragment>
 
+            }
+          </React.Fragment>
         }
     >
 
     </MaterialContainerHeader>
     <MaterialContainerContent>
       <StyledPageLoading>
-        <Grid style={{marginTop: 0}} >
-          <Grid.Column width={5}>
-            <Grid>
-              <Grid.Column width={16} >
+        <Grid style={{marginTop: -5}} >
+              <Grid.Column width={8} >
                 <Segment style={{padding: '30px 0px 16px 0'}}  inverted={dark}>
                   <Label attached='top' color={color}>变量</Label>
                   <CodeEditor
@@ -196,11 +196,11 @@ const Action = () => {
                       language={"json"}
                       value={JSON.stringify(variable, null, 2)}
                       onChange={updateVarDebounce}
-                      style={{height: 350}}
+                      style={{height: 200}}
                   />
                 </Segment>
               </Grid.Column>
-              <Grid.Column width={16}  >
+              <Grid.Column width={8}  >
                 <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
                   <Label attached='top' color={color}>模板</Label>
                   <CodeEditor
@@ -210,15 +210,11 @@ const Action = () => {
                       language={"xml"}
                       value={raw}
                       onChange={setRawDebounce}
-                      style={{height: 350}}
+                      style={{height: 200}}
                   />
-
                 </Segment>
-              </Grid.Column>
-            </Grid>
-
           </Grid.Column>
-          <Grid.Column width={11} style={{paddingRight: 0}}>
+          <Grid.Column width={16} style={{paddingRight: 0}}>
             <Segment inverted={dark}>
               <Label attached='top' color={color}>预览</Label>
               <ActionRender template={raw} variable={variable} style={{height: 600}} />

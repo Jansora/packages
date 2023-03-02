@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Checkbox, Dimmer, Dropdown, Form, Grid, Input, Label, Loader, Segment, Select} from "semantic-ui-react";
+import {Dimmer, Dropdown, Form, Grid, Label, Loader, Segment} from "semantic-ui-react";
 import {useParams} from 'react-router-dom';
 
 import {FetchAction, FetchClassifies, FetchLogos, FetchTags, SaveActionRequest} from "../request/action";
@@ -10,9 +10,10 @@ import {useDebounceFn} from "ahooks";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 import ActionRender from "./ActionRender";
 import {useNavigate} from "react-router";
-import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
+import MaterialSaveEntity from "../../../es/codehub/component/MaterialSaveEntity";
 
 /**
  * <Description> <br>
@@ -135,79 +136,16 @@ const SaveAction = (props) => {
       <Loader active inline='centered' />
     </Dimmer>
   }
+  const entities = { save, tag, setTag, tags, setTags, logos, classifies, name, setName, description, setDescription, logo, setLogo, classify, setClassify, enabled, setEnabled};
 
-  return <React.Fragment>
+  return <StyledPageLoading>
 
     <Grid columns='equal'>
 
       <Grid.Column>
         <Form  inverted={dark}>
           <Form.Group widths='equal' >
-            <Form.Field
-                width={4}
-                control={Input}
-                label='名称'
-                value={name}
-                onChange={event => setName(event.target.value)}
-                placeholder='请输入名称'
-            />
-            <Form.Field
-                width={3}
-                loading={classifiesLoading}
-                control={Select}
-                label='分类'
-                value={classify}
-                onChange={(event, {value}) => console.log(value) || setClassify(value)}
-                options={classifies.map(classify_ => ({key: classify_.id, text: classify_.av, value: classify_.bv}))}
-                placeholder='请选择分类'
-            />
-            <Form.Field required width={5}>
-              <label>画像</label>
-              <StyledDropdown
-                  loading={tagsLoading}
-                  onAddItem={(e, { value }) => {
-                    if(tags.filter(tag => tag.key === value).length === 0) {
-                      setTags(tags.concat([{key: value, value: 1}]))
-                    }
-                  }}
-                  onChange={(e, { value }) => setTag(value)  }
-                  options={tags.map(tag_ => {return {key: tag_.key, text: tag_.key, value: tag_.key}})}
-                  placeholder={'添加画像'}
-                  search
-                  selection
-                  multiple
-                  allowAdditions
-                  additionLabel={<StyledDescription>自定义标签</StyledDescription>}
-                  value={tag}
-                  renderLabel={(label) => ({ content: label.text,})}
-              />
-            </Form.Field>
-            <Form.Field required
-                        width={4}>
-              <label>引导图片</label>
-              <StyledDropdown
-                  onChange={(e, { value }) => setLogo(value)}
-                  options={logos.map((l, index) => {return {key: index, text: `${l.key}` ,
-                    value: l.value}})}
-                  placeholder='选择Logo'
-                  search
-                  selection
-                  additionLabel={<StyledDescription>自定义标签</StyledDescription>}
-                  value={logo}
-              />
-            </Form.Field>
-            <Form.Field width={2}>
-              <label>{"权限"}</label>
-              <div style={{display: "flex", alignItems: "center", height: "38px"}}>
-                <Checkbox label={"公开"} checked={enabled} onChange={(_, {checked}) => setEnabled(checked)} />
-              </div>
-            </Form.Field>
-            <Form.Field width={!!id ? 3 : 2}>
-              <label>操作</label>
-              <div style={{display: "flex", alignItems: "center"}}>
-                <Button style={{marginRight: 20}} color={color} content={!id ? '新建组件' : "更新组件"} onClick={() => save()} />
-              </div>
-            </Form.Field>
+            <MaterialSaveEntity {...entities} />
           </Form.Group>
         </Form>
 
@@ -215,52 +153,47 @@ const SaveAction = (props) => {
     </Grid>
 
     <Grid style={{marginTop: 0}} >
-      <Grid.Column width={5}>
-        <Grid>
-          <Grid.Column width={16} >
-            <Segment style={{padding: '30px 0px 16px 0'}} fuild>
-              <Label attached='top' color={color}>变量</Label>
-              <CodeEditor
-                  dark={dark}
-                  force={false}
-                  id={"action-variable-edit"}
-                  language={"json"}
-                  value={JSON.stringify(variable, null, 2)}
-                  onChange={updateVarDebounce}
-                  style={{height: 350}}
-              />
-            </Segment>
-          </Grid.Column>
-          <Grid.Column width={16}  >
-            <Segment style={{padding: '30px 0px 16px 0'}}>
-              <Label attached='top' color={color}>模板</Label>
-              <CodeEditor
-                  force={false}
-                  id={"action-raw-edit"}
-                  language={"xml"}
-                  value={raw}
-                  onChange={setRawDebounce}
-                  style={{height: 350}}
-              />
+            <Grid.Column width={8} >
+              <Segment style={{padding: '30px 0px 16px 0'}}  inverted={dark}>
+                <Label attached='top' color={color}>变量</Label>
+                <CodeEditor
+                    dark={dark}
+                    force={false}
+                    id={"action-variable-edit"}
+                    language={"json"}
+                    value={JSON.stringify(variable, null, 2)}
+                    onChange={updateVarDebounce}
+                    style={{height: 200}}
+                />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={8}  >
+              <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+                <Label attached='top' color={color}>模板</Label>
+                <CodeEditor
+                    dark={dark}
+                    force={false}
+                    id={"action-raw-edit"}
+                    language={"xml"}
+                    value={raw}
+                    onChange={setRawDebounce}
+                    style={{height: 200}}
+                />
+              </Segment>
+            </Grid.Column>
+            <Grid.Column width={16} style={{paddingRight: 0}}>
+            <Segment  inverted={dark}>
+              <Label attached='top' color={color}>预览</Label>
+              <ActionRender template={raw} variable={variable} style={{height: 600}} />
 
             </Segment>
-          </Grid.Column>
-        </Grid>
 
-      </Grid.Column>
-      <Grid.Column width={11} style={{paddingRight: 0}}>
-        <Segment inverted>
-          <Label attached='top' color={color}>预览</Label>
-          <ActionRender template={raw} variable={variable} style={{height: 600}} />
-
-        </Segment>
-
-      </Grid.Column>
+        </Grid.Column>
     </Grid>
 
 
 
-  </React.Fragment>;
+  </StyledPageLoading>;
 }
 
 export default SaveAction;

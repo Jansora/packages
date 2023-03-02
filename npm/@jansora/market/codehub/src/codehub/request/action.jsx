@@ -141,7 +141,7 @@ export const FetchAction = (id, version) => {
   return [Action, loading];
 };
 
-export const FetchGenerateAction = (template, variable) => {
+export const FetchGenerateAction = (template, variable, callback) => {
 
   const [raw, setRaw] = useState("");
   const [loading, setLoading] = useState(false);
@@ -152,7 +152,7 @@ export const FetchGenerateAction = (template, variable) => {
   useEffect(()=> {
     if(loading) {
       client.put(`codehub/action/generate`, args)
-        .then(setRaw).finally(()=> {  setLoading(false)
+        .then(callback).finally(()=> {  setLoading(false)
       })
     }
     // eslint-disable-next-line

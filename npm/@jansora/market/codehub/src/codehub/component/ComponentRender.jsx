@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {FetchRenderComponent} from "../request/component";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import {Viewer} from "@jansora/bytemd";
+import styled from "styled-components";
 
 /**
  * <Description> Description for ComponentRender <br>
@@ -12,6 +13,17 @@ import {Viewer} from "@jansora/bytemd";
  * @CreateDate 2021/5/6 17:34:14 <br>
  * @since 1.0 <br>
  */
+
+const StyledViewerWrapper = styled.div `
+  .hljs {
+    height: 500px !important;
+    overflow-y: auto;
+  }
+  .markdown-body {
+    padding-top: 0;
+    //margin-top: -13px;
+  }
+`
 
 const ComponentRender = ({template, variable, style}) => {
 
@@ -26,19 +38,9 @@ const ComponentRender = ({template, variable, style}) => {
   }, [template, variable])
 
 
-  return <React.Fragment>
+  return <StyledViewerWrapper>
     <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' +raw + '\n```'} />
-
-    {/*<CodeEditor*/}
-    {/*    dark={dark}*/}
-    {/*  readOnly={true}*/}
-    {/*  force={true}*/}
-    {/*  id={"component-raw-render"}*/}
-    {/*  language={(variable && variable.language) ? variable.language : "html"}*/}
-    {/*  value={raw}*/}
-    {/*  style={style ? style : {}}*/}
-    {/*/>*/}
-  </React.Fragment>;
+  </StyledViewerWrapper>;
 }
 
 export default ComponentRender;

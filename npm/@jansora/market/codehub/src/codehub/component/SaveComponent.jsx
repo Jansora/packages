@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Dropdown, Form, Grid, Label, Loader, Segment} from "semantic-ui-react";
+import {Divider, Dropdown, Form, Grid, Input, Label, Loader, Segment} from "semantic-ui-react";
 import {useNavigate, useParams} from 'react-router-dom';
 
 import {FetchClassifies, FetchComponent, FetchLogos, FetchTags, SaveComponentRequest} from "../request/component";
@@ -11,11 +11,9 @@ import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import CodeEditor from "@jansora/monaco/es/editor/CodeEditor";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
-import MaterialSaveEntity from "./MaterialSaveEntity";
-import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
-import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
-import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
+import MaterialSaveEntity from "../../../es/codehub/component/MaterialSaveEntity";
+// import MaterialSaveEntity from "./MaterialSaveEntity";
 
 /**
  * <Description> <br>
@@ -28,7 +26,7 @@ const StyledDropdown = styled(Dropdown)`
     //z-index: 1001 !important;
   }
   div.ui.active.visible.dropdown {
-  
+
   }
 
 `
@@ -50,18 +48,19 @@ const SaveComponent = (props) => {
 
   const [variable, setVariable] = useState({language: "html"});
 
-  const [tags, setTags, tagsLoading] = FetchTags();
-  const [classifies, classifiesLoading] = FetchClassifies();
+
 
 
   const [raw, setRaw] = useState('f');
   // const [rawInit, setRawInit] = useState(!id);
   const [logos] = FetchLogos();
-
+  const [tags, setTags, tagsLoading] = FetchTags();
+  const [classifies, classifiesLoading] = FetchClassifies();
 
 
   useEffect(() => {
 
+    // console.log("????AAA", component)
     if(!!id && !!component.id) {
       setName(component.name);
       setCode(component.code);
@@ -80,8 +79,6 @@ const SaveComponent = (props) => {
 
 
   },[id, component])
-
-
 
 
   const updateVar = (value) => {
@@ -121,27 +118,20 @@ const SaveComponent = (props) => {
 
   }
 
-
-
-
   const {run: updateVarDebounce} = useDebounceFn(
-    (value) => updateVar(value),
-    {
-      wait: 1000,
-    },
+      (value) => updateVar(value),
+      {
+        wait: 1000,
+      },
   );
   const {run: setRawDebounce} = useDebounceFn(
-    setRaw,
-    {
-      wait: 1000,
-    },
+      setRaw,
+      {
+        wait: 1000,
+      },
   );
 
   SetDescription(!id ? "新建组件" : `更新组件 - ${name}`)
-
-
-  const entities = { save, tag, setTag, tags, setTags, logos, classifies, name, setName, description, setDescription, logo, setLogo, classify, setClassify, enabled, setEnabled};
-
 
 
   if(id && componentLoading) {
@@ -149,79 +139,72 @@ const SaveComponent = (props) => {
 
   }
 
-  return <MaterialContainer>
-    <MaterialContainerHeader
-      leftStyle={{width: "100%"}}
-      left={
+  const entities = { save, tag, setTag, tags, setTags, logos, classifies, name, setName, description, setDescription, logo, setLogo, classify, setClassify, enabled, setEnabled};
 
-        <>
-      {/*<Grid columns='equal'>*/}
-        <div style={{display: "flex", alignItems: "center", width: "100%"}}>
+  return <StyledPageLoading>
 
-          <Form.Field style={{marginRight: 10}}>
-            {/*<label style={{width: 50}}>{'编码' + (!!id && '  (不可编辑)')}: </label>*/}
-            {/*<Input*/}
-            {/*    style={{width: 150}}*/}
-            {/*    // label={'编码' + (!!id && '  (不可编辑)')}*/}
-            {/*    disabled={!!id}*/}
-            {/*    value={code}*/}
-            {/*    onChange={event => setCode(event.target.value)}*/}
-            {/*    placeholder='请输入名称'*/}
-            {/*/>*/}
-          </Form.Field>
-        <MaterialSaveEntity {...entities} />
+    <Grid columns='equal'>
 
+      <Grid.Column>
+        <Form inverted inline>
+          <Form.Group widths='equal'>
+            <Form.Field
+                width={3}
+                control={Input}
+                label={'编码' + (!!id && '  (不可编辑)')}
+                disabled={!!id}
+                value={code}
+                onChange={event => setCode(event.target.value)}
+                placeholder='请输入名称'
+            />
+            <MaterialSaveEntity {...entities} />
+          </Form.Group>
+        </Form>
+      </Grid.Column>
+    </Grid>
 
-        </div>
-        </>
-      }
-      />
-    <MaterialContainerContent>
-      <StyledPageLoading>
-    {/*</Grid>*/}
-      <Grid>
-        <Grid.Column width={7}>
+    <Divider style={{marginTop: 5}} />
+    <Grid>
+      <Grid.Column width={7}>
 
-          <Segment style={{padding: '30px 0px 16px 0'}}>
-            <Label attached='top' color={color}>变量</Label>
-            <CodeEditor
-                dark={dark}
+        <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+          <Label attached='top' color={color}>变量</Label>
+          <CodeEditor
+              dark={dark}
               force={false}
               id={"component-variable-edit"}
               language={"json"}
               value={JSON.stringify(variable, null, 2)}
               onChange={updateVarDebounce}
-              style={{height: 350}}
-            />
-          </Segment>
-          <Segment style={{padding: '30px 0px 16px 0'}}>
-            <Label attached='top' color={color}>模板</Label>
-            <CodeEditor
-                dark={dark}
+              style={{height: 250}}
+          />
+        </Segment>
+        <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+          <Label attached='top' color={color}>模板</Label>
+          <CodeEditor
+              dark={dark}
               force={false}
               id={"component-raw-edit"}
               language={(variable && variable.language) ? variable.language : "html"}
               value={raw}
               onChange={setRawDebounce}
-              style={{height: 350}}
-            />
+              style={{height: 250}}
+          />
 
-          </Segment>
+        </Segment>
 
 
-        </Grid.Column>
-        <Grid.Column width={9}>
-          <Segment style={{padding: '30px 0px 16px 0'}}>
-            <Label attached='top' color={color}>预览</Label>
-            <ComponentRender template={raw} variable={variable} style={{height: 745}} />
+      </Grid.Column>
+      <Grid.Column width={9}>
+        <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+          <Label attached='top' color={color}>预览</Label>
+          <ComponentRender template={raw} variable={variable} style={{height: 745}} />
+        </Segment>
+      </Grid.Column>
+    </Grid>
 
-          </Segment>
 
-        </Grid.Column>
-      </Grid>
-
-  </StyledPageLoading></MaterialContainerContent>
-  </MaterialContainer>;
+  </StyledPageLoading>;
 }
 
 export default SaveComponent;
