@@ -2,9 +2,9 @@ import React from 'react';
 import {Editor as ByteEditor, Viewer as ByteViewer} from '@bytemd/react';
 import gfm from '@bytemd/plugin-gfm';
 import highlight from "@bytemd/plugin-highlight"
-// import math from "@bytemd/plugin-math"
+import math from "@bytemd/plugin-math"
 import zoom from "@bytemd/plugin-medium-zoom"
-// import mermaid from "@bytemd/plugin-mermaid"
+import mermaid from "@bytemd/plugin-mermaid"
 // import './code-mirror.less'
 // import 'bytemd/dist/index.css'
 import 'highlight.js/styles/vs2015.css';
@@ -14,12 +14,13 @@ import "./theme/scrolls.scss";
 
 // import {UploadFiles} from "../../../request/utils";
 import breaks from '@bytemd/plugin-breaks';
+import styled from "styled-components";
 
 
 // import './theme/github-markdown.less'
-
-// import frontmatter from "@bytemd/plugin-frontmatter"
-// import gemoji from    "@bytemd/plugin-gemoji"
+import frontmatter from "@bytemd/plugin-frontmatter"
+import gemoji from "@bytemd/plugin-gemoji"
+import LazyLoadEditor from "./LazyLoadEditor";
 // import vega from    "@bytemd/plugin-vega"
 
 // const copyToClipboard = (content='拷贝的内容') => {
@@ -56,39 +57,55 @@ const plugins = [
             //     hljs.registerLanguage(langName, langModule);
             // });
         }}),
-    // math(),
+    math(),
     zoom(),
-    // mermaid(),
+    mermaid(),
     // vega(),
+    frontmatter(),
+    gemoji()
     // Add more plugins here
 ];
 
 
-export const Editor = ({value, setValue, style, uploadFn}) => {
+
+const StyledByteEditorWrapper = styled.div`
+    .bytemd {
+       height: ${props => console.log(props) || props.height ? props.height : "400px"} !important;
+    }
+`
+
+
+export const Editor = ({height, value, setValue, style, uploadFn}) => {
+    LazyLoadEditor();
     return (
-        <ByteEditor
-            style={style ? {...style} : {}}
-            value={value}
-            plugins={plugins}
-            onChange={setValue}
-            editorConfig={{}}
-            uploadImages={  async (files) => {
-                let result = [];
-                if (files.length < 1) return ['']
-                await uploadFn(files, (data)=> {
-                    result = data.map(file => ({url:file.url, title: file.filename, alt: file.filename}))
-                })
-                return result;
-            }}
-        />
+        <StyledByteEditorWrapper height={height}>
+            <ByteEditor
+                style={style ? {...style} : {}}
+                value={value}
+                plugins={plugins}
+                onChange={setValue}
+                editorConfig={{}}
+                uploadImages={  async (files) => {
+                    let result = [];
+                    if (files.length < 1) return ['']
+                    await uploadFn(files, (data)=> {
+                        result = data.map(file => ({url:file.url, title: file.filename, alt: file.filename}))
+                    })
+                    return result;
+                }}
+            />
+        </StyledByteEditorWrapper>
     )
 }
-export const Viewer = ({value, style}) => {
+export const Viewer = ({height, value, style}) => {
+    LazyLoadEditor();
     return (
-        <ByteViewer
-            style={style ? {...style} : {}}
-            value={value}
-            plugins={plugins}
-        />
+        <StyledByteEditorWrapper height={height}>
+            <ByteViewer
+                style={style ? {...style} : {}}
+                value={value}
+                plugins={plugins}
+            />
+        </StyledByteEditorWrapper>
     )
 }
