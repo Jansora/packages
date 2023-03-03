@@ -1,6 +1,6 @@
 {
   "name": "@jansora/global",
-  "version": "2.20.3",
+  "version": "2.22.0",
   "description": "@jansora/global React component",
   "main": "lib/index.js",
   "module": "es/index.js",

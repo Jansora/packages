@@ -10,8 +10,7 @@ import mermaid from "@bytemd/plugin-mermaid"
 import 'highlight.js/styles/vs2015.css';
 
 import './index.less'
-import "./theme/scrolls.scss";
-
+// import "./theme/scrolls.scss";
 // import {UploadFiles} from "../../../request/utils";
 import breaks from '@bytemd/plugin-breaks';
 import styled from "styled-components";
