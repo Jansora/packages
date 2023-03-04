@@ -3,13 +3,13 @@ import {createRoot} from "react-dom/client";
 // import MaterialApp from "@jansora/material/es/mount";
 import MountGlobal from "@jansora/global/lib/mount";
 import Material from "../../src";
-import MaterialAside from "@jansora/material/es/layout/aside/MaterialAside";
 import MaterialFooter from "@jansora/material/es/layout/footer/MaterialFooter";
 import MaterialLayout from "@jansora/material/es/layout/MaterialLayout";
 import GlobalStoreProvider from "@jansora/global";
 import {BrowserRouter} from "react-router-dom";
-// import '@jansora/material/es/init.less'
-
+import '@jansora/material/es/init.less'
+import '@jansora/global/es/color.less'
+import '@jansora/global/es/theme.less'
 
 export default function Demo ()  {
 
@@ -19,7 +19,7 @@ export default function Demo ()  {
       <MountGlobal />
       {/*<MountMaterial />*/}
       {/*<MaterialHeader />*/}
-      <MaterialAside />
+      {/*<MaterialAside />*/}
       <MaterialLayout>
         <Material />
         <MaterialFooter/>
