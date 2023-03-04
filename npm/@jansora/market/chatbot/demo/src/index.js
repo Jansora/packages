@@ -10,6 +10,7 @@ import {BrowserRouter} from "react-router-dom";
 import '@jansora/material/es/init.less'
 import '@jansora/global/es/color.less'
 import '@jansora/global/es/theme.less'
+import MaterialHeader from "@jansora/material/es/layout/header/MaterialHeader";
 
 export default function Demo ()  {
 
@@ -18,7 +19,7 @@ export default function Demo ()  {
     <BrowserRouter>
       <MountGlobal />
       {/*<MountMaterial />*/}
-      {/*<MaterialHeader />*/}
+      <MaterialHeader />
       {/*<MaterialAside />*/}
       <MaterialLayout>
         <Material />

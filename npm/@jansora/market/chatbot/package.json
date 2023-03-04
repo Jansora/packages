@@ -1,7 +1,7 @@
 {
-  "name": "@jansora/market-play",
+  "name": "@jansora/market-chatbot",
   "version": "2.26.1",
-  "description": "@jansora/market-play React component",
+  "description": "@jansora/market-chatbot React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
