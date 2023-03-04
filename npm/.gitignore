@@ -14,3 +14,5 @@ yarn-*.log
 build
 
 package-lock.json
+
+logs
