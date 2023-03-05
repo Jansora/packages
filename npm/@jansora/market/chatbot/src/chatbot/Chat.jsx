@@ -177,7 +177,7 @@ const Chatbot = () => {
             {
               [{
                 role: "assistant",
-                content: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
+                content: "客官你好, 有什么我能帮你的吗?",
               }].concat(data).map((item, index) => {
 
                 const assistant = item.role === "assistant";
