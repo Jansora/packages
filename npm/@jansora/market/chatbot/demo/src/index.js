@@ -1,23 +1,19 @@
 import React from 'react'
 import {createRoot} from "react-dom/client";
 // import MaterialApp from "@jansora/material/es/mount";
-import MountGlobal from "@jansora/global/lib/mount";
 import Material from "../../src";
 import MaterialFooter from "@jansora/material/es/layout/footer/MaterialFooter";
 import MaterialLayout from "@jansora/material/es/layout/MaterialLayout";
-import GlobalStoreProvider from "@jansora/global";
-import {BrowserRouter} from "react-router-dom";
-import '@jansora/material/es/init.less'
-import '@jansora/global/es/color.less'
-import '@jansora/global/es/theme.less'
+
+import MaterialApp from "@jansora/material/es/MaterialApp";
 import MaterialHeader from "@jansora/material/es/layout/header/MaterialHeader";
 
 export default function Demo ()  {
 
 
-  return  <GlobalStoreProvider>
-    <BrowserRouter>
-      <MountGlobal />
+  return  <MaterialApp>
+    <>
+      {/*<MountGlobal />*/}
       {/*<MountMaterial />*/}
       <MaterialHeader />
       {/*<MaterialAside />*/}
@@ -25,8 +21,8 @@ export default function Demo ()  {
         <Material />
         <MaterialFooter/>
       </MaterialLayout>;
-    </BrowserRouter>
-  </GlobalStoreProvider>
+    </>
+  </MaterialApp>
 }
 
 createRoot(document.querySelector('#root')).render(<><Demo/></>);

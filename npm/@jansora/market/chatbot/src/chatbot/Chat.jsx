@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 // import CodeEditor from "../editor/CodeEditor";
 // import DiffEditor from "../editor/DiffEditor";
 import {Button, Divider, Form, Grid, Header, Icon} from "semantic-ui-react";
+import {useResponsive} from 'ahooks';
 
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
@@ -21,9 +22,13 @@ import FlexPadding from "@jansora/material/es/components/styled/base/FlexPadding
 const StyledChatWrapper = styled.main`
   background: var(--background-color-2);
   padding: 16px;
-  height: 70vh;
+
+
+  //height: 70vh;
+  height: ${(props) => props.mobile ? "calc(100vh - var(--header-height) - var(--footer-height))" : "70vh"};
   //margin-top: calc(15vh);
-  margin-top: calc(15vh - var(--header-height) - 16px );
+  //margin-top: calc(15vh - var(--header-height) - 16px );
+  margin-top: ${(props) => props.mobile ? "0" : "calc(15vh - var(--header-height) - 16px )"};
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px 0;
   border-radius: 15px;
   
@@ -59,7 +64,8 @@ const StyledChatWrapper = styled.main`
     margin-right: 20px;
     margin-bottom: 20px;
     div.content {
-      background: #08972a;
+      //background: #11dd42;
+      background: var(--primary-color);
       color: var(--light-text-color-1);
     }
     
@@ -76,6 +82,7 @@ const StyledChatWrapper = styled.main`
     word-break: break-all;
     text-overflow: ellipsis;
     line-height: 27px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px 0;
   }
   
   div.content-wrapper {
@@ -101,7 +108,7 @@ const Chatbot = () => {
 
   const color = GetColor();
   const dark = GetDarkMode();
-
+  const responsive = useResponsive();
   const [data, setData] = useState([])
 
   const [inputData, setInputData] = useState("")
@@ -136,20 +143,21 @@ const Chatbot = () => {
   }
 
 
+  const mobile = !responsive.middle
+
   return <StyledPageLoading>
 
     <Grid>
-      <Grid.Column width={4}>
 
+      {
+        !mobile &&  <Grid.Column width={4} />
+      }
 
+      <Grid.Column width={mobile ? 16 :8} style={{padding: mobile ? "0" : "16px"}}>
 
-      </Grid.Column>
+        <StyledChatWrapper mobile={mobile}>
 
-      <Grid.Column width={8}>
-
-        <StyledChatWrapper>
-
-          <Header textAlign="center" as="h3" inverted={dark}> {loading ? "In writing...": "Talking with chatbot"} </Header>
+          <Header textAlign="center" as="h3" inverted={dark}> {loading ? "正在输入...": "Chatbot (OpenAI)"} </Header>
 
           <Divider />
 
