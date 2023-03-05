@@ -23,7 +23,7 @@ const SearchHook = (baseUrl) => {
     const [classifies, classifiesLoading] = FetchClassifies(baseUrl);
     const [relationTags] = FetchRelationTags(baseUrl, classify);
     const [pageNum, setPageNum] = useState(1);
-    const pageSize = responsive.huge ? 24 : (responsive.large ? 12 : (responsive.middle ? 8 : 6));
+    const pageSize = responsive.huge ? 24 : (responsive.large ? 18 : (responsive.middle ? 8 : 6));
     const [orderBy, setOrderBy] = useState('updated_at');
     const [sort, setSort] = useState('DESC');
 

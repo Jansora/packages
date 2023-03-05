@@ -63,3 +63,11 @@ yarn
 yarn upgrade @jansora/material@$1 @jansora/bytemd@$1 @jansora/monaco@$1
 yarn publish --new-version $1
 cd ../../
+
+
+cd market/chatbot
+echo "yarn publish $PWD: $1";
+yarn
+yarn upgrade @jansora/material@$1
+yarn publish --new-version $1
+cd ../../

@@ -28,7 +28,7 @@ const StyledWrapper = styled.div`
       height: 156px;
       img {
         border-radius: 4px;
-        width: 236px;
+        width: 256px;
         height: 156px;
         background: white;
       }
@@ -65,7 +65,7 @@ const StyledWrapper = styled.div`
       margin: 4px 16px 12px;
     }
   
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
 `
 
 
