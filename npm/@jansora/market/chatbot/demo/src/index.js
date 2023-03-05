@@ -8,8 +8,13 @@ import MaterialLayout from "@jansora/material/es/layout/MaterialLayout";
 import MaterialApp from "@jansora/material/es/MaterialApp";
 import MaterialHeader from "@jansora/material/es/layout/header/MaterialHeader";
 
+import {useResponsive} from 'ahooks';
+
 export default function Demo ()  {
 
+  const responsive = useResponsive();
+
+  const mobile = !responsive.middle
 
   return  <MaterialApp>
     <>
@@ -19,8 +24,11 @@ export default function Demo ()  {
       {/*<MaterialAside />*/}
       <MaterialLayout>
         <Material />
-        <MaterialFooter/>
-      </MaterialLayout>;
+        {
+          !mobile && <MaterialFooter/>
+        }
+
+      </MaterialLayout>
     </>
   </MaterialApp>
 }

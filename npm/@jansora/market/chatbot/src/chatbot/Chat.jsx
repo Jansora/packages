@@ -11,6 +11,7 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import styled from 'styled-components';
 import {Chat} from "../request/chatbot";
 import FlexPadding from "@jansora/material/es/components/styled/base/FlexPadding";
+import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 
 /**
  * <Description> <br>
@@ -25,7 +26,7 @@ const StyledChatWrapper = styled.main`
 
 
   //height: 70vh;
-  height: ${(props) => props.mobile ? "calc(100vh - var(--header-height) - var(--footer-height))" : "70vh"};
+  height: ${(props) => props.mobile ? "calc(100vh - var(--header-height) - 5px )" : "70vh"};
   //margin-top: calc(15vh);
   //margin-top: calc(15vh - var(--header-height) - 16px );
   margin-top: ${(props) => props.mobile ? "0" : "calc(15vh - var(--header-height) - 16px )"};
@@ -33,7 +34,7 @@ const StyledChatWrapper = styled.main`
   border-radius: 15px;
   
   .chatgpt-content {
-    height: calc(100% - 120px);
+    height: ${(props) => props.mobile ? "calc(100% - 60px)" : "calc(100% - 120px)"};
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -131,6 +132,7 @@ const Chatbot = () => {
 
   })
 
+
   const onSave = (args) => {
 
     setLoading(true)
@@ -145,6 +147,8 @@ const Chatbot = () => {
 
   const mobile = !responsive.middle
 
+  SetTitle(loading ? "正在输入...": "Chatbot (OpenAI)")
+
   return <StyledPageLoading>
 
     <Grid>
@@ -157,9 +161,14 @@ const Chatbot = () => {
 
         <StyledChatWrapper mobile={mobile}>
 
-          <Header textAlign="center" as="h3" inverted={dark}> {loading ? "正在输入...": "Chatbot (OpenAI)"} </Header>
+          {
+              !mobile && <React.Fragment>
+                <Header textAlign="center" as="h3" inverted={dark}> {loading ? "正在输入...": "Chatbot (OpenAI)"} </Header>
+                <Divider />
+              </React.Fragment>
+          }
 
-          <Divider />
+
 
           <div className="chatgpt-content">
 

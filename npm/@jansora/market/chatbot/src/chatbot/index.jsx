@@ -1,7 +1,5 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-
-import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
 import Chatbot from "./Chat";
 
 /**
@@ -17,7 +15,7 @@ import Chatbot from "./Chat";
 
 const MaterialChatbot = () => {
 
-    SetTitle('chatbot聊天机器人 ')
+
     return <React.Fragment>
 
         <Routes>

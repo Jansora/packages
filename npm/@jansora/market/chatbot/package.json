@@ -1,6 +1,6 @@
 {
   "name": "@jansora/market-chatbot",
-  "version": "2.26.3",
+  "version": "2.26.5",
   "description": "@jansora/market-chatbot React component",
   "main": "lib/index.js",
   "module": "es/index.js",
