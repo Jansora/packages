@@ -110,7 +110,10 @@ const Chatbot = () => {
   const color = GetColor();
   const dark = GetDarkMode();
   const responsive = useResponsive();
-  const [data, setData] = useState([])
+  const [data, setData] = useState([{
+    role: "robot",
+    message: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
+  }])
 
   const [inputData, setInputData] = useState("")
 
