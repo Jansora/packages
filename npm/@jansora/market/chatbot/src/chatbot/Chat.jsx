@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import {Chat} from "../request/chatbot";
 import FlexPadding from "@jansora/material/es/components/styled/base/FlexPadding";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
+import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 
 /**
  * <Description> <br>
@@ -110,10 +111,7 @@ const Chatbot = () => {
   const color = GetColor();
   const dark = GetDarkMode();
   const responsive = useResponsive();
-  const [data, setData] = useState([{
-    role: "assistant",
-    content: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
-  }])
+  const [data, setData] = useState([])
 
   const [inputData, setInputData] = useState("")
 
@@ -152,7 +150,7 @@ const Chatbot = () => {
   const mobile = !responsive.middle
 
   SetTitle(loading ? "正在输入...": "Chatbot (OpenAI)")
-
+  SetDescription(null)
   return <StyledPageLoading>
 
     <Grid>
@@ -177,7 +175,10 @@ const Chatbot = () => {
           <div className="chatgpt-content">
 
             {
-              data.map((item, index) => {
+              [{
+                role: "assistant",
+                content: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
+              }].concat(data).map((item, index) => {
 
                 const assistant = item.role === "assistant";
                 return <div className={assistant ? "left" : "right"} key={index}>
