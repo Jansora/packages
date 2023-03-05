@@ -11,7 +11,7 @@ module.exports = {
     proxy: {
       '/api': {
         // target: 'https://www.jansora.com/',
-        target: 'http://127.0.0.1:8082/',
+        target: 'http://127.0.0.1:23386/',
         secure: false,
       }
     },

@@ -111,22 +111,22 @@ const Chatbot = () => {
   const dark = GetDarkMode();
   const responsive = useResponsive();
   const [data, setData] = useState([{
-    role: "robot",
-    message: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
+    role: "assistant",
+    content: "你好, 我是人工智能机器人, 有什么问题你可以问我, 希望我能为你提供一些帮助",
   }])
 
   const [inputData, setInputData] = useState("")
 
 
-  const [loading, setLoading] = Chat(inputData, (response) => {
-    // console.log("response", response)
+
+  const [loading, setLoading] = Chat(data, (response) => {
     if (response && response.startsWith("\n\n")) {
       response = response.slice(2);
     }
     setInputData("")
     setData(data.concat({
-      role: "robot",
-      message: response
+      role: "assistant",
+      content: response
     }))
 
     setTimeout(() => {
@@ -135,15 +135,16 @@ const Chatbot = () => {
 
   })
 
-
   const onSave = (args) => {
 
     setLoading(true)
 
     setData(data.concat({
       role: "user",
-      message: inputData,
+      content: inputData,
     }))
+
+    setInputData("")
 
   }
 
@@ -178,14 +179,14 @@ const Chatbot = () => {
             {
               data.map((item, index) => {
 
-                const robot = item.role === "robot";
-                return <div className={robot ? "left" : "right"} key={index}>
+                const assistant = item.role === "assistant";
+                return <div className={assistant ? "left" : "right"} key={index}>
                   <div className={"content-wrapper"}>
-                    { !robot && <FlexPadding/>}
+                    { !assistant && <FlexPadding/>}
                     <div className={"content"}>
-                      {item.message}
+                      {item.content}
                     </div>
-                    { robot && <FlexPadding/>}
+                    { assistant && <FlexPadding/>}
                   </div>
                 </div>
               })
