@@ -16,7 +16,6 @@ import './init.less'
 import MountGlobal from "@jansora/global/es/mount";
 import MaterialAppContent from "./MaterialAppContent";
 import DefaultLayout from "./layout/DefaultLayout";
-import MountUser from "./mount/MountUser";
 
 
 configResponsive({
@@ -41,7 +40,7 @@ const MaterialApp = ({children}) => {
         <GlobalStoreProvider>
             <BrowserRouter>
                 <MountGlobal />
-                <MountUser />
+
                 <MaterialAppContent>
                     {
                         children || <DefaultLayout/>
