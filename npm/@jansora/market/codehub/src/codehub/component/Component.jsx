@@ -226,7 +226,7 @@ const Component = (props) => {
         <Grid>
             <Grid.Column width={7} style={{}}>
 
-                <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+                <Segment inverted={dark}>
                     <Label attached='top' color={color}>变量</Label>
                     <CodeEditor
                         dark={dark}
@@ -246,10 +246,10 @@ const Component = (props) => {
 
             </Grid.Column>
             <Grid.Column width={9}>
-                <Segment style={{padding: '1px 0px 0 0'}} inverted={dark}>
+                <Segment inverted={dark}>
                     <Label attached='top' color={color}>预览(不可编辑)</Label>
                     {/*<Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + result + '\n```'} />*/}
-                    <ComponentRender template={raw} variable={variable} style={{height: 745}} />
+                    <ComponentRender template={raw} variable={variable} style={{height: 745, marginTop: "0 !important"}} />
                 </Segment>
 
             </Grid.Column>

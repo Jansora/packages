@@ -5,12 +5,12 @@ import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 
 import {Editor} from "@jansora/bytemd";
 import {
-    FetchClassifies,
-    FetchEditableNote,
-    FetchLogos,
-    FetchTags,
-    SaveNoteDraft,
-    SaveNoteRequest
+  FetchClassifies,
+  FetchEditableNote,
+  FetchLogos,
+  FetchTags,
+  SaveNoteDraft,
+  SaveNoteRequest
 } from "../request/notebook";
 
 import {useDebounceFn} from "ahooks";
@@ -73,7 +73,7 @@ const SaveNote = (props) => {
   const [tags, setTags, tagsLoading] = FetchTags();
   const [classifies, classifiesLoading] = FetchClassifies();
   const [autoAlert, setAutoAlert] = useState('')
-  const [documentId, setDocumentId] = useState(null)
+
 
   useEffect(() => {
     if(!!id) {
@@ -83,17 +83,12 @@ const SaveNote = (props) => {
       setTag(!!note.tag ? note.tag.split(",") : []);
       setEnabled(note.enabled);
       setClassify(note.classify);
-      setDocumentId(documentId)
       setRaw(!!note.raw ? note.raw : '');
       setRawInit(true)
       setClassify(note.classify);
     }
 
   },[id, note])
-
-  useEffect(() => {
-
-  }, [documentId])
 
 
   const save = () => {

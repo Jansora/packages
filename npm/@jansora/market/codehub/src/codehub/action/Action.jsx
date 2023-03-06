@@ -187,7 +187,7 @@ const Action = () => {
       <StyledPageLoading>
         <Grid style={{marginTop: -5}} >
               <Grid.Column width={8} >
-                <Segment style={{padding: '30px 0px 16px 0'}}  inverted={dark}>
+                <Segment style={{padding: '30px 0px 0 0'}}  inverted={dark}>
                   <Label attached='top' color={color}>变量</Label>
                   <CodeEditor
                       dark={dark}
@@ -201,7 +201,7 @@ const Action = () => {
                 </Segment>
               </Grid.Column>
               <Grid.Column width={8}  >
-                <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+                <Segment style={{padding: '30px 0px 0 0'}} inverted={dark}>
                   <Label attached='top' color={color}>模板</Label>
                   <CodeEditor
                       dark={dark}

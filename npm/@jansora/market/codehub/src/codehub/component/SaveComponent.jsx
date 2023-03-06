@@ -52,7 +52,7 @@ const SaveComponent = (props) => {
 
 
 
-  const [raw, setRaw] = useState('f');
+  const [raw, setRaw] = useState('');
   // const [rawInit, setRawInit] = useState(!id);
   const [logos] = FetchLogos();
   const [tags, setTags, tagsLoading] = FetchTags();
@@ -168,7 +168,7 @@ const SaveComponent = (props) => {
     <Grid>
       <Grid.Column width={7}>
 
-        <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+        <Segment style={{padding: '30px 0 0 0'}} inverted={dark}>
           <Label attached='top' color={color}>变量</Label>
           <CodeEditor
               dark={dark}
@@ -180,7 +180,7 @@ const SaveComponent = (props) => {
               style={{height: 250}}
           />
         </Segment>
-        <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
+        <Segment style={{padding: '30px 0px 0 0'}} inverted={dark}>
           <Label attached='top' color={color}>模板</Label>
           <CodeEditor
               dark={dark}

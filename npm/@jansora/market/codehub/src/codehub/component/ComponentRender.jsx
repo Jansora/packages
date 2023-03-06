@@ -20,7 +20,7 @@ const StyledViewerWrapper = styled.div `
     overflow-y: auto;
   }
   .markdown-body {
-    padding-top: 0;
+    //padding-top: 0;
     //margin-top: -13px;
   }
 `
