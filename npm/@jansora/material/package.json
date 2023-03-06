@@ -1,6 +1,6 @@
 {
   "name": "@jansora/material",
-  "version": "2.27.0",
+  "version": "2.31.0",
   "description": "@jansora/material React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@ant-design/charts": "^1.3.5",
     "@ant-design/icons": "^4.7.0",
-    "@jansora/global": "2.27.0",
+    "@jansora/global": "2.31.0",
     "ahooks": "^2.10.12",
     "antd": "^5.2.0",
     "axios": "^0.24.0",

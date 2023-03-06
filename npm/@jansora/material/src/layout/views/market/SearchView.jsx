@@ -129,7 +129,7 @@ const SearchView = (baseUrl) => {
 
     const PageView = <div>
 
-            <StyledDescription style={{marginRight: 10}}>页码: </StyledDescription>
+            {/*<StyledDescription style={{marginRight: 10}}>页码: </StyledDescription>*/}
         {/*<StyledDescription>总数: </StyledDescription>*/}
         {/*<span style={{margin: "3px 3px 0 3px"}}>{total}</span>*/}
         <Pagination
@@ -153,7 +153,7 @@ const SearchView = (baseUrl) => {
 
 
                 {data.map((item, index) =>
-                    <Grid.Column style={{marginTop: 24}} key={index}>
+                    <Grid.Column style={{marginTop: 45}} key={index}>
                         <div key={index}>
                             <StyledWrapper >
                                 <header>

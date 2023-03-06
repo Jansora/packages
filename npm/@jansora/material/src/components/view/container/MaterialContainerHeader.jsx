@@ -40,9 +40,9 @@ const MaterialContainerHeader = (props) => {
     const leftStyle = props.leftStyle ? props.leftStyle : {};
     const centerStyle = props.centerStyle ? props.centerStyle : {};
     const rightStyle = props.rightStyle ? props.rightStyle : {};
-    const left = props.left ? props.left : <React.Fragment/>;
-    const center = props.center ? props.center : <React.Fragment/>;
-    const right = props.right ? props.right : <React.Fragment/>;
+    const left = props.left ? props.left : null;
+    const center = props.center ? props.center : null;
+    const right = props.right ? props.right : null;
     return <StyledMaterialContainerHeader style={style}>
         <div className="container-left" style={leftStyle}>{left}</div>
         {
@@ -50,7 +50,7 @@ const MaterialContainerHeader = (props) => {
                 {center}
             </MaterialContainerHeaderCenter>
         }
-
+        <FlexPadding />
         <div className="container-right" style={rightStyle}>
             <FlexPadding />
             {right}
