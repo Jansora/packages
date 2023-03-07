@@ -44,8 +44,8 @@ public class QueryRepository {
      * 查询多条数据
      */
     public Long nextSeq(String tableName, String fieldName, List<ConditionSQLDto> conditions) {
-        List<String> seq = queryMapper.query(tableName, fieldName, conditions).stream().sorted().collect(Collectors.toList());
-        return this.nextSeq(CollectionUtils.isEmpty(seq) ? 0L : Long.parseLong(seq.get(seq.size() - 1)));
+        List<Long> seq = queryMapper.query(tableName, fieldName, conditions).stream().map(Long::new).sorted().collect(Collectors.toList());
+        return this.nextSeq(CollectionUtils.isEmpty(seq) ? 0L : seq.get(seq.size() - 1));
     }
 
     /**
