@@ -70,6 +70,81 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                         }
                     </Menu>
                     <Divider type="vertical"  />
+                    <StyledDescription style={{marginRight: 10}}>标签: </StyledDescription>
+
+                    <Menu inverted={dark} size="mini" style={{margin: "0"}}>
+                        {
+                            relationTags.slice(0, 5).map((item, index) =>
+                                <Menu.Item key={index} onClick={() => setTag(item.key !== tag ? item.key : null)}
+                                           active={item.key === tag} color={item.key === tag ? color : dark ? "black" : null}>
+                                    <>{item.key}</> <Label style={{zIndex: 1005}} color={color} floating circular size="mini"> {item.value} </Label>
+                                </Menu.Item>
+                            )
+                        }
+                    </Menu>
+
+
+
+                    {
+                        relationTags.length > 5 && <Portal
+                            closeOnTriggerClick
+                            openOnTriggerClick
+                            trigger={
+                                <Menu inverted={dark} size="mini" style={{margin: "0"}}>
+                                    <Menu.Item as={'a'}
+                                        // onClick={() => setActive('模板')}
+                                        // active={'模板' === active} color={'模板' === active ? color : null}>
+                                    >
+                                        <Tooltip title={"查看全部标签"}>
+                                            <Icon name="angle double right" />
+                                        </Tooltip>
+                                    </Menu.Item>
+                                </Menu>
+                            }
+                            // onOpen={this.handleOpen}
+                            // onClose={this.handleClose}
+                        >
+                            <Segment
+                                inverted={dark}
+                                style={{
+                                    left: '30vw',
+                                    width: "40vw",
+                                    position: 'fixed',
+                                    top: 'calc(var(--header-height) + var(--layout-header-height) + 10px)',
+                                    zIndex: 1003,
+                                    margin: "0",
+                                    padding: "10px 0 20px 0",
+                                    // display: "flex",
+                                    // justifyContent: "center",
+                                    // flexWrap: "nowrap"
+                                    // "overflow-x": "auto"
+                                }}
+                            >
+                                {/*<FlexPadding />*/}
+                                {/*<div style={{margin: "0 auto"}}>*/}
+                                {/*<Header as={'h3'} textAlign="center"> 标签 </Header>*/}
+                                {/*<Divider style={{marginBottom: 0 , marginTop: 5}} />*/}
+                                {/*<Dropdown*/}
+                                {/*    inline*/}
+                                {/*    // options={friendOptions}*/}
+                                {/*    // defaultValue={friendOptions[0].value}*/}
+                                {/*/>*/}
+                                {/*<Grid columns="equals" style={{marginTop: "10px"}}>*/}
+                                {relationTags.slice(5, 100000).map((item, index) =>
+                                    <Label
+                                        style={{cursor: "pointer", margin: "6px 10px",}}
+                                        // color={item[0] === tag ? color : "black"}
+                                        onClick={() => setTag(item.key !== tag ? item.key : null)}
+                                        key={item.key}
+                                        color={item.key === tag ? color : null}
+                                    >
+                                        {item.key}
+                                    </Label>
+                                )}
+                            </Segment>
+                        </Portal>
+                    }
+
                     {/*<Menu inverted={dark} size="mini" style={{margin: "0"}}>*/}
                     {/*    <Dropdown text='标签' pointing className='link item'>*/}
                     {/*        <Dropdown.Menu inverted={dark} >*/}
@@ -101,68 +176,13 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                     {/*    }*/}
                     {/*</Menu>*/}
 
-                    <Portal
-                        closeOnTriggerClick
-                        openOnTriggerClick
-                        trigger={
-                            <Menu inverted={dark} size="mini" style={{margin: "0"}}>
-                                <Menu.Item as={'a'}
-                                    // onClick={() => setActive('模板')}
-                                    // active={'模板' === active} color={'模板' === active ? color : null}>
-                                >
-                                    标签
-                                </Menu.Item>
-                            </Menu>
-                        }
-                        // onOpen={this.handleOpen}
-                        // onClose={this.handleClose}
-                    >
-                        <Segment
-                            inverted={dark}
-                            style={{
-                                left: '30vw',
-                                width: "40vw",
-                                position: 'fixed',
-                                top: 'calc(var(--header-height) + var(--layout-header-height) + 10px)',
-                                zIndex: 1003,
-                                margin: "0",
-                                padding: "10px 0 20px 0",
-                                // display: "flex",
-                                // justifyContent: "center",
-                                // flexWrap: "nowrap"
-                                // "overflow-x": "auto"
-                            }}
-                        >
-                            {/*<FlexPadding />*/}
-                            {/*<div style={{margin: "0 auto"}}>*/}
-                            {/*<Header as={'h3'} textAlign="center"> 标签 </Header>*/}
-                            {/*<Divider style={{marginBottom: 0 , marginTop: 5}} />*/}
-                            {/*<Dropdown*/}
-                            {/*    inline*/}
-                            {/*    // options={friendOptions}*/}
-                            {/*    // defaultValue={friendOptions[0].value}*/}
-                            {/*/>*/}
-                            {/*<Grid columns="equals" style={{marginTop: "10px"}}>*/}
-                                {relationTags.map((item, index) =>
-                                <Label
-                                    style={{cursor: "pointer", margin: "6px 10px",}}
-                                    // color={item[0] === tag ? color : "black"}
-                                    onClick={() => setTag(item.key !== tag ? item.key : null)}
-                                    key={item.key}
-                                    color={item.key === tag ? color : null}
-                                >
-                                    {item.key}
-                                </Label>
-                        )}
-                        </Segment>
-                    </Portal>
+
                     <Divider type="vertical"  />
                     <StyledDescription style={{marginRight: 10}}>排序: </StyledDescription>
                     <Menu inverted={dark} size="mini" style={{margin: "0"}}>
                         {
                             [{name: "最近更新在前", icon: "sort content ascending", value: "ASC"}, {name: "最近更新在后", icon: "sort content descending", value: "DESC"}].map((item, index) =>
                                 <Menu.Item key={index} onClick={() => setSort(item.value)} active={sort === item.value} color={sort === item.value ? color : null}>
-                                    {/*<>{item.name}</>*/}
                                     <Tooltip title={item.name}>
                                         <Icon name={item.icon} />
                                     </Tooltip>

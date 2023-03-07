@@ -77,7 +77,7 @@ export const FetchRelationTags = (baseUrl, classify) => {
 
         if (relationTagsLoading) {
             client.get(`${baseUrl}/tags?${stringify({classify})}`)
-                .then(data => setRelationTags(data))
+                .then(data => setRelationTags(data.sort((a,b) => b.value - a.value).map(tag => tag)))
                 .finally(()=> {  setLoading(false)
                 })
         }
