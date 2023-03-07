@@ -74,7 +74,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
 
                     <Menu inverted={dark} size="mini" style={{margin: "0"}}>
                         {
-                            relationTags.slice(0, 5).map((item, index) =>
+                            relationTags.slice(0, 3).map((item, index) =>
                                 <Menu.Item key={index} onClick={() => setTag(item.key !== tag ? item.key : null)}
                                            active={item.key === tag} color={item.key === tag ? color : dark ? "black" : null}>
                                     <>{item.key}</> <Label style={{zIndex: 1005}} color={color} floating circular size="mini"> {item.value} </Label>
@@ -86,7 +86,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
 
 
                     {
-                        relationTags.length > 5 && <Portal
+                        relationTags.length > 3 && <Portal
                             closeOnTriggerClick
                             openOnTriggerClick
                             trigger={
@@ -130,7 +130,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                                 {/*    // defaultValue={friendOptions[0].value}*/}
                                 {/*/>*/}
                                 {/*<Grid columns="equals" style={{marginTop: "10px"}}>*/}
-                                {relationTags.slice(5, 100000).map((item, index) =>
+                                {relationTags.slice(3, 100000).map((item, index) =>
                                     <Label
                                         style={{cursor: "pointer", margin: "6px 10px",}}
                                         // color={item[0] === tag ? color : "black"}
@@ -177,22 +177,7 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                     {/*</Menu>*/}
 
 
-                    <Divider type="vertical"  />
-                    <StyledDescription style={{marginRight: 10}}>排序: </StyledDescription>
-                    <Menu inverted={dark} size="mini" style={{margin: "0"}}>
-                        {
-                            [{name: "最近更新在前", icon: "sort content ascending", value: "ASC"}, {name: "最近更新在后", icon: "sort content descending", value: "DESC"}].map((item, index) =>
-                                <Menu.Item key={index} onClick={() => setSort(item.value)} active={sort === item.value} color={sort === item.value ? color : null}>
-                                    <Tooltip title={item.name}>
-                                        <Icon name={item.icon} />
-                                    </Tooltip>
 
-                                </Menu.Item>
-                            )
-                        }
-                    </Menu>
-                    <Divider type="vertical"  />
-                    {TitleView}
                 </React.Fragment>
                 }
                 // center={
@@ -202,8 +187,21 @@ const MaterialSearchView = ({baseUrl, name, description, title}) => {
                 // }
                 right={
                          <React.Fragment>
-                        {/*<StyledDescription>{total}</StyledDescription>*/}
-                        {/*<Divider type="vertical"  />*/}
+                             <StyledDescription style={{marginRight: 10}}>排序: </StyledDescription>
+                             <Menu inverted={dark} size="mini" style={{margin: "0"}}>
+                                 {
+                                     [{name: "最近更新在前", icon: "sort content ascending", value: "ASC"}, {name: "最近更新在后", icon: "sort content descending", value: "DESC"}].map((item, index) =>
+                                         <Menu.Item key={index} onClick={() => setSort(item.value)} active={sort === item.value} color={sort === item.value ? color : null}>
+                                             <Tooltip title={item.name}>
+                                                 <Icon name={item.icon} />
+                                             </Tooltip>
+
+                                         </Menu.Item>
+                                     )
+                                 }
+                             </Menu>
+                             <Divider type="vertical"  />
+                             {TitleView}
                         {PageView}
                              {
                                  loginStatus && <><Divider type="vertical"  />

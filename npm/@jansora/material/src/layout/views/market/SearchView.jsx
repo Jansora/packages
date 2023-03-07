@@ -86,7 +86,7 @@ const SearchView = (baseUrl) => {
         loading={loading}
         // value={title}
         onChange={event => search(event.target.value)}
-        style={{ width: 250 }}
+        style={{ width: 200 }}
     />
 
     const ClassifiesView = () => classifies.map((item, index) =>
