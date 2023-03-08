@@ -95,6 +95,9 @@ const Note = (props) => {
           }
           right={
               user.id === note.userId && <React.Fragment>
+
+
+
                   <Popconfirm
                       title='你确认要分享吗？'
                       onConfirm={() => {
@@ -111,7 +114,23 @@ const Note = (props) => {
                       </Button>
                   </Popconfirm>
 
+
+
                 <Divider type="vertical"  />
+
+                  <Popconfirm
+                      title='你确认要克隆吗？'
+                      onConfirm={() => {
+                          navigate(`/notebook/new?clone=${id}`)
+                      }}
+                      onCancel={() => {
+                      }}
+                  >
+                      <Button icon size="mini" color={color}>
+                          <Icon name='copy' />
+                      </Button>
+                  </Popconfirm>
+                  <Divider type="vertical"  />
 
                 <Button icon size="mini" color={color} as={Link} to={`/notebook/${note.id}/edit`}>
                   <Icon name='edit' />

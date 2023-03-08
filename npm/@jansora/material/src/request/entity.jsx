@@ -2,6 +2,35 @@ import {client} from "./index";
 import {stringify} from "qs";
 import {useEffect, useState} from "react";
 
+
+export const FetchEntity = (baseUrl, id, cloneId) => {
+
+    const [entity, setEntity] = useState({});
+    const [loading, setLoading] = useState(true);
+    useEffect(()=> {
+
+        if(loading && !!id) {
+            client.get(`${baseUrl}/${id}`)
+                .then(response => {
+                    setEntity(response)
+                }).finally(()=> {  setLoading(false)
+            })
+        }
+        else if(loading && !!cloneId) {
+            client.get(`${baseUrl}/${cloneId}`)
+                .then(response => {
+                    response.id = null
+                    setEntity(response)
+                }).finally(()=> {  setLoading(false)
+            })
+        }
+
+    }, [loading, id, cloneId]);
+
+    return [entity, loading];
+};
+
+
 export const FetchClassifies = (baseUrl) => {
 
 
@@ -91,7 +120,7 @@ export const FetchRelationTags = (baseUrl, classify) => {
     return [relationTags, relationTagsLoading];
 };
 
-export const Search = (baseUrl, classify, tag, title, pageSize, pageNum, orderBy, sort, setPageNum) => {
+export const SearchEntity = (baseUrl, classify, tag, title, pageSize, pageNum, orderBy, sort, setPageNum) => {
 
     const [data, setData] = useState([]);
     const [total, setTotal] = useState([]);

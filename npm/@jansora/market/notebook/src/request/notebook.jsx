@@ -131,7 +131,34 @@ export const FetchNote = (id) => {
 
 
 
-export const FetchEditableNote = (id, resource) => {
+export const FetchEntity = (baseUrl, id, cloneId) => {
+
+  const [entity, setEntity] = useState({});
+  const [loading, setLoading] = useState(true);
+  useEffect(()=> {
+
+    if(loading && !!id) {
+      client.get(`${baseUrl}/${id}`)
+          .then(response => {
+            setEntity(response)
+          }).finally(()=> {  setLoading(false)
+      })
+    }
+    else if(loading && !!cloneId) {
+      client.get(`${baseUrl}/${cloneId}`)
+          .then(response => {
+            response.id = null
+            setEntity(response)
+          }).finally(()=> {  setLoading(false)
+      })
+    }
+
+  }, [loading, id, cloneId]);
+
+  return [entity, loading];
+};
+
+export const FetchEditableNote = (id, cloneId) => {
 
   const [note, setNote] = useState({});
   const [loading, setLoading] = useState(true);
@@ -140,8 +167,23 @@ export const FetchEditableNote = (id, resource) => {
       client.get(`notebook/draft/${id}`)
           .then(setNote).finally(()=> {  setLoading(false)
       })
+      if(loading && !!id && IsNumber(id)) {
+        client.get(`${baseUrl}/${id}`)
+            .then(response => {
+              setNote(response)
+            }).finally(()=> {  setLoading(false)
+        })
+      }
+      else if(loading && !!cloneId && IsNumber(cloneId)) {
+        client.get(`${baseUrl}/${cloneId}`)
+            .then(response => {
+              response.id = null
+              setNote(response)
+            }).finally(()=> {  setLoading(false)
+        })
+      }
     }
-  }, [loading, id]);
+  }, [loading, id, cloneId]);
   return [note, loading];
 };
 

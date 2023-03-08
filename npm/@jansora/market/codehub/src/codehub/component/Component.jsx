@@ -64,7 +64,6 @@ const Component = (props) => {
 
     useEffect(() => {
 
-        console.log("xxx", component)
         if(!!id) {
             setRaw(component.raw)
             setVariable({__language: "html", ...updateVar(component.variable)})
@@ -151,7 +150,18 @@ const Component = (props) => {
         right={
             user.id === component.userId && <React.Fragment>
 
-
+                <Popconfirm
+                    title='你确认要克隆吗？'
+                    onConfirm={() => {
+                        navigate(`/codehub/component/new?clone=${id}`)
+                    }}
+                    onCancel={() => {
+                    }}
+                >
+                    <Button icon size="mini" color={color}>
+                        <Icon name='copy' />
+                    </Button>
+                </Popconfirm>
               <Divider type="vertical"  />
 
               <Button icon size="mini" color={color} as={Link} to={`/codehub/component/${component.id}/edit`}>
@@ -186,7 +196,41 @@ const Component = (props) => {
 
         <Grid>
 
-            <Grid.Column width={16}>
+            <Grid.Column width={7}>
+
+                <Segment style={{padding: '30px 0 0 0'}} inverted={dark}>
+                    <Label attached='top' color={color}>变量</Label>
+                    <CodeEditor
+                        dark={dark}
+                        force={true}
+                        id={"component-variable-edit"}
+                        language={"json"}
+                        value={JSON.stringify(variable, null, 2)}
+                        onChange={updateVarDebounce}
+                        style={{height: "calc(50vh - 175px)"}}
+                    />
+                </Segment>
+                <Segment style={{padding: '30px 0px 0 0'}} inverted={dark}>
+                    <Label attached='top' color={color}>模板</Label>
+
+                    {/*<Viewer height={ "calc(50vh - 275px)"} value={'```' + (variable && variable.__language ? variable.__language : "html") + '\n' + raw + '\n```'} />*/}
+
+                    <CodeEditor
+                        dark={dark}
+                        readOnly={true}
+                        force={true}
+                        id={"component-raw-edit"}
+                        language={(variable && variable.__language) ? variable.__language : "html"}
+                        value={raw}
+                        onChange={setRawDebounce}
+                        style={{height: "calc(50vh - 175px)"}}
+                    />
+
+                </Segment>
+
+
+            </Grid.Column>
+            <Grid.Column width={9}>
                 <Segment inverted={dark}>
                     <Label attached='top' color={color}>预览</Label>
                     <ComponentRender template={raw} variable={variable} style={{height: "calc(100vh - 210px)", overflowY: "auto"}} />

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Divider, Dropdown, Form, Grid, Input, Label, Loader, Segment} from "semantic-ui-react";
-import {useNavigate, useParams} from 'react-router-dom';
-
-import {FetchClassifies, FetchComponent, FetchLogos, FetchTags, SaveComponentRequest} from "../request/component";
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
+import {parse} from "qs";
+import {FetchClassifies, FetchLogos, FetchTags, SaveComponentRequest} from "../request/component";
 import styled from 'styled-components'
 
 import {useDebounceFn} from "ahooks";
@@ -13,6 +13,7 @@ import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import MaterialSaveEntity from "@jansora/material/es/layout/views/market/MaterialSaveEntity";
+import {FetchEntity} from "@jansora/material/es/request/entity";
 
 // import MaterialSaveEntity from "./MaterialSaveEntity";
 
@@ -35,9 +36,14 @@ const SaveComponent = (props) => {
 
   const dark = GetDarkMode();
   const navigate = useNavigate();
+
   const {id} = useParams();
   const color = GetColor()
-  const [component, componentLoading] = FetchComponent(id)
+
+  const location = useLocation();
+  const {clone} = parse(location.search, { ignoreQueryPrefix: true })
+  const baseUrl = "codehub/component"
+  const [component, componentLoading] = FetchEntity(baseUrl, id, clone)
 
   const [name, setName] = useState('');
   const [code, setCode] = useState('');
@@ -59,10 +65,11 @@ const SaveComponent = (props) => {
   const [classifies, classifiesLoading] = FetchClassifies();
 
 
+
+
+
   useEffect(() => {
 
-    // console.log("????AAA", component)
-    if(!!id && !!component.id) {
       setName(component.name);
       setCode(component.code);
 
@@ -76,10 +83,14 @@ const SaveComponent = (props) => {
       setClassify(component.classify);
 
       updateVar(component.variable)
-    }
+
+      if (!component.id && clone) {
+        setCode(component.code + "_copied")
+        setName(component.name + "_copied")
+      }
 
 
-  },[id, component])
+  },[component])
 
 
   const updateVar = (value) => {
@@ -106,7 +117,6 @@ const SaveComponent = (props) => {
   }
 
   const save = () => {
-    console.log("SAVE", variable, JSON.stringify(variable, null, 2))
     const args = {
       enabled, classify, id, code, name, description, variable : JSON.stringify(variable, null, 2),
       tag: `${!!tag ? tag.join(",") : ''}`, logo, raw
@@ -147,7 +157,7 @@ const SaveComponent = (props) => {
     <Grid columns='equal'>
 
       <Grid.Column>
-        <Form inverted inline>
+        <Form inverted>
           <Form.Group widths='equal'>
             <Form.Field
                 width={3}
@@ -172,7 +182,7 @@ const SaveComponent = (props) => {
           <Label attached='top' color={color}>变量</Label>
           <CodeEditor
               dark={dark}
-              force={false}
+              force={true}
               id={"component-variable-edit"}
               language={"json"}
               value={JSON.stringify(variable, null, 2)}
@@ -184,7 +194,7 @@ const SaveComponent = (props) => {
           <Label attached='top' color={color}>模板</Label>
           <CodeEditor
               dark={dark}
-              force={false}
+              force={true}
               id={"component-raw-edit"}
               language={(variable && variable.__language) ? variable.__language : "html"}
               value={raw}
@@ -199,7 +209,7 @@ const SaveComponent = (props) => {
       <Grid.Column width={9}>
         <Segment style={{padding: '30px 0px 16px 0'}} inverted={dark}>
           <Label attached='top' color={color}>预览</Label>
-          <ComponentRender template={raw} variable={variable} style={{height: 745}} />
+          <ComponentRender template={raw} variable={variable} style={{height: "calc(100vh - 350px)"}} />
         </Segment>
       </Grid.Column>
     </Grid>

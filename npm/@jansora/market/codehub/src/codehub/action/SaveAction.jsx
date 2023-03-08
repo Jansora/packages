@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Dimmer, Dropdown, Form, Grid, Label, Loader, Segment} from "semantic-ui-react";
-import {useParams} from 'react-router-dom';
+import {useLocation, useParams} from 'react-router-dom';
 
-import {FetchAction, FetchClassifies, FetchLogos, FetchTags, SaveActionRequest} from "../request/action";
+import {FetchClassifies, FetchLogos, FetchTags, SaveActionRequest} from "../request/action";
 import styled from 'styled-components'
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {useDebounceFn} from "ahooks";
@@ -14,6 +14,8 @@ import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import MaterialSaveEntity from "@jansora/material/es/layout/views/market/MaterialSaveEntity";
+import {parse} from "qs";
+import {FetchEntity} from "@jansora/material/es/request/entity";
 
 
 /**
@@ -38,7 +40,11 @@ const SaveAction = (props) => {
   const navigate = useNavigate();
   const {id} = useParams();
   const color = GetColor()
-  const [action, actionLoading] = FetchAction(id)
+  // const [action, actionLoading] = FetchAction(id)
+  const location = useLocation();
+  const {clone} = parse(location.search, { ignoreQueryPrefix: true })
+  const baseUrl = "codehub/action"
+  const [action, actionLoading] = FetchEntity(baseUrl, id, clone)
 
   const [name, setName] = useState('a');
 
@@ -78,7 +84,10 @@ const SaveAction = (props) => {
 
       updateVar(action.variable)
 
-      console.log("xx", !!action.raw ? action.raw : '')
+      if (!action.id && clone) {
+        // setCode(action.code + "_copied")
+        setName(action.name + "_copied")
+      }
     }
 
 
@@ -185,7 +194,10 @@ const SaveAction = (props) => {
             <Grid.Column width={16} style={{paddingRight: 0}}>
             <Segment  inverted={dark}>
               <Label attached='top' color={color}>预览</Label>
-              <ActionRender template={raw} variable={variable} style={{height: 600}} />
+              <ActionRender template={raw} variable={variable} style={{
+                tree: {height: "600px", overflowY: "auto"},
+                component: {height: "600px", overflowY: "auto"},
+              }} />
 
             </Segment>
 

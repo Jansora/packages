@@ -1,4 +1,4 @@
-import {FetchClassifies, FetchRelationTags, Search} from "../../../request/search";
+import {FetchClassifies, FetchRelationTags, SearchEntity} from "../../../request/entity";
 import React, {useEffect, useState} from "react";
 import {useDebounceFn, useResponsive} from "ahooks";
 
@@ -27,7 +27,7 @@ const SearchHook = (baseUrl) => {
     const [orderBy, setOrderBy] = useState('updated_at');
     const [sort, setSort] = useState('DESC');
 
-    const [data, setData, total, setLock, loading] = Search(baseUrl, classify, tag, title, pageSize, pageNum, orderBy, sort, setPageNum);
+    const [data, setData, total, setLock, loading] = SearchEntity(baseUrl, classify, tag, title, pageSize, pageNum, orderBy, sort, setPageNum);
 
 
     useEffect(() => {

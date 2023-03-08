@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {useNavigate, useParams} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
 
 import {Editor} from "@jansora/bytemd";
@@ -59,7 +59,9 @@ const SaveNote = (props) => {
   const {id} = useParams();
   const color = GetColor();
   const dark = GetDarkMode();
-  const [note, noteLoading] = FetchEditableNote(id)
+  const location = useLocation();
+  const {clone} = parse(location.search, { ignoreQueryPrefix: true })
+  const [note, noteLoading] = FetchEditableNote(id, clone)
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState( '');
@@ -76,16 +78,20 @@ const SaveNote = (props) => {
 
 
   useEffect(() => {
-    if(!!id) {
-      setName(note.name);
-      setDescription(note.description);
-      setLogo(note.logo + "___" + note.name);
-      setTag(!!note.tag ? note.tag.split(",") : []);
-      setEnabled(note.enabled);
-      setClassify(note.classify);
-      setRaw(!!note.raw ? note.raw : '');
-      setRawInit(true)
-      setClassify(note.classify);
+
+    setName(note.name);
+    setDescription(note.description);
+    setLogo(note.logo + "___" + note.name);
+    setTag(!!note.tag ? note.tag.split(",") : []);
+    setEnabled(note.enabled);
+    setClassify(note.classify);
+    setRaw(!!note.raw ? note.raw : '');
+    setRawInit(true)
+    setClassify(note.classify);
+
+    if (!note.id && clone) {
+      // setCode(note.code + "_copied")
+      setName(note.name + "_copied")
     }
 
   },[id, note])

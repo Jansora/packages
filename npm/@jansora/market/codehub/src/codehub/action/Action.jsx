@@ -168,7 +168,19 @@ const Action = () => {
             {
               user.id === action.userId && <React.Fragment>
 
-
+                  <Popconfirm
+                      title='你确认要克隆吗？'
+                      onConfirm={() => {
+                        navigate(`/codehub/component/new?clone=${id}`)
+                      }}
+                      onCancel={() => {
+                      }}
+                  >
+                    <Button icon size="mini" color={color}>
+                      <Icon name='copy' />
+                    </Button>
+                  </Popconfirm>
+                  <Divider type="vertical"  />
               <Divider type="vertical"/>
 
               <Button icon size="mini" color={color} as={Link} to={`/codehub/action/${id}/edit`}>
@@ -234,7 +246,10 @@ const Action = () => {
           <Grid.Column width={16} >
             <Segment inverted={dark}>
               <Label attached='top' color={color}>预览</Label>
-              <ActionRender template={raw} variable={variable} style={{height: "calc(100vh - 250px)", overflowY: "auto"}} />
+              <ActionRender template={raw} variable={variable} style={{
+                tree: {height: "calc(100vh - 250px)", overflowY: "auto"},
+                component: {height: "calc(100vh - 250px)", overflowY: "auto"},
+              }} />
 
             </Segment>
 

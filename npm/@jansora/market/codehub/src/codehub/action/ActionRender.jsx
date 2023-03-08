@@ -40,6 +40,9 @@ const updateVar = (value) => {
 const ActionRender = ({template, variable, style}) => {
 
 
+
+  const treeStyle = style && style.tree ? style.tree : {}
+  const componentStyle = style && style.tree ? style.tree : {}
   const [tree, , loading] = FetchRenderAction(template, variable);
 
   const [componentVariable, setComponentVariable] = useState("")
@@ -52,7 +55,19 @@ const ActionRender = ({template, variable, style}) => {
 
   const renderTreeData = (files) => {
 
+    console.log("renderTreeData", files.length === 1 && !!files[0].__children && files[0].__children.length === 1, files)
+    if (files.length === 1 && !!files[0].__children && files[0].__children.length === 1) {
+      const file = files[0]
+
+      return renderTreeData([{
+        ...file,
+        __fileName: file.__fileName + "/" + file.__children[0].__fileName,
+        __children: file.__children[0].__children
+      }])
+    }
+
     return files.map(file => {
+
       return {
           ...file,
           key: file.__filePath,
@@ -89,7 +104,7 @@ const ActionRender = ({template, variable, style}) => {
     <Grid inverted={dark}>
       <Grid.Column width={4}>
         <DirectoryTree
-            style={{overflowX: 'auto'}}
+            style={{overflowX: 'auto', height: "100%", ...treeStyle}}
           defaultExpandAll={true}
           onSelect={onSelect}
           treeData={renderTreeData(tree.__children || [])}
@@ -97,7 +112,7 @@ const ActionRender = ({template, variable, style}) => {
       </Grid.Column>
 
       <Grid.Column width={12} style={{padding: "1rem 1rem 1rem 1rem", overflowY: "auto"}}>
-        <ComponentRender template={componentTemplate} variable={componentVariable} style={style ? style : {}} />
+        <ComponentRender template={componentTemplate} variable={componentVariable} style={componentStyle} />
       </Grid.Column>
 
 
