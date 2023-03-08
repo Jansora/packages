@@ -29,8 +29,8 @@ const MaterialCodeHub = (props) => {
     return <React.Fragment>
 
         <MaterialHeaderMenu menu={[
-                {pathname: "/codehub/component", icon: "icon-java", name: "组件仓库"},
-                {pathname: "/codehub/action", icon: "icon-Python", name: "聚合市场"},
+                {pathname: "/codehub/component", icon: "icon-Component", name: "组件仓库"},
+                {pathname: "/codehub/action", icon: "icon-companyreg", name: "聚合市场"},
             ]}
         />
 

@@ -1,6 +1,6 @@
 {
   "name": "@jansora/market-beike",
-  "version": "2.43.0",
+  "version": "2.45.0",
   "description": "@jansora/market-beike React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -23,8 +23,8 @@
   "dependencies": {
     "@ant-design/charts": "^1.3.5",
     "@ant-design/icons": "^4.7.0",
-    "@jansora/material": "2.43.0",
-    "@jansora/monaco": "2.43.0",
+    "@jansora/material": "2.45.0",
+    "@jansora/monaco": "2.45.0",
     "ahooks": "^2.10.12",
     "antd": "^5.2.0",
     "axios": "^0.24.0",
