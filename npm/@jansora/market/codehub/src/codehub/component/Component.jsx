@@ -4,7 +4,7 @@ import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
 import {Divider, message, Popconfirm} from "antd";
 // import {Aside, FlexPadding, Label as CustomLabel, LinkItem, Section} from "@jansora/material/es/components/styled/frameworks";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
-import {DeleteComponent, FetchComponent, FetchRenderComponent} from "../request/component";
+import {DeleteComponent, FetchComponent} from "../request/component";
 import GetLoginStatus from "@jansora/material/es/hooks/getter/GetLoginStatus";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
 import SetDescription from "@jansora/material/es/hooks/setter/SetDescription";
@@ -52,32 +52,31 @@ const Component = (props) => {
   const responsive = useResponsive();
   const loginStatus = GetLoginStatus();
 
-    const [variable, setVariable] = useState(component.variable ? updateVar(component.variable) : {__language: "html"});
+    const [variable, setVariable] = useState({});
 
 
-    const [raw, setRaw] = useState(component.raw ? component.raw : '');
+    const [raw, setRaw] = useState('');
 
-    const [active, setActive] = useState('')
+    // const [active, setActive] = useState('')
 
     // eslint-disable-next-line
-    const [result, _, __, setLoading] = FetchRenderComponent(component.raw, variable);
+    // const [result, _, __, setLoading] = FetchRenderComponent(raw, variable);
 
     useEffect(() => {
 
+        console.log("xxx", component)
         if(!!id) {
             setRaw(component.raw)
-            setVariable(updateVar(component.variable))
+            setVariable({__language: "html", ...updateVar(component.variable)})
         }
-
-
 
     },[id, component])
 
 
-    useEffect(() => {
-        setLoading(true)
-        // eslint-disable-next-line
-    }, [raw, variable])
+    // useEffect(() => {
+    //     setLoading(true)
+    //     // eslint-disable-next-line
+    // }, [raw, variable])
 
 
     const {run: updateVarDebounce} = useDebounceFn(
@@ -165,7 +164,7 @@ const Component = (props) => {
                   onConfirm={() => {
                       DeleteComponent(component.id, () => {
                           message.success({content: '删除成功'});
-                          navigate("/notebook")
+                          navigate("/codehub/component")
                       })
                   }}
                   onCancel={() => {
@@ -186,31 +185,10 @@ const Component = (props) => {
     <StyledPageLoading>
 
         <Grid>
-            {/*<Grid.Column width={7} style={{}}>*/}
 
-            {/*    <Segment inverted={dark}>*/}
-            {/*        <Label attached='top' color={color}>变量</Label>*/}
-            {/*        <CodeEditor*/}
-            {/*            dark={dark}*/}
-            {/*            force={false}*/}
-            {/*            id={"component-variable-edit"}*/}
-            {/*            language={"json"}*/}
-            {/*            value={JSON.stringify(variable, null, 2)}*/}
-            {/*            onChange={updateVarDebounce}*/}
-            {/*            style={{height: 500}}*/}
-            {/*        />*/}
-            {/*    </Segment>*/}
-            {/*    /!*<Segment style={{padding: '1px'}} inverted={dark}>*!/*/}
-            {/*    /!*    <Label attached='top' color={color}>模板(不可编辑)</Label>*!/*/}
-            {/*    /!*    <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + component.raw + '\n```'} />*!/*/}
-            {/*    /!*</Segment>*!/*/}
-
-
-            {/*</Grid.Column>*/}
             <Grid.Column width={16}>
                 <Segment inverted={dark}>
                     <Label attached='top' color={color}>预览</Label>
-                    {/*<Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + result + '\n```'} />*/}
                     <ComponentRender template={raw} variable={variable} style={{height: "calc(100vh - 210px)", overflowY: "auto"}} />
                 </Segment>
 

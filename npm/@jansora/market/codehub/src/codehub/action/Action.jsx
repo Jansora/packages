@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
-import {Link, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
+
 import {Divider, message, Popconfirm, Tooltip} from "antd";
 import {DeleteAction, FetchAction, FetchGenerateAction} from "../request/action";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
@@ -46,6 +47,7 @@ const Action = () => {
   const dark = GetTheme();
   const user = GetUser();
   const [action, actionLoading] = FetchAction(id)
+  const navigate = useNavigate();
 
 
   const [variable, setVariable] = useState({});
@@ -179,7 +181,7 @@ const Action = () => {
                   onConfirm={() => {
                     DeleteAction(id, () => {
                       message.success({content: '删除成功'});
-                      // navigate("/notebook")
+                      navigate("/codehub/component")
                     })
                   }}
                   onCancel={() => {

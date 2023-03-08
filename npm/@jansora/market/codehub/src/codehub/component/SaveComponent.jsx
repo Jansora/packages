@@ -47,7 +47,7 @@ const SaveComponent = (props) => {
   const [enabled, setEnabled] = useState(true);
   const [classify, setClassify] = useState(1);
 
-  const [variable, setVariable] = useState({language: "html"});
+  const [variable, setVariable] = useState({__language: "html"});
 
 
 
@@ -93,8 +93,8 @@ const SaveComponent = (props) => {
       const Var = Function('"use strict";return (' + value + ')')();
 
       // console.log("VAR", Var)
-      if (!Var.language) {
-        Var.language = "html"
+      if (!Var.__language) {
+        Var.__language = "html"
       }
       setVariable(Var)
 
@@ -186,7 +186,7 @@ const SaveComponent = (props) => {
               dark={dark}
               force={false}
               id={"component-raw-edit"}
-              language={(variable && variable.language) ? variable.language : "html"}
+              language={(variable && variable.__language) ? variable.__language : "html"}
               value={raw}
               onChange={setRawDebounce}
               style={{height: 250}}

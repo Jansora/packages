@@ -147,16 +147,19 @@ export const FetchRenderComponent = (template, variable) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(()=> {
-    if(loading) {
+    // console.log("CCX", loading, template, variable)
+
+    // if(loading) {
+    setLoading(true)
       const args = {
         variable: JSON.stringify(variable, null, 2), raw: template ? template : "",
       }
       client.put(`codehub/component/render`, args)
         .then(setRaw).finally(()=> {  setLoading(false)
       })
-    }
+    // }
     // eslint-disable-next-line
-  }, [loading]);
+  }, [template, variable]);
 
   return [raw, setRaw, loading, setLoading];
 

@@ -29,10 +29,14 @@ const ComponentRender = ({template, variable, style}) => {
 
 
   const dark = GetDarkMode();
+
+  // console.log("DDX", template, variable)
   // eslint-disable-next-line
   const [raw, _, __, setLoading] = FetchRenderComponent(template, variable);
 
   useEffect(() => {
+    // console.log("XXD", template, variable)
+
     setLoading(true)
     // eslint-disable-next-line
   }, [template, variable])
