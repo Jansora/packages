@@ -141,13 +141,13 @@ export const FetchAction = (id, version) => {
   return [Action, loading];
 };
 
-export const FetchGenerateAction = (template, variable, callback) => {
+export const FetchGenerateAction = (template, variable, fileName, callback) => {
 
   const [raw, setRaw] = useState("");
   const [loading, setLoading] = useState(false);
 
   const args = {
-    variable: JSON.stringify(variable, null, 2), raw: template,
+    variable: JSON.stringify(variable, null, 2), raw: template, fileName
   }
   useEffect(()=> {
     if(loading) {
@@ -177,7 +177,8 @@ export const FetchRenderAction = (template, variable) => {
 
   useEffect(()=> {
     if(!!template) {
-    setLoading(true)
+
+      setLoading(true)
       const args = {
         variable: JSON.stringify(variable, null, 2), raw: template,
       }

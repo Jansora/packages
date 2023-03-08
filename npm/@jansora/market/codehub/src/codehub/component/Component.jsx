@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dimmer, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
+import {Button, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
 import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
 import {Divider, message, Popconfirm} from "antd";
 // import {Aside, FlexPadding, Label as CustomLabel, LinkItem, Section} from "@jansora/material/es/components/styled/frameworks";
@@ -29,8 +29,8 @@ const updateVar = (value) => {
     try{
         // eslint-disable-next-line
         const Var = Function('"use strict";return (' + value + ')')();
-        if (!Var.language) {
-            Var.language = "html"
+        if (!Var.__language) {
+            Var.__language = "html"
         }
         return Var
 
@@ -52,7 +52,7 @@ const Component = (props) => {
   const responsive = useResponsive();
   const loginStatus = GetLoginStatus();
 
-    const [variable, setVariable] = useState(component.variable ? updateVar(component.variable) : {language: "html"});
+    const [variable, setVariable] = useState(component.variable ? updateVar(component.variable) : {__language: "html"});
 
 
     const [raw, setRaw] = useState(component.raw ? component.raw : '');
@@ -98,9 +98,7 @@ const Component = (props) => {
 
 
   if(id && componentLoading) {
-    return   <Dimmer active={componentLoading} inverted>
-      <Loader active inline='centered' />
-    </Dimmer>
+    return <Loader active inline='centered' inverted={dark}/>
   }
 
   return <MaterialContainer>
@@ -110,76 +108,40 @@ const Component = (props) => {
             {/*<Divider type="vertical"  />*/}
 
             <Menu inverted={dark} size="mini" style={{margin: "0"}}>
-                <Portal
-                    closeOnTriggerClick
-                    openOnTriggerClick
-                    trigger={
-                        <Menu.Item
-                            // onClick={() => setActive('模板')}
-                            // active={'模板' === active} color={'模板' === active ? color : null}>
-                           >
-                            模板
-                        </Menu.Item>
-                    }
-                    // onOpen={this.handleOpen}
-                    // onClose={this.handleClose}
-                >
-                    <Segment
-                        inverted={dark}
-                        style={{
-                            left: '40%',
-                            position: 'fixed',
-                            top: '100px',
-                            zIndex: 1000,
-                        }}
-                    >
-                        <Header as={'h3'} textAlign="center"> 模板 </Header>
-                        <Divider style={{marginBottom: 0 , marginTop: 5}} />
-                        <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + raw + '\n```'} />
+                <Portal closeOnTriggerClick openOnTriggerClick trigger={<Menu.Item>变量</Menu.Item>}>
+                    <Segment inverted={dark} style={{left: '25vw', position: 'fixed', top: '20vh', height: '60vh', zIndex: 1000, width: '50vw'}}>
+                        <Header as={'h3'} textAlign="center"> 变量 </Header>
+                        <Divider />
+                        <CodeEditor
+                            dark={dark}
+                            force={false}
+                            id={"action-variable-edit"}
+                            language={"json"}
+                            value={JSON.stringify(variable, null, 2)}
+                            onChange={updateVarDebounce}
+                            // style={{height: '400px'}}
+                            style={{height: 'calc(60vh - 150px)'}}
+                        />
                     </Segment>
                 </Portal>
-                <Portal
-                    closeOnTriggerClick
-                    openOnTriggerClick
-                    trigger={
-                        <Menu.Item
-                            // onClick={() => setActive('模板')}
-                            // active={'模板' === active} color={'模板' === active ? color : null}>
-                            >
-                            使用说明
-                        </Menu.Item>
-                    }
-                    // onOpen={this.handleOpen}
-                    // onClose={this.handleClose}
+                <Portal closeOnTriggerClick openOnTriggerClick trigger={<Menu.Item>模板</Menu.Item>}
                 >
-                    <Segment
-                        inverted={dark}
-                        style={{
-                            left: '40%',
-                            minWidth: 500,
-                            position: 'fixed',
-                            top: '100px',
-                            zIndex: 1000,
-                        }}
-                    >
+                    <Segment inverted={dark} style={{left: '25vw', position: 'fixed', top: '20vh', height: '60vh', zIndex: 1000, width: '50vw'}}>
+                        <Header as={'h3'} textAlign="center"> 模板 </Header>
+                        <Divider />
+
+                        <Viewer value={'```' + (variable && variable.__language ? variable.__language : "html") + '\n' + raw + '\n```'} />
+
+                    </Segment>
+                </Portal>
+                <Portal closeOnTriggerClick openOnTriggerClick trigger={<Menu.Item>使用说明</Menu.Item>}>
+                    <Segment inverted={dark} style={{left: '25vw', position: 'fixed', top: '20vh', height: '60vh', zIndex: 1000, width: '50vw'}}>
                         <Header as={'h3'} textAlign="center"> 使用说明 </Header>
                         <Divider style={{marginBottom: 0 , marginTop: 5}} />
                         <Viewer style={{height: 50}} value={'```xml\n' + `<${component.code} version=${component.versionId} args=${component.variable} />` + '\n```'} />
                     </Segment>
                 </Portal>
             </Menu>
-
-
-            {/*<Popup*/}
-            {/*    inverted={dark}*/}
-            {/*    trigger={*/}
-            {/*        <StyledDescription>使用说明</StyledDescription>*/}
-            {/*    }*/}
-            {/*    content={<div style={{width: 500}}>*/}
-            {/*        <Viewer value={'```xml\n' + `<${component.code} version=${component.versionId} args=${component.variable} />` + '\n```'} />*/}
-            {/*    </div>}*/}
-            {/*    // position='bottom left'*/}
-            {/*/>*/}
             </>
         }
         center={
@@ -224,32 +186,32 @@ const Component = (props) => {
     <StyledPageLoading>
 
         <Grid>
-            <Grid.Column width={7} style={{}}>
+            {/*<Grid.Column width={7} style={{}}>*/}
 
+            {/*    <Segment inverted={dark}>*/}
+            {/*        <Label attached='top' color={color}>变量</Label>*/}
+            {/*        <CodeEditor*/}
+            {/*            dark={dark}*/}
+            {/*            force={false}*/}
+            {/*            id={"component-variable-edit"}*/}
+            {/*            language={"json"}*/}
+            {/*            value={JSON.stringify(variable, null, 2)}*/}
+            {/*            onChange={updateVarDebounce}*/}
+            {/*            style={{height: 500}}*/}
+            {/*        />*/}
+            {/*    </Segment>*/}
+            {/*    /!*<Segment style={{padding: '1px'}} inverted={dark}>*!/*/}
+            {/*    /!*    <Label attached='top' color={color}>模板(不可编辑)</Label>*!/*/}
+            {/*    /!*    <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + component.raw + '\n```'} />*!/*/}
+            {/*    /!*</Segment>*!/*/}
+
+
+            {/*</Grid.Column>*/}
+            <Grid.Column width={16}>
                 <Segment inverted={dark}>
-                    <Label attached='top' color={color}>变量</Label>
-                    <CodeEditor
-                        dark={dark}
-                        force={false}
-                        id={"component-variable-edit"}
-                        language={"json"}
-                        value={JSON.stringify(variable, null, 2)}
-                        onChange={updateVarDebounce}
-                        style={{height: 500}}
-                    />
-                </Segment>
-                {/*<Segment style={{padding: '1px'}} inverted={dark}>*/}
-                {/*    <Label attached='top' color={color}>模板(不可编辑)</Label>*/}
-                {/*    <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + component.raw + '\n```'} />*/}
-                {/*</Segment>*/}
-
-
-            </Grid.Column>
-            <Grid.Column width={9}>
-                <Segment inverted={dark}>
-                    <Label attached='top' color={color}>预览(不可编辑)</Label>
+                    <Label attached='top' color={color}>预览</Label>
                     {/*<Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + result + '\n```'} />*/}
-                    <ComponentRender template={raw} variable={variable} style={{height: 745, marginTop: "0 !important"}} />
+                    <ComponentRender template={raw} variable={variable} style={{height: "calc(100vh - 210px)", overflowY: "auto"}} />
                 </Segment>
 
             </Grid.Column>

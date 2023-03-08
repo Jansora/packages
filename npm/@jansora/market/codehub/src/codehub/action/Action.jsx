@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Dimmer, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
-import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
+import {Button, Grid, Header, Icon, Label, Loader, Menu, Portal, Segment} from "semantic-ui-react";
+import {Link, useParams} from 'react-router-dom';
 import {Divider, message, Popconfirm, Tooltip} from "antd";
 import {DeleteAction, FetchAction, FetchGenerateAction} from "../request/action";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
-import {useDebounceFn, useResponsive} from "ahooks";
-import GetLoginStatus from "@jansora/material/es/hooks/getter/GetLoginStatus";
+import {useDebounceFn} from "ahooks";
 import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
 import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
 import GetUser from "@jansora/material/es/hooks/getter/GetUser";
@@ -49,18 +48,13 @@ const Action = () => {
   const [action, actionLoading] = FetchAction(id)
 
 
-  const {pathname} = useLocation();
-  const navigate = useNavigate();
-  const responsive = useResponsive();
-  const loginStatus = GetLoginStatus();
-
-  const [variable, setVariable] = useState(action.variable ? updateVar(action.variable) : {language: "html"});
+  const [variable, setVariable] = useState({});
 
   const [raw, setRaw] = useState(action.raw ? action.raw : '');
 
 
-  const [url, setUrl, downloadLoading, setDownloadLoading] = FetchGenerateAction(raw, variable, () => {
-    message.success(<span><a target='_self' rel='noopener noreferrer' href={url}><StyledColorText>点击下载 {action.name}.zip </StyledColorText> </a> </span>)
+  const [, , , setDownloadLoading] = FetchGenerateAction(raw, variable, action.name, (url) => {
+    message.success(<span><a target='_self' rel='noopener noreferrer' href={url} download={`${action.name}.zip`}><StyledColorText>点击下载 {action.name}.zip </StyledColorText> </a> </span>)
   });
 
   useEffect(() => {
@@ -87,9 +81,8 @@ const Action = () => {
   );
 
   if(id && actionLoading) {
-    return   <Dimmer active={actionLoading} inverted>
-      <Loader active inline='centered' />
-    </Dimmer>
+    return <Loader active={actionLoading} inline='centered' inverted={dark} />
+
   }
 
   return <MaterialContainer>
@@ -102,10 +95,19 @@ const Action = () => {
                   openOnTriggerClick
                   trigger={<Menu.Item>变量</Menu.Item>}
               >
-                <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000, width: '50vw'}}>
+                <Segment inverted={dark} style={{left: '25vw', position: 'fixed', top: '20vh', height: '60vh', zIndex: 1000, width: '50vw'}}>
                   <Header as={'h3'} textAlign="center"> 变量 </Header>
-                  <Divider style={{marginBottom: 0 , marginTop: 5}} />
-
+                  <Divider />
+                  <CodeEditor
+                      dark={dark}
+                      force={false}
+                      id={"action-variable-edit"}
+                      language={"json"}
+                      value={JSON.stringify(variable, null, 2)}
+                      onChange={updateVarDebounce}
+                      // style={{height: '400px'}}
+                      style={{height: 'calc(60vh - 150px)'}}
+                  />
                 </Segment>
               </Portal>
               <Portal
@@ -113,10 +115,21 @@ const Action = () => {
                   openOnTriggerClick
                   trigger={<Menu.Item>模板</Menu.Item>}
               >
-                <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000,}}>
+                <Segment inverted={dark} style={{left: '25vw', position: 'fixed', top: '20vh', height: '60vh', zIndex: 1000, width: '50vw'}}>
                   <Header as={'h3'} textAlign="center"> 模板 </Header>
-                  <Divider style={{marginBottom: 0 , marginTop: 5}} />
-                  <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + action.raw + '\n```'} />
+                  <Divider />
+
+                  <CodeEditor
+                      dark={dark}
+                      force={false}
+                      id={"action-raw-edit"}
+                      language={"html"}
+                      value={raw}
+                      onChange={setRawDebounce}
+                      style={{height: 'calc(60vh - 150px)'}}
+                  />
+
+                  {/*<Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' + action.raw + '\n```'} />*/}
                 </Segment>
               </Portal>
               <Portal
@@ -127,6 +140,8 @@ const Action = () => {
                 <Segment inverted={dark} style={{left: '40%', position: 'fixed', top: '100px', zIndex: 1000,}}>
                   <Header as={'h3'} textAlign="center"> 使用说明 </Header>
                   <Divider style={{marginBottom: 0 , marginTop: 5}} />
+
+
                   <Viewer value={'```xml\n' + `<${action.actionCode} version=${action.versionId} args=${action.variable} />` + '\n```'} />
                 </Segment>
               </Portal>
@@ -186,38 +201,38 @@ const Action = () => {
     <MaterialContainerContent>
       <StyledPageLoading>
         <Grid style={{marginTop: -5}} >
-              <Grid.Column width={8} >
-                <Segment style={{padding: '30px 0px 0 0'}}  inverted={dark}>
-                  <Label attached='top' color={color}>变量</Label>
-                  <CodeEditor
-                      dark={dark}
-                      force={false}
-                      id={"action-variable-edit"}
-                      language={"json"}
-                      value={JSON.stringify(variable, null, 2)}
-                      onChange={updateVarDebounce}
-                      style={{height: 200}}
-                  />
-                </Segment>
-              </Grid.Column>
-              <Grid.Column width={8}  >
-                <Segment style={{padding: '30px 0px 0 0'}} inverted={dark}>
-                  <Label attached='top' color={color}>模板</Label>
-                  <CodeEditor
-                      dark={dark}
-                      force={false}
-                      id={"action-raw-edit"}
-                      language={"xml"}
-                      value={raw}
-                      onChange={setRawDebounce}
-                      style={{height: 200}}
-                  />
-                </Segment>
-          </Grid.Column>
-          <Grid.Column width={16} style={{paddingRight: 0}}>
+          {/*    <Grid.Column width={8} >*/}
+          {/*      <Segment style={{padding: '30px 0px 0 0'}}  inverted={dark}>*/}
+          {/*        <Label attached='top' color={color}>变量</Label>*/}
+          {/*        /!*<CodeEditor*!/*/}
+          {/*        /!*    dark={dark}*!/*/}
+          {/*        /!*    force={false}*!/*/}
+          {/*        /!*    id={"action-variable-edit"}*!/*/}
+          {/*        /!*    language={"json"}*!/*/}
+          {/*        /!*    value={JSON.stringify(variable, null, 2)}*!/*/}
+          {/*        /!*    onChange={updateVarDebounce}*!/*/}
+          {/*        /!*    style={{height: 200}}*!/*/}
+          {/*        /!*//*/}
+          {/*      </Segment>*/}
+          {/*    </Grid.Column>*/}
+          {/*    <Grid.Column width={8}  >*/}
+          {/*      <Segment style={{padding: '30px 0px 0 0'}} inverted={dark}>*/}
+          {/*        <Label attached='top' color={color}>模板</Label>*/}
+          {/*        <CodeEditor*/}
+          {/*            dark={dark}*/}
+          {/*            force={false}*/}
+          {/*            id={"action-raw-edit"}*/}
+          {/*            language={"xml"}*/}
+          {/*            value={raw}*/}
+          {/*            onChange={setRawDebounce}*/}
+          {/*            style={{height: 200}}*/}
+          {/*        />*/}
+          {/*      </Segment>*/}
+          {/*</Grid.Column>*/}
+          <Grid.Column width={16} >
             <Segment inverted={dark}>
               <Label attached='top' color={color}>预览</Label>
-              <ActionRender template={raw} variable={variable} style={{height: 600}} />
+              <ActionRender template={raw} variable={variable} style={{height: "calc(100vh - 250px)", overflowY: "auto"}} />
 
             </Segment>
 

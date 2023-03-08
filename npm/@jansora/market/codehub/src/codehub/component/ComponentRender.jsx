@@ -38,8 +38,8 @@ const ComponentRender = ({template, variable, style}) => {
   }, [template, variable])
 
 
-  return <StyledViewerWrapper>
-    <Viewer value={'```' + (variable && variable.language ? variable.language : "html") + '\n' +raw + '\n```'} />
+  return <StyledViewerWrapper style={style ? style : {}}>
+    <Viewer value={'```' + (variable && variable.__language ? variable.__language : "html") + '\n' +raw + '\n```'} />
   </StyledViewerWrapper>;
 }
 
