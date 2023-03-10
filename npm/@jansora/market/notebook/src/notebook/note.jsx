@@ -72,6 +72,9 @@ const Note = (props) => {
           centerStyle={{}}
           rightStyle={{}}
           left={<React.Fragment>
+
+
+              {/*<Divider type="vertical"  />*/}
             <StyledDescription style={{marginRight: 5}}>目录: </StyledDescription>
 
             <Menu inverted={GetDarkMode()} size="mini" style={{margin: "0"}}>
@@ -94,15 +97,40 @@ const Note = (props) => {
             </React.Fragment>
           }
           right={
-              user.id === note.userId && <React.Fragment>
+          <React.Fragment>
+              {
+                  note.classify && <React.Fragment>
+                      <img src={`https://img.shields.io/badge/分类-${note.classify}-blue`}/>
 
+                      <Divider type="vertical"  />
+                  </React.Fragment>
+              }
+
+
+              {
+                  note.updatedAt && <React.Fragment>
+                      <img src={`https://img.shields.io/badge/时间-${note.updatedAt.replaceAll("-", "--")}-blueviolet`}/>
+                      <Divider type="vertical"  />
+                  </React.Fragment>
+              }
+              {
+                  note.enabled != null && <React.Fragment>
+                      <img src={`https://img.shields.io/badge/文章-${note.enabled ? "公开" : "不公开"}-brightgreen`}/>
+                      <Divider type="vertical"  />
+                  </React.Fragment>
+              }
+
+
+              {user.id === note.userId && <React.Fragment>
 
 
                   <Popconfirm
                       title='你确认要分享吗？'
                       onConfirm={() => {
                           ShareNote(note.id, (response) => {
-                              message.success({content: <span>分享成功 <StyledA href={response}> <>点击打开</>  </StyledA></span>});
+                              message.success({
+                                  content: <span>分享成功 <StyledA href={response}> <>点击打开</>  </StyledA></span>
+                              });
                           })
                       }}
                       onCancel={() => {
@@ -110,13 +138,12 @@ const Note = (props) => {
                       }}
                   >
                       <Button icon size="mini" color={color}>
-                          <Icon name='share' />
+                          <Icon name='share'/>
                       </Button>
                   </Popconfirm>
 
 
-
-                <Divider type="vertical"  />
+                  <Divider type="vertical"/>
 
                   <Popconfirm
                       title='你确认要克隆吗？'
@@ -127,16 +154,16 @@ const Note = (props) => {
                       }}
                   >
                       <Button icon size="mini" color={color}>
-                          <Icon name='copy' />
+                          <Icon name='copy'/>
                       </Button>
                   </Popconfirm>
-                  <Divider type="vertical"  />
+                  <Divider type="vertical"/>
 
-                <Button icon size="mini" color={color} as={Link} to={`/notebook/${note.id}/edit`}>
-                  <Icon name='edit' />
-                </Button>
+                  <Button icon size="mini" color={color} as={Link} to={`/notebook/${note.id}/edit`}>
+                      <Icon name='edit'/>
+                  </Button>
 
-                  <Divider type="vertical"  />
+                  <Divider type="vertical"/>
                   <Popconfirm
                       title='你确认要删除吗？'
                       onConfirm={() => {
@@ -148,10 +175,12 @@ const Note = (props) => {
                       }}
                   >
                       <Button icon size="mini" color={"red"}>
-                          <Icon name='delete' />
+                          <Icon name='delete'/>
                       </Button>
                   </Popconfirm>
               </React.Fragment>
+              }
+          </React.Fragment>
 
           }
           />
