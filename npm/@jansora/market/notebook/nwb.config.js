@@ -10,8 +10,8 @@ module.exports = {
     // path: '/api',
     proxy: {
       '/api': {
-        // target: 'https://www.jansora.com/',
-        target: 'http://localhost:23740/',
+        target: 'https://www.jansora.com/',
+        // target: 'http://localhost:23740/',
         secure: false,
       }
     },

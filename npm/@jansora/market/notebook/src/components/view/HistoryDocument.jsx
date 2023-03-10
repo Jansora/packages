@@ -1,7 +1,9 @@
 import React from 'react';
 import {Timeline, Tooltip} from "antd";
 import {FetchHistoryDocumentContent, FetchHistoryNotes} from "../../request/notebook";
-import {DiffEditor} from "@jansora/monaco/lib";
+import {DiffEditor} from "@jansora/monaco/es";
+// import DiffEditor from "./editor/DiffEditor";
+// import {DiffEditor} from "../../../../../monaco/src/index";
 import {Button, Checkbox, Divider, Grid, Header, Label, Modal, Segment} from "semantic-ui-react";
 import GetColor from "@jansora/material/es/hooks/getter/GetColor";
 import {momentZh} from "@jansora/material/es/components/utils";
@@ -23,8 +25,9 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
  */
 
 
-const HistoryDocument = ({id, document, setDocument}) => {
+const HistoryDocument = ({id, raw, setRaw}) => {
 
+    console.log("HistoryDocument", raw)
     const color = GetColor()
     const dark = GetDarkMode();
     const [visible, setVisible] = React.useState(false);
@@ -33,7 +36,7 @@ const HistoryDocument = ({id, document, setDocument}) => {
 
     const [documentVersions]  = FetchHistoryNotes(id);
 
-    const [raw]  = FetchHistoryDocumentContent(documentVersionId);
+    const [historyDocumentRaw]  = FetchHistoryDocumentContent(documentVersionId);
 
 
 
@@ -51,7 +54,7 @@ const HistoryDocument = ({id, document, setDocument}) => {
                 open={visible}
                 dimmer={'blurring'}
                 trigger={ <Button onClick={() => setVisible(true)} basic color={color}>历史</Button>}
-                style={{width: '80vw'}}
+                style={{width: '80vw', height: '80vh'}}
             >
 
 
@@ -123,21 +126,22 @@ const HistoryDocument = ({id, document, setDocument}) => {
                             </Grid.Column>
                             <Grid.Column>
                                 <DiffEditor
-                                    // style={{height: "100%"}}
+                                    style={{height: "calc(80vh - 200px)"}}
                                     dark={dark}
-                                    modified={{data: !!raw ? raw : "", language: 'markdown'}}
-                                    original={{data: document, language: 'markdown'}} />
+                                    modified={{data: !!historyDocumentRaw ? historyDocumentRaw : "", language: 'markdown'}}
+                                    original={{data: raw, language: 'markdown'}}
+                                />
                             </Grid.Column>
                         </Grid>
-                        <div style={{display: "flex", margin: "16px"}}>
+                        <div style={{display: "flex", margin: "48px 16px 16px"}}>
                             <FlexPadding />
                             <Button floated={"right"} color='black' onClick={() => setVisible(false)}>
                                 取消
                             </Button>
                             <Button
                                 onClick={() => {
-                                    if (!!documentVersion) {
-                                        setDocument && setDocument(documentVersion.raw)
+                                    if (!!historyDocumentRaw) {
+                                        setRaw && setRaw(historyDocumentRaw)
                                     }
                                     setVisible(false)
                                 }}

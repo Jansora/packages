@@ -158,15 +158,15 @@ export const FetchEntity = (baseUrl, id, cloneId) => {
   return [entity, loading];
 };
 
-export const FetchEditableNote = (id, cloneId) => {
+export const FetchEditableNote = (baseUrl, id, cloneId) => {
 
   const [note, setNote] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
-    if(loading && !!id  && IsNumber(id)) {
-      client.get(`notebook/draft/${id}`)
-          .then(setNote).finally(()=> {  setLoading(false)
-      })
+    // if(loading && !!id  && IsNumber(id)) {
+    //   client.get(`notebook/draft/${id}`)
+    //       .then(setNote).finally(()=> {  setLoading(false)
+    //   })
       if(loading && !!id && IsNumber(id)) {
         client.get(`${baseUrl}/${id}`)
             .then(response => {
@@ -182,14 +182,14 @@ export const FetchEditableNote = (id, cloneId) => {
             }).finally(()=> {  setLoading(false)
         })
       }
-    }
+    // }
   }, [loading, id, cloneId]);
   return [note, loading];
 };
 
 export const FetchHistoryDocumentContent = (id) => {
 
-  const [raw, setRaw] = useState({});
+  const [raw, setRaw] = useState("");
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true)

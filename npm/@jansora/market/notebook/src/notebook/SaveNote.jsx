@@ -14,6 +14,7 @@ import {
 } from "../request/notebook";
 
 import {useDebounceFn} from "ahooks";
+import {parse} from "qs";
 
 import HistoryDocument from "../components/view/HistoryDocument";
 import {Button, Checkbox, Dropdown, Form, Grid, Input, Loader, Select} from "semantic-ui-react";
@@ -61,7 +62,7 @@ const SaveNote = (props) => {
   const dark = GetDarkMode();
   const location = useLocation();
   const {clone} = parse(location.search, { ignoreQueryPrefix: true })
-  const [note, noteLoading] = FetchEditableNote(id, clone)
+  const [note, noteLoading] = FetchEditableNote("notebook", id, clone)
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState( '');
@@ -131,6 +132,7 @@ const SaveNote = (props) => {
     return <Loader active />
 
   }
+
   return <StyledPageLoading>
     <Grid columns='equal'>
 
@@ -218,7 +220,7 @@ const SaveNote = (props) => {
                 <label>操作</label>
                 <div style={{display: "flex", alignItems: "center"}}>
                   <Button style={{marginRight: 10}} color={color} content={'保存'} onClick={() => save()} />
-                  <HistoryDocument id={id} document={raw} setDocument={setRaw} />
+                  <HistoryDocument id={id} raw={raw} setRaw={setRaw} />
                 </div>
               </Form.Field>
             </Form.Group>
