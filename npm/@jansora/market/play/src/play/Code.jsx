@@ -138,9 +138,15 @@ const Code = () => {
 
                       {
                           shareResult.status &&
-                          <a className="active" target='_blank' rel='noopener noreferrer' href={`/play/${shareResult.data.classify}/${shareResult.data.hash}`}>
-                            <> <Icon name="code" /> </> 点击打开
-                          </a>
+                          <React.Fragment>
+                            <a className="active" target='_blank' rel='noopener noreferrer' href={`/play/${shareResult.data.classify}/${shareResult.data.hash}`}>
+                              <> <Icon name="code" /> </> 点击打开
+                            </a>
+                            <a className="active" target='_blank' rel='noopener noreferrer' href={`https://share.jansora.com/code/${shareResult.data.hash}`}>
+                              <> <Icon name="code" /> </> 打开代码分享站点
+                            </a>
+                          </React.Fragment>
+
                       }
 
 
