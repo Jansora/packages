@@ -7,56 +7,27 @@
 		<artifactId>repo-parent</artifactId>
 		<version>1.100.26</version>
 	</parent>
-	<artifactId>mysql</artifactId>
+	<artifactId>elasticsearch</artifactId>
 	<version>1.100.26</version>
 	<packaging>jar</packaging>
-	<name>mysql</name>
-	<description>mysql</description>
+	<name>elasticsearch</name>
+	<description>elasticsearch</description>
 
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
 
+
 		<dependency>
-			<groupId>io.mybatis</groupId>
-			<artifactId>mybatis-mapper</artifactId>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-elasticsearch</artifactId>
 		</dependency>
-		<!-- 使用 Service 层封装时 -->
-		<dependency>
-			<groupId>io.mybatis</groupId>
-			<artifactId>mybatis-service</artifactId>
-		</dependency>
-		<!-- 使用 ActiveRecord 模式时 -->
-		<dependency>
-			<groupId>io.mybatis</groupId>
-			<artifactId>mybatis-activerecord</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-		</dependency>
+
+
 	</dependencies>
 
 

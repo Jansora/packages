@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>1.100.25</version>
+		<version>1.100.26</version>
 	</parent>
 	<artifactId>polaris</artifactId>
-	<version>1.100.25</version>
+	<version>1.100.26</version>
 	<packaging>jar</packaging>
 	<name>polaris</name>
 	<description>polaris</description>
