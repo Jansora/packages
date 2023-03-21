@@ -99,7 +99,7 @@
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
-				<artifactId>spring-web</artifactId>
+				<artifactId>elasticsearch</artifactId>
 				<version>1.100.26</version>
 			</dependency>
 			<dependency>
