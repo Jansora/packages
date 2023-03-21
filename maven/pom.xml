@@ -45,7 +45,6 @@
 		<module>pulsar</module>
 		<module>dubbo</module>
 		<module>nacos</module>
-		<module>spring-web</module>
 		<module>polaris</module>
 		<module>storage</module>
 		<module>monitor</module>
