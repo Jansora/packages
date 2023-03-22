@@ -11,4 +11,11 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface ElasticsearchCrudFactory<T, ID> extends ElasticsearchRepository<T, ID> {
 
+    /**
+     * 刷新数据到 es
+     */
+    default void flush() {
+        this.saveAll(this.findAll());
+    }
+
 }
