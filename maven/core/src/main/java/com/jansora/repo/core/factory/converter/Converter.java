@@ -1,7 +1,7 @@
 package com.jansora.repo.core.factory.converter;
 
 import com.jansora.repo.core.payload.model.BaseDo;
-import com.jansora.repo.core.payload.req.BaseEtyReq;
+import com.jansora.repo.core.payload.req.BaseReq;
 import com.jansora.repo.core.payload.vo.BaseVo;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-28 10:30:54
  */
-public interface Converter<REQUEST extends BaseEtyReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
+public interface Converter<REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
 
 
     /**
