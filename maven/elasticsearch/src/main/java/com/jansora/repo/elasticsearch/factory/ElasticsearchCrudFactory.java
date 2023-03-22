@@ -3,6 +3,9 @@ package com.jansora.repo.elasticsearch.factory;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
@@ -11,11 +14,16 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface ElasticsearchCrudFactory<T, ID> extends ElasticsearchRepository<T, ID> {
 
+
+    default List<T> findAllFromDb() {
+        return new ArrayList<>();
+    }
+
     /**
      * 刷新数据到 es
      */
     default void flush() {
-        this.saveAll(this.findAll());
+        this.saveAll(this.findAllFromDb());
     }
 
 }
