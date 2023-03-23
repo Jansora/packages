@@ -27,8 +27,12 @@ public interface DocumentConverter<DOCUMENT extends BaseDocument, VO extends Sea
      */
     VO toVo(DOCUMENT document);
 
+    /**
+     * to document
+     * @param requests
+     * @return
+     */
+    List<DOCUMENT> toDocuments(List<VO> requests);
 
-    List<DOCUMENT> toDocument(List<VO> requests);
-
-    List<VO> toVos(List<DOCUMENT> requests);
+    List<VO> documentToVos(List<DOCUMENT> requests);
 }
