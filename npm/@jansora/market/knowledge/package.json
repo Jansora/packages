@@ -1,0 +1,59 @@
+{
+  "name": "@jansora/market-knowledge",
+  "version": "2.50.1",
+  "description": "@jansora/market-knowledge React component",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd",
+    "src"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component --copy-files",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "prepublishOnly": "npm run build",
+    "start": "nwb serve-react-demo",
+    "test": "nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
+  },
+  "dependencies": {
+    "@ant-design/charts": "^1.3.5",
+    "@ant-design/icons": "^4.7.0",
+    "@jansora/bytemd": "2.50.0",
+    "@jansora/material": "2.50.0",
+    "@jansora/monaco": "2.50.0",
+    "ahooks": "^2.10.12",
+    "antd": "^5.2.0",
+    "axios": "^0.24.0",
+    "css-loader": "^5.0.0",
+    "dayjs": "^1.11.7",
+    "less": "^4.1.3",
+    "less-loader": "^5.0.0",
+    "magic.css": "^1.4.8",
+    "qs": "^6.10.1",
+    "react": "18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "18.2.0",
+    "react-router": "^6.0.2",
+    "react-router-dom": "^6.0.2",
+    "react-test-renderer": "^18.0.0",
+    "sass": "^1.58.0",
+    "sass-loader": "^10.1.1",
+    "semantic-ui-react": "^2.0.4",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "nwb": "0.25.x"
+  },
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": "",
+  "keywords": [
+    "react-component"
+  ]
+}
