@@ -15,7 +15,7 @@ import MaterialSearchView from "@jansora/material/es/layout/views/market/Materia
 
 const Notes = ({}) => {
 
-
+    SetTitle('闲文杂记')
     SetDescription(`文章列表`)
 
     document.title = "记录人生旅途"

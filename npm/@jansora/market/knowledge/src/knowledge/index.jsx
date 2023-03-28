@@ -1,17 +1,9 @@
 import React from 'react';
-
-import {Link, Navigate, Route, Routes, useLocation} from "react-router-dom";
-import Notes from "./notes";
 import SetTitle from "@jansora/material/es/hooks/setter/SetTitle";
-import Note from "./note";
-import SaveNote from "./SaveNote";
-import {Grid, Menu} from "semantic-ui-react";
-import MaterialContainerContent from "@jansora/material/es/components/view/container/MaterialContainerContent";
 import StyledPageLoading from "@jansora/material/es/components/styled/StyledLoading";
-import MaterialContainer from "@jansora/material/es/components/view/container/MaterialContainer";
-import MaterialContainerHeader from "@jansora/material/es/components/view/container/MaterialContainerHeader";
-import GetColor from "@jansora/material/es/hooks/getter/GetColor";
-import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
+import {Space} from "antd";
+import StyledDescription from "@jansora/material/es/components/styled/base/StyledDescription";
+import ItemCard from "@jansora/material/es/layout/views/market/ItemCard";
 
 /**
  * <Description> Description for index <br>
@@ -25,52 +17,47 @@ import GetDarkMode from "@jansora/material/es/hooks/getter/GetDarkMode";
 
 
 const MaterialKnowledge = (props) => {
-    const {pathname} = useLocation();
-    const color = GetColor();
-    const dark = GetDarkMode();
+
 
     SetTitle('知识图谱')
 
+    const data = [{
+        title: "中间件",
+        data: [
+            {
+                name: "深入浅出 ElasticSearch", description: "Wrote by Jansora",
+                link: "https://elasticsearch.docs.jansora.app",
+                logo: "https://cdn.jansora.com/application/Jansora/2020/04/29/es.jpg"
+            },
+            {
+                name: "深入浅出数据库", description: "Wrote by Jansora",
+                link: "https://database.docs.jansora.app",
+                logo: "https://cdn.jansora.com/application/Jansora/2020/08/24/03:28:36/sql.jpeg"
+            },
+        ]
+    }]
+
     return <React.Fragment>
-
-        {pathname === '/knowledge' && <Navigate replace={true} to="/knowledge/ls" />}
-
-        <MaterialContainer>
-            <MaterialContainerHeader
-                left={
-                    <>
-                        <Menu inverted={dark} size="mini" style={{margin: "0"}}>
-                            <Menu.Item as={Link} to={}>变量</Menu.Item>
-                        </Menu>
-                    </>
+        <StyledPageLoading>
+            <div style={{width: "60vw", margin: "0 auto"}}>
+                {
+                    data.map((d, index) => {
+                        return <React.Fragment key={index}>
+                            <StyledDescription style={{fontSize: 12, display: "block", marginBottom: 15}}>{d.title}</StyledDescription>
+                            <Space wrap={true} size="large">
+                                {
+                                    d.data.map((item, index) => {
+                                        return <ItemCard key={index} data={item} />
+                                    })
+                                }
+                            </Space>
+                        </React.Fragment>
+                    })
                 }
 
-            >
 
-            </MaterialContainerHeader>
-            <MaterialContainerContent>
-                <StyledPageLoading>
-
-                    <Grid>
-
-                        <Grid.Column width={7}>
-                        </Grid.Column>
-                    </Grid>
-
-
-
-                </StyledPageLoading>
-            </MaterialContainerContent>
-        </MaterialContainer>
-
-        {/*<Navigate replace={true} to="/notebook/ls" />*/}
-        <Routes>
-            {/*<Redirect from="/notebook" to="/notebook/ls" exact={true} />*/}
-            <Route path="new" element={<SaveNote  />} />
-            <Route path="ls" element={<Notes  />} />
-            <Route path=":id" element={<Note  />} />
-            <Route path=":id/edit" element={<SaveNote  />} />
-        </Routes>
+            </div>
+        </StyledPageLoading>
 
     </React.Fragment>;
 }
