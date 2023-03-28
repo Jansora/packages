@@ -40,7 +40,6 @@ const Note = (props) => {
 
     const [showAnchor, setShowAnchor] = useState(true);
   const [Anchors, setAnchors] = useState([]);
-
   SetDescription(note.name)
 
   const navigate = useNavigate();

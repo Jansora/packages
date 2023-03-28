@@ -2,12 +2,12 @@ import React from 'react';
 import MaterialKnowledge from "./knowledge";
 import {Route, Routes} from "react-router-dom";
 
-const Material = () => {
+const Knowledge = () => {
     return (
         <Routes >
-            <Route path="/knowledge/*" element={<MaterialKnowledge />} />
+            <Route path="/knowledge" element={<MaterialKnowledge />} />
         </Routes>
     )
 }
 
-export default Material;
+export default Knowledge;

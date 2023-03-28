@@ -19,7 +19,9 @@ import ItemCard from "@jansora/material/es/layout/views/market/ItemCard";
 const MaterialKnowledge = (props) => {
 
 
-    SetTitle('知识图谱')
+    SetTitle('知识专栏')
+
+
 
     const data = [{
         title: "中间件",
@@ -33,6 +35,11 @@ const MaterialKnowledge = (props) => {
                 name: "深入浅出数据库", description: "Wrote by Jansora",
                 link: "https://database.docs.jansora.app",
                 logo: "https://cdn.jansora.com/application/Jansora/2020/08/24/03:28:36/sql.jpeg"
+            },
+            {
+                name: "十万个 ChatGPT 问", description: "Wrote by Jansora",
+                link: "https://chatgpt.docs.jansora.app",
+                logo: "https://cdn.jansora.com/application/Jansora/2023/03/28/05:31:46/image.png"
             },
         ]
     }]

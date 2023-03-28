@@ -15,13 +15,12 @@ import MaterialSearchView from "@jansora/material/es/layout/views/market/Materia
 
 const Notes = ({}) => {
 
-    SetTitle('闲文杂记')
     SetDescription(`文章列表`)
 
     document.title = "记录人生旅途"
 
     return <>
-        <MaterialSearchView baseUrl={'notebook'} name={'组件'} description={"组件列表"} title={'CodeHub'} />
+        <MaterialSearchView baseUrl={'notebook'} name={'组件'} description={"组件列表"} title={'闲文杂记'} />
     </>;
 }
 

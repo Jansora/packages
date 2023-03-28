@@ -3,7 +3,7 @@ import {createFromIconfontCN} from '@ant-design/icons';
 //
 // const StyledIconFont = Icon.addFromIconFontCn({ src: '//at.alicdn.com/t/font_2985185_gmeaummira8.js' });
 //
-const StyledIconFont = createFromIconfontCN({ scriptUrl: '//at.alicdn.com/t/c/font_2985185_4cxcb8ia1r9.js' });
+const StyledIconFont = createFromIconfontCN({ scriptUrl: '//at.alicdn.com/t/c/font_2985185_b9y2o4jgbne.js' });
 
 /**
  * <Description> Description for StyledFooter <br>
