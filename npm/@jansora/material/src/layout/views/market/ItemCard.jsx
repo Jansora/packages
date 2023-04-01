@@ -23,6 +23,7 @@ const StyledWrapper = styled.div`
         width: 256px;
         height: 156px;
         background: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
     }
     section {
