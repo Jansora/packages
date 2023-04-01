@@ -1,6 +1,6 @@
 package com.jansora.repo.elasticsearch.converter;
 
-import com.jansora.repo.core.payload.vo.SearchVo;
+import com.jansora.repo.core.payload.ety.BaseEty;
 import com.jansora.repo.elasticsearch.index.BaseDocument;
 import org.mapstruct.Mappings;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-28 10:30:54
  */
-public interface DocumentConverter<DOCUMENT extends BaseDocument, VO extends SearchVo> {
+public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends BaseEty> {
 
 
     /**
@@ -20,19 +20,17 @@ public interface DocumentConverter<DOCUMENT extends BaseDocument, VO extends Sea
     @Mappings({
 
     })
-    DOCUMENT toDocument(VO vo);
+    DOCUMENT toDocument(ENTITY entity);
 
     /**
      * 模型转化为出参
      */
-    VO toVo(DOCUMENT document);
+    ENTITY toEntity(DOCUMENT document);
 
     /**
      * to document
-     * @param requests
-     * @return
      */
-    List<DOCUMENT> toDocuments(List<VO> requests);
+    List<DOCUMENT> toDocuments(List<ENTITY> entities);
 
-    List<VO> documentToVos(List<DOCUMENT> requests);
+    List<ENTITY> toEntities(List<DOCUMENT> documents);
 }
