@@ -1,5 +1,8 @@
 package com.jansora.repo.elasticsearch.factory;
 
+import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.elasticsearch.converter.DocumentConverter;
+import com.jansora.repo.elasticsearch.index.BaseDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -11,16 +14,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 @NoRepositoryBean
 public interface ElasticsearchCrudFactory<T, ID> extends ElasticsearchRepository<T, ID> {
 
-
-
-
-
-
-    /**
-     * 刷新数据到 es
-     */
-    default void flush() {
-        this.saveAll(this.findAllFromDb());
-    }
+    DocumentConverter<? extends BaseDocument, ? extends BaseEty> documentConverter();
 
 }

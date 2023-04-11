@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends BaseEty> {
 
-
     /**
      * 入参转化为模型
      */
