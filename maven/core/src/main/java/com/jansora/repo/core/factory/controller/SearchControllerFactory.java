@@ -2,7 +2,7 @@ package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.provider.SearchProviderFactory;
+import com.jansora.repo.core.factory.provider.SearchableProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.req.SearchReq;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 public interface SearchControllerFactory {
     
-    abstract SearchProviderFactory searchFactory();
+    abstract SearchableProviderFactory searchFactory();
 
     /**
      * 搜索正文

@@ -1,7 +1,10 @@
 package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
-import com.jansora.repo.core.factory.service.CrudServiceFactory;
+import com.jansora.repo.core.factory.converter.CrudConverter;
+import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.req.BaseReq;
 import com.jansora.repo.core.payload.vo.BaseVo;
 
@@ -10,10 +13,11 @@ import com.jansora.repo.core.payload.vo.BaseVo;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudProviderFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
+public interface CrudProviderFactory<ENTITY extends BaseEty, REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
 
-    public abstract CrudServiceFactory<RESPONSE, REQUEST> crudFactory();
+    CrudRepositoryFactory<ENTITY, Long> factory();
 
+    CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
 
     /**
      * 根据主键查找
@@ -21,7 +25,7 @@ public interface CrudProviderFactory<RESPONSE extends BaseVo, REQUEST extends Ba
      * @return 返回值
      */
     default RESPONSE findById(Long id) throws BaseAppException {
-        return crudFactory().findById(id);
+        return converter().toResponse(factory().findById(id));
     }
 
     /**
@@ -31,7 +35,7 @@ public interface CrudProviderFactory<RESPONSE extends BaseVo, REQUEST extends Ba
      * @return 实体
      */
     default RESPONSE save(REQUEST req) throws BaseAppException {
-        return crudFactory().save(req);
+        return converter().toResponse(factory().save(converter().toEntity(req)));
     }
 
     /**
@@ -40,7 +44,7 @@ public interface CrudProviderFactory<RESPONSE extends BaseVo, REQUEST extends Ba
      * @return 被删除的实体
      */
     default RESPONSE deleteById(Long id) throws BaseAppException {
-        return crudFactory().deleteById(id);
+        return converter().toResponse(factory().deleteById(id));
     }
 
 

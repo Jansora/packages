@@ -5,6 +5,8 @@ import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.provider.CrudProviderFactory;
 import com.jansora.repo.core.payload.dto.ResultDto;
+import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.req.BaseReq;
 import com.jansora.repo.core.payload.vo.BaseVo;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-24 12:47:57
  */
-public interface CrudControllerFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
+public interface CrudControllerFactory<ENTITY extends BaseEty, REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
 
-    public abstract CrudProviderFactory<RESPONSE, REQUEST> crudFactory();
+    public abstract CrudProviderFactory<ENTITY, REQUEST, RESPONSE, MODEL> crudFactory();
 
     /**
      * 查询单条数据

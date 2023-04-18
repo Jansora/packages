@@ -2,8 +2,7 @@ package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.payload.req.BaseReq;
-import com.jansora.repo.core.payload.vo.BaseVo;
+import com.jansora.repo.core.payload.ety.BaseEty;
 
 /**
  * <Description> Description for CrudRepository <br>
@@ -15,21 +14,21 @@ import com.jansora.repo.core.payload.vo.BaseVo;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends BaseReq> {
+public interface CrudRepositoryFactory<ENTITY extends BaseEty, ID> {
 
     /**
      * 可读性
      * @param id 主键
      */
-    default boolean readable(Long id) throws BaseAppException {
+    default boolean readable(ID id) throws BaseAppException {
         return true;
     }
 
     /**
      * 可编辑性
-     * @param targetId targetId
+     * @param id 主键
      */
-    default boolean editable(Long targetId) throws BaseAppException {
+    default boolean editable(ID id) throws BaseAppException {
         return true;
     }
 
@@ -39,7 +38,7 @@ public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends 
      * @param id 主键
      * @return 返回值
      */
-    default RESPONSE findById(Long id) throws BaseAppException {
+    default ENTITY findById(ID id) throws BaseAppException {
         throw new NotImplementException();
     }
 
@@ -49,7 +48,7 @@ public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends 
      * @param req req
      * @return 实体
      */
-    default RESPONSE save(REQUEST req) throws BaseAppException {
+    default ENTITY save(ENTITY entity) throws BaseAppException {
         throw new NotImplementException();
     }
 
@@ -58,7 +57,7 @@ public interface CrudRepositoryFactory<RESPONSE extends BaseVo, REQUEST extends 
      * @param id 主键
      * @return 被删除的实体
      */
-    default RESPONSE deleteById(Long id) throws BaseAppException {
+    default ENTITY deleteById(ID id) throws BaseAppException {
         throw new NotImplementException();
     }
 

@@ -29,7 +29,10 @@ public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends
     /**
      * to document
      */
-    List<DOCUMENT> toDocuments(List<ENTITY> entities);
+    List<DOCUMENT> toDocuments(List<? extends BaseEty> entities);
 
+    /**
+     * to entities
+     */
     List<ENTITY> toEntities(List<DOCUMENT> documents);
 }
