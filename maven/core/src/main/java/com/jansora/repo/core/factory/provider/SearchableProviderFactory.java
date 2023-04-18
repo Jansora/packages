@@ -8,7 +8,7 @@ import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
-import com.jansora.repo.core.payload.vo.SearchVo;
+import com.jansora.repo.core.payload.response.SearchResponse;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public interface SearchableProviderFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchVo> search(SearchableRequest request) throws BaseAppException {
+    default PageResponse<SearchResponse> search(SearchableRequest request) throws BaseAppException {
         return searchFactory().search(request, AuthContext.auth());
     }
 

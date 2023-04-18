@@ -13,7 +13,7 @@
         </choose>
     </sql>
 
-    <select id="search" resultType="com.jansora.repo.core.payload.vo.SearchVo">
+    <select id="search" resultType="com.jansora.repo.core.payload.response.SearchResponse">
         SELECT * FROM ${tableName} WHERE 1 = 1
 
         <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>

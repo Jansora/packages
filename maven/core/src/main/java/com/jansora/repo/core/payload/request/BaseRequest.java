@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 //@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class BaseRequest extends Base {
+public abstract class BaseRequest extends Base {
 
 }

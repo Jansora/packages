@@ -8,7 +8,7 @@ import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
-import com.jansora.repo.core.payload.vo.SearchVo;
+import com.jansora.repo.core.payload.response.SearchResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public interface SearchControllerFactory {
      * @param req
      */
     @GetMapping("search")
-    default ResultDto<PageResponse<SearchVo>> search(SearchableRequest request) throws BaseAppException {
+    default ResultDto<PageResponse<SearchResponse>> search(SearchableRequest request) throws BaseAppException {
         return ResultDto.SUCCESS(searchFactory().search(request));
     }
 

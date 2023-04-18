@@ -1,7 +1,8 @@
 package com.jansora.repo.core.payload.entity;
 
 import com.jansora.repo.core.payload.Base;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <Description> Description for BaseEty <br>
@@ -15,11 +16,11 @@ import lombok.*;
  */
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class BaseEntity extends Base {
+public abstract class BaseEntity extends Base {
 
     /**
      * 唯一标识

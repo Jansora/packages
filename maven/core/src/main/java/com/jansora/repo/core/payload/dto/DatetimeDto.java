@@ -1,9 +1,7 @@
 package com.jansora.repo.core.payload.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * <Description> Description for DatetimeDto <br>
@@ -17,8 +15,8 @@ import lombok.NoArgsConstructor;
  */
 @Data
 //@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class DatetimeDto extends DateDto {
 

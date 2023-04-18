@@ -12,7 +12,7 @@ import com.jansora.repo.core.utils.DateUtils;
  * @date 2022/8/16 AM10:18 <br>
  * @since 1.0 <br>
  */
-public class BaseMo extends Base {
+public abstract class BaseMo extends Base {
 
     private String timestamp;
 

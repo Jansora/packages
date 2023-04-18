@@ -2,8 +2,8 @@ package com.jansora.repo.core.factory.mapper;
 
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.response.SearchResponse;
 import com.jansora.repo.core.payload.valobj.AuthValueObject;
-import com.jansora.repo.core.payload.vo.SearchVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface SearchMapper {
 
     Long searchCount(@Param("req") SearchableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
-    List<SearchVo> search(@Param("req") SearchableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
+    List<SearchResponse> search(@Param("req") SearchableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
     List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 

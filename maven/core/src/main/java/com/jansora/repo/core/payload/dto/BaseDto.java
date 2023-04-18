@@ -1,10 +1,8 @@
 package com.jansora.repo.core.payload.dto;
 
 import com.jansora.repo.core.payload.Base;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * <Description> Description for BaseDto <br>
@@ -17,10 +15,10 @@ import lombok.NoArgsConstructor;
  * @since 1.0 <br>
  */
 @Data
-@Builder
-@NoArgsConstructor
+//@Builder
+//@NoArgsConstructor
 //@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class BaseDto extends Base {
+public abstract class BaseDto extends Base {
 
 }

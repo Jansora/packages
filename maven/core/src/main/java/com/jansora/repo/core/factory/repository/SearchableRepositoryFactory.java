@@ -5,8 +5,8 @@ import com.jansora.repo.core.factory.mapper.SearchMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
+import com.jansora.repo.core.payload.response.SearchResponse;
 import com.jansora.repo.core.payload.valobj.AuthValueObject;
-import com.jansora.repo.core.payload.vo.SearchVo;
 import com.jansora.repo.core.utils.NumberUtils;
 
 import java.util.List;
@@ -35,8 +35,8 @@ public interface SearchableRepositoryFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchVo> search(SearchableRequest req, AuthValueObject auth) throws InvalidArgumentException {
-        PageResponse<SearchVo> result = new PageResponse<>();
+    default PageResponse<SearchResponse> search(SearchableRequest req, AuthValueObject auth) throws InvalidArgumentException {
+        PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
         if (req.getPageNum() < 1) {
