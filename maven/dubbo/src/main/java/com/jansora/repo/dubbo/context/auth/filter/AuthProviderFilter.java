@@ -1,7 +1,7 @@
 package com.jansora.repo.dubbo.context.auth.filter;
 
 import com.jansora.repo.core.context.AuthContext;
-import com.jansora.repo.core.payload.valobj.AuthValObj;
+import com.jansora.repo.core.payload.valobj.AuthValueObject;
 import com.jansora.repo.dubbo.constants.DubboFilterConstant;
 import org.apache.dubbo.rpc.*;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class AuthProviderFilter implements Filter {
         String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ID);
         String authRole = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ROLE);
         try {
-            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValObj(Long.parseLong(authId), authRole) : new AuthValObj());
+            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole) : new AuthValueObject());
         }
         catch (NumberFormatException e) {
             LOGGER.error("validate token failed. ", e);

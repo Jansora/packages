@@ -1,6 +1,9 @@
 package com.jansora.repo.core.payload.dto;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * <Description> DateVo <br>
@@ -11,7 +14,12 @@ import java.io.Serializable;
  * @CreateDate 2022/3/22 18:41 <br>
  * @since 1.0 <br>
  */
-public class DateDto implements Serializable {
+@Data
+//@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class DateDto extends BaseDto {
 
     Integer year;
 
@@ -19,27 +27,4 @@ public class DateDto implements Serializable {
 
     Integer day;
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getMonth() {
-        return month;
-    }
-
-    public void setMonth(Integer month) {
-        this.month = month;
-    }
-
-    public Integer getDay() {
-        return day;
-    }
-
-    public void setDay(Integer day) {
-        this.day = day;
-    }
 }

@@ -1,6 +1,9 @@
 package com.jansora.repo.core.payload.dto;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * <Description> Description for DatetimeDto <br>
@@ -12,37 +15,17 @@ import java.io.Serializable;
  * @CreateDate 2022/3/23 PM12:19 <br>
  * @since 1.0 <br>
  */
-public class DatetimeDto extends DateDto implements Serializable {
+@Data
+//@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class DatetimeDto extends DateDto {
 
     Integer hour;
 
     Integer minute;
 
     Integer second;
-
-    public Integer getHour() {
-        return hour;
-    }
-
-    public void setHour(Integer hour) {
-        this.hour = hour;
-    }
-
-    public Integer getMinute() {
-        return minute;
-    }
-
-    public void setMinute(Integer minute) {
-        this.minute = minute;
-    }
-
-    public Integer getSecond() {
-        return second;
-    }
-
-    public void setSecond(Integer second) {
-        this.second = second;
-    }
-
 
 }

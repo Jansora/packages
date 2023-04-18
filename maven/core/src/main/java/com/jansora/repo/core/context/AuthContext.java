@@ -1,7 +1,7 @@
 package com.jansora.repo.core.context;
 
 import com.jansora.repo.core.auth.Role;
-import com.jansora.repo.core.payload.valobj.AuthValObj;
+import com.jansora.repo.core.payload.valobj.AuthValueObject;
 
 import java.util.Objects;
 
@@ -18,9 +18,9 @@ public class AuthContext {
 
 
 
-    private static final ThreadLocal<AuthValObj> context = new ThreadLocal<>();
+    private static final ThreadLocal<AuthValueObject> context = new ThreadLocal<>();
 
-    public static void setContext(AuthValObj auth) {
+    public static void setContext(AuthValueObject auth) {
         context.set(auth);
     }
     public static void clear() {
@@ -28,11 +28,11 @@ public class AuthContext {
     }
 
 
-    public static AuthValObj auth() {
-        AuthValObj auth = context.get();
+    public static AuthValueObject auth() {
+        AuthValueObject auth = context.get();
 
         if (Objects.isNull(auth)) {
-            context.set(new AuthValObj(-1L, Role.NULL.role()));
+            context.set(new AuthValueObject(-1L, Role.NULL.role()));
             return context.get();
         }
         return auth;

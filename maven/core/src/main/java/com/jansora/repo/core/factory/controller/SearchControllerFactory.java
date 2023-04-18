@@ -5,9 +5,9 @@ import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.provider.SearchableProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
-import com.jansora.repo.core.payload.req.SearchReq;
-import com.jansora.repo.core.payload.vo.PageVo;
-import com.jansora.repo.core.payload.vo.PropertyVo;
+import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.response.PageResponse;
+import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.vo.SearchVo;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -32,8 +32,8 @@ public interface SearchControllerFactory {
      * @param req
      */
     @GetMapping("search")
-    default ResultDto<PageVo<SearchVo>> search(SearchReq req) throws BaseAppException {
-        return ResultDto.SUCCESS(searchFactory().search(req));
+    default ResultDto<PageResponse<SearchVo>> search(SearchableRequest request) throws BaseAppException {
+        return ResultDto.SUCCESS(searchFactory().search(request));
     }
 
     /**
@@ -49,7 +49,7 @@ public interface SearchControllerFactory {
      * @return Optional<EasyCodeDto>
      */
     @GetMapping("classifies")
-    default ResultDto<List<PropertyVo>> fetchClassifies() throws InvalidArgumentException {
+    default ResultDto<List<PropertyResponse>> fetchClassifies() throws InvalidArgumentException {
         return ResultDto.SUCCESS(searchFactory().fetchClassifies());
     }
 

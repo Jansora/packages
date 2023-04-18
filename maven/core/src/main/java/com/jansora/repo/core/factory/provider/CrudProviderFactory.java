@@ -3,17 +3,17 @@ package com.jansora.repo.core.factory.provider;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
-import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
-import com.jansora.repo.core.payload.req.BaseReq;
-import com.jansora.repo.core.payload.vo.BaseVo;
+import com.jansora.repo.core.payload.request.BaseRequest;
+import com.jansora.repo.core.payload.response.BaseResponse;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudProviderFactory<ENTITY extends BaseEty, REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
+public interface CrudProviderFactory<ENTITY extends BaseEntity, REQUEST extends BaseRequest, RESPONSE extends BaseResponse, MODEL extends BaseDo> {
 
     CrudRepositoryFactory<ENTITY, Long> factory();
 

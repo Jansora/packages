@@ -1,8 +1,8 @@
 package com.jansora.repo.core.factory.mapper;
 
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.req.SearchReq;
-import com.jansora.repo.core.payload.valobj.AuthValObj;
+import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.valobj.AuthValueObject;
 import com.jansora.repo.core.payload.vo.SearchVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,14 +20,14 @@ import java.util.List;
  */
 public interface SearchMapper {
 
-    Long searchCount(@Param("req") SearchReq req, @Param("tableName") String tableName, @Param("auth") AuthValObj auth);
+    Long searchCount(@Param("req") SearchableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
-    List<SearchVo> search(@Param("req") SearchReq req, @Param("tableName") String tableName, @Param("auth") AuthValObj auth);
+    List<SearchVo> search(@Param("req") SearchableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
-    List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValObj auth);
+    List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
-    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify, @Param("auth") AuthValObj auth);
+    List<KVDto<Long>> findTagCounts(@Param("tableName") String tableName, @Param("classify") String classify, @Param("auth") AuthValueObject auth);
 
-    List<KVDto<String>> fetchLogos(@Param("tableName") String tableName, @Param("auth") AuthValObj auth);
+    List<KVDto<String>> fetchLogos(@Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
 }

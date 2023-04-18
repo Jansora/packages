@@ -2,7 +2,7 @@ package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.core.payload.entity.BaseEntity;
 
 /**
  * <Description> Description for CrudRepository <br>
@@ -14,7 +14,7 @@ import com.jansora.repo.core.payload.ety.BaseEty;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<ENTITY extends BaseEty, ID> {
+public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
 
     /**
      * 可读性

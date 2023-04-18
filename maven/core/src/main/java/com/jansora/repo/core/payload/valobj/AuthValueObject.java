@@ -15,9 +15,9 @@ import java.util.Objects;
  * @date 2022/8/9 PM12:19 <br>
  * @since 1.0 <br>
  */
-public class AuthValObj extends BaseValObj {
+public class AuthValueObject extends BaseValueObject {
 
-    private static final Map<Long, AuthValObj> cache = new HashMap<>();
+    private static final Map<Long, AuthValueObject> cache = new HashMap<>();
 
     /**
      * 认证id
@@ -30,23 +30,23 @@ public class AuthValObj extends BaseValObj {
      */
     Role role;
 
-    public static AuthValObj of(Long authId, String role) {
+    public static AuthValueObject of(Long authId, String role) {
         if (Objects.nonNull(authId) && authId < 128 && authId > -128) {
-            AuthValObj auth = cache.get(authId);
+            AuthValueObject auth = cache.get(authId);
             if (Objects.nonNull(auth)) {
                 return auth;
             }
-            cache.put(authId, new AuthValObj(authId, role));
+            cache.put(authId, new AuthValueObject(authId, role));
         }
-        return new AuthValObj(authId, role);
+        return new AuthValueObject(authId, role);
     }
 
-    public AuthValObj() {
+    public AuthValueObject() {
         this.authId = -1L;
         this.role = Role.NULL;
     }
 
-    public AuthValObj(Long authId, String role) {
+    public AuthValueObject(Long authId, String role) {
         this.authId = authId;
         this.role = Role.of(role);
     }

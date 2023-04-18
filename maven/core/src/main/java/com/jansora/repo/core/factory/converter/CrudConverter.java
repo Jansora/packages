@@ -1,9 +1,9 @@
 package com.jansora.repo.core.factory.converter;
 
-import com.jansora.repo.core.payload.ety.BaseEty;
+import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
-import com.jansora.repo.core.payload.req.BaseReq;
-import com.jansora.repo.core.payload.vo.BaseVo;
+import com.jansora.repo.core.payload.request.BaseRequest;
+import com.jansora.repo.core.payload.response.BaseResponse;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
@@ -12,7 +12,7 @@ import org.mapstruct.Mappings;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-03-29 12:52:57
  */
-public interface CrudConverter<ENTITY extends BaseEty, REQUEST extends BaseReq, RESPONSE extends BaseVo, MODEL extends BaseDo> {
+public interface CrudConverter<ENTITY extends BaseEntity, REQUEST extends BaseRequest, RESPONSE extends BaseResponse, MODEL extends BaseDo> {
 
     /**
      * 入参转化为实体

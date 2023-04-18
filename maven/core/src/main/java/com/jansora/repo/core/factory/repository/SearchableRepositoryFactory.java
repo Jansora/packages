@@ -3,9 +3,9 @@ package com.jansora.repo.core.factory.repository;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.mapper.SearchMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.req.SearchReq;
-import com.jansora.repo.core.payload.valobj.AuthValObj;
-import com.jansora.repo.core.payload.vo.PageVo;
+import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.response.PageResponse;
+import com.jansora.repo.core.payload.valobj.AuthValueObject;
 import com.jansora.repo.core.payload.vo.SearchVo;
 import com.jansora.repo.core.utils.NumberUtils;
 
@@ -35,8 +35,8 @@ public interface SearchableRepositoryFactory {
     /**
      * 搜索正文
      */
-    default PageVo<SearchVo> search(SearchReq req, AuthValObj auth) throws InvalidArgumentException {
-        PageVo<SearchVo> result = new PageVo<>();
+    default PageResponse<SearchVo> search(SearchableRequest req, AuthValueObject auth) throws InvalidArgumentException {
+        PageResponse<SearchVo> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
         if (req.getPageNum() < 1) {
@@ -60,21 +60,21 @@ public interface SearchableRepositoryFactory {
     /**
      * 搜索 classify
      */
-    default List<KVDto<Long>> fetchClassifyCounts(AuthValObj auth) {
+    default List<KVDto<Long>> fetchClassifyCounts(AuthValueObject auth) {
         return searchMapper().fetchClassifyCounts(tableName(), auth);
     }
 
     /**
      * 搜索 tag
      */
-    default List<KVDto<Long>> fetchTags(String classify, AuthValObj auth) {
+    default List<KVDto<Long>> fetchTags(String classify, AuthValueObject auth) {
         return NumberUtils.buildCounts(searchMapper().findTagCounts(tableName(), classify, auth));
     }
 
     /**
      * 搜索 logo
      */
-    default List<KVDto<String>> fetchLogos(AuthValObj auth) {
+    default List<KVDto<String>> fetchLogos(AuthValueObject auth) {
         return searchMapper().fetchLogos(tableName(), auth);
     }
 

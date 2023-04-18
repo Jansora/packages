@@ -1,6 +1,6 @@
 package com.jansora.repo.core.payload.mo;
 
-import com.jansora.repo.core.payload.dto.BaseDto;
+import com.jansora.repo.core.payload.Base;
 import com.jansora.repo.core.utils.DateUtils;
 
 /**
@@ -12,7 +12,7 @@ import com.jansora.repo.core.utils.DateUtils;
  * @date 2022/8/16 AM10:18 <br>
  * @since 1.0 <br>
  */
-public class BaseMo extends BaseDto {
+public class BaseMo extends Base {
 
     private String timestamp;
 

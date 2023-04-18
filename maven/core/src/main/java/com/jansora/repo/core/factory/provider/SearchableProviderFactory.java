@@ -5,9 +5,9 @@ import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.repository.SearchableRepositoryFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.req.SearchReq;
-import com.jansora.repo.core.payload.vo.PageVo;
-import com.jansora.repo.core.payload.vo.PropertyVo;
+import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.response.PageResponse;
+import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.vo.SearchVo;
 
 import java.util.List;
@@ -29,15 +29,15 @@ public interface SearchableProviderFactory {
     /**
      * 搜索正文
      */
-    default PageVo<SearchVo> search(SearchReq req) throws BaseAppException {
-        return searchFactory().search(req, AuthContext.auth());
+    default PageResponse<SearchVo> search(SearchableRequest request) throws BaseAppException {
+        return searchFactory().search(request, AuthContext.auth());
     }
 
     /**
      * 查询 分类列表
      * @return Optional<EasyCodeDto>
      */
-    List<PropertyVo> fetchClassifies() throws InvalidArgumentException;
+    List<PropertyResponse> fetchClassifies() throws InvalidArgumentException;
 
     /**
      * 搜索 classify

@@ -1,6 +1,7 @@
-package com.jansora.repo.core.payload.vo;
+package com.jansora.repo.core.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.jansora.repo.core.payload.vo.BaseVo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.List;
  * @CreateDate 2022/7/28 AM09:30 <br>
  * @since 1.0 <br>
  */
-public class PageVo<T> extends BaseVo implements Serializable {
+public class PageResponse<T> extends BaseVo implements Serializable {
 
     /**
      * 每页大小 <br>
@@ -39,11 +40,11 @@ public class PageVo<T> extends BaseVo implements Serializable {
     @JsonProperty("data")
     private List<T> data;
 
-    public PageVo() {
+    public PageResponse() {
     }
 
-    public static <T> PageVo<T> build(List<T> data, long total) {
-        PageVo<T> pageDto = new PageVo<>();
+    public static <T> PageResponse<T> build(List<T> data, long total) {
+        PageResponse<T> pageDto = new PageResponse<>();
         pageDto.setData(data);
         pageDto.setTotal(total);
         return pageDto;

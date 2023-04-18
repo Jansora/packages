@@ -1,8 +1,10 @@
 package com.jansora.repo.core.payload.dto;
 
-import com.jansora.repo.core.utils.JsonUtils;
-
-import java.io.Serializable;
+import com.jansora.repo.core.payload.Base;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * <Description> Description for BaseDto <br>
@@ -14,10 +16,11 @@ import java.io.Serializable;
  * @CreateDate 2022/8/1 AM11:58 <br>
  * @since 1.0 <br>
  */
-public class BaseDto implements Serializable {
+@Data
+@Builder
+@NoArgsConstructor
+//@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class BaseDto extends Base {
 
-    @Override
-    public String toString() {
-        return this.getClass().getTypeName() + ":" + JsonUtils.toJsonIgnoreError(this);
-    }
 }

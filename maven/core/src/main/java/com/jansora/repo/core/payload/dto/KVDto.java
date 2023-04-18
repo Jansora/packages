@@ -1,5 +1,10 @@
 package com.jansora.repo.core.payload.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 /**
  * <Description> Description for KVDto <br>
  *
@@ -10,25 +15,20 @@ package com.jansora.repo.core.payload.dto;
  * @CreateDate 2022/8/1 PM12:00 <br>
  * @since 1.0 <br>
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class KVDto<T> extends BaseDto {
 
+    /**
+     * key
+     */
     String key;
 
+    /**
+     * 值
+     */
     T value;
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public T getValue() {
-        return value;
-    }
-
-    public void setValue(T value) {
-        this.value = value;
-    }
 }

@@ -1,12 +1,13 @@
-package com.jansora.repo.core.payload.vo;
+package com.jansora.repo.core.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.jansora.repo.core.payload.vo.BaseVo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PropertyVo extends BaseVo {
+public class PropertyResponse extends BaseVo {
 
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
