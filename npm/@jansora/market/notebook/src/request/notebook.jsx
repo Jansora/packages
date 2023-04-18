@@ -160,7 +160,7 @@ export const FetchEntity = (baseUrl, id, cloneId) => {
 
 export const FetchEditableNote = (baseUrl, id, cloneId) => {
 
-  const [note, setNote] = useState({});
+  const [note, setNote] = useState({enabled: true});
   const [loading, setLoading] = useState(true);
   useEffect(()=> {
     // if(loading && !!id  && IsNumber(id)) {
