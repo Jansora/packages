@@ -25,7 +25,6 @@ public interface SearchableProviderFactory {
 
     public abstract SearchableRepositoryFactory searchFactory();
 
-
     /**
      * 搜索正文
      */

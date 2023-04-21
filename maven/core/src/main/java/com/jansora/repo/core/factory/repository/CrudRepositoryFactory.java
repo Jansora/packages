@@ -45,7 +45,7 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
     /**
      * 保存实体
      * 有实体主键则更新， 没有则保存
-     * @param req req
+     * @param entity entity
      * @return 实体
      */
     default ENTITY save(ENTITY entity) throws BaseAppException {

@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>1.100.34</version>
+		<version>1.100.35</version>
 	</parent>
 	<artifactId>elasticsearch</artifactId>
-	<version>1.100.34</version>
+	<version>1.100.35</version>
 	<packaging>jar</packaging>
 	<name>elasticsearch</name>
 	<description>elasticsearch</description>
