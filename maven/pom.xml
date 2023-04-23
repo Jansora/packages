@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>1.100.35</version>
+	<version>1.100.36</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -31,7 +31,7 @@
 
 		<dubbo.version>3.0.10</dubbo.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
-
+		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 	</properties>
 
 	<modules>
@@ -59,76 +59,76 @@
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>core</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>cache</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>demo</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>rocketmq</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>spring</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>mysql</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 <!--			<dependency>-->
 <!--				<groupId>com.jansora.repo</groupId>-->
 <!--				<artifactId>cloud</artifactId>-->
-<!--				<version>1.100.35</version>-->
+<!--				<version>1.100.36</version>-->
 <!--			</dependency>-->
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>pulsar</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>elasticsearch</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>storage</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>polaris</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>monitor</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>boot</artifactId>
-				<version>1.100.35</version>
+				<version>1.100.36</version>
 			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
@@ -336,6 +336,11 @@
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>${lombok-mapstruct-binding.version}</version>
 						</path>
 						<!-- other annotation processors -->
 					</annotationProcessorPaths>
