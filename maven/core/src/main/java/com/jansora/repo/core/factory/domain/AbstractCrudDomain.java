@@ -2,11 +2,12 @@ package com.jansora.repo.core.factory.domain;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
+import com.jansora.repo.core.factory.entity.EntityRequest;
+import com.jansora.repo.core.factory.entity.EntityResponse;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
-import com.jansora.repo.core.payload.request.EntityRequest;
-import com.jansora.repo.core.payload.response.EntityResponse;
+
 
 /**
  * @description:
@@ -17,9 +18,9 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
         implements CrudDomainFactory<REQUEST, RESPONSE>
 {
 
-    abstract CrudRepositoryFactory<ENTITY, Long> factory();
+    public abstract CrudRepositoryFactory<ENTITY, Long> factory();
 
-    abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
+    public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
 
     /**
      * 根据主键查找

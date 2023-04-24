@@ -1,7 +1,9 @@
 package com.jansora.repo.core.payload.response;//package com.jansora.repo.core.payload.vo;
 
+import com.jansora.repo.core.factory.entity.EntityResponse;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+
+import java.util.Date;
 
 /**
  * <Description> Description for SearchVo <br>
@@ -14,8 +16,22 @@ import lombok.EqualsAndHashCode;
  * @since 1.0 <br>
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class SearchResponse extends EntityResponse {
+public class SearchResponse implements EntityResponse {
+
+    /**
+     * 唯一标识
+     */
+    private Long id;
+
+    /**
+     * 创建时间
+     */
+    private Date createdAt;
+
+    /**
+     * 更新时间
+     */
+    private Date updatedAt;
 
     /**
      * 名称

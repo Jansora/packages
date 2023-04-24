@@ -1,9 +1,7 @@
 package com.jansora.repo.core.payload.request;
 
-import lombok.AllArgsConstructor;
+import com.jansora.repo.core.factory.entity.EntityRequest;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 /**
  * @description:
@@ -11,11 +9,12 @@ import lombok.NoArgsConstructor;
  * @date: 2023-04-18 23:32:43
  */
 @Data
-//@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class SearchableEntityRequest extends EntityRequest {
+public class SearchableEntityRequest implements EntityRequest {
+
+    /**
+     * 主键 id
+     */
+    Long id;
 
     /**
      * 名称

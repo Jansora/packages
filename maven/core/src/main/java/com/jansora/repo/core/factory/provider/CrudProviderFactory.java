@@ -2,8 +2,8 @@ package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.domain.CrudDomainFactory;
-import com.jansora.repo.core.payload.request.EntityRequest;
-import com.jansora.repo.core.payload.response.EntityResponse;
+import com.jansora.repo.core.factory.entity.EntityRequest;
+import com.jansora.repo.core.factory.entity.EntityResponse;
 
 /**
  * @description:

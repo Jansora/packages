@@ -3,10 +3,10 @@ package com.jansora.repo.core.factory.controller;
 import com.jansora.repo.core.auth.Auth;
 import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.factory.entity.EntityRequest;
+import com.jansora.repo.core.factory.entity.EntityResponse;
 import com.jansora.repo.core.factory.provider.CrudProviderFactory;
 import com.jansora.repo.core.payload.dto.ResultDto;
-import com.jansora.repo.core.payload.request.EntityRequest;
-import com.jansora.repo.core.payload.response.EntityResponse;
 import org.springframework.web.bind.annotation.*;
 
 /**
