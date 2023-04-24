@@ -9,7 +9,7 @@ import lombok.Data;
  * @date: 2023-04-18 23:32:43
  */
 @Data
-public class SearchableEntityRequest implements EntityRequestFactory {
+public class ClassifiableEntityRequest implements EntityRequestFactory {
 
     /**
      * 主键 id

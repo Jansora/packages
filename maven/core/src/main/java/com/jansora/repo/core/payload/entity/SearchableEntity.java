@@ -45,7 +45,6 @@ public class SearchableEntity extends BaseEntityFactory {
     /**
      * 标签
      */
-
     private Long userId;
 
 

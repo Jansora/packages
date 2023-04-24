@@ -2,9 +2,9 @@ package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.repository.SearchableRepositoryFactory;
+import com.jansora.repo.core.factory.repository.ClassifiableRepositoryFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
@@ -20,14 +20,14 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface SearchableProviderFactory {
+public interface ClassifiableProviderFactory {
 
-    public abstract SearchableRepositoryFactory searchFactory();
+    public abstract ClassifiableRepositoryFactory searchFactory();
 
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(SearchableRequest request) throws BaseAppException {
+    default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseAppException {
         return searchFactory().search(request);
     }
 

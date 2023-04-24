@@ -2,10 +2,10 @@ package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.provider.SearchableProviderFactory;
+import com.jansora.repo.core.factory.provider.ClassifiableProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
-import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
@@ -22,9 +22,9 @@ import java.util.List;
  * @date 2022/8/10 PM02:16 <br>
  * @since 1.0 <br>
  */
-public interface SearchControllerFactory {
+public interface ClassifiableControllerFactory {
     
-    abstract SearchableProviderFactory searchFactory();
+    abstract ClassifiableProviderFactory searchFactory();
 
     /**
      * 搜索正文
@@ -32,7 +32,7 @@ public interface SearchControllerFactory {
      * @param req
      */
     @GetMapping("search")
-    default ResultDto<PageResponse<SearchResponse>> search(SearchableRequest request) throws BaseAppException {
+    default ResultDto<PageResponse<SearchResponse>> search(ClassifiableRequest request) throws BaseAppException {
         return ResultDto.SUCCESS(searchFactory().search(request));
     }
 

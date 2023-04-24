@@ -8,17 +8,28 @@ import lombok.NoArgsConstructor;
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
- * @date: 2023-04-18 23:40:07
+ * @date: 2023-04-18 23:16:08
  */
 @Data
 //@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AdvancedSearchableRequest extends SearchableRequest {
+public class ClassifiableRequest extends PageableRequest {
 
     /**
-     * 关键字
+     * 名称
      */
-    String keywords;
+    private String name;
+
+    /**
+     * 分类
+     */
+    private String classify;
+
+    /**
+     * 标签
+     */
+    private String tag;
+
 }

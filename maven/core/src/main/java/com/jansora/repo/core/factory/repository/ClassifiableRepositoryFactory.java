@@ -2,9 +2,9 @@ package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.mapper.SearchMapper;
+import com.jansora.repo.core.factory.mapper.ClassifyMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.request.SearchableRequest;
+import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 import com.jansora.repo.core.utils.NumberUtils;
@@ -20,7 +20,7 @@ import java.util.List;
  * @date 2022/8/10 AM10:38 <br>
  * @since 1.0 <br>
  */
-public interface SearchableRepositoryFactory {
+public interface ClassifiableRepositoryFactory {
 
     /**
      * 获取表名
@@ -30,12 +30,12 @@ public interface SearchableRepositoryFactory {
     /**
      * search mapper
      */
-    abstract SearchMapper searchMapper();
+    abstract ClassifyMapper searchMapper();
 
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(SearchableRequest req) throws InvalidArgumentException {
+    default PageResponse<SearchResponse> search(ClassifiableRequest req) throws InvalidArgumentException {
         PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
