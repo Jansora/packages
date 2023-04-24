@@ -4,6 +4,8 @@ import com.jansora.repo.core.payload.Base;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
  * <Description> Description for BaseEty <br>
  *
@@ -26,4 +28,14 @@ public abstract class BaseEntity extends Base {
      * 唯一标识
      */
     private Long id;
+
+    /**
+     * 创建时间
+     */
+    private Date createdAt;
+
+    /**
+     * 更新时间
+     */
+    private Date updatedAt;
 }
