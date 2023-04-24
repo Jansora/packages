@@ -22,13 +22,13 @@ import java.util.List;
  */
 public interface ClassifiableProviderFactory {
 
-    ClassifiableDomainFactory factory();
+    ClassifiableDomainFactory classifiableDomainFactory();
 
     /**
      * 搜索正文
      */
     default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseAppException {
-        return factory().search(request);
+        return classifiableDomainFactory().search(request);
     }
 
     /**
@@ -41,21 +41,21 @@ public interface ClassifiableProviderFactory {
      * 搜索 classify
      */
     default List<KVDto<Long>> fetchClassifyCounts() throws BaseAppException {
-        return factory().fetchClassifyCounts();
+        return classifiableDomainFactory().fetchClassifyCounts();
     }
 
     /**
      * 搜索 tag
      */
     default List<KVDto<Long>> fetchTags(String classify) throws BaseAppException {
-        return factory().fetchTags(classify);
+        return classifiableDomainFactory().fetchTags(classify);
     }
 
     /**
      * 搜索 logo
      */
     default List<KVDto<String>> fetchLogos() throws BaseAppException {
-        return factory().fetchLogos();
+        return classifiableDomainFactory().fetchLogos();
     }
 
 }

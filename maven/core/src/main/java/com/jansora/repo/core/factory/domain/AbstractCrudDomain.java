@@ -18,9 +18,9 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
         implements CrudDomainFactory<REQUEST, RESPONSE>
 {
 
-    public abstract CrudRepositoryFactory<ENTITY, Long> factory();
+    public abstract CrudRepositoryFactory<ENTITY, Long> crudRepositoryFactory();
 
-    public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
+    public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> crudConverter();
 
     /**
      * 根据主键查找
@@ -28,7 +28,7 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @return 返回值
      */
     public RESPONSE findById(Long id) throws BaseAppException {
-        return converter().toResponse(factory().findById(id));
+        return crudConverter().toResponse(crudRepositoryFactory().findById(id));
     }
 
     /**
@@ -38,7 +38,7 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @return 实体
      */
     public RESPONSE save(REQUEST req) throws BaseAppException {
-        return converter().toResponse(factory().save(converter().toEntity(req)));
+        return crudConverter().toResponse(crudRepositoryFactory().save(crudConverter().toEntity(req)));
     }
 
     /**
@@ -47,6 +47,6 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @return 被删除的实体
      */
     public RESPONSE deleteById(Long id) throws BaseAppException {
-        return converter().toResponse(factory().deleteById(id));
+        return crudConverter().toResponse(crudRepositoryFactory().deleteById(id));
     }
 }

@@ -12,7 +12,7 @@ import com.jansora.repo.core.factory.entity.EntityResponseFactory;
  */
 public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
-    CrudDomainFactory<REQUEST, RESPONSE> factory();
+    CrudDomainFactory<REQUEST, RESPONSE> crudDomainFactory();
 
     /**
      * 根据主键查找
@@ -20,7 +20,7 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @return 返回值
      */
     default RESPONSE findById(Long id) throws BaseAppException {
-        return factory().findById(id);
+        return crudDomainFactory().findById(id);
     }
 
     /**
@@ -30,7 +30,7 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @return 实体
      */
     default RESPONSE save(REQUEST req) throws BaseAppException {
-        return factory().save(req);
+        return crudDomainFactory().save(req);
     }
 
     /**
@@ -39,7 +39,7 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @return 被删除的实体
      */
     default RESPONSE deleteById(Long id) throws BaseAppException {
-        return factory().deleteById(id);
+        return crudDomainFactory().deleteById(id);
     }
 
 

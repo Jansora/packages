@@ -18,7 +18,7 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 @Setting(settingPath = "elasticsearch/base_settings.json")
 @Mapping(mappingPath = "elasticsearch/base_mapping.json")
 @Document(indexName = "galaxy_base_index")
-public class BaseDocument {
+public class ClassifiableDocument {
 
     @Id
     Long id;
