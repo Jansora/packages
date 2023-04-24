@@ -25,12 +25,12 @@ public interface ClassifiableRepositoryFactory {
     /**
      * 获取表名
      */
-    abstract String tableName();
+    String tableName();
 
     /**
      * search mapper
      */
-    abstract ClassifyMapper searchMapper();
+    ClassifyMapper searchMapper();
 
     /**
      * 搜索正文

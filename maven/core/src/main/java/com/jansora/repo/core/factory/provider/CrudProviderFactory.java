@@ -12,9 +12,7 @@ import com.jansora.repo.core.factory.entity.EntityResponseFactory;
  */
 public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
-
     CrudDomainFactory<REQUEST, RESPONSE> factory();
-
 
     /**
      * 根据主键查找

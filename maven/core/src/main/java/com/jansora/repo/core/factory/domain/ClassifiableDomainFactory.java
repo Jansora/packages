@@ -1,28 +1,22 @@
-package com.jansora.repo.core.factory.provider;
+package com.jansora.repo.core.factory.domain;
 
 import com.jansora.repo.core.exception.BaseAppException;
-import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.domain.ClassifiableDomainFactory;
+import com.jansora.repo.core.factory.repository.ClassifiableRepositoryFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 
 import java.util.List;
 
 /**
- * <Description> <br>
- *
- * @author jansora (zhang.yangyuan) <br>
- * @version 1.0 <br>
- * @email zhangyue1936@gmail.com
- * @date 2022/8/10 AM10:58 <br>
- * @since 1.0 <br>
+ * @description:
+ * @author: jansora (zhang.yangyuan)
+ * @date: 2023-04-24 17:14:38
  */
-public interface ClassifiableProviderFactory {
+public interface ClassifiableDomainFactory {
 
-    ClassifiableDomainFactory factory();
+    ClassifiableRepositoryFactory factory();
 
     /**
      * 搜索正文
@@ -31,11 +25,6 @@ public interface ClassifiableProviderFactory {
         return factory().search(request);
     }
 
-    /**
-     * 查询 分类列表
-     * @return Optional<EasyCodeDto>
-     */
-    List<PropertyResponse> fetchClassifies() throws InvalidArgumentException;
 
     /**
      * 搜索 classify
@@ -57,5 +46,5 @@ public interface ClassifiableProviderFactory {
     default List<KVDto<String>> fetchLogos() throws BaseAppException {
         return factory().fetchLogos();
     }
-
 }
+
