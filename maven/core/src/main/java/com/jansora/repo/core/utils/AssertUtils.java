@@ -1,10 +1,13 @@
 package com.jansora.repo.core.utils;
 
+import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
+import com.jansora.repo.core.function.AssertPredicate;
 import org.springframework.util.StringUtils;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 /**
  * <Description> <br>
@@ -15,6 +18,12 @@ import java.util.Objects;
  * @since 1.0 <br>
  */
 public class AssertUtils {
+
+    public static <X extends BaseAppException> void isTrue(AssertPredicate predicate, Supplier<? extends X> exceptionSupplier) {
+        if (!predicate.test()) {
+            throw exceptionSupplier.get();
+        }
+    }
 
     public static void isFalse(boolean... os) throws InvalidArgumentException {
         for (boolean o : os) {
