@@ -1,6 +1,8 @@
 package com.jansora.repo.core.payload.request;
 
-import lombok.*;
+import com.jansora.repo.core.factory.page.PageableFactory;
+import com.jansora.repo.core.factory.page.SortableFactory;
+import lombok.Data;
 
 /**
  * @description:
@@ -9,11 +11,7 @@ import lombok.*;
  */
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class PageableRequest extends BaseRequest {
+public class PageRequest implements PageableFactory, SortableFactory {
 
     /**
      * 每页大小 <br>

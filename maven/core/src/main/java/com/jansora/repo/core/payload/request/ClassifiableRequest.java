@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ClassifiableRequest extends PageableRequest {
+public class ClassifiableRequest extends PageRequest {
 
     /**
      * 名称

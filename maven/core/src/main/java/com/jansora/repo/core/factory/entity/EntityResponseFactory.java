@@ -7,7 +7,7 @@ import java.util.Date;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 16:28:28
  */
-public interface EntityResponseFactory extends EntityFactory {
+public interface EntityResponseFactory extends Entity {
 
 
     Date getCreatedAt() ;

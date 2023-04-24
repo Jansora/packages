@@ -2,11 +2,9 @@ package com.jansora.repo.core.payload.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class PropertyResponse extends BaseResponse {
+public class PropertyResponse {
 
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
