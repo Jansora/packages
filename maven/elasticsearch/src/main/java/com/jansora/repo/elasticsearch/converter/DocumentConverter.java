@@ -1,6 +1,6 @@
 package com.jansora.repo.elasticsearch.converter;
 
-import com.jansora.repo.core.payload.entity.BaseEntity;
+import com.jansora.repo.core.payload.entity.BaseEntityFactory;
 import com.jansora.repo.elasticsearch.index.BaseDocument;
 import org.mapstruct.Mappings;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-28 10:30:54
  */
-public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends BaseEntity> {
+public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends BaseEntityFactory> {
 
     /**
      * 入参转化为模型
@@ -29,7 +29,7 @@ public interface DocumentConverter<DOCUMENT extends BaseDocument, ENTITY extends
     /**
      * to document
      */
-    List<DOCUMENT> toDocuments(List<? extends BaseEntity> entities);
+    List<DOCUMENT> toDocuments(List<? extends BaseEntityFactory> entities);
 
     /**
      * to entities

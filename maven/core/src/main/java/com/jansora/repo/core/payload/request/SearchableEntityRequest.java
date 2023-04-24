@@ -1,6 +1,6 @@
 package com.jansora.repo.core.payload.request;
 
-import com.jansora.repo.core.factory.entity.EntityRequest;
+import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import lombok.Data;
 
 /**
@@ -9,7 +9,7 @@ import lombok.Data;
  * @date: 2023-04-18 23:32:43
  */
 @Data
-public class SearchableEntityRequest implements EntityRequest {
+public class SearchableEntityRequest implements EntityRequestFactory {
 
     /**
      * 主键 id

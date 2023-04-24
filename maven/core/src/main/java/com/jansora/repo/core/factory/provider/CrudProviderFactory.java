@@ -2,15 +2,15 @@ package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.domain.CrudDomainFactory;
-import com.jansora.repo.core.factory.entity.EntityRequest;
-import com.jansora.repo.core.factory.entity.EntityResponse;
+import com.jansora.repo.core.factory.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudProviderFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> {
+public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
 
     CrudDomainFactory<REQUEST, RESPONSE> factory();

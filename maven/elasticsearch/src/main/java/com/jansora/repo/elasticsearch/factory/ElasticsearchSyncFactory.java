@@ -1,6 +1,6 @@
 package com.jansora.repo.elasticsearch.factory;
 
-import com.jansora.repo.core.payload.entity.BaseEntity;
+import com.jansora.repo.core.payload.entity.BaseEntityFactory;
 import com.jansora.repo.elasticsearch.converter.DocumentConverter;
 import com.jansora.repo.elasticsearch.index.BaseDocument;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
@@ -14,7 +14,7 @@ import java.util.List;
  * @date: 2023-03-21 22:10:49
  */
 @NoRepositoryBean
-public interface ElasticsearchSyncFactory<T extends BaseDocument, ID, ENTITY extends BaseEntity> {
+public interface ElasticsearchSyncFactory<T extends BaseDocument, ID, ENTITY extends BaseEntityFactory> {
 
     DocumentConverter<T, ENTITY> documentConverter();
 

@@ -1,15 +1,15 @@
 package com.jansora.repo.core.factory.domain;
 
 import com.jansora.repo.core.exception.BaseAppException;
-import com.jansora.repo.core.factory.entity.EntityRequest;
-import com.jansora.repo.core.factory.entity.EntityResponse;
+import com.jansora.repo.core.factory.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 12:25:33
  */
-public interface CrudDomainFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> {
+public interface CrudDomainFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
     /**
      * 根据主键查找

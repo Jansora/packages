@@ -1,6 +1,6 @@
 package com.jansora.repo.core.payload.response;//package com.jansora.repo.core.payload.vo;
 
-import com.jansora.repo.core.factory.entity.EntityResponse;
+import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import lombok.Data;
 
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.Date;
  * @since 1.0 <br>
  */
 @Data
-public class SearchResponse implements EntityResponse {
+public class SearchResponse implements EntityResponseFactory {
 
     /**
      * 唯一标识
