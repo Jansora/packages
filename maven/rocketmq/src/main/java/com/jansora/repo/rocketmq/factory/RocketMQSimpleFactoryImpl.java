@@ -1,6 +1,5 @@
 package com.jansora.repo.rocketmq.factory;
 
-import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.mq.SimpleMQFactory;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
@@ -20,7 +19,7 @@ public class RocketMQSimpleFactoryImpl implements SimpleMQFactory {
     private RocketMQTemplate rocketMQTemplate;
 
     @Override
-    public boolean send(String topic, String tags, String message) throws BaseAppException {
+    public boolean send(String topic, String tags, String message)  {
         LOGGER.debug("rocketmq send message. topic:[{}]  tags:[{}] message:[{}] .", topic, tags, message);
 
         // springboot不支持使用header传递tags，根据要求，需要在topic后进行拼接 formats: `topicName:tags`，不拼接标识无tag

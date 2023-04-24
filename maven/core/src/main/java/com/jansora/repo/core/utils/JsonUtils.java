@@ -3,7 +3,6 @@ package com.jansora.repo.core.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.transform.FormatException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,9 +69,9 @@ public class JsonUtils {
      * @param json String
      * @param <T> <br>
      * @return List
-     * @throws BaseAppException <br>
+     * @ <br>
      */
-    public static <T> List<T> fromJsonList(String json, Class<?> clazz) throws BaseAppException {
+    public static <T> List<T> fromJsonList(String json, Class<?> clazz)  {
         JavaType javaType = instance.getTypeFactory().constructParametricType(List.class, clazz);
         try {
             return instance.readValue(json, javaType);

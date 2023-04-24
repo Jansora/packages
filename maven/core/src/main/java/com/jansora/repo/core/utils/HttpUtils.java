@@ -1,6 +1,5 @@
 package com.jansora.repo.core.utils;
 
-import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.BadRequestException;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -77,11 +76,11 @@ public class HttpUtils {
         return headers;
     }
 
-    public static  <T> T get(String url, Class<T> response) throws BaseAppException {
+    public static  <T> T get(String url, Class<T> response)  {
         return HttpUtils.exchange(url, HttpMethod.GET, null, response);
     }
 
-    public static <T> T post(String url, Object body, Class<T> response) throws BaseAppException {
+    public static <T> T post(String url, Object body, Class<T> response)  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
@@ -89,7 +88,7 @@ public class HttpUtils {
         return HttpUtils.exchange(url, HttpMethod.POST, request, response);
     }
 
-    public static <T> T postForForm(String url, Object body, Class<T> response) throws BaseAppException {
+    public static <T> T postForForm(String url, Object body, Class<T> response)  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
@@ -98,7 +97,7 @@ public class HttpUtils {
     }
 
 
-    public static <T> T put(String url, Object body, Class<T> response) throws BaseAppException {
+    public static <T> T put(String url, Object body, Class<T> response)  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
@@ -106,7 +105,7 @@ public class HttpUtils {
         return HttpUtils.exchange(url, HttpMethod.PUT, request, response);
     }
 
-    public static <T> T putForForm(String url, Object body, Class<T> response) throws BaseAppException {
+    public static <T> T putForForm(String url, Object body, Class<T> response)  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.add("Accept", MediaType.APPLICATION_JSON.toString());
@@ -114,12 +113,12 @@ public class HttpUtils {
         return HttpUtils.exchange(url, HttpMethod.PUT, request, response);
     }
 
-    public static <T> T delete(String url,  Class<T> response) throws BaseAppException {
+    public static <T> T delete(String url,  Class<T> response)  {
         return HttpUtils.exchange(url, HttpMethod.DELETE, null, response);
     }
 
     private static <T> T exchange(String url, HttpMethod method, HttpEntity<?> request, Class<T> response)
-            throws BaseAppException {
+             {
 
         try {
             return restTemplate.exchange(url, method, request, response).getBody();

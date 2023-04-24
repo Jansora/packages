@@ -1,7 +1,6 @@
 package com.jansora.repo.mysql.repository;
 
 import com.jansora.repo.core.context.AuthContext;
-import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataConflictException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
@@ -95,7 +94,7 @@ public class ValidateRepository {
     /**
      * 校验归属
      */
-    public boolean owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
+    public boolean owner(String tableName, Long id, Long ownerId) {
         if (!StringUtils.hasText(tableName) || id == null || ownerId == null) {
             return false;
         }

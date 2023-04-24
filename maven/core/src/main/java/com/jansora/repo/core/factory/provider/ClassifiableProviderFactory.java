@@ -1,6 +1,5 @@
 package com.jansora.repo.core.factory.provider;
 
-import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.domain.ClassifiableDomainFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
@@ -27,7 +26,7 @@ public interface ClassifiableProviderFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseAppException {
+    default PageResponse<SearchResponse> search(ClassifiableRequest request)  {
         return classifiableDomainFactory().search(request);
     }
 
@@ -40,21 +39,21 @@ public interface ClassifiableProviderFactory {
     /**
      * 搜索 classify
      */
-    default List<KVDto<Long>> fetchClassifyCounts() throws BaseAppException {
+    default List<KVDto<Long>> fetchClassifyCounts()  {
         return classifiableDomainFactory().fetchClassifyCounts();
     }
 
     /**
      * 搜索 tag
      */
-    default List<KVDto<Long>> fetchTags(String classify) throws BaseAppException {
+    default List<KVDto<Long>> fetchTags(String classify)  {
         return classifiableDomainFactory().fetchTags(classify);
     }
 
     /**
      * 搜索 logo
      */
-    default List<KVDto<String>> fetchLogos() throws BaseAppException {
+    default List<KVDto<String>> fetchLogos()  {
         return classifiableDomainFactory().fetchLogos();
     }
 
