@@ -18,6 +18,11 @@ import lombok.EqualsAndHashCode;
 public class SearchResponse extends BaseResponse {
 
     /**
+     * 唯一标识
+     */
+    private Long id;
+
+    /**
      * 名称
      */
     protected String name;
