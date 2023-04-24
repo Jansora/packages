@@ -1,12 +1,12 @@
 package com.jansora.repo.core.factory.repository;
 
+import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.mapper.SearchMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
-import com.jansora.repo.core.payload.valobj.AuthValueObject;
 import com.jansora.repo.core.utils.NumberUtils;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public interface SearchableRepositoryFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(SearchableRequest req, AuthValueObject auth) throws InvalidArgumentException {
+    default PageResponse<SearchResponse> search(SearchableRequest req) throws InvalidArgumentException {
         PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
@@ -52,30 +52,30 @@ public interface SearchableRepositoryFactory {
         result.setPageSize(pageSize);
         result.setPageNum(pageNum);
 
-        result.setData(searchMapper().search(req, tableName(), auth));
-        result.setTotal(searchMapper().searchCount(req, tableName(), auth));
+        result.setData(searchMapper().search(req, tableName(), AuthContext.auth()));
+        result.setTotal(searchMapper().searchCount(req, tableName(), AuthContext.auth()));
         return result;
     }
 
     /**
      * 搜索 classify
      */
-    default List<KVDto<Long>> fetchClassifyCounts(AuthValueObject auth) {
-        return searchMapper().fetchClassifyCounts(tableName(), auth);
+    default List<KVDto<Long>> fetchClassifyCounts() {
+        return searchMapper().fetchClassifyCounts(tableName(), AuthContext.auth());
     }
 
     /**
      * 搜索 tag
      */
-    default List<KVDto<Long>> fetchTags(String classify, AuthValueObject auth) {
-        return NumberUtils.buildCounts(searchMapper().findTagCounts(tableName(), classify, auth));
+    default List<KVDto<Long>> fetchTags(String classify) {
+        return NumberUtils.buildCounts(searchMapper().findTagCounts(tableName(), classify, AuthContext.auth()));
     }
 
     /**
      * 搜索 logo
      */
-    default List<KVDto<String>> fetchLogos(AuthValueObject auth) {
-        return searchMapper().fetchLogos(tableName(), auth);
+    default List<KVDto<String>> fetchLogos() {
+        return searchMapper().fetchLogos(tableName(), AuthContext.auth());
     }
 
 }

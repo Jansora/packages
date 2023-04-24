@@ -1,6 +1,5 @@
 package com.jansora.repo.core.factory.provider;
 
-import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.repository.SearchableRepositoryFactory;
@@ -29,7 +28,7 @@ public interface SearchableProviderFactory {
      * 搜索正文
      */
     default PageResponse<SearchResponse> search(SearchableRequest request) throws BaseAppException {
-        return searchFactory().search(request, AuthContext.auth());
+        return searchFactory().search(request);
     }
 
     /**
@@ -42,21 +41,21 @@ public interface SearchableProviderFactory {
      * 搜索 classify
      */
     default List<KVDto<Long>> fetchClassifyCounts() throws BaseAppException {
-        return searchFactory().fetchClassifyCounts(AuthContext.auth());
+        return searchFactory().fetchClassifyCounts();
     }
 
     /**
      * 搜索 tag
      */
     default List<KVDto<Long>> fetchTags(String classify) throws BaseAppException {
-        return searchFactory().fetchTags(classify, AuthContext.auth());
+        return searchFactory().fetchTags(classify);
     }
 
     /**
      * 搜索 logo
      */
     default List<KVDto<String>> fetchLogos() throws BaseAppException {
-        return searchFactory().fetchLogos(AuthContext.auth());
+        return searchFactory().fetchLogos();
     }
 
 }

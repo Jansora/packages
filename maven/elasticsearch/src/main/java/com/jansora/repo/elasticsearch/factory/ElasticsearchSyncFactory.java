@@ -14,16 +14,17 @@ import java.util.List;
  * @date: 2023-03-21 22:10:49
  */
 @NoRepositoryBean
-public interface ElasticsearchCrudFactory<T extends BaseDocument, ID, ENTITY extends BaseEntity> extends ElasticsearchRepository<T, ID> {
+public interface ElasticsearchSyncFactory<T extends BaseDocument, ID, ENTITY extends BaseEntity> {
 
     DocumentConverter<T, ENTITY> documentConverter();
 
+    ElasticsearchRepository<T, ID> repository();
 
     /**
      * 刷新数据到 ES
      */
     default void flush() {
-        this.saveAll(documentConverter().toDocuments(this.fetchEntities()));
+        repository().saveAll(documentConverter().toDocuments(this.fetchEntities()));
     }
 
     /**
