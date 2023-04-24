@@ -1,7 +1,7 @@
 package com.jansora.repo.core.factory.converter;
 
-import com.jansora.repo.core.factory.entity.Entity;
-import com.jansora.repo.core.payload.model.BaseDo;
+import com.jansora.repo.core.factory.entity.EntityFactory;
+import com.jansora.repo.core.payload.model.EntityDo;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 12:34:51
  */
-public interface CrudPersistenceConverter<ENTITY extends Entity, MODEL extends BaseDo> extends BaseConverter {
+public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL extends EntityDo> extends BaseConverter {
 
     /**
      * 实体转化为物理

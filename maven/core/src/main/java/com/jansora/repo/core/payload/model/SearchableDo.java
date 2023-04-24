@@ -19,7 +19,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "search", remark = "系统用户", autoResultMap = true)
-public class SearchableDo extends BaseDo {
+public class SearchableDo extends EntityDo {
 
     /**
      * 名称

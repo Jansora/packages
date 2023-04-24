@@ -24,7 +24,7 @@ import java.util.Date;
 //@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "base", remark = "系统用户", autoResultMap = true)
-public abstract class BaseDo extends Base {
+public abstract class EntityDo extends Base {
 
     /**
      * 主键 id

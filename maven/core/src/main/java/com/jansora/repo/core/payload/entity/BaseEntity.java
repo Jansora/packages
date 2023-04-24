@@ -1,6 +1,6 @@
 package com.jansora.repo.core.payload.entity;
 
-import com.jansora.repo.core.factory.entity.Entity;
+import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.payload.Base;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,7 +23,7 @@ import java.util.Date;
 //@NoArgsConstructor
 //@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public abstract class BaseEntityFactory extends Base implements Entity {
+public abstract class BaseEntity extends Base implements EntityFactory {
 
     /**
      * 唯一标识

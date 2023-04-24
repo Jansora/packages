@@ -5,8 +5,8 @@ import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
-import com.jansora.repo.core.payload.entity.BaseEntityFactory;
-import com.jansora.repo.core.payload.model.BaseDo;
+import com.jansora.repo.core.payload.entity.BaseEntity;
+import com.jansora.repo.core.payload.model.EntityDo;
 
 
 /**
@@ -14,7 +14,7 @@ import com.jansora.repo.core.payload.model.BaseDo;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 13:58:54
  */
-public abstract class AbstractCrudDomain<ENTITY extends BaseEntityFactory, REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory, MODEL extends BaseDo>
+public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory, MODEL extends EntityDo>
         implements CrudDomainFactory<REQUEST, RESPONSE>
 {
 

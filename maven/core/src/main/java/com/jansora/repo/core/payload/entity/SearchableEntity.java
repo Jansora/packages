@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SearchableEntity extends BaseEntityFactory {
+public class SearchableEntity extends BaseEntity {
 
     /**
      * 名称
