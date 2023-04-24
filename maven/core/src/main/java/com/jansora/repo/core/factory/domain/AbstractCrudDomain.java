@@ -1,23 +1,25 @@
-package com.jansora.repo.core.factory.provider;
+package com.jansora.repo.core.factory.domain;
 
 import com.jansora.repo.core.exception.BaseAppException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
-import com.jansora.repo.core.payload.request.BaseRequest;
-import com.jansora.repo.core.payload.response.BaseResponse;
+import com.jansora.repo.core.payload.request.EntityRequest;
+import com.jansora.repo.core.payload.response.EntityResponse;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
- * @date: 2023-04-21 23:46:11
+ * @date: 2023-04-24 13:58:54
  */
-public abstract class AbstractProviderFactoryImpl<ENTITY extends BaseEntity, REQUEST extends BaseRequest, RESPONSE extends BaseResponse, MODEL extends BaseDo> implements CrudProviderFactory<REQUEST, RESPONSE> {
+public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST extends EntityRequest, RESPONSE extends EntityResponse, MODEL extends BaseDo>
+        implements CrudDomainFactory<REQUEST, RESPONSE>
+{
 
-    public abstract CrudRepositoryFactory<ENTITY, Long> factory();
+    abstract CrudRepositoryFactory<ENTITY, Long> factory();
 
-    public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
+    abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
 
     /**
      * 根据主键查找
@@ -46,5 +48,4 @@ public abstract class AbstractProviderFactoryImpl<ENTITY extends BaseEntity, REQ
     public RESPONSE deleteById(Long id) throws BaseAppException {
         return converter().toResponse(factory().deleteById(id));
     }
-
 }

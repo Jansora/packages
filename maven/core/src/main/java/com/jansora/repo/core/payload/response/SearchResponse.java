@@ -15,12 +15,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SearchResponse extends BaseResponse {
-
-    /**
-     * 唯一标识
-     */
-    private Long id;
+public class SearchResponse extends EntityResponse {
 
     /**
      * 名称
