@@ -1,5 +1,6 @@
 package com.jansora.repo.mysql.repository;
 
+import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataConflictException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <Description> <br>
@@ -93,37 +95,38 @@ public class ValidateRepository {
     /**
      * 校验归属
      */
-    public void owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
-        AssertUtils.strNonNull(tableName);
-        AssertUtils.nonNull(id, ownerId);
+    public boolean owner(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
+        if (!StringUtils.hasText(tableName) || id == null || ownerId == null) {
+            return false;
+        }
 
         String existUserId = queryMapper.queryOne(tableName, "user_id", List.of(new ConditionSQLDto("id", "=", id)));
         if (!StringUtils.hasText(existUserId)) {
-            throw new DataNotFoundException();
+            return false;
         }
 
-        if (!String.valueOf(ownerId).equals(existUserId)) {
-            throw new ForbiddenException();
-        }
+        return String.valueOf(ownerId).equals(existUserId);
+
     }
 
 
     /**
      * 校验可读性
      */
-    public void readable(String tableName, Long id, Long ownerId) throws DataNotFoundException, ForbiddenException, InvalidArgumentException {
-        AssertUtils.strNonNull(tableName);
-        AssertUtils.nonNull(id, ownerId);
+    public boolean readable(String tableName, Long id) {
+        if (!StringUtils.hasText(tableName) || Objects.isNull(id)) {
+            return false;
+        }
 
         String enabled = queryMapper.queryOne(tableName, "enabled", List.of(new ConditionSQLDto("id", "=", id)));
 
         // 1 代表公开
         if (StringUtils.hasText(enabled) && enabled.equals("1")) {
-            return;
+            return true;
         }
 
         // 不公开的话, 校验拥有者
-        this.owner(tableName, id, ownerId);
+        return this.owner(tableName, id, AuthContext.auth().getAuthId());
 
     }
 
