@@ -1,7 +1,8 @@
 package com.jansora.repo.core.payload.model;
 
 import io.mybatis.provider.Entity;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * <Description> Description for SearchableDo <br>
@@ -14,9 +15,6 @@ import lombok.*;
  * @since 1.0 <br>
  */
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "search", remark = "系统用户", autoResultMap = true)
 public class ClassifiableDo extends EntityDo {
