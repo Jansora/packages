@@ -16,9 +16,9 @@ public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL ex
      * 实体转化为物理
      */
     @Mappings({
-            @Mapping(target = "userId", expression = "java(com.jansora.repo.core.context.AuthContext.auth().getAuthId())"),
-            @Mapping(target = "createdAt", expression = "java(entity.getId() != null ? null : new java.util.Date())"),
-            @Mapping(target = "updatedAt", expression = "java(new java.util.Date())"),
+            @Mapping(target = "userId", expression = "java(com.jansora.repo.core.context.AuthContext.auth().getAuthId())", ignore = true),
+            @Mapping(target = "createdAt", expression = "java(entity.getId() != null ? null : new java.util.Date())", ignore = true),
+            @Mapping(target = "updatedAt", expression = "java(new java.util.Date())", ignore = true),
     })
     MODEL toModel(ENTITY entity);
 
