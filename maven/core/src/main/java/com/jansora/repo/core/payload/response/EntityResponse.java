@@ -2,6 +2,7 @@ package com.jansora.repo.core.payload.response;
 
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,8 +11,9 @@ import java.util.Date;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 16:50:56
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class EntityResponse implements EntityResponseFactory {
+public class EntityResponse extends BaseResponse implements EntityResponseFactory {
 
     private Long id;
 

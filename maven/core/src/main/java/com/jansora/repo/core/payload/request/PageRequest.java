@@ -3,6 +3,7 @@ package com.jansora.repo.core.payload.request;
 import com.jansora.repo.core.factory.page.PageableFactory;
 import com.jansora.repo.core.factory.page.SortableFactory;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @description:
@@ -10,8 +11,9 @@ import lombok.Data;
  * @date: 2023-04-18 23:26:14
  */
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class PageRequest implements PageableFactory, SortableFactory {
+public class PageRequest extends BaseRequest implements PageableFactory, SortableFactory {
 
     /**
      * 每页大小 <br>

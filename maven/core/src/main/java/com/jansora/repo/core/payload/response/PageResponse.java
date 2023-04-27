@@ -15,7 +15,7 @@ import java.util.List;
  * @CreateDate 2022/7/28 AM09:30 <br>
  * @since 1.0 <br>
  */
-public class PageResponse<T> {
+public class PageResponse<T> extends BaseResponse {
 
     /**
      * 每页大小 <br>

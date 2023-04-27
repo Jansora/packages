@@ -2,39 +2,28 @@ package com.jansora.repo.core.payload.request;
 
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-18 23:32:43
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ClassifiableEntityRequest implements EntityRequestFactory {
+public class ClassifiableEntityRequest extends ClassifiableRequest implements EntityRequestFactory {
 
     /**
      * 主键 id
      */
-    Long id;
+    private Long id;
 
-    /**
-     * 名称
-     */
-    private String name;
 
     /**
      * 是否启用
      */
     private Boolean enabled;
 
-    /**
-     * 分类
-     */
-    private String classify;
-
-    /**
-     * 标签
-     */
-    private String tag;
 
     /**
      * 标签

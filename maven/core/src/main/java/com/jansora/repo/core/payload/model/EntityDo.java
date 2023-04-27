@@ -1,7 +1,6 @@
 package com.jansora.repo.core.payload.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.jansora.repo.core.payload.Base;
 import io.mybatis.provider.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,7 +23,7 @@ import java.util.Date;
 //@AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "base", remark = "系统用户", autoResultMap = true)
-public abstract class EntityDo extends Base {
+public abstract class EntityDo extends BaseDo {
 
     /**
      * 主键 id

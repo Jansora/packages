@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jansora.repo.core.exception.BaseAppException;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -17,7 +16,7 @@ import java.util.Objects;
  * @CreateDate 2022/7/28 AM09:33 <br>
  * @since 1.0 <br>
  */
-public class ResultDto<T> implements Serializable {
+public class ResultDto<T> extends BaseDto {
 
     public ResultDto() {
 
