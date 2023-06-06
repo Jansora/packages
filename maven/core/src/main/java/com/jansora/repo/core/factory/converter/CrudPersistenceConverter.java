@@ -1,16 +1,18 @@
 package com.jansora.repo.core.factory.converter;
 
 import com.jansora.repo.core.factory.entity.EntityFactory;
-import com.jansora.repo.core.payload.model.EntityDo;
+import com.jansora.repo.core.payload.model.BaseDo;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+
+import java.util.List;
 
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-04-24 12:34:51
  */
-public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL extends EntityDo> extends BaseConverter {
+public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL extends BaseDo> extends BaseConverter {
 
     /**
      * 实体转化为物理
@@ -22,7 +24,6 @@ public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL ex
     })
     MODEL toModel(ENTITY entity);
 
-
     /**
      * model 转化为实体
      */
@@ -30,5 +31,9 @@ public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL ex
 
     })
     ENTITY toEntity(MODEL model);
+
+
+    List<MODEL> toModels(List<ENTITY> entity);
+    List<ENTITY> toEntities(List<MODEL> model);
 
 }

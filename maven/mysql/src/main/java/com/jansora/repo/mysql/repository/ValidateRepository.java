@@ -7,6 +7,7 @@ import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -24,9 +25,9 @@ import java.util.Objects;
  * @since 1.0 <br>
  */
 @Repository
+@AllArgsConstructor
 public class ValidateRepository {
 
-    @Autowired
     QueryMapper queryMapper;
 
     /**
@@ -92,24 +93,6 @@ public class ValidateRepository {
 
 
     /**
-     * 校验归属
-     */
-    public boolean owner(String tableName, Long id, Long ownerId) {
-        if (!StringUtils.hasText(tableName) || id == null || ownerId == null) {
-            return false;
-        }
-
-        String existUserId = queryMapper.queryOne(tableName, "user_id", List.of(new ConditionSQLDto("id", "=", id)));
-        if (!StringUtils.hasText(existUserId)) {
-            return false;
-        }
-
-        return String.valueOf(ownerId).equals(existUserId);
-
-    }
-
-
-    /**
      * 校验可读性
      */
     public boolean readable(String tableName, Long id) {
@@ -125,9 +108,24 @@ public class ValidateRepository {
         }
 
         // 不公开的话, 校验拥有者
-        return this.owner(tableName, id, AuthContext.auth().getAuthId());
+        return this.editable(tableName, id);
 
     }
 
+    /**
+     * 校验可编辑
+     */
+    public boolean editable(String tableName, Long id) {
+        if (!StringUtils.hasText(tableName) || Objects.isNull(id)) {
+            return false;
+        }
+
+        String existUserId = queryMapper.queryOne(tableName, "user_id", List.of(new ConditionSQLDto("id", "=", id)));
+        if (!StringUtils.hasText(existUserId)) {
+            return false;
+        }
+        // 校验拥有者
+        return String.valueOf(AuthContext.auth().getAuthId()).equals(existUserId);
+    }
 
 }

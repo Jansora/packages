@@ -5,6 +5,8 @@ import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
 
+import java.util.List;
+
 /**
  * <Description> Description for CrudRepository <br>
  *
@@ -17,7 +19,6 @@ import com.jansora.repo.core.payload.model.BaseDo;
  */
 public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
 
-    CrudConverter<ENTITY, ?, ?, ? extends BaseDo> converter();
 
     /**
      * 可读性
@@ -45,6 +46,13 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
         throw new NotImplementException();
     }
 
+    /**
+     * 查询所有数据
+     * @return 返回值
+     */
+    default List<ENTITY> findAll() {
+        throw new NotImplementException();
+    }
     /**
      * 保存实体
      * 有实体主键则更新， 没有则保存

@@ -24,10 +24,7 @@ import java.util.ArrayList;
  */
 public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTITY extends BaseEntity> {
 
-
     Class<T> documentType();
-
-
 
     ElasticsearchRestTemplate template();
 
@@ -48,12 +45,11 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTIT
         );
 
 
-
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
         queryBuilder.withQuery(query).withPageable(org.springframework.data.domain.PageRequest.of(page.getPageNum(), page.getPageSize()));
 
         // Add highlight
-        HighlightBuilder.Field highlightField = new HighlightBuilder.Field("userName");
+        HighlightBuilder.Field highlightField = new HighlightBuilder.Field("payload");
         highlightField.preTags("<em>").postTags("</em>");
         queryBuilder.withHighlightFields(highlightField);
 

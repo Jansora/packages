@@ -16,8 +16,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Entity.Table(value = "search", remark = "系统用户", autoResultMap = true)
-public abstract class ClassifiableDo extends EntityDo {
+@Entity.Table(value = "classify", remark = "系统用户", autoResultMap = true)
+public abstract class ClassifiableDo extends BaseDo {
 
     /**
      * 名称
@@ -54,11 +54,5 @@ public abstract class ClassifiableDo extends EntityDo {
      */
     @Entity.Column(value = "logo", remark = "logo")
     private String logo;
-
-    /**
-     * 标签
-     */
-    @Entity.Column(value = "user_id", remark = "用户信息")
-    private Long userId;
     
 }
