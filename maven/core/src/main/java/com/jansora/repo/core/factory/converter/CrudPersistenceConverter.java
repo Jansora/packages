@@ -33,7 +33,8 @@ public interface CrudPersistenceConverter<ENTITY extends EntityFactory, MODEL ex
     ENTITY toEntity(MODEL model);
 
 
-    List<MODEL> toModels(List<ENTITY> entity);
-    List<ENTITY> toEntities(List<MODEL> model);
+    List<MODEL> entitiesToModels(List<ENTITY> entity);
+
+    List<ENTITY> modelsToEntities(List<MODEL> model);
 
 }

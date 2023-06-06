@@ -36,7 +36,7 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTIT
 
         AuthValueObject auth = AuthContext.auth();
         if (!Role.ADMIN.equals(auth.getRole())) {
-            query.must(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("enabled", false)));
+            query.must(QueryBuilders.boolQuery().must(QueryBuilders.matchQuery("enabled", true)));
         }
 
         query.must(

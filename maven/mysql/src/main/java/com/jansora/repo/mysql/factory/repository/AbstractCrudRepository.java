@@ -72,7 +72,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     public List<ENTITY> findAll() {
         List<MODEL> records = mapper().selectList(model());
-        return converter().toEntities(records);
+        return converter().modelsToEntities(records);
     }
 
     /**

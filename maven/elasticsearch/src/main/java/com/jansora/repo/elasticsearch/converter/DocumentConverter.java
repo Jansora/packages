@@ -29,7 +29,7 @@ public interface DocumentConverter<DOCUMENT extends ClassifiableDocument, ENTITY
     /**
      * to document
      */
-    List<DOCUMENT> toDocuments(List<? extends BaseEntity> entities);
+    List<DOCUMENT> toDocuments(List<ENTITY> entities);
 
     /**
      * to entities
