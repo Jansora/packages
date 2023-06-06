@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 
@@ -15,7 +16,20 @@ public class SpringContext implements ApplicationContextAware {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringContext.class);
 
+    private HashMap<Class<?>, Object> beanCache;
+
     public static ApplicationContext context;
+
+    public <T> T getBean(Class<T> requiredType) {
+
+        T result = (T) beanCache.get(requiredType);
+        if (null != result) {
+            return result;
+        }
+        synchronized (beanCache) {
+           return (T) beanCache.put(requiredType, context.getBean(requiredType));
+        }
+    }
 
     public static String qryEnv(String key) {
         String result = context.getEnvironment().getProperty(key);
@@ -24,6 +38,8 @@ public class SpringContext implements ApplicationContextAware {
         }
         return result;
     }
+
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
