@@ -35,11 +35,6 @@ public class ClassifiableEntityRequest extends ClassifiableRequest implements En
      */
     private String logo;
 
-    /**
-     * 标签
-     */
-
-    private Long userId;
 
 
 }

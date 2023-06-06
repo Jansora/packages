@@ -34,7 +34,6 @@ public class RedisConfiguration {
         objectMapper.enable(DeserializationFeature.USE_LONG_FOR_INTS);
         GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer(objectMapper);
 
-
         redisTemplate.setConnectionFactory(connectionFactory);
         // value serializer
         redisTemplate.setKeySerializer(new StringRedisSerializer());

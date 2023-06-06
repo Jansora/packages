@@ -1,5 +1,6 @@
 package com.jansora.repo.elasticsearch.index;
 
+import com.jansora.repo.elasticsearch.IndexName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -17,8 +18,15 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 @NoArgsConstructor
 @Setting(settingPath = "elasticsearch/base_settings.json")
 @Mapping(mappingPath = "elasticsearch/base_mapping.json")
-@Document(indexName = "galaxy_base_index")
-public class ClassifiableDocument {
+@Document(indexName = ClassifiableDocument.indexName)
+public class ClassifiableDocument implements IndexName {
+
+    public static final String indexName = "galaxy_base_index";
+
+    @Override
+    public String indexName() {
+        return indexName;
+    }
 
     @Id
     Long id;

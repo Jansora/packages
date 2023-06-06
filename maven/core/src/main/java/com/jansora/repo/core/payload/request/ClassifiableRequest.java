@@ -32,4 +32,11 @@ public class ClassifiableRequest extends PageRequest {
      */
     private String tag;
 
+
+    /**
+     * 标签
+     */
+
+    private Long userId;
+
 }
