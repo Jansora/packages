@@ -2,7 +2,7 @@ package com.jansora.repo.mysql.repository;
 
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.CollectionUtils;
 
@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
  * @since 1.0 <br>
  */
 @Repository
+@AllArgsConstructor
 public class QueryRepository {
 
-    @Autowired
     QueryMapper queryMapper;
 
     /**

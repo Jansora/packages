@@ -1,5 +1,6 @@
 package com.jansora.repo.elasticsearch.factory;
 
+import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.elasticsearch.converter.DocumentConverter;
 import com.jansora.repo.elasticsearch.index.ClassifiableDocument;
@@ -20,6 +21,8 @@ public interface ElasticsearchSyncFactory<T extends ClassifiableDocument, ID, EN
 
     ElasticsearchRepository<T, ID> repository();
 
+    CrudRepositoryFactory<ENTITY, ID> crudRepository();
+
     /**
      * 刷新数据到 ES
      */
@@ -31,7 +34,8 @@ public interface ElasticsearchSyncFactory<T extends ClassifiableDocument, ID, EN
      * 获取待转化为文档实体的所有实体
      * @return
      */
-    List<ENTITY> fetchEntities();
-
+    default List<ENTITY> fetchEntities() {
+        return crudRepository().findAll();
+    }
 
 }

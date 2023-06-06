@@ -40,8 +40,4 @@ public abstract class BaseEntity extends Base implements EntityFactory {
      */
     private Date updatedAt;
 
-    /**
-     * 创建人
-     */
-    private Long userId;
 }

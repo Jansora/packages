@@ -43,5 +43,9 @@ public class ClassifiableEntity extends BaseEntity {
     private String logo;
 
 
+    /**
+     * 创建人
+     */
+    private Long userId;
 
 }

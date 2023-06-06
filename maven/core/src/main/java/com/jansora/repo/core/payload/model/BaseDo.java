@@ -40,17 +40,10 @@ public abstract class BaseDo extends Base implements ModelFactory {
     private Date updatedAt;
 
     /**
-     * 创建人
-     */
-    @Entity.Column(value = "user_id", remark = "用户信息")
-    private Long userId;
-
-    /**
      * 载荷
      */
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @Entity.Column(value = "updated_at", remark = "更新时间")
     private String payload;
-
 
 }

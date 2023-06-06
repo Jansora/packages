@@ -54,5 +54,11 @@ public abstract class ClassifiableDo extends BaseDo {
      */
     @Entity.Column(value = "logo", remark = "logo")
     private String logo;
-    
+
+    /**
+     * 创建人
+     */
+    @Entity.Column(value = "user_id", remark = "用户信息")
+    private Long userId;
+
 }

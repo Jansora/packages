@@ -6,7 +6,6 @@ import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
 import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
-import com.jansora.repo.core.payload.model.ClassifiableDo;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.repository.ValidateRepository;
@@ -14,8 +13,6 @@ import io.mybatis.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,12 +26,11 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
 
     ValidateRepository validateRepository;
 
+    abstract public MODEL model();
 
-    abstract MODEL model();
+    abstract public BaseMapper<MODEL, Long> mapper();
 
-    abstract BaseMapper<MODEL, Long> mapper();
-
-    abstract CrudPersistenceConverter<ENTITY, MODEL> converter();
+    abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
 
     /**
      * 可读性
