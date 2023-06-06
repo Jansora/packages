@@ -17,7 +17,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "search", remark = "系统用户", autoResultMap = true)
-public class ClassifiableDo extends EntityDo {
+public abstract class ClassifiableDo extends EntityDo {
 
     /**
      * 名称

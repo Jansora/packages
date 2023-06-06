@@ -1,7 +1,9 @@
 package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.exception.system.NotImplementException;
+import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.entity.EntityFactory;
+import com.jansora.repo.core.payload.model.BaseDo;
 
 /**
  * <Description> Description for CrudRepository <br>
@@ -14,6 +16,8 @@ import com.jansora.repo.core.factory.entity.EntityFactory;
  * @since 1.0 <br>
  */
 public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
+
+    CrudConverter<ENTITY, ?, ?, ? extends BaseDo> converter();
 
     /**
      * 可读性

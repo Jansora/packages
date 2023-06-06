@@ -11,5 +11,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class BaseDo extends Base {
+public abstract class BaseDo extends Base implements Model {
+
 }

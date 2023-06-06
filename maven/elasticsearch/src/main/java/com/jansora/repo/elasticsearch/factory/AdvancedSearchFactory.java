@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTITY extends BaseEntity> {
 
 
-    T documentType();
+    Class<T> documentType();
 
 
 
@@ -60,10 +60,10 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTIT
         return doAdvancedSearch(queryBuilder, documentType());
     }
 
-    default PageResponse<T> doAdvancedSearch(NativeSearchQueryBuilder builder, T clazz) {
+    default PageResponse<T> doAdvancedSearch(NativeSearchQueryBuilder builder, Class<T> clazz) {
 
-        SearchHits<?> searchHits = template().search(builder.build(), clazz.getClass());
-        long total = template().count(builder.build(), clazz.getClass());
+        SearchHits<T> searchHits = template().search(builder.build(), clazz);
+        long total = template().count(builder.build(), clazz);
         return PageResponse.build(new ArrayList<>(), total);
     }
 
