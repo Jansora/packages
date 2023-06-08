@@ -1,5 +1,6 @@
 package com.jansora.repo.core.factory.controller;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.provider.ClassifiableProviderFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
@@ -31,7 +32,7 @@ public interface ClassifiableControllerFactory {
      * @param req
      */
     @GetMapping("search")
-    default ResultDto<PageResponse<SearchResponse>> search(ClassifiableRequest request)  {
+    default ResultDto<PageResponse<SearchResponse>> search(ClassifiableRequest request) throws BaseException {
         return ResultDto.SUCCESS(searchFactory().search(request));
     }
 
@@ -39,7 +40,7 @@ public interface ClassifiableControllerFactory {
      * 搜索 classify
      */
     @GetMapping("classifyCounts")
-    default ResultDto<List<KVDto<Long>>> fetchClassifyCounts()  {
+    default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseException  {
         return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
     }
 
@@ -58,7 +59,7 @@ public interface ClassifiableControllerFactory {
      * @param classify
      */
     @GetMapping("tags")
-    default ResultDto<List<KVDto<Long>>> fetchTags(String classify)  {
+    default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseException  {
         return ResultDto.SUCCESS(searchFactory().fetchTags(classify));
     }
 
@@ -66,7 +67,7 @@ public interface ClassifiableControllerFactory {
      * 搜索 logo
      */
     @GetMapping("logos")
-    default ResultDto<List<KVDto<String>>> fetchLogos()  {
+    default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseException  {
         return ResultDto.SUCCESS(searchFactory().fetchLogos());
     }
 

@@ -6,7 +6,7 @@ package com.jansora.repo.core.exception;
  * @author zhang.yangyuan (jansora)
  * 2020/12/02 15:47:59
  */
-public class BaseAppException extends RuntimeException {
+public class BaseException extends Exception {
 
     /*
        errorCode
@@ -17,14 +17,19 @@ public class BaseAppException extends RuntimeException {
     */
     protected String errorDesc;
 
-    public BaseAppException(String errorDesc) {
+    public BaseException(String errorDesc) {
         super(errorDesc);
         this.errorDesc = errorDesc;
     }
-    public BaseAppException(String errorCode, String errorDesc) {
+
+    public BaseException(String errorCode, String errorDesc) {
         super(errorDesc);
         this.errorCode = errorCode;
         this.errorDesc = errorDesc;
+    }
+
+    public RuntimeException toRuntimeException() {
+        return new RuntimeException(this.errorDesc);
     }
 
     public String getErrorCode() {

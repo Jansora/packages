@@ -71,7 +71,7 @@ public class JsonUtils {
      * @return List
      * @ <br>
      */
-    public static <T> List<T> fromJsonList(String json, Class<?> clazz)  {
+    public static <T> List<T> fromJsonList(String json, Class<?> clazz) throws FormatException {
         JavaType javaType = instance.getTypeFactory().constructParametricType(List.class, clazz);
         try {
             return instance.readValue(json, javaType);
@@ -118,7 +118,7 @@ public class JsonUtils {
      * @param higher 高优先级
      * @return r
      */
-    public static JsonNode merge(String lower, String higher) {
+    public static JsonNode merge(String lower, String higher) throws FormatException {
 
         try {
             JsonNode lowerNode = null;
@@ -141,7 +141,7 @@ public class JsonUtils {
                 return higherNode;
             }
         }
-        catch (FormatException | JsonProcessingException e) {
+        catch (JsonProcessingException e) {
             return null;
         }
 

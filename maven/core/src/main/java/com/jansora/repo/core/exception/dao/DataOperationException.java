@@ -1,6 +1,6 @@
 package com.jansora.repo.core.exception.dao;
 
-import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.BaseException;
 
 /**
  * <Description> <br>
@@ -8,7 +8,7 @@ import com.jansora.repo.core.exception.BaseAppException;
  * @author zhang.yangyuan (jansora)
  * 2020/12/02 15:47:59
  */
-public class DataOperationException extends BaseAppException {
+public class DataOperationException extends BaseException {
 
     public DataOperationException() {
         super("500", "数据操作异常");

@@ -1,6 +1,6 @@
 package com.jansora.repo.core.utils;
 
-import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.function.AssertPredicate;
 import org.springframework.util.StringUtils;
@@ -19,7 +19,7 @@ import java.util.function.Supplier;
  */
 public class AssertUtils {
 
-    public static <X extends BaseAppException> void isTrue(AssertPredicate predicate, Supplier<? extends X> exceptionSupplier) {
+    public static <X extends BaseException> void isTrue(AssertPredicate predicate, Supplier<? extends X> exceptionSupplier) throws BaseException {
         if (!predicate.test()) {
             throw exceptionSupplier.get();
         }

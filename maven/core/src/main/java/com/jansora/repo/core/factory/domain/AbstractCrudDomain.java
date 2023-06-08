@@ -1,5 +1,6 @@
 package com.jansora.repo.core.factory.domain;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
@@ -26,7 +27,7 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @param id 主键
      * @return 返回值
      */
-    public RESPONSE findById(Long id)  {
+    public RESPONSE findById(Long id) throws BaseException {
         return crudConverter().toResponse(crudRepositoryFactory().findById(id));
     }
 
@@ -36,7 +37,7 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @param req req
      * @return 实体
      */
-    public RESPONSE save(REQUEST req)  {
+    public RESPONSE save(REQUEST req) throws BaseException  {
         return crudConverter().toResponse(crudRepositoryFactory().save(crudConverter().toEntity(req)));
     }
 
@@ -45,7 +46,7 @@ public abstract class AbstractCrudDomain<ENTITY extends BaseEntity, REQUEST exte
      * @param id 主键
      * @return 被删除的实体
      */
-    public RESPONSE deleteById(Long id)  {
+    public RESPONSE deleteById(Long id) throws BaseException {
         return crudConverter().toResponse(crudRepositoryFactory().deleteById(id));
     }
 }

@@ -1,6 +1,6 @@
 package com.jansora.repo.core.exception.web;
 
-import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.BaseException;
 
 /**
  * <Description> <br>
@@ -8,7 +8,7 @@ import com.jansora.repo.core.exception.BaseAppException;
  * @author zhang.yangyuan (jansora)
  * 2020/12/02 15:47:59
  */
-public class InvalidArgumentException extends BaseAppException {
+public class InvalidArgumentException extends BaseException {
 
     public InvalidArgumentException() {
         super("406", "参数有误");

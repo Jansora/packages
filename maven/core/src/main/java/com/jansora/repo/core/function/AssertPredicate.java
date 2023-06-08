@@ -1,5 +1,7 @@
 package com.jansora.repo.core.function;
 
+import com.jansora.repo.core.exception.BaseException;
+
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
@@ -13,6 +15,6 @@ public interface AssertPredicate {
      * @return {@code true} if the input argument matches the predicate,
      * otherwise {@code false}
      */
-    boolean test();
+    boolean test() throws BaseException;
 }
 

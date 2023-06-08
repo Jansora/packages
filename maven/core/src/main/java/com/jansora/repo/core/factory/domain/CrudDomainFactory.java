@@ -1,5 +1,6 @@
 package com.jansora.repo.core.factory.domain;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 
@@ -15,7 +16,7 @@ public interface CrudDomainFactory<REQUEST extends EntityRequestFactory, RESPONS
      * @param id 主键
      * @return 返回值
      */
-    RESPONSE findById(Long id) ;
+    RESPONSE findById(Long id) throws BaseException;
 
     /**
      * 保存实体
@@ -23,14 +24,14 @@ public interface CrudDomainFactory<REQUEST extends EntityRequestFactory, RESPONS
      * @param req req
      * @return 实体
      */
-    RESPONSE save(REQUEST req) ;
+    RESPONSE save(REQUEST req) throws BaseException ;
 
     /**
      * 删除实体
      * @param id 主键
      * @return 被删除的实体
      */
-    RESPONSE deleteById(Long id) ;
+    RESPONSE deleteById(Long id) throws BaseException ;
 
 
 }

@@ -1,5 +1,6 @@
 package com.jansora.repo.core.utils;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.dao.DataConflictException;
 import com.jansora.repo.core.exception.system.InitializationException;
 
@@ -27,14 +28,14 @@ public class HashUtils {
             md = MessageDigest.getInstance("MD5");
         }
         catch (Exception e) {
-            throw new InitializationException();
+            throw new InitializationException().toRuntimeException();
         }
     }
 
     /**
      * 唯一性检测
      */
-    public static String hash(String content, Predicate<String> uniquenessDetect) {
+    public static String hash(String content, Predicate<String> uniquenessDetect) throws BaseException {
         // 反复调用update输入数据:
 
         content = new Date().getTime() + content;

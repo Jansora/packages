@@ -1,9 +1,8 @@
 package com.jansora.repo.core.factory.repository;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.factory.converter.CrudConverter;
 import com.jansora.repo.core.factory.entity.EntityFactory;
-import com.jansora.repo.core.payload.model.BaseDo;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 可读性
      * @param id 主键
      */
-    default boolean readable(ID id) {
+    default boolean readable(ID id) throws BaseException {
         return true;
     }
 
@@ -32,7 +31,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 可编辑性
      * @param id 主键
      */
-    default boolean editable(ID id) {
+    default boolean editable(ID id) throws BaseException {
         return true;
     }
 
@@ -42,7 +41,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * @param id 主键
      * @return 返回值
      */
-    default ENTITY findById(ID id) {
+    default ENTITY findById(ID id) throws BaseException {
         throw new NotImplementException();
     }
 
@@ -50,7 +49,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 查询所有数据
      * @return 返回值
      */
-    default List<ENTITY> findAll() {
+    default List<ENTITY> findAll() throws BaseException {
         throw new NotImplementException();
     }
     /**
@@ -59,7 +58,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * @param entity entity
      * @return 实体
      */
-    default ENTITY save(ENTITY entity) {
+    default ENTITY save(ENTITY entity) throws BaseException {
         throw new NotImplementException();
     }
 
@@ -68,7 +67,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * @param id 主键
      * @return 被删除的实体
      */
-    default ENTITY deleteById(ID id)  {
+    default ENTITY deleteById(ID id) throws BaseException  {
         throw new NotImplementException();
     }
 

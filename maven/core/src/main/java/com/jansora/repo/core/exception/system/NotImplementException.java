@@ -1,6 +1,6 @@
 package com.jansora.repo.core.exception.system;
 
-import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.BaseException;
 
 /**
  * <Description> <br>
@@ -11,7 +11,7 @@ import com.jansora.repo.core.exception.BaseAppException;
  * @date 2022/8/10 AM10:43 <br>
  * @since 1.0 <br>
  */
-public class NotImplementException extends BaseAppException {
+public class NotImplementException extends BaseException {
 
     public NotImplementException() {
         super("500", "暂未实现");

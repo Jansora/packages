@@ -1,6 +1,7 @@
 package com.jansora.repo.mysql.factory.repository;
 
 import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
@@ -59,7 +60,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      * @return 返回值
      */
     @Override
-    public ENTITY findById(Long id) {
+    public ENTITY findById(Long id) throws BaseException {
         AssertUtils.isTrue(() -> this.readable(id), ForbiddenException::new);
         return converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
     }
@@ -84,7 +85,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     @Transactional
-    public ENTITY save(ENTITY entity) {
+    public ENTITY save(ENTITY entity) throws BaseException {
         AssertUtils.isTrue(AuthContext::empty, ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
@@ -110,7 +111,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     @Transactional
-    public ENTITY deleteById(Long id) {
+    public ENTITY deleteById(Long id) throws BaseException {
         ENTITY entity = this.findById(id);
         mapper().deleteByPrimaryKey(id);
         return entity;

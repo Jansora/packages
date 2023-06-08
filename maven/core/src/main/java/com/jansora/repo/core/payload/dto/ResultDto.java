@@ -2,7 +2,7 @@ package com.jansora.repo.core.payload.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.jansora.repo.core.exception.BaseAppException;
+import com.jansora.repo.core.exception.BaseException;
 
 import java.util.Objects;
 
@@ -82,7 +82,7 @@ public class ResultDto<T> extends BaseDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorDesc;
 
-    public ResultDto(Status status, T data, String errorCode, String errorDesc, BaseAppException e) {
+    public ResultDto(Status status, T data, String errorCode, String errorDesc, BaseException e) {
         this.setStatus(Status.SUCCESS.equals(status));
         this.data = data;
         this.setErrorCode(errorCode);
@@ -117,12 +117,12 @@ public class ResultDto<T> extends BaseDto {
      * @author zhang.yangyuan  2020/11/26 18:17:12 <br>
      * @param e BaseException
      */
-    public ResultDto(BaseAppException e) {
+    public ResultDto(BaseException e) {
         this.setStatus(false);
         this.setErrorCode(e.getErrorCode());
         this.setErrorDesc(e.getErrorDesc());
     }
-    public static <T> ResultDto<T> FAIL (BaseAppException e) {
+    public static <T> ResultDto<T> FAIL (BaseException e) {
         return new ResultDto<>(Status.FAILED, null, null, null, e);
     }
     /**

@@ -1,5 +1,6 @@
 package com.jansora.repo.elasticsearch.factory;
 
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.elasticsearch.converter.DocumentConverter;
@@ -26,7 +27,7 @@ public interface ElasticsearchSyncFactory<T extends ClassifiableDocument, ID, EN
     /**
      * 刷新数据到 ES
      */
-    default void flush() {
+    default void flush() throws BaseException {
         repository().saveAll(documentConverter().toDocuments(this.fetchEntities()));
     }
 
@@ -34,7 +35,7 @@ public interface ElasticsearchSyncFactory<T extends ClassifiableDocument, ID, EN
      * 获取待转化为文档实体的所有实体
      * @return
      */
-    default List<ENTITY> fetchEntities() {
+    default List<ENTITY> fetchEntities() throws BaseException {
         return crudRepository().findAll();
     }
 

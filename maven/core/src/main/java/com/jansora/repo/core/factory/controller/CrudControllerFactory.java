@@ -2,6 +2,7 @@ package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.auth.Auth;
 import com.jansora.repo.core.auth.Role;
+import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.provider.CrudProviderFactory;
@@ -21,7 +22,7 @@ public interface CrudControllerFactory<REQUEST extends EntityRequestFactory, RES
      * 查询单条数据
      */
     @GetMapping("{id}")
-    default ResultDto<RESPONSE> findById(@PathVariable Long id)  {
+    default ResultDto<RESPONSE> findById(@PathVariable Long id) throws BaseException {
         return ResultDto.SUCCESS(crudFactory().findById(id));
     }
 
@@ -30,7 +31,7 @@ public interface CrudControllerFactory<REQUEST extends EntityRequestFactory, RES
      */
     @PutMapping
     @Auth({Role.ADMIN})
-    default ResultDto<RESPONSE> save(@RequestBody REQUEST req)  {
+    default ResultDto<RESPONSE> save(@RequestBody REQUEST req) throws BaseException  {
         return ResultDto.SUCCESS(crudFactory().save(req));
     }
 
@@ -39,7 +40,7 @@ public interface CrudControllerFactory<REQUEST extends EntityRequestFactory, RES
      */
     @DeleteMapping("{id}")
     @Auth({Role.ADMIN})
-    default ResultDto<RESPONSE> deleteById(@PathVariable Long id)  {
+    default ResultDto<RESPONSE> deleteById(@PathVariable Long id) throws BaseException  {
         return ResultDto.SUCCESS(crudFactory().deleteById(id));
     }
 
