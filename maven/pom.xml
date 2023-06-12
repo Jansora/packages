@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
+		<version>3.0.4</version>
 	</parent>
 
 	<groupId>com.jansora.repo</groupId>
@@ -21,13 +21,17 @@
 		<javac.target.version>17</javac.target.version>
 		<jdk.compiler.level>17</jdk.compiler.level>
 <!--		<spring.boot.version>2.3.12.RELEASE</spring.boot.version>-->
-		<spring.boot.version>2.7.2</spring.boot.version>
+		<spring.boot.version>3.0.4</spring.boot.version>
 		<rocketmq.version>2.2.2</rocketmq.version>
-		<repo.version>1.0.2</repo.version>
+<!--		<repo.version>1.0.2</repo.version>-->
 <!--		<spring-cloud.version>2021.0.2.0</spring-cloud.version>-->
 <!--		<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
 <!--		<spring-cloud-tencent.version>1.7.0-Hoxton.SR12</spring-cloud-tencent.version>-->
-		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>
+
+		<spring-cloud.version>2022.0.1</spring-cloud.version>
+		<spring-cloud-tencent.version>1.11.7-2022.0.1</spring-cloud-tencent.version>
+
+<!--		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>-->
 
 		<dubbo.version>3.0.10</dubbo.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
@@ -55,6 +59,25 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+
+			<dependency>
+				<groupId>com.tencent.cloud</groupId>
+				<artifactId>spring-cloud-tencent-dependencies</artifactId>
+				<version>${spring-cloud-tencent.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Spring Cloud Dependencies -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
@@ -273,13 +296,15 @@
 
 
 
-			<dependency>
-				<groupId>com.tencent.cloud</groupId>
-				<artifactId>spring-cloud-tencent-dependencies</artifactId>
-				<version>${spring-cloud-tencent.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
+
+<!--			<dependency>-->
+<!--				<groupId>org.springframework.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>org.springframework.cloud</groupId>-->
+<!--				<artifactId>spring-cloud-starter-bootstrap</artifactId>-->
+<!--			</dependency>-->
 
 
 			<!-- 爬虫需要 -->
