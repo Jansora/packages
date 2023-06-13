@@ -26,19 +26,19 @@ import java.util.ArrayList;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-05-25 09:04:06
  */
-public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTITY extends BaseEntity> {
+public interface AdvancedSearchFactory<T extends ClassifiableDocument, ENTITY extends BaseEntity> {
 
     Class<T> documentType();
 
     ElasticsearchClient client();
 
 
-    default PageResponse<T> advancedSearch(SearchableRequest request, PageRequest page) {
+    default PageResponse<T> advancedSearch(SearchableRequest request, PageRequest page, Class<ENTITY> entityClass) {
 
         // Create the low-level client
         try {
 
-            SearchResponse<T> response = client().search(s -> {
+            SearchResponse<ENTITY> response = client().search(s -> {
                 try {
                     return s.index(
                                     this.documentType().getDeclaredConstructor().newInstance().indexName()
@@ -69,9 +69,9 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ID, ENTIT
                          NoSuchMethodException e) {
                     throw new CommandException().toRuntimeException();
                 }
-            }, this.documentType());
+            }, entityClass);
 
-            for (Hit<T> hit : response.hits().hits()) {
+            for (Hit<ENTITY> hit : response.hits().hits()) {
                 System.out.println("hit:" + hit);
             }
 

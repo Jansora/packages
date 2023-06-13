@@ -36,15 +36,15 @@
 			<artifactId>mybatis-mapper</artifactId>
 		</dependency>
 		<!-- 使用 Service 层封装时 -->
-		<dependency>
-			<groupId>io.mybatis</groupId>
-			<artifactId>mybatis-service</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.mybatis</groupId>-->
+<!--			<artifactId>mybatis-service</artifactId>-->
+<!--		</dependency>-->
 		<!-- 使用 ActiveRecord 模式时 -->
-		<dependency>
-			<groupId>io.mybatis</groupId>
-			<artifactId>mybatis-activerecord</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.mybatis</groupId>-->
+<!--			<artifactId>mybatis-activerecord</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>

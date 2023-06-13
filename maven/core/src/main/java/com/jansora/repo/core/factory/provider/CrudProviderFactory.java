@@ -10,7 +10,7 @@ import com.jansora.repo.core.factory.entity.EntityResponseFactory;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
+public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends FeignClientProviderFactory {
 
     CrudDomainFactory<REQUEST, RESPONSE> crudDomainFactory();
 

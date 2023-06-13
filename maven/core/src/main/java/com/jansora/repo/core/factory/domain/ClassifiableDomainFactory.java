@@ -46,5 +46,6 @@ public interface ClassifiableDomainFactory {
     default List<KVDto<String>> fetchLogos() throws BaseException  {
         return classifiableRepositoryFactory().fetchLogos();
     }
+
 }
 
