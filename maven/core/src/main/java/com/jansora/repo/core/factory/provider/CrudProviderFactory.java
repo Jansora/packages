@@ -4,6 +4,7 @@ import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.domain.CrudDomainFactory;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @description:
@@ -19,7 +20,8 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @param id 主键
      * @return 返回值
      */
-    default RESPONSE findById(Long id) throws BaseException {
+    @GetMapping("{id}")
+    default RESPONSE findById(@PathVariable Long id) throws BaseException {
         return crudDomainFactory().findById(id);
     }
 
@@ -29,7 +31,8 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @param req req
      * @return 实体
      */
-    default RESPONSE save(REQUEST req)  throws BaseException {
+    @PostMapping
+    default RESPONSE save(@RequestBody REQUEST req)  throws BaseException {
         return crudDomainFactory().save(req);
     }
 
@@ -38,7 +41,8 @@ public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPO
      * @param id 主键
      * @return 被删除的实体
      */
-    default RESPONSE deleteById(Long id) throws BaseException  {
+    @DeleteMapping("{id}")
+    default RESPONSE deleteById(@PathVariable Long id) throws BaseException  {
         return crudDomainFactory().deleteById(id);
     }
 
