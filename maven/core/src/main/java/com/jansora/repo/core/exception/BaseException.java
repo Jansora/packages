@@ -17,6 +17,11 @@ public class BaseException extends Exception {
     */
     protected String errorDesc;
 
+    public BaseException(Throwable throwable) {
+        super(throwable.getLocalizedMessage());
+        this.errorDesc = throwable.getLocalizedMessage();
+    }
+
     public BaseException(String errorDesc) {
         super(errorDesc);
         this.errorDesc = errorDesc;
