@@ -3,12 +3,14 @@ package com.jansora.repo.core.factory.provider;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.factory.domain.ClassifiableDomainFactory;
+import com.jansora.repo.core.factory.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import com.jansora.repo.core.factory.feign.ClassifiableFeignFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -21,16 +23,13 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableProviderFactory extends FeignClientProviderFactory {
+public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends ClassifiableFeignFactory<REQUEST, RESPONSE> {
 
     ClassifiableDomainFactory classifiableDomainFactory();
 
     /**
      * 搜索正文
-     *
-     * @param req
      */
-    @GetMapping("search")
     default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseException {
         return classifiableDomainFactory().search(request);
     }
@@ -38,7 +37,6 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
     /**
      * 搜索 classify
      */
-    @GetMapping("classifyCounts")
     default List<KVDto<Long>> fetchClassifyCounts() throws BaseException  {
         return classifiableDomainFactory().fetchClassifyCounts();
     }
@@ -47,7 +45,6 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
      * 查询 分类列表
      * @return Optional<EasyCodeDto>
      */
-    @GetMapping("classifies")
     default List<PropertyResponse> fetchClassifies() throws BaseException {
         throw new NotImplementException();
     }
@@ -57,7 +54,6 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
      *
      * @param classify
      */
-    @GetMapping("tags")
     default List<KVDto<Long>> fetchTags(String classify) throws BaseException  {
         return classifiableDomainFactory().fetchTags(classify);
     }
@@ -65,7 +61,6 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
     /**
      * 搜索 logo
      */
-    @GetMapping("logos")
     default List<KVDto<String>> fetchLogos() throws BaseException  {
         return classifiableDomainFactory().fetchLogos();
     }

@@ -33,12 +33,12 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ENTITY ex
     ElasticsearchClient client();
 
 
-    default PageResponse<T> advancedSearch(SearchableRequest request, PageRequest page, Class<ENTITY> entityClass) {
+    default PageResponse<T> advancedSearch(SearchableRequest request, PageRequest page) {
 
         // Create the low-level client
         try {
 
-            SearchResponse<ENTITY> response = client().search(s -> {
+            SearchResponse<T> response = client().search(s -> {
                 try {
                     return s.index(
                                     this.documentType().getDeclaredConstructor().newInstance().indexName()
@@ -69,9 +69,9 @@ public interface AdvancedSearchFactory<T extends ClassifiableDocument, ENTITY ex
                          NoSuchMethodException e) {
                     throw new CommandException().toRuntimeException();
                 }
-            }, entityClass);
+            }, this.documentType());
 
-            for (Hit<ENTITY> hit : response.hits().hits()) {
+            for (Hit<T> hit : response.hits().hits()) {
                 System.out.println("hit:" + hit);
             }
 
