@@ -1,4 +1,4 @@
-package com.jansora.repo.core.factory.provider;
+package com.jansora.repo.core.factory.feign;
 
 /**
  * @description:

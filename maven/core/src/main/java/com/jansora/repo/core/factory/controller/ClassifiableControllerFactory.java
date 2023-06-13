@@ -1,7 +1,9 @@
 package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.provider.ClassifiableProviderFactory;
+import com.jansora.repo.core.factory.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import com.jansora.repo.core.factory.feign.ClassifiableFeignFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
@@ -21,10 +23,9 @@ import java.util.List;
  * @date 2022/8/10 PM02:16 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableControllerFactory {
+public interface ClassifiableControllerFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>  {
     
-    abstract ClassifiableProviderFactory searchFactory();
-
+    ClassifiableFeignFactory<REQUEST, RESPONSE> searchFactory();
 
     /**
      * 搜索正文

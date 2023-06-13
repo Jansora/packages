@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends ClassifiableFeignFactory<REQUEST, RESPONSE> {
+public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends ClassifiableFeignFactory<REQUEST, RESPONSE>, CrudProviderFactory<REQUEST, RESPONSE> {
 
     ClassifiableDomainFactory classifiableDomainFactory();
 

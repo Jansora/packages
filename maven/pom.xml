@@ -53,6 +53,7 @@
 		<module>storage</module>
 		<module>monitor</module>
 		<module>boot</module>
+		<module>rpc</module>
 	</modules>
 
 
@@ -134,6 +135,12 @@
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>storage</artifactId>
+				<version>1.101.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>rpc</artifactId>
 				<version>1.101.2</version>
 			</dependency>
 

@@ -8,7 +8,9 @@ import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
+import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,13 +23,13 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends CrudFeignFactory<REQUEST, RESPONSE> {
+public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
     /**
      * 搜索正文
      */
     @GetMapping("search")
-    PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseException;
+    PageResponse<SearchResponse> search(@SpringQueryMap ClassifiableRequest request) throws BaseException;
 
     /**
      * 搜索 classify
@@ -48,7 +50,7 @@ public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, 
      * @param classify
      */
     @GetMapping("tags")
-    List<KVDto<Long>> fetchTags(String classify) throws BaseException;
+    List<KVDto<Long>> fetchTags(@RequestParam String classify) throws BaseException;
 
     /**
      * 搜索 logo

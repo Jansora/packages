@@ -3,7 +3,6 @@ package com.jansora.repo.core.factory.feign;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
-import com.jansora.repo.core.factory.provider.FeignFactory;
 import org.springframework.web.bind.annotation.*;
 
 /**
