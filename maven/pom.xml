@@ -46,10 +46,10 @@
 		<module>spring</module>
 		<module>mysql</module>
 		<module>elasticsearch</module>
-		<module>pulsar</module>
+<!--		<module>pulsar</module>-->
 		<module>dubbo</module>
-		<module>nacos</module>
-		<module>polaris</module>
+<!--		<module>nacos</module>-->
+<!--		<module>polaris</module>-->
 		<module>storage</module>
 		<module>monitor</module>
 		<module>boot</module>
