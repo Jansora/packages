@@ -4,7 +4,6 @@ import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.factory.domain.ClassifiableDomainFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
@@ -32,16 +31,16 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
      * @param req
      */
     @GetMapping("search")
-    default ResultDto<PageResponse<SearchResponse>> search(ClassifiableRequest request) throws BaseException {
-        return ResultDto.SUCCESS(classifiableDomainFactory().search(request));
+    default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseException {
+        return classifiableDomainFactory().search(request);
     }
 
     /**
      * 搜索 classify
      */
     @GetMapping("classifyCounts")
-    default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseException  {
-        return ResultDto.SUCCESS(classifiableDomainFactory().fetchClassifyCounts());
+    default List<KVDto<Long>> fetchClassifyCounts() throws BaseException  {
+        return classifiableDomainFactory().fetchClassifyCounts();
     }
 
     /**
@@ -49,7 +48,7 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
      * @return Optional<EasyCodeDto>
      */
     @GetMapping("classifies")
-    default ResultDto<List<PropertyResponse>> fetchClassifies() throws BaseException {
+    default List<PropertyResponse> fetchClassifies() throws BaseException {
         throw new NotImplementException();
     }
 
@@ -59,19 +58,21 @@ public interface ClassifiableProviderFactory extends FeignClientProviderFactory 
      * @param classify
      */
     @GetMapping("tags")
-    default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseException  {
-        return ResultDto.SUCCESS(classifiableDomainFactory().fetchTags(classify));
+    default List<KVDto<Long>> fetchTags(String classify) throws BaseException  {
+        return classifiableDomainFactory().fetchTags(classify);
     }
 
     /**
      * 搜索 logo
      */
     @GetMapping("logos")
-    default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseException  {
-        return ResultDto.SUCCESS(classifiableDomainFactory().fetchLogos());
+    default List<KVDto<String>> fetchLogos() throws BaseException  {
+        return classifiableDomainFactory().fetchLogos();
     }
 
 
-    String moduleName();
+    default String moduleName() throws NotImplementException {
+        throw new NotImplementException();
+    }
 
 }
