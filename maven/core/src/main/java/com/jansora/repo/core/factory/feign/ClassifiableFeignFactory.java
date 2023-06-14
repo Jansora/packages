@@ -50,7 +50,7 @@ public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, 
      * @param classify
      */
     @GetMapping("tags")
-    List<KVDto<Long>> fetchTags(@RequestParam String classify) throws BaseException;
+    List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) throws BaseException;
 
     /**
      * 搜索 logo

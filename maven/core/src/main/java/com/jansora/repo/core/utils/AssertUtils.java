@@ -24,6 +24,11 @@ public class AssertUtils {
             throw exceptionSupplier.get();
         }
     }
+    public static <X extends BaseException> void isFalse(AssertPredicate predicate, Supplier<? extends X> exceptionSupplier) throws BaseException {
+        if (predicate.test()) {
+            throw exceptionSupplier.get();
+        }
+    }
 
     public static void isFalse(boolean... os) throws InvalidArgumentException {
         for (boolean o : os) {

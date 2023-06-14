@@ -1,5 +1,7 @@
 package com.jansora.repo.elasticsearch.index;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.jansora.repo.core.payload.Base;
 import com.jansora.repo.elasticsearch.IndexName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +21,9 @@ import org.springframework.data.elasticsearch.annotations.Setting;
 @Setting(settingPath = "elasticsearch/base_settings.json")
 @Mapping(mappingPath = "elasticsearch/base_mapping.json")
 @Document(indexName = ClassifiableDocument.indexName)
-public class ClassifiableDocument implements IndexName {
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class ClassifiableDocument extends Base implements IndexName {
 
     public static final String indexName = "galaxy_base_index";
 

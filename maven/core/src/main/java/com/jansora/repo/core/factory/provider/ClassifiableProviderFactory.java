@@ -11,6 +11,8 @@ import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
+import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactor
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(ClassifiableRequest request) throws BaseException {
+    default PageResponse<SearchResponse> search(@SpringQueryMap ClassifiableRequest request) throws BaseException {
         return classifiableDomainFactory().search(request);
     }
 
@@ -54,7 +56,7 @@ public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactor
      *
      * @param classify
      */
-    default List<KVDto<Long>> fetchTags(String classify) throws BaseException  {
+    default List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) throws BaseException  {
         return classifiableDomainFactory().fetchTags(classify);
     }
 

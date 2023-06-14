@@ -86,7 +86,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     @Transactional
     public ENTITY save(ENTITY entity) throws BaseException {
-        AssertUtils.isTrue(AuthContext::empty, ForbiddenException::new);
+        AssertUtils.isFalse(AuthContext::empty, ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
 
@@ -96,6 +96,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
             entity.setId(record.getId());
         }
         else {
+            AssertUtils.isTrue(() -> this.editable(record.getId()), ForbiddenException::new);
             mapper().updateByPrimaryKeySelective(record);
         }
 
