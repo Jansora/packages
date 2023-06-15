@@ -6,7 +6,6 @@
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
 		<version>2.100.0</version>
-		<relativePath/>
 	</parent>
 	<artifactId>core</artifactId>
 	<version>2.100.0</version>

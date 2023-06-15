@@ -126,11 +126,11 @@
 				<artifactId>elasticsearch</artifactId>
 				<version>2.100.0</version>
 			</dependency>
-			<dependency>
-				<groupId>com.jansora.repo</groupId>
-				<artifactId>dubbo</artifactId>
-				<version>2.100.0</version>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>com.jansora.repo</groupId>-->
+<!--				<artifactId>dubbo</artifactId>-->
+<!--				<version>2.100.0</version>-->
+<!--			</dependency>-->
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
@@ -144,11 +144,11 @@
 				<version>2.100.0</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.jansora.repo</groupId>
-				<artifactId>polaris</artifactId>
-				<version>2.100.0</version>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>com.jansora.repo</groupId>-->
+<!--				<artifactId>polaris</artifactId>-->
+<!--				<version>2.100.0</version>-->
+<!--			</dependency>-->
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>

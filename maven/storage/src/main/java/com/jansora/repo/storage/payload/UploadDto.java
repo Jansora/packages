@@ -1,6 +1,7 @@
 package com.jansora.repo.storage.payload;
 
-import java.io.Serializable;
+import com.jansora.repo.core.payload.Base;
+
 import java.util.StringJoiner;
 
 /***
@@ -9,7 +10,7 @@ import java.util.StringJoiner;
  * Date: 2022/1/18 PM07:04
  * Description:.
  ***/
-public class UploadDto implements Serializable {
+public class UploadDto extends Base {
 
     /**
      * 文件名

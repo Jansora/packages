@@ -40,10 +40,10 @@
 			<artifactId>core</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jansora.repo</groupId>
-			<artifactId>polaris</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.jansora.repo</groupId>-->
+<!--			<artifactId>polaris</artifactId>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>com.aliyun.oss</groupId>

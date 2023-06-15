@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>boot</artifactId>
 	<version>2.100.0</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>boot</name>
 	<description>boot</description>
 
@@ -26,15 +26,15 @@
 			<version>2.100.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jansora.repo</groupId>
-			<artifactId>polaris</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.jansora.repo</groupId>-->
+<!--			<artifactId>polaris</artifactId>-->
+<!--		</dependency>-->
 
-		<dependency>
-			<groupId>com.jansora.repo</groupId>
-			<artifactId>dubbo</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.jansora.repo</groupId>-->
+<!--			<artifactId>dubbo</artifactId>-->
+<!--		</dependency>-->
 
 
 
