@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @CreateDate 2022/8/1 AM11:58 <br>
  * @since 1.0 <br>
  */
-public class Base implements Serializable {
+public abstract class Base implements Serializable {
     @Override
     public String toString() {
         return this.getClass().getTypeName() + ":" + JsonUtils.toJsonIgnoreError(this);

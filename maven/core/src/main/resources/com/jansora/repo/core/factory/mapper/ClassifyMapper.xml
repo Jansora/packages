@@ -16,10 +16,24 @@
     <select id="search" resultType="com.jansora.repo.core.payload.response.SearchResponse">
         SELECT * FROM ${tableName} WHERE 1 = 1
 
+        <choose>
+            <when test="ids != null and !ids.isEmpty()">
+                AND ID IN
+                (
+                <foreach collection="ids" item="id" index="default" separator=",">
+                    #{id}
+                </foreach>
+                )
+            </when>
+            <otherwise>
+                <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+            </otherwise>
+        </choose>
+
         <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
 
         <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
-        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+
         <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
         AND <include refid="auth" />
         ORDER BY
@@ -43,10 +57,24 @@
 
     <select id="searchCount" resultType="java.lang.Long">
         SELECT count(*) FROM ${tableName} WHERE 1 = 1
+
+        <choose>
+            <when test="ids != null and !ids.isEmpty()">
+                AND ID IN
+                (
+                <foreach collection="ids" item="id" index="default" separator=",">
+                    #{id}
+                </foreach>
+                )
+            </when>
+            <otherwise>
+                <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
+            </otherwise>
+        </choose>
+
         <choose><when test="req.classify != null and req.classify != ''"> AND classify = #{req.classify}</when></choose>
 
         <choose><when test="req.userId != null"> AND user_id = #{req.userId}</when></choose>
-        <choose><when test="req.name != null and req.name != ''"> AND name LIKE CONCAT('%',#{req.name},'%') </when></choose>
         <choose><when test="req.tag != null and req.tag != ''"> AND  tag LIKE CONCAT('%',#{req.tag},'%') </when></choose>
         AND <include refid="auth" />
 

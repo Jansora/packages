@@ -1,10 +1,7 @@
-package com.jansora.repo.elasticsearch.payload;
+package com.jansora.repo.core.payload.response;
 
 import com.jansora.repo.core.payload.Base;
-import com.jansora.repo.elasticsearch.Highlight;
-import com.jansora.repo.elasticsearch.index.ClassifiableDocument;
 import lombok.*;
-import org.springframework.util.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +17,12 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HighlightResponse extends Base implements Highlight {
+public class HighlightResponse extends Base {
 
-    public HighlightResponse(ClassifiableDocument document) {
-        Assert.notNull(document, "document is null");
-        this.id = document.getId();
-        this.name = document.getName();
-        this.payload = document.getPayload();
+    public HighlightResponse(Long id, String name, String payload) {
+        this.id = id;
+        this.name = name;
+        this.payload = payload;
     }
 
     /**
@@ -59,11 +55,9 @@ public class HighlightResponse extends Base implements Highlight {
 
     /**
      * 高亮
-     *
-     * @param text
      * @return
      */
-    @Override
+//    @Override
     public void highlight(Map<String, List<String>> highlight) {
 
         this.nameHighlight = highlight.getOrDefault("name", new ArrayList<>());

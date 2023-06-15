@@ -20,9 +20,9 @@ import java.util.List;
  */
 public interface ClassifyMapper {
 
-    Long searchCount(@Param("req") ClassifiableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
+    Long searchCount(@Param("req") ClassifiableRequest req, @Param("ids") List<Long> ids, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
-    List<SearchResponse> search(@Param("req") ClassifiableRequest req, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
+    List<SearchResponse> search(@Param("req") ClassifiableRequest req, @Param("ids") List<Long> ids, @Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 
     List<KVDto<Long>> fetchClassifyCounts(@Param("tableName") String tableName, @Param("auth") AuthValueObject auth);
 

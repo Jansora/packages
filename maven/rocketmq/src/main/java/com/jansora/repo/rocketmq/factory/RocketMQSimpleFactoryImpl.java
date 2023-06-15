@@ -15,7 +15,7 @@ public class RocketMQSimpleFactoryImpl implements SimpleMQFactory {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RocketMQSimpleFactoryImpl.class);
 
-    @Autowired
+    @Autowired(required = false)
     private RocketMQTemplate rocketMQTemplate;
 
     @Override

@@ -35,6 +35,31 @@ public interface ClassifiableRepositoryFactory {
     /**
      * 搜索正文
      */
+    default PageResponse<SearchResponse> compatibleSearch(ClassifiableRequest req, List<Long> ids) throws InvalidArgumentException {
+        PageResponse<SearchResponse> result = new PageResponse<>();
+        int pageSize = req.getPageSize();
+        int pageNum = req.getPageNum();
+        if (req.getPageNum() < 1) {
+            throw new InvalidArgumentException("pageNum should be > 0");
+        }
+        if (req.getPageSize() < 1) {
+            throw new InvalidArgumentException("pageSize should be > 0");
+        }
+        if (req.getPageSize() > 10000) {
+            throw new InvalidArgumentException("pageSize should be < 10000");
+        }
+        req.setPageNum((req.getPageNum() - 1) * req.getPageSize());
+        result.setPageSize(pageSize);
+        result.setPageNum(pageNum);
+
+        result.setData(searchMapper().search(req, ids, tableName(), AuthContext.auth()));
+        result.setTotal(searchMapper().searchCount(req, ids, tableName(), AuthContext.auth()));
+        return result;
+    }
+
+    /**
+     * 搜索正文
+     */
     default PageResponse<SearchResponse> search(ClassifiableRequest req) throws InvalidArgumentException {
         PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
@@ -52,8 +77,8 @@ public interface ClassifiableRepositoryFactory {
         result.setPageSize(pageSize);
         result.setPageNum(pageNum);
 
-        result.setData(searchMapper().search(req, tableName(), AuthContext.auth()));
-        result.setTotal(searchMapper().searchCount(req, tableName(), AuthContext.auth()));
+        result.setData(searchMapper().search(req, List.of(), tableName(), AuthContext.auth()));
+        result.setTotal(searchMapper().searchCount(req, List.of(), tableName(), AuthContext.auth()));
         return result;
     }
 
