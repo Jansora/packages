@@ -7,7 +7,7 @@ package com.jansora.repo.rpc.constants;
  */
 public final class AuthConstants {
 
-    public static final String USER_ID = "User-Id";
-    public static final String ROLE = "Role";
+    public static final String USER_ID = "X-User-Id";
+    public static final String ROLE = "X-User-Role";
 
 }

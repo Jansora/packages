@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>2.100.1</version>
+		<version>2.100.3</version>
 	</parent>
 	<artifactId>boot</artifactId>
-	<version>2.100.1</version>
+	<version>2.100.3</version>
 	<packaging>pom</packaging>
 	<name>boot</name>
 	<description>boot</description>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>rpc</artifactId>
-			<version>2.100.1</version>
+			<version>2.100.3</version>
 		</dependency>
 
 <!--		<dependency>-->
