@@ -1,7 +1,9 @@
 package com.jansora.repo.rocketmq.autoconfiguration;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
@@ -16,5 +18,12 @@ import org.springframework.core.annotation.Order;
 @Configuration
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ComponentScan(basePackages = "com.jansora.repo.rocketmq")
+@ConditionalOnProperty(
+        prefix = "rocketmq",
+        value = {"name-server"},
+        matchIfMissing = true
+)
+@Import({org.apache.rocketmq.spring.autoconfigure.RocketMQAutoConfiguration.class})
 public class RocketMQAutoConfiguration {
+
 }
