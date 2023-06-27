@@ -1,5 +1,6 @@
 package com.jansora.repo.core.payload.entity;
 
+import io.mybatis.provider.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -47,5 +48,11 @@ public class ClassifiableEntity extends BaseEntity {
      * 创建人
      */
     private Long userId;
+
+    /**
+     * 载荷信息
+     */
+    @Entity.Column(value = "payload", remark = "载荷信息")
+    private String payload;
 
 }

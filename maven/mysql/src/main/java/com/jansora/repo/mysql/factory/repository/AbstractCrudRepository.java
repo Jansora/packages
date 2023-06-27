@@ -8,6 +8,7 @@ import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
 import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
+import com.jansora.repo.core.payload.model.ClassifiableDo;
 import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.repository.ValidateRepository;
 import io.mybatis.mapper.BaseMapper;
@@ -32,6 +33,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     abstract public BaseMapper<MODEL, Long> mapper();
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
+    abstract public ValidateRepository validateRepository();
 
     /**
      * 可读性
@@ -40,7 +42,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     public boolean readable(Long id) {
-        return validateRepository.readable(model().tableName(), id);
+        return validateRepository().readable(model().tableName(), id);
     }
 
     /**
@@ -50,7 +52,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     public boolean editable(Long id) {
-        return validateRepository.editable(model().tableName(), id);
+        return validateRepository().editable(model().tableName(), id);
     }
 
     /**
@@ -92,6 +94,9 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
 
         // 先新建
         if (Objects.isNull(entity.getId())) {
+            if (record instanceof ClassifiableDo classify && classify.getEnabled() == null) {
+                ((ClassifiableDo) record).setEnabled(false);
+            }
             mapper().insert(record);
             entity.setId(record.getId());
         }

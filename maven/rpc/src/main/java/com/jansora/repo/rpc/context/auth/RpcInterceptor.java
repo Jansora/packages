@@ -30,12 +30,13 @@ public class RpcInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ForbiddenException, UnauthorizedException {
 
+
         String userId = request.getHeader(USER_ID);
         String role = request.getHeader(ROLE);
         if (StringUtils.hasText(userId)) {
             AuthContext.setContext(new AuthValueObject(Long.valueOf(userId), role));
         }
-
+        log.debug("responseInterceptor working. auth:{}", AuthContext.auth());
         return true;
     }
 

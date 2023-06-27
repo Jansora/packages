@@ -15,41 +15,6 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SearchResponse extends EntityResponse {
-
-    /**
-     * 名称
-     */
-    protected String name;
-
-    /**
-     * 是否启用
-     */
-    protected Boolean enabled;
-
-    /**
-     * 分类
-     */
-    protected String classify;
-
-    /**
-     * 标签
-     */
-    protected String tag;
-
-    /**
-     * 标签
-     */
-    protected String description;
-
-    /**
-     * logo
-     */
-    protected String logo;
-
-    /**
-     * 标签
-     */
-    protected Long userId;
+public class SearchResponse extends ClassifiableResponse {
 
 }

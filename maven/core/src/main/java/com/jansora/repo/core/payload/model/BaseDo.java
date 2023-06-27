@@ -38,12 +38,4 @@ public abstract class BaseDo extends Base implements ModelFactory {
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @Entity.Column(value = "updated_at", remark = "更新时间")
     private Date updatedAt;
-
-    /**
-     * 载荷
-     */
-    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    @Entity.Column(value = "updated_at", remark = "更新时间")
-    private String payload;
-
 }
