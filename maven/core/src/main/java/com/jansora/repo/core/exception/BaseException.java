@@ -1,13 +1,23 @@
 package com.jansora.repo.core.exception;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * <Description> <br>
  *
  * @author zhang.yangyuan (jansora)
  * 2020/12/02 15:47:59
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class BaseException extends Exception {
 
+
+    /*
+       errorCode
+     */
+    protected String errorClass = this.getClass().getName();
     /*
        errorCode
      */
@@ -37,22 +47,6 @@ public class BaseException extends Exception {
         return new RuntimeException(this.errorDesc);
     }
 
-    public String getErrorCode() {
-        return this.errorCode;
-    }
-
-    public String getErrorDesc() {
-        return this.errorDesc;
-    }
-
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public void setErrorDesc(String errorDesc) {
-        this.errorDesc = errorDesc;
-    }
 
 
 

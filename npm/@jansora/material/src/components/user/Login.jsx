@@ -72,6 +72,7 @@ const Login = () => {
                     value={username} onChange={e => setUsername(e.target.value)}/>
                 <Form.Input label='密码' type="password" placeholder='请输入你的密码' value={password}
                             onChange={e => setPassword(e.target.value)}/>
+
                 <Form.Checkbox
                     // on
                     onChange={()=>setKeepLogin(!keepLogin)}

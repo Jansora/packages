@@ -3,6 +3,8 @@ package com.jansora.repo.core.payload.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jansora.repo.core.exception.BaseException;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Objects;
 
@@ -16,6 +18,9 @@ import java.util.Objects;
  * @CreateDate 2022/7/28 AM09:33 <br>
  * @since 1.0 <br>
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
+
 public class ResultDto<T> extends BaseDto {
 
     public ResultDto() {
@@ -82,6 +87,12 @@ public class ResultDto<T> extends BaseDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private String errorDesc;
 
+    /*
+ errorDesc  should be assigned when status is false;
+ */
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String errorClass;
+
     public ResultDto(Status status, T data, String errorCode, String errorDesc, BaseException e) {
         this.setStatus(Status.SUCCESS.equals(status));
         this.data = data;
@@ -90,6 +101,7 @@ public class ResultDto<T> extends BaseDto {
         if(Objects.nonNull(e)) {
             this.setErrorCode(e.getErrorCode());
             this.setErrorDesc(e.getErrorDesc());
+            this.setErrorClass(e.getErrorClass());
         }
     }
     /**
