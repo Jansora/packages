@@ -145,11 +145,11 @@
 				<version>2.100.8</version>
 			</dependency>
 
-<!--			<dependency>-->
-<!--				<groupId>com.jansora.repo</groupId>-->
-<!--				<artifactId>polaris</artifactId>-->
-<!--				<version>2.100.8</version>-->
-<!--			</dependency>-->
+			<dependency>
+				<groupId>com.jansora.repo</groupId>
+				<artifactId>graphql</artifactId>
+				<version>2.100.8</version>
+			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
