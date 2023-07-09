@@ -1,4 +1,4 @@
-package com.jansora.repo.cache.constant;
+package com.jansora.repo.core.constants;
 
 /**
  * <Description> Description for BeanDefine <br>
@@ -12,6 +12,8 @@ package com.jansora.repo.cache.constant;
 public class CacheDefine {
 
     public static final String CACHE_ALWAYS = "CACHE_ALWAYS";
+
+    public static final String CACHE_FIVE_SECONDS = "CACHE_FIVE_SECONDS";
 
     public static final String CACHE_ONE_MINUTE = "CACHE_ONE_MINUTE";
 
@@ -29,4 +31,19 @@ public class CacheDefine {
 
     public static final String CACHE_ONE_YEAR = "CACHE_ONE_YEAR";
 
+
+
+    public static final String MEMORY_ALWAYS = "MEMORY_ALWAYS";
+
+    public static final String MEMORY_MINUTE = "MEMORY_MINUTE";
+
+    public static final String MEMORY_HOUR = "MEMORY_HOUR";
+
+    public static final String MEMORY_DAY = "MEMORY_DAY";
+
+    public static final String MEMORY_WEEK = "MEMORY_WEEK";
+
+    public static final String MEMORY_MONTH = "MEMORY_MONTH";
+
+    public static final String MEMORY_YEAR = "MEMORY_YEAR";
 }

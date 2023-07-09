@@ -3,7 +3,6 @@ package com.jansora.repo.spring;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.transform.FormatException;
 import com.jansora.repo.core.payload.dto.ResultDto;
-import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -26,17 +25,17 @@ public class SpringExceptionHandler {
 
     private static final String LOG_PREFIX = "SpringExceptionHandler: ";
 
-    /**
-     * <Description> 格式化数据出现异常 <br>
-     * @author zhang.yangyuan 2020/11/26 18:17:12 <br>
-     * 
-     * */
-    @ExceptionHandler(FeignException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResultDto<Object> handleFeignException(FeignException e) {
-        LOGGER.error(LOG_PREFIX + e.getClass().getSimpleName() + " has reached." , e);
-        return ResultDto.FAIL(new BaseException("RPC 接口调用失败"));
-    }
+//    /**
+//     * <Description> 格式化数据出现异常 <br>
+//     * @author zhang.yangyuan 2020/11/26 18:17:12 <br>
+//     *
+//     * */
+//    @ExceptionHandler(FeignException.class)
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    public ResultDto<Object> handleFeignException(FeignException e) {
+//        LOGGER.error(LOG_PREFIX + e.getClass().getSimpleName() + " has reached." , e);
+//        return ResultDto.FAIL(new BaseException("RPC 接口调用失败"));
+//    }
 
     /**
      * <Description> 格式化数据出现异常 <br>

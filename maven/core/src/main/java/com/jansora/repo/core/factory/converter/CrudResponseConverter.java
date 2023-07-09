@@ -16,8 +16,8 @@ public interface CrudResponseConverter<ENTITY extends EntityFactory, RESPONSE ex
      * 实体 转化为 Response
      */
     @Mappings({
-            @Mapping(target = "createdAt", expression = "java(com.jansora.repo.core.utils.DateUtils.format(entity.getCreatedAt()))"),
-            @Mapping(target = "updatedAt", expression = "java(com.jansora.repo.core.utils.DateUtils.format(entity.getUpdatedAt()))"),
+            @Mapping(target = "createdAt", expression = "java(com.jansora.repo.core.utils.DateUtils.formatTime(entity.getCreatedAt()))"),
+            @Mapping(target = "updatedAt", expression = "java(com.jansora.repo.core.utils.DateUtils.formatTime(entity.getUpdatedAt()))"),
     })
     RESPONSE toResponse(ENTITY entity);
 
