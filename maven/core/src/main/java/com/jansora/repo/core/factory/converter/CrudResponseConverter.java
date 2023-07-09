@@ -2,6 +2,7 @@ package com.jansora.repo.core.factory.converter;
 
 import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 /**
@@ -15,7 +16,8 @@ public interface CrudResponseConverter<ENTITY extends EntityFactory, RESPONSE ex
      * 实体 转化为 Response
      */
     @Mappings({
-
+            @Mapping(target = "createdAt", expression = "java(com.jansora.repo.core.utils.DateUtils.format(entity.getCreatedAt()))"),
+            @Mapping(target = "updatedAt", expression = "java(com.jansora.repo.core.utils.DateUtils.format(entity.getUpdatedAt()))"),
     })
     RESPONSE toResponse(ENTITY entity);
 
