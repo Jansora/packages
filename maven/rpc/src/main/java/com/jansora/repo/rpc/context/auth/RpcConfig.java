@@ -35,7 +35,7 @@ public class RpcConfig implements WebMvcConfigurer {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
-            log.debug("requestInterceptor working. auth:{}", AuthContext.auth());
+            log.debug("requestInterceptor working. method: {} url: {} auth:{}", requestTemplate.method(), requestTemplate.feignTarget().url(), AuthContext.auth());
             // 添加上下文信息到请求头
             requestTemplate.header(USER_ID, AuthContext.auth().getAuthId().toString());
             requestTemplate.header(ROLE, AuthContext.auth().getRole().toString());

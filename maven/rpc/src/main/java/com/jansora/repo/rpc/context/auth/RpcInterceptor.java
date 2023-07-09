@@ -36,7 +36,9 @@ public class RpcInterceptor implements HandlerInterceptor {
         if (StringUtils.hasText(userId)) {
             AuthContext.setContext(new AuthValueObject(Long.valueOf(userId), role));
         }
-        log.debug("responseInterceptor working. auth:{}", AuthContext.auth());
+
+        log.debug("responseInterceptor working. method: {} url: {} auth:{}", request.getMethod(), request.getRequestURI(), AuthContext.auth());
+
         return true;
     }
 

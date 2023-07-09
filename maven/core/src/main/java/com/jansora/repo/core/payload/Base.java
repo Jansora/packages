@@ -17,6 +17,6 @@ import java.io.Serializable;
 public abstract class Base implements Serializable {
     @Override
     public String toString() {
-        return this.getClass().getTypeName() + ":" + JsonUtils.toJsonIgnoreError(this);
+        return this.getClass().getName() + ":" + JsonUtils.toJsonIgnoreError(this);
     }
 }

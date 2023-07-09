@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -37,7 +38,7 @@ public class JsonUtils {
      * @param object o
      * @return r
      */
-    public static String toJsonIgnoreError(Object object) {
+    public static String toJsonIgnoreError(Serializable object) {
         try {
             return instance.writeValueAsString(object);
         }
