@@ -2,6 +2,8 @@ package com.jansora.repo.cache.config;
 
 import com.jansora.repo.cache.serialize.CustomJacksonRedisSerializer;
 import com.jansora.repo.core.constants.CacheDefine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationContext;
@@ -25,6 +27,7 @@ import java.util.Objects;
  * @date: 2023-07-09 15:35:00
  */
 public interface CacheConfigure {
+    static final Logger LOGGER = LoggerFactory.getLogger(CacheConfigure.class);
 
     ApplicationContext context();
 
@@ -144,7 +147,8 @@ public interface CacheConfigure {
                             ReflectionUtils.doWithMethods(clazz, method -> {
 //                                ReflectionUtils.makeAccessible(method);
                                 if (!method.trySetAccessible()) {
-//                                    LOGGER.debug("buildInitCaches binding method failed. method: {}", method);
+
+                                    LOGGER.debug("buildInitCaches binding method failed. method: {}", method);
                                     return;
                                 }
                                 Cacheable cacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
