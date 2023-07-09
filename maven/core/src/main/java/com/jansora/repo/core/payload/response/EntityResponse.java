@@ -1,11 +1,8 @@
 package com.jansora.repo.core.payload.response;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.Date;
 
 /**
  * @description:
@@ -21,13 +18,13 @@ public class EntityResponse extends BaseResponse implements EntityResponseFactor
     /**
      * 创建时间
      */
-    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date createdAt;
+//    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    private String createdAt;
 
     /**
      * 更新时间
      */
-    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
-    private Date updatedAt;
+//    @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    private String updatedAt;
 
 }

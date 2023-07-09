@@ -1,7 +1,5 @@
 package com.jansora.repo.core.factory.entity;
 
-import java.util.Date;
-
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
@@ -10,11 +8,11 @@ import java.util.Date;
 public interface EntityResponseFactory extends EntityFactory {
 
 
-    Date getCreatedAt() ;
+    String getCreatedAt() ;
 
-    void setCreatedAt(Date createdAt);
+    void setCreatedAt(String createdAt);
 
-    Date getUpdatedAt();
+    String getUpdatedAt();
 
-    void setUpdatedAt(Date updatedAt);
+    void setUpdatedAt(String updatedAt);
 }
