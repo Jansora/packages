@@ -101,7 +101,9 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
                             )
                     )
                     .highlight(co.elastic.clients.elasticsearch.core.search.Highlight.of(f -> f.fields("payload", HighlightField.of(
-                                    field -> field.matchedFields(request.getKeywords()))).preTags("<em>").postTags("</em>"))
+                                    field -> field.matchedFields(request.getKeywords())))
+                            .numberOfFragments(10)
+                            .preTags("<em>").postTags("</em>"))
                     )
                     .from(request.getPageNum() * request.getPageSize())
                     .size(request.getPageSize()), this.documentClazz());

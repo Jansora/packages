@@ -11,6 +11,11 @@ import com.jansora.repo.core.factory.entity.EntityResponseFactory;
  */
 public interface CrudDomainFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
 
+//    /**
+//     * 查找所有
+//     */
+//    List<RESPONSE> findAll() throws BaseException;
+
     /**
      * 根据主键查找
      * @param id 主键

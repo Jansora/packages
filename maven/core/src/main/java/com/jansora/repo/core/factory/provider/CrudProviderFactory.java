@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends CrudFeignFactory<REQUEST, RESPONSE> {
+public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>
+        extends CrudFeignFactory<REQUEST, RESPONSE> {
 
     CrudDomainFactory<REQUEST, RESPONSE> crudDomainFactory();
 

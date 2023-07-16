@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2022/8/10 PM02:16 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableControllerFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>  {
+public interface ClassifiableControllerFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
     
     ClassifiableFeignFactory<REQUEST, RESPONSE> searchFactory();
 

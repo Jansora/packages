@@ -23,7 +23,8 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
+public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>
+        extends CrudFeignFactory<REQUEST, RESPONSE> {
 
     /**
      * 搜索正文

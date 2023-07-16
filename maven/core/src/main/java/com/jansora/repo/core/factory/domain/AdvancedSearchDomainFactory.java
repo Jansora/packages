@@ -14,6 +14,7 @@ public interface AdvancedSearchDomainFactory {
 
 
     AdvancedSearchRepositoryFactory advancedSearchRepositoryFactory();
+    
     /**
      * 高级搜索
      */

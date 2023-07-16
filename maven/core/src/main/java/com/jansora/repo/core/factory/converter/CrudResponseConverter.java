@@ -5,6 +5,8 @@ import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
@@ -21,4 +23,6 @@ public interface CrudResponseConverter<ENTITY extends EntityFactory, RESPONSE ex
     })
     RESPONSE toResponse(ENTITY entity);
 
+
+    List<RESPONSE> toResponses(List<ENTITY> entities);
 }
