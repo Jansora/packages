@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface CrudProviderFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>
         extends CrudFeignFactory<REQUEST, RESPONSE> {
 
-    CrudDomainFactory<REQUEST, RESPONSE> crudDomainFactory();
+    CrudDomainFactory<?, REQUEST, RESPONSE, ?> crudDomainFactory();
 
     /**
      * 根据主键查找
