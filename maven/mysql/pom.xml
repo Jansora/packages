@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>2.100.13</version>
+		<version>2.100.15</version>
 	</parent>
 	<artifactId>mysql</artifactId>
-	<version>2.100.13</version>
+	<version>2.100.15</version>
 	<packaging>jar</packaging>
 	<name>mysql</name>
 	<description>mysql</description>
@@ -30,7 +30,10 @@
 			<groupId>com.jansora.repo</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>spring</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>io.mybatis</groupId>
 			<artifactId>mybatis-mapper</artifactId>

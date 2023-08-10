@@ -1,4 +1,4 @@
-package com.jansora.repo.core.factory.model;
+package com.jansora.repo.core.factory.repository.entity;
 
 /**
  * @description:

@@ -63,7 +63,7 @@ const CodeEditor = (props) => {
 
 
     useEffect(() => {
-        if(monacoLoaded && force) {
+        if(model && force) {
             model.setValue(value);
         }
         // eslint-disable-next-line
@@ -79,6 +79,7 @@ const CodeEditor = (props) => {
 
     return (
         <div style={{padding: '16px 0', backgroundColor: props.dark ? '#1E1E1E' : '#FFFFFE'}}>
+            
             <div id={id ? id : "monaco"} ref={ref} style={{
                 width: '100%', height: '500px',
                 ...style}}  />

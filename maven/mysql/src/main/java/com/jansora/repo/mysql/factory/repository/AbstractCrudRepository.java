@@ -1,14 +1,15 @@
 package com.jansora.repo.mysql.factory.repository;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
-import com.jansora.repo.core.factory.entity.EntityFactory;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.model.ClassifiableDo;
+import com.jansora.repo.core.spring.SpringContext;
 import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.repository.ValidateRepository;
 import io.mybatis.mapper.BaseMapper;
@@ -26,14 +27,14 @@ import java.util.Objects;
 @Slf4j
 public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL extends BaseDo> implements CrudRepositoryFactory<ENTITY, Long> {
 
-    ValidateRepository validateRepository;
-
     abstract public MODEL model();
 
     abstract public BaseMapper<MODEL, Long> mapper();
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
-    abstract public ValidateRepository validateRepository();
+    public ValidateRepository validateRepository() {
+        return SpringContext.getSingletonBean(ValidateRepository.class);
+    }
 
     /**
      * 可读性
@@ -87,7 +88,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     @Transactional
-    public ENTITY save(ENTITY entity) throws BaseException {
+    public Long save(ENTITY entity) throws BaseException {
         AssertUtils.isFalse(AuthContext::empty, ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
@@ -105,7 +106,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
             mapper().updateByPrimaryKeySelective(record);
         }
 
-        return this.findById(record.getId());
+        return entity.getId();
 
     }
 

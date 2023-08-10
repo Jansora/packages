@@ -1,6 +1,6 @@
 package com.jansora.repo.rpc.context.auth;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import feign.RequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

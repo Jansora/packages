@@ -1,6 +1,6 @@
 package com.jansora.repo.dubbo.context.auth.filter;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.payload.valobj.AuthValueObject;
 import com.jansora.repo.dubbo.constants.DubboFilterConstant;
 import org.apache.dubbo.rpc.*;

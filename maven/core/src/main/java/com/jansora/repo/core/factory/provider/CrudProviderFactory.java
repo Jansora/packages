@@ -2,9 +2,9 @@ package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.domain.CrudDomainFactory;
-import com.jansora.repo.core.factory.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.feign.CrudFeignFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 

@@ -1,9 +1,9 @@
 package com.jansora.repo.core.factory.controller;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.feign.ClassifiableFeignFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;

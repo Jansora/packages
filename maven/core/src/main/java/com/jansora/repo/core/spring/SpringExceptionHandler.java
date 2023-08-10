@@ -1,4 +1,4 @@
-package com.jansora.repo.spring;
+package com.jansora.repo.core.spring;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.transform.FormatException;

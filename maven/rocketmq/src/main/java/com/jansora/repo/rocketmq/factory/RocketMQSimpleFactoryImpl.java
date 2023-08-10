@@ -1,6 +1,6 @@
 package com.jansora.repo.rocketmq.factory;
 
-import com.jansora.repo.core.factory.mq.SimpleMQFactory;
+import com.jansora.repo.core.factory.SimpleMQFactory;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;

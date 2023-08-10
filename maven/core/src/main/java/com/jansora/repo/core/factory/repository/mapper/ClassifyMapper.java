@@ -1,4 +1,4 @@
-package com.jansora.repo.core.factory.mapper;
+package com.jansora.repo.core.factory.repository.mapper;
 
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;

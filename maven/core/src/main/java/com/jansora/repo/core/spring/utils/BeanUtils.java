@@ -1,4 +1,4 @@
-package com.jansora.repo.spring.utils;
+package com.jansora.repo.core.spring.utils;
 
 import com.jansora.repo.core.exception.transform.FormatException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;

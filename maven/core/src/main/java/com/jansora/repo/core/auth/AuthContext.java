@@ -1,6 +1,5 @@
-package com.jansora.repo.core.context;
+package com.jansora.repo.core.auth;
 
-import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.payload.valobj.AuthValueObject;
 
 import java.util.Objects;

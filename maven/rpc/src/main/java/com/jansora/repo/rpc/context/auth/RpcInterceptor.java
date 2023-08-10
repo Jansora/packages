@@ -1,6 +1,6 @@
 package com.jansora.repo.rpc.context.auth;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.auth.UnauthorizedException;
 import com.jansora.repo.core.payload.valobj.AuthValueObject;

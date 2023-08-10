@@ -1,6 +1,6 @@
 package com.jansora.repo.core.factory.repository;
 
-import com.jansora.repo.core.factory.entity.EntityFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 
 /**
  * @description:

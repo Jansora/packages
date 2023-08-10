@@ -1,12 +1,13 @@
 package com.jansora.repo.core.factory.repository;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
-import com.jansora.repo.core.factory.mapper.ClassifyMapper;
+import com.jansora.repo.core.factory.repository.mapper.ClassifyMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
+import com.jansora.repo.core.spring.SpringContext;
 import com.jansora.repo.core.utils.NumberUtils;
 
 import java.util.List;
@@ -30,7 +31,9 @@ public interface ClassifiableRepositoryFactory {
     /**
      * search mapper
      */
-    ClassifyMapper searchMapper();
+    default ClassifyMapper searchMapper() {
+        return SpringContext.context.getBean(ClassifyMapper.class);
+    }
 
     /**
      * 搜索正文

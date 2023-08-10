@@ -1,7 +1,7 @@
 package com.jansora.repo.core.factory.converter;
 
-import com.jansora.repo.core.factory.entity.EntityFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 

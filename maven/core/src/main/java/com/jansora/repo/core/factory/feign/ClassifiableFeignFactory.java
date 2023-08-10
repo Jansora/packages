@@ -1,8 +1,8 @@
 package com.jansora.repo.core.factory.feign;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;

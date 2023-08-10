@@ -1,4 +1,4 @@
-package com.jansora.repo.spring;
+package com.jansora.repo.core.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -16,11 +17,11 @@ public class SpringContext implements ApplicationContextAware {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SpringContext.class);
 
-    private HashMap<Class<?>, Object> beanCache;
+    private static final Map<Class<?>, Object> beanCache = new HashMap<>();
 
     public static ApplicationContext context;
 
-    public <T> T getBean(Class<T> requiredType) {
+    public static <T> T getSingletonBean(Class<T> requiredType) {
 
         T result = (T) beanCache.get(requiredType);
         if (null != result) {

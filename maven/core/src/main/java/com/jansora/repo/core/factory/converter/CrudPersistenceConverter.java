@@ -1,6 +1,6 @@
 package com.jansora.repo.core.factory.converter;
 
-import com.jansora.repo.core.factory.entity.EntityFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

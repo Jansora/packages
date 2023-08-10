@@ -2,9 +2,9 @@ package com.jansora.repo.core.factory.domain;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
-import com.jansora.repo.core.factory.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
 
@@ -44,7 +44,8 @@ public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends En
      * @return 实体
      */
     default RESPONSE save(REQUEST req) throws BaseException  {
-        return crudConverter().toResponse(crudRepositoryFactory().save(crudConverter().toEntity(req)));
+        return this.findById(crudRepositoryFactory().save(crudConverter().toEntity(req)));
+
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.jansora.repo.core.payload.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.jansora.repo.core.factory.model.ModelFactory;
+import com.jansora.repo.core.factory.repository.entity.ModelFactory;
 import com.jansora.repo.core.payload.Base;
 import io.mybatis.provider.Entity;
 import lombok.Data;

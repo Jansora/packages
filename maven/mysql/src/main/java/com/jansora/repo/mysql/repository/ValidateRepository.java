@@ -1,6 +1,6 @@
 package com.jansora.repo.mysql.repository;
 
-import com.jansora.repo.core.context.AuthContext;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.dao.DataConflictException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
@@ -8,7 +8,6 @@ import com.jansora.repo.core.utils.AssertUtils;
 import com.jansora.repo.mysql.mapper.QueryMapper;
 import com.jansora.repo.mysql.payload.ConditionSQLDto;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 

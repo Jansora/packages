@@ -2,7 +2,7 @@ package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.factory.entity.EntityFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * @param entity entity
      * @return 实体
      */
-    default ENTITY save(ENTITY entity) throws BaseException {
+    default Long save(ENTITY entity) throws BaseException {
         throw new NotImplementException();
     }
 

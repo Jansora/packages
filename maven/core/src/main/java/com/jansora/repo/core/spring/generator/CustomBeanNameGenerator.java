@@ -1,4 +1,4 @@
-package com.jansora.repo.core.generator;
+package com.jansora.repo.core.spring.generator;
 
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;

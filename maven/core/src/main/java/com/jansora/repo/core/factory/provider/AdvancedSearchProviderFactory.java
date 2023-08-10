@@ -1,9 +1,9 @@
 package com.jansora.repo.core.factory.provider;
 
 import com.jansora.repo.core.factory.domain.AdvancedSearchDomainFactory;
-import com.jansora.repo.core.factory.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
 import com.jansora.repo.core.factory.feign.AdvancedSearchFeignFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.HighlightResponse;
 import com.jansora.repo.core.payload.response.PageResponse;

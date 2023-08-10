@@ -2,11 +2,13 @@ package com.jansora.repo.elasticsearch.factory;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.query_dsl.MatchQuery;
+import co.elastic.clients.elasticsearch.core.SearchRequest;
 import co.elastic.clients.elasticsearch.core.SearchResponse;
 import co.elastic.clients.elasticsearch.core.search.HighlightField;
 import co.elastic.clients.elasticsearch.core.search.Hit;
+import co.elastic.clients.util.ObjectBuilder;
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.auth.Role;
-import com.jansora.repo.core.context.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.repository.AdvancedSearchRepositoryFactory;
 import com.jansora.repo.core.payload.request.SearchableRequest;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * @description:
@@ -31,7 +34,7 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
     /**
      * 通过反射获取文件类型
      */
-    private Class<T> documentClazz() {
+    default Class<T> documentClazz() {
         for (Type type: this.getClass().getGenericInterfaces()) {
             if (type instanceof ParameterizedType parameterizedType
                     && parameterizedType.getRawType() instanceof Class<?> clazz
@@ -46,7 +49,7 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
     /**
      * 通过反射获取 index 名称
      */
-    private String indexName() {
+    default String indexName() {
 
         Class<T> documentClazz = this.documentClazz();
         Document document = documentClazz.getAnnotation(Document.class);
@@ -78,35 +81,45 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
      */
     default PageResponse<HighlightResponse> advancedSearch(SearchableRequest request) {
 
+        return this.advancedSearch(s -> s
+                .index(this.indexName())
+                .query(q -> {
+                            // 非 Admin 权限只能看到公开的
+                            if (!Role.ADMIN.equals(AuthContext.auth().getRole())) {
+                                q.bool(b ->
+                                        b.must(MatchQuery.of(m -> m.field("enabled").query(true))._toQuery()));
+                            }
+                            return q;
+                        }
+                )
+                .query(q ->
+                        q.bool(b ->
+                                b.must(MatchQuery.of(m -> m
+                                        .field("name").query(request.getKeywords())
+                                        .field("payload").query(request.getKeywords()))._toQuery()
+                                )
+                        )
+                )
+                .highlight(co.elastic.clients.elasticsearch.core.search.Highlight.of(f -> f.fields("payload", HighlightField.of(
+                                field -> field.matchedFields(request.getKeywords())))
+                        .numberOfFragments(10)
+                        .preTags("<em>").postTags("</em>"))
+                )
+                .from(request.getPageNum() * request.getPageSize())
+                .size(request.getPageSize()));
+    }
+
+
+
+    /**
+     * 高级搜索
+     */
+    default PageResponse<HighlightResponse> advancedSearch(Function<SearchRequest.Builder, ObjectBuilder<SearchRequest>> fn) {
+
         // Create the low-level client
         try {
 
-            SearchResponse<T> response = client().search(s -> s
-                    .index(this.indexName())
-                    .query(q -> {
-                                // 非 Admin 权限只能看到公开的
-                                if (!Role.ADMIN.equals(AuthContext.auth().getRole())) {
-                                    q.bool(b ->
-                                            b.must(MatchQuery.of(m -> m.field("enabled").query(true))._toQuery()));
-                                }
-                                return q;
-                            }
-                    )
-                    .query(q ->
-                            q.bool(b ->
-                                    b.must(MatchQuery.of(m -> m
-                                                    .field("name").query(request.getKeywords())
-                                                    .field("payload").query(request.getKeywords()))._toQuery()
-                                    )
-                            )
-                    )
-                    .highlight(co.elastic.clients.elasticsearch.core.search.Highlight.of(f -> f.fields("payload", HighlightField.of(
-                                    field -> field.matchedFields(request.getKeywords())))
-                            .numberOfFragments(10)
-                            .preTags("<em>").postTags("</em>"))
-                    )
-                    .from(request.getPageNum() * request.getPageSize())
-                    .size(request.getPageSize()), this.documentClazz());
+            SearchResponse<T> response = client().search(fn, this.documentClazz());
 
             for (Hit<T> hit : response.hits().hits()) {
                 System.out.println("hit:" + hit);

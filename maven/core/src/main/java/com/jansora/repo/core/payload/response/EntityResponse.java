@@ -1,6 +1,6 @@
 package com.jansora.repo.core.payload.response;
 
-import com.jansora.repo.core.factory.entity.EntityResponseFactory;
+import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

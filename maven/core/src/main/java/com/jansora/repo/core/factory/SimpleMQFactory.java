@@ -1,4 +1,4 @@
-package com.jansora.repo.core.factory.mq;
+package com.jansora.repo.core.factory;
 
 public interface SimpleMQFactory {
 
