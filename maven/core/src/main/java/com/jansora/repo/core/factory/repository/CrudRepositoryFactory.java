@@ -19,6 +19,7 @@ import java.util.List;
 public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
 
 
+
     /**
      * 可读性
      * @param id 主键
