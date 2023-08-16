@@ -1,4 +1,4 @@
-package com.jansora.repo.spring.autoconfiguration;
+package com.jansora.repo.core.spring.autoconfiguration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import org.springframework.core.annotation.Order;
  * @since 1.0 <br>
  */
 @Configuration
-@ComponentScan(basePackages = "com.jansora.repo.spring")
+@ComponentScan(basePackages = "com.jansora.repo.core.spring")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class SpringAutoConfiguration {
 }
