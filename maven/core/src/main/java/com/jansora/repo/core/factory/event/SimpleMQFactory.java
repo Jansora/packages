@@ -1,4 +1,4 @@
-package com.jansora.repo.core.factory;
+package com.jansora.repo.core.factory.event;
 
 public interface SimpleMQFactory {
 

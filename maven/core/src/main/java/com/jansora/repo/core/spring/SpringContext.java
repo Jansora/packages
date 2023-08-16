@@ -28,8 +28,9 @@ public class SpringContext implements ApplicationContextAware {
             return result;
         }
         synchronized (beanCache) {
-           return (T) beanCache.put(requiredType, context.getBean(requiredType));
+            beanCache.put(requiredType, context.getBean(requiredType));
         }
+        return (T) beanCache.get(requiredType);
     }
 
     public static String qryEnv(String key) {

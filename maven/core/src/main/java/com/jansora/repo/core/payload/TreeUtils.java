@@ -36,9 +36,13 @@ public final class TreeUtils {
         if (CollectionUtils.isEmpty(nodes)) {
             return new ArrayList<>();
         }
+
         return nodes.stream()
                 .filter(node -> Objects.equals(parentId, node.getParentId()))
-                .peek(treeNode -> treeNode.setChildren(tree(parentId, nodes)))
+                .peek(treeNode -> treeNode.setChildren(
+                            tree(treeNode.getId(), nodes)
+                        )
+                )
                 .collect(Collectors.toList());
     }
 

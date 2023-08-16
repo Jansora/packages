@@ -11,4 +11,7 @@ public interface EntityFactory {
 
     void setId(Long id);
 
+    default boolean exist() {
+        return null != getId();
+    }
 }

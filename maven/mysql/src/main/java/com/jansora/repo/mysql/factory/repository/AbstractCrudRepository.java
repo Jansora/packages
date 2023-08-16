@@ -17,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @description:
@@ -94,7 +93,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
         MODEL record = converter().toModel(entity);
 
         // 先新建
-        if (Objects.isNull(entity.getId())) {
+        if (!entity.exist()) {
             if (record instanceof ClassifiableDo classify && classify.getEnabled() == null) {
                 ((ClassifiableDo) record).setEnabled(false);
             }
@@ -119,6 +118,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     @Transactional
     public ENTITY deleteById(Long id) throws BaseException {
+        AssertUtils.isTrue(() -> this.editable(id), ForbiddenException::new);
         ENTITY entity = this.findById(id);
         mapper().deleteByPrimaryKey(id);
         return entity;
