@@ -21,10 +21,7 @@
 			<artifactId>core</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jansora.repo</groupId>
-			<artifactId>spring</artifactId>
-		</dependency>
+
 
 		<dependency>
 			<groupId>com.jansora.repo</groupId>
