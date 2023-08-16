@@ -20,6 +20,11 @@ import java.util.Date;
 public abstract class BaseDo extends Base implements ModelFactory {
 
     /**
+     * 表名
+     */
+    private transient String tableName;
+
+    /**
      * 主键 id
      */
     @Entity.Column(id = true, remark = "主键", updatable = false, insertable = false)
@@ -38,4 +43,13 @@ public abstract class BaseDo extends Base implements ModelFactory {
     @JsonFormat(timezone = "GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
     @Entity.Column(value = "updated_at", remark = "更新时间")
     private Date updatedAt;
+
+
+    @Override
+    public String tableName() {
+        if (tableName == null) {
+            tableName = ModelFactory.super.tableName();
+        }
+        return tableName;
+    }
 }

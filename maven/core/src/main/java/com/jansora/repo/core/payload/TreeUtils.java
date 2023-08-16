@@ -1,5 +1,7 @@
 package com.jansora.repo.core.payload;
 
+import org.springframework.util.CollectionUtils;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -11,12 +13,15 @@ import java.util.stream.Collectors;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-08-15 11:03:42
  */
-public final class TreeUtils<T extends TreeAble<T, ID>, ID> {
+public final class TreeUtils {
 
     /**
      * 摊平
      */
-    public List<T> flat(List<T> nodes) {
+    public static <T extends TreeAble<T, ID>, ID> List<T> flat(List<T> nodes) {
+        if (CollectionUtils.isEmpty(nodes)) {
+            return new ArrayList<>();
+        }
         List<T> result = new ArrayList<>(nodes);
         List<T> children = nodes.stream().map(TreeAble::getChildren)
                 .flatMap(Collection::stream).toList();
@@ -27,10 +32,13 @@ public final class TreeUtils<T extends TreeAble<T, ID>, ID> {
     /**
      * 收缩为 tree
      */
-    public List<T> tree(List<T> nodes, ID parentId) {
+    public static <T extends TreeAble<T, ID>, ID> List<T> tree(ID parentId, List<T> nodes) {
+        if (CollectionUtils.isEmpty(nodes)) {
+            return new ArrayList<>();
+        }
         return nodes.stream()
                 .filter(node -> Objects.equals(parentId, node.getParentId()))
-                .peek(treeNode -> treeNode.setChildren(tree(nodes, parentId)))
+                .peek(treeNode -> treeNode.setChildren(tree(parentId, nodes)))
                 .collect(Collectors.toList());
     }
 
