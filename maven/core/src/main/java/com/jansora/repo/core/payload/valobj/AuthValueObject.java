@@ -1,6 +1,7 @@
 package com.jansora.repo.core.payload.valobj;
 
 import com.jansora.repo.core.auth.Role;
+import com.jansora.repo.core.utils.JsonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,5 +58,11 @@ public class AuthValueObject extends BaseValueObject {
 
     public Role getRole() {
         return role;
+    }
+
+
+    @Override
+    public String toString() {
+        return this.getClass().getName() + ":" + JsonUtils.toNonPrettyJsonIgnoreError(this);
     }
 }

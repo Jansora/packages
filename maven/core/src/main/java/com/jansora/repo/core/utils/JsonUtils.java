@@ -27,10 +27,12 @@ public class JsonUtils {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtils.class);
 
     private static final ObjectMapper instance = new ObjectMapper();
+    private static final ObjectMapper compact_instance = new ObjectMapper();
 
     static {
         instance.enable(SerializationFeature.INDENT_OUTPUT);
         instance.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        compact_instance.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     /**
@@ -47,6 +49,37 @@ public class JsonUtils {
             return "object.getClass() error";
         }
 
+    }
+
+    /**
+     * 对象转 json
+     * @param object o
+     * @return r
+     */
+    public static String toNonPrettyJsonIgnoreError(Serializable object) {
+        try {
+            return compact_instance.writeValueAsString(object);
+        }
+        catch (JsonProcessingException e) {
+            LOGGER.error("format object to json error", e);
+            return "object.getClass() error";
+        }
+
+    }
+
+    /**
+     * 对象转 json
+     * @param object o
+     * @return r
+     * @throws FormatException e
+     */
+    public static String toNonPrettyJson(Object object) throws FormatException {
+        try {
+            return compact_instance.writeValueAsString(object);
+        }
+        catch (JsonProcessingException e) {
+            throw new FormatException();
+        }
     }
 
     /**
