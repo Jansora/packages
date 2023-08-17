@@ -23,7 +23,7 @@ public final class TreeUtils {
             return new ArrayList<>();
         }
         List<T> result = new ArrayList<>(nodes);
-        List<T> children = nodes.stream().map(TreeAble::getChildren)
+        List<T> children = nodes.stream().map(node -> flat(node.getChildren()))
                 .flatMap(Collection::stream).toList();
         result.addAll(children);
         return result;
