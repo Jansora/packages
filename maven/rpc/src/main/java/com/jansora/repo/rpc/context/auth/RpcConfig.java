@@ -1,8 +1,12 @@
 package com.jansora.repo.rpc.context.auth;
 
 import com.jansora.repo.core.auth.AuthContext;
+import com.jansora.repo.rpc.TracingConfiguration;
 import feign.RequestInterceptor;
+import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +30,9 @@ import static com.jansora.repo.rpc.constants.AuthConstants.USER_ID;
 @Slf4j
 public class RpcConfig implements WebMvcConfigurer {
 
+    @Autowired
+    TracingConfiguration tracingConfiguration;
+
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {
@@ -41,6 +48,15 @@ public class RpcConfig implements WebMvcConfigurer {
             requestTemplate.header(ROLE, AuthContext.auth().getRole().toString());
         };
     }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "tracing", name = "enabled", havingValue = "true")
+    OtlpHttpSpanExporter otlpHttpSpanExporter() {
+        return OtlpHttpSpanExporter.builder()
+                .setEndpoint(tracingConfiguration.getUrl())
+                .build();
+    }
+
 
 //    @Bean
 //    public RpcInterceptor rpcInterceptor() {
