@@ -1,6 +1,7 @@
 package com.jansora.repo.core.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jansora.repo.core.exception.transform.FormatException;
@@ -124,6 +125,22 @@ public class JsonUtils {
      * @return r
      */
     public static <T> T fromJson(String json, Class<T> valueType) throws FormatException {
+        try {
+            return instance.readValue(json, valueType);
+        }
+        catch (IOException e) {
+            throw new FormatException();
+        }
+    }
+
+    /**
+     * json字符串转成对应的对象
+     * @param json s
+     * @param valueType v
+     * @param <T> t
+     * @return r
+     */
+    public static <T> T fromJson(String json, TypeReference<T> valueType) throws FormatException {
         try {
             return instance.readValue(json, valueType);
         }
