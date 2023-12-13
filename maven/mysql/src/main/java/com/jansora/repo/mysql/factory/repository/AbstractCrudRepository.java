@@ -9,9 +9,7 @@ import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.model.ClassifiableDo;
-import com.jansora.repo.core.spring.SpringContext;
 import com.jansora.repo.core.utils.AssertUtils;
-import com.jansora.repo.mysql.repository.ValidateRepository;
 import io.mybatis.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,29 +29,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     abstract public BaseMapper<MODEL, Long> mapper();
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
-    public ValidateRepository validateRepository() {
-        return SpringContext.getSingletonBean(ValidateRepository.class);
-    }
 
-    /**
-     * 可读性
-     *
-     * @param id 主键
-     */
-    @Override
-    public boolean readable(Long id) {
-        return validateRepository().readable(model().tableName(), id);
-    }
-
-    /**
-     * 可编辑性
-     *
-     * @param id 主键
-     */
-    @Override
-    public boolean editable(Long id) {
-        return validateRepository().editable(model().tableName(), id);
-    }
 
     /**
      * 根据主键查找
@@ -63,8 +39,12 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     public ENTITY findById(Long id) throws BaseException {
-        AssertUtils.isTrue(() -> this.readable(id), ForbiddenException::new);
-        return converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
+
+        ENTITY entity = converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
+        if (readable(entity)) {
+            return entity;
+        }
+        throw new ForbiddenException("没有访问权限");
     }
 
     /**
@@ -101,7 +81,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
             entity.setId(record.getId());
         }
         else {
-            AssertUtils.isTrue(() -> this.editable(record.getId()), ForbiddenException::new);
+            AssertUtils.isTrue(() -> this.editable(converter().toEntity(record)), ForbiddenException::new);
             mapper().updateByPrimaryKeySelective(record);
         }
 
@@ -118,8 +98,8 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     @Transactional
     public ENTITY deleteById(Long id) throws BaseException {
-        AssertUtils.isTrue(() -> this.editable(id), ForbiddenException::new);
         ENTITY entity = this.findById(id);
+        AssertUtils.isTrue(() -> this.editable(entity), ForbiddenException::new);
         mapper().deleteByPrimaryKey(id);
         return entity;
     }

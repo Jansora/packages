@@ -1,8 +1,10 @@
 package com.jansora.repo.core.factory.repository;
 
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
+import com.jansora.repo.core.payload.Enable;
 
 import java.util.List;
 
@@ -18,21 +20,23 @@ import java.util.List;
  */
 public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
 
-
-
     /**
      * 可读性
-     * @param id 主键
      */
-    default boolean readable(ID id) throws BaseException {
+    default boolean readable(EntityFactory entity) throws BaseException {
+        if (entity instanceof Enable enable) {
+            return enable.getEnabled() || AuthContext.auth().getAuthId().equals(entity.getId());
+        }
         return true;
     }
 
     /**
      * 可编辑性
-     * @param id 主键
      */
-    default boolean editable(ID id) throws BaseException {
+    default boolean editable(EntityFactory entity) throws BaseException {
+        if (entity instanceof Enable enable) {
+            return enable.getEnabled() || AuthContext.auth().getAuthId().equals(entity.getId());
+        }
         return true;
     }
 
