@@ -1,10 +1,10 @@
 package com.jansora.repo.mysql.factory.repository;
 
-import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
+import com.jansora.repo.core.factory.repository.CacheableCrudRepository;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 import com.jansora.repo.core.payload.model.BaseDo;
@@ -30,6 +30,13 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
 
+    public CacheableCrudRepository<ENTITY, Long> cache() {
+        return null;
+    };
+
+    public boolean cacheable() {
+        return cache() != null;
+    }
 
     /**
      * 根据主键查找
@@ -40,7 +47,16 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     public ENTITY findById(Long id) throws BaseException {
 
-        ENTITY entity = converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
+        ENTITY entity;
+
+        // 查缓存
+        if (cacheable()) {
+            entity = cache().findById(id);
+        }
+        else {
+            entity = converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
+        }
+
         if (readable(entity)) {
             return entity;
         }
@@ -54,6 +70,11 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      */
     @Override
     public List<ENTITY> findAll() throws BaseException {
+        // 走缓存
+        if (cacheable()) {
+            return cache().findAll();
+        }
+
         List<MODEL> records = mapper().selectList(model());
         return converter().modelsToEntities(records);
     }
@@ -68,7 +89,8 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Override
     @Transactional
     public Long save(ENTITY entity) throws BaseException {
-        AssertUtils.isFalse(AuthContext::empty, ForbiddenException::new);
+
+        AssertUtils.isTrue(() -> this.editable(entity), ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
 
@@ -80,9 +102,14 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
             mapper().insert(record);
             entity.setId(record.getId());
         }
+        // 更新
         else {
-            AssertUtils.isTrue(() -> this.editable(converter().toEntity(record)), ForbiddenException::new);
             mapper().updateByPrimaryKeySelective(record);
+        }
+
+        // 清理缓存
+        if (cacheable()) {
+            cache().delete(entity);
         }
 
         return entity.getId();
@@ -101,6 +128,10 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
         ENTITY entity = this.findById(id);
         AssertUtils.isTrue(() -> this.editable(entity), ForbiddenException::new);
         mapper().deleteByPrimaryKey(id);
+
+        if (cacheable()) {
+            cache().delete(entity);
+        }
         return entity;
     }
 }

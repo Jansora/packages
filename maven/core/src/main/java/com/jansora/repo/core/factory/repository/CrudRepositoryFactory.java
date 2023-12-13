@@ -34,9 +34,10 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 可编辑性
      */
     default boolean editable(EntityFactory entity) throws BaseException {
-
-
-        return AuthContext.auth().getAuthId().equals(entity.getId());
+        if (entity.exist()) {
+            return AuthContext.auth().getAuthId().equals(entity.getId());
+        }
+        return AuthContext.auth().getAuthId() != null;
     }
 
 
