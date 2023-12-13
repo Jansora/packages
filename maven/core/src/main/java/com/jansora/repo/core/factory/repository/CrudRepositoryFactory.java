@@ -4,7 +4,7 @@ import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
-import com.jansora.repo.core.payload.Enable;
+import com.jansora.repo.core.payload.Accessor;
 
 import java.util.List;
 
@@ -24,8 +24,8 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 可读性
      */
     default boolean readable(EntityFactory entity) throws BaseException {
-        if (entity instanceof Enable enable) {
-            return enable.getEnabled() || AuthContext.auth().getAuthId().equals(entity.getId());
+        if (entity instanceof Accessor enable) {
+            return enable.accessible();
         }
         return true;
     }
@@ -34,10 +34,9 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      * 可编辑性
      */
     default boolean editable(EntityFactory entity) throws BaseException {
-        if (entity instanceof Enable enable) {
-            return enable.getEnabled() || AuthContext.auth().getAuthId().equals(entity.getId());
-        }
-        return true;
+
+
+        return AuthContext.auth().getAuthId().equals(entity.getId());
     }
 
 
