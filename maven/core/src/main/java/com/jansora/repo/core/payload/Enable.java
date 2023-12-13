@@ -8,7 +8,7 @@ package com.jansora.repo.core.payload;
 public interface Enable {
 
     public Boolean getEnabled();
-    public Boolean setEnabled(Boolean enabled);;
+    public void setEnabled(Boolean enabled);;
 
     public Long getUserId();
     public void setUserId(Long userId);
