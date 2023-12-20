@@ -28,10 +28,10 @@ jobs:
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
           echo "DO_CI=${DO_CI}" >> $GITHUB_ENV
 
-      - name: Set up Node.js 18
+      - name: Set up Node.js 20
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           # scope: '@jansora'
@@ -43,6 +43,7 @@ jobs:
           yarn config set version-sign-git-tag false
           yarn config set version-git-tag false
           yarn global add nwb@0.25.2
+          export NODE_OPTIONS=--openssl-legacy-provider
           if [ "${DO_CI}" = "true" ]; then
             cd ./npm/@jansora/base && yarn && yarn publish --new-version ${VERSION} 
           else
