@@ -1,0 +1,47 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - 'npm' # 或者你使用的分支名称
+
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # fetch head and merge-base
+
+      - name: Analysis And Extract Commit Message
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B) # 获取最后一次提交的 commit message
+          VERSION=$(echo "${COMMIT_MESSAGE}" | grep -o -E "version@[0-9]+\.[0-9]+\.[0-9]+" | sed 's/version@//')
+          if [[ $(git log -1 --pretty=%B) == *"ci"* ]]; then
+            DO_CI=true
+          else
+            DO_CI=false
+          fi
+          echo "BRANCH_NAME=$(basename ${GITHUB_REF})" >> $GITHUB_ENV  
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "DO_CI=${DO_CI}" >> $GITHUB_ENV
+
+      - name: Set up Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+        run: |
+          yarn config set version-sign-git-tag false
+          yarn config set version-git-tag false
+
+      - name: Build Npm Package
+        run: |
+          if [ "${DO_CI}" = "true" ]; then
+          yarn 
+          echo "yarn publish $PWD: $1";
+          yarn && yarn publish --new-version ${VERSION} ./npm/@jansora/base
+          else
+            echo "skipped."
+          fi
