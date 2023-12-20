@@ -42,9 +42,9 @@ jobs:
         run: |
           yarn config set version-sign-git-tag false
           yarn config set version-git-tag false
+          yarn global add nwb@0.25.2
           if [ "${DO_CI}" = "true" ]; then
           yarn 
-          echo "yarn publish $PWD: $1";
           yarn && yarn publish --new-version ${VERSION} ./npm/@jansora/base
           else
             echo "skipped."
