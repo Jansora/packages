@@ -38,8 +38,10 @@ jobs:
         run: |
           cd maven
           if [ "${DO_CI}" = "true" ]; then
-            mvn --batch-mode deploy
+            cd maven && mvn --batch-mode deploy
           else
+            echo "skipped."
+          fi
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
