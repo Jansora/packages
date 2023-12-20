@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jansora.repo</groupId>
+		<artifactId>repo-parent</artifactId>
+		<version>2.101.1</version>
+	</parent>
+	<artifactId>boot</artifactId>
+	<version>2.101.1</version>
+	<packaging>pom</packaging>
+	<name>boot</name>
+	<description>boot</description>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>storage</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>rpc</artifactId>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.jansora.repo</groupId>-->
+<!--			<artifactId>polaris</artifactId>-->
+<!--		</dependency>-->
+
+<!--		<dependency>-->
+<!--			<groupId>com.jansora.repo</groupId>-->
+<!--			<artifactId>dubbo</artifactId>-->
+<!--		</dependency>-->
+
+
+
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>monitor</artifactId>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
+<!--			<artifactId>jackson-annotations</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>javax.persistence</groupId>-->
+<!--			<artifactId>persistence-api</artifactId>-->
+<!--			<version>1.0.2</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.slf4j</groupId>-->
+<!--			<artifactId>slf4j-api</artifactId>-->
+<!--			<version>1.7.36</version>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
+<!--		<dependency>-->
+<!--			<groupId>org.jsoup</groupId>-->
+<!--			<artifactId>jsoup</artifactId>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-sleuth</artifactId>-->
+<!--			<version>3.1.9</version>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tencent.cloud</groupId>
+			<artifactId>spring-cloud-starter-tencent-polaris-discovery</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tencent.cloud</groupId>
+			<artifactId>spring-cloud-starter-tencent-polaris-config</artifactId>
+		</dependency>
+
+	</dependencies>
+
+
+
+</project>
