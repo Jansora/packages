@@ -338,7 +338,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>jansora</id>
+			<id>github</id>
 			<name>GitHub Packages</name>
 			<url>https://maven.pkg.github.com/jansora/packages</url>
 		</repository>
