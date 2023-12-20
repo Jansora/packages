@@ -36,7 +36,6 @@ jobs:
 
       - name: Publish package
         run: |
-          cd maven
           if [ "${DO_CI}" = "true" ]; then
             cd maven && mvn --batch-mode deploy
           else
