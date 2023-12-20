@@ -46,6 +46,7 @@ jobs:
           export NODE_OPTIONS=--openssl-legacy-provider
           if [ "${DO_CI}" = "true" ]; then
             cd ./npm/@jansora/base && yarn && yarn publish --new-version ${VERSION} 
+            cd ../../../ && cd ./npm/@next/monaco && yarn && yarn publish --new-version ${VERSION} 
           else
             echo "skipped."
           fi
