@@ -340,7 +340,7 @@
 		<repository>
 			<id>jansora</id>
 			<name>GitHub Packages</name>
-			<url>https://maven.pkg.github.com/jansora</url>
+			<url>https://maven.pkg.github.com/jansora/packages</url>
 		</repository>
 <!--		<repository>-->
 <!--			<id>rdc-releases</id>-->
