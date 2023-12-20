@@ -1,0 +1,50 @@
+name: Build and Publish Docker Image
+
+on:
+  push:
+    branches:
+      - 'maven' # 或者你使用的分支名称
+
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # fetch head and merge-base
+
+      - name: Analysis And Extract Commit Message
+        run: |
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B) # 获取最后一次提交的 commit message
+          VERSION=$(echo "${COMMIT_MESSAGE}" | grep -o -E "version@[0-9]+\.[0-9]+\.[0-9]+" | sed 's/version@//')
+          if [[ $(git log -1 --pretty=%B) == *"ci"* ]]; then
+            DO_CI=true
+          else
+            DO_CI=false
+          fi
+          echo "BRANCH_NAME=$(basename ${GITHUB_REF})" >> $GITHUB_ENV  
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo "DO_CI=${DO_CI}" >> $GITHUB_ENV
+
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+          # Defaults to the user or organization that owns the workflow file
+          # scope: '@jansora'
+      - name: Publish package
+        run: |
+          if [ "${DO_CI}" = "true" ]; then
+            cd maven && mvn --batch-mode deploy
+          else
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
