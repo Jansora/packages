@@ -32,12 +32,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-        run: |
-          yarn config set version-sign-git-tag false
-          yarn config set version-git-tag false
 
       - name: Build Npm Package
         run: |
+          yarn config set version-sign-git-tag false
+          yarn config set version-git-tag false
           if [ "${DO_CI}" = "true" ]; then
           yarn 
           echo "yarn publish $PWD: $1";
