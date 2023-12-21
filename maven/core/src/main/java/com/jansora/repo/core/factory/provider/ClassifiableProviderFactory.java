@@ -9,7 +9,6 @@ import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,13 +43,6 @@ public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactor
         return classifiableDomainFactory().fetchClassifyCounts();
     }
 
-    /**
-     * 查询 分类列表
-     * @return Optional<EasyCodeDto>
-     */
-    default List<PropertyResponse> fetchClassifies() throws BaseException {
-        throw new NotImplementException();
-    }
 
     /**
      * 搜索 tag

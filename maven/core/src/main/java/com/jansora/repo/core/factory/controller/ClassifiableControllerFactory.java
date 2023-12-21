@@ -8,7 +8,6 @@ import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.dto.ResultDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -42,15 +41,6 @@ public interface ClassifiableControllerFactory<REQUEST extends EntityRequestFact
     @GetMapping("classifyCounts")
     default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseException  {
         return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
-    }
-
-    /**
-     * 查询 分类列表
-     * @return Optional<EasyCodeDto>
-     */
-    @GetMapping("classifies")
-    default ResultDto<List<PropertyResponse>> fetchClassifies() throws BaseException {
-        return ResultDto.SUCCESS(searchFactory().fetchClassifies());
     }
 
     /**

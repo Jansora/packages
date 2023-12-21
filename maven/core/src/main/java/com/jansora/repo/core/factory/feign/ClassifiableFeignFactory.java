@@ -6,7 +6,6 @@ import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.PropertyResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,13 +36,6 @@ public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, 
      */
     @GetMapping("classifyCounts")
     List<KVDto<Long>> fetchClassifyCounts() throws BaseException ;
-
-    /**
-     * 查询 分类列表
-     * @return Optional<EasyCodeDto>
-     */
-    @GetMapping("classifies")
-    List<PropertyResponse> fetchClassifies() throws BaseException ;
 
     /**
      * 搜索 tag
