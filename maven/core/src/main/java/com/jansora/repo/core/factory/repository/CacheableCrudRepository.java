@@ -36,7 +36,7 @@ public interface CacheableCrudRepository<ENTITY extends EntityFactory, ID> {
      * 删除实体
      * @return 被删除的实体
      */
-    default void delete(ENTITY entity) throws BaseException  {
+    default void delete(ENTITY entity) {
 
     }
 

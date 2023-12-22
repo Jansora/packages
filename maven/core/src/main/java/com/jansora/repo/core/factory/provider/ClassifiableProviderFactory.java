@@ -39,7 +39,7 @@ public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactor
     /**
      * 搜索 classify
      */
-    default List<KVDto<Long>> fetchClassifyCounts() throws BaseException  {
+    default List<KVDto<Long>> fetchClassifyCounts() {
         return classifiableDomainFactory().fetchClassifyCounts();
     }
 
@@ -49,14 +49,14 @@ public interface ClassifiableProviderFactory<REQUEST extends EntityRequestFactor
      *
      * @param classify
      */
-    default List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) throws BaseException  {
+    default List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) {
         return classifiableDomainFactory().fetchTags(classify);
     }
 
     /**
      * 搜索 logo
      */
-    default List<KVDto<String>> fetchLogos() throws BaseException  {
+    default List<KVDto<String>> fetchLogos() {
         return classifiableDomainFactory().fetchLogos();
     }
 

@@ -23,7 +23,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
     /**
      * 可读性
      */
-    default boolean readable(EntityFactory entity) throws BaseException {
+    default boolean readable(EntityFactory entity) {
         if (entity instanceof Accessor enable) {
             return enable.accessible();
         }
@@ -33,7 +33,7 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
     /**
      * 可编辑性
      */
-    default boolean editable(EntityFactory entity) throws BaseException {
+    default boolean editable(EntityFactory entity) {
         if (entity.exist()) {
             return AuthContext.auth().getAuthId().equals(entity.getId());
         }
