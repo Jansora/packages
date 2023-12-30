@@ -17,7 +17,7 @@ import LazyLoadEditor from "./LazyLoadEditor.js";
 //   width: 100%;
 //   height: 500px;
 // `
-
+// @ts-ignore
 const DiffEditor = (props) => {
 
     const {original, modified} = props;
@@ -27,7 +27,7 @@ const DiffEditor = (props) => {
     const [editor, setEditor] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const monacoLoaded = LazyLoadEditor();
+    const monacoLoaded = LazyLoadEditor({});
 
     useEffect(() => {
         setLoading(true)
@@ -36,6 +36,7 @@ const DiffEditor = (props) => {
 
     useEffect(() => {
         if(monacoLoaded && !loading) {
+            // @ts-ignore
             const _editor = window.monaco.editor.createDiffEditor(ref.current, {theme, readOnly: true})
             setEditor(_editor)
         }
@@ -43,8 +44,11 @@ const DiffEditor = (props) => {
 
     useEffect(() => {
         if(editor) {
+            // @ts-ignore
             editor.setModel({
+                // @ts-ignore
                 original: window.monaco.editor.createModel(original.data, original.language),
+                // @ts-ignore
                 modified: window.monaco.editor.createModel(modified.data, modified.language)
             });
         }

@@ -1,21 +1,30 @@
 import React, {useEffect, useState} from 'react';
 
-const LazyLoadEditor = (props) => {
-    const documentLoaded = document.querySelector("#init-monaco-editor") != null;
+export declare type Props = {
+
+    /**
+     * 远程地址
+     */
+    proxyUrl?: string;
+}
+const LazyLoadEditor = (props: Props) => {
 
     // const monacoRef = useRef(window.monaco);
     const [loading, setLoading] = useState(true);
-    const proxyUrl = (props && props.proxyUrl) ? props.proxyUrl : (window.proxyUrl ? window.proxyUrl : 'https://cdn.jansora.com/lib/monaco-editor/0.21.2/min/vs/monaco-editor-loader-proxy.js')
+    const proxyUrl = (props && props.proxyUrl) ? props.proxyUrl : (props.proxyUrl ? props.proxyUrl : 'https://cdn.jansora.com/lib/monaco-editor/0.21.2/min/vs/monaco-editor-loader-proxy.js')
     useEffect(() => {
         setLoading(true)
         const interval = setInterval(() => {
             // console.log("loading", window.monaco)
+            // @ts-ignore
             if (window.monaco) {
                 setLoading(false)
                 clearInterval(interval)
             }
         }, 100)
     }, [])
+
+    const documentLoaded = document.querySelector("#init-monaco-editor") != null;
 
     // console.log("documentLoaded", documentLoaded, !loading)
     if (!documentLoaded) {

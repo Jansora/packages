@@ -1,0 +1,48 @@
+.w-md-editor {
+    background: none;
+    --md-editor-background-color: hsl(var(--background));
+    margin: 8px 0;
+    border-width: 1px;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+}
+
+.wmde-markdown {
+    background: hsl(var(--background));
+}
+.w-md-editor-toolbar{
+    padding: 4px;
+}
+.w-md-editor-toolbar li{
+    padding: 0 3px;
+    height: 100%;
+}
+.w-md-editor-toolbar li > button{
+    padding: 4px;
+    height: 100%;
+}
+.w-md-editor-toolbar li.w-md-editor-toolbar-divider {
+    padding: 0;
+    height: 1rem;
+}
+ .w-md-editor-toolbar-divider {
+     height: 1rem;
+     margin: -6px 3px 0 3px !important;
+}
+
+.w-md-editor-toolbar li > button:hover{
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+}
+.w-md-editor-toolbar li > button{
+    height: 100%;
+}
+.w-md-editor-toolbar svg{
+    height: 1rem;
+    width: 1rem;
+    /*margin: 0 6px;*/
+}
+
+
+
+

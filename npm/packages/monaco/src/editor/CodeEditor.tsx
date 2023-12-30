@@ -8,7 +8,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import LazyLoadEditor from "./LazyLoadEditor.js";
 
-
+// @ts-ignore
 const CodeEditor = (props) => {
 
     const {onChange, id, force} = props;
@@ -21,7 +21,7 @@ const CodeEditor = (props) => {
     const readOnly = !!props.readOnly;
     const options = props.options ? props.options  : {};
 
-    const monacoLoaded = LazyLoadEditor();
+    const monacoLoaded = LazyLoadEditor({});
     const [loading, setLoading] = useState(false);
 
     const ref = useRef(null);
@@ -41,6 +41,7 @@ const CodeEditor = (props) => {
 
     useEffect(() => {
         if( monacoLoaded && !model) {
+            // @ts-ignore
             setModel(window.monaco.editor.createModel(value, language))
         }
     }, [monacoLoaded, model])
@@ -49,11 +50,14 @@ const CodeEditor = (props) => {
     useEffect(() => {
         if(monacoLoaded && model && !loading) {
             console.log("crete editor", "editor", language, theme)
+            // @ts-ignore
             const editor = window.monaco.editor.create(ref.current, {
                 model, language, theme, ...options, readOnly
             })
+            // @ts-ignore
             editor.onDidChangeModelContent((event) => onChange && onChange(model.getValue()))
             editor.setModelLanguage && editor.setModelLanguage(model, language)
+            // @ts-ignore
             model.setValue(value)
             // setEditor(editor)
         }
@@ -63,12 +67,14 @@ const CodeEditor = (props) => {
 
     useEffect(() => {
         if(monacoLoaded && force) {
+            // @ts-ignore
             model.setValue(value);
         }
         // eslint-disable-next-line
     }, [value, force, model]);
 
 
+    // @ts-ignore
     useEffect(() => () => model && model.dispose(), [])
 
     if (loading || !monacoLoaded) {
