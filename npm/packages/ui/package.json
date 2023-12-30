@@ -1,6 +1,6 @@
 {
   "name": "@jansora/ui",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "a ui library for jansora's website. built on shadcn-ui",
   "license": "MIT",
   "keywords": [
