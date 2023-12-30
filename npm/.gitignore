@@ -3,3 +3,4 @@ node_modules/
 cjs
 lib
 esm
+/lerna-debug.log
