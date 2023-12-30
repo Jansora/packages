@@ -18,11 +18,15 @@ const LazyLoadEditor = (props: Props) => {
             // @ts-ignore
             console.log("loadingxxx", window.monaco, typeof document !== 'undefined', document)
             // @ts-ignore
-            if (window.monaco && typeof document !== 'undefined') {
+            if (window.monaco ) {
                 setLoading(false)
                 clearInterval(interval)
 
 
+
+            }
+            // init
+            else if (typeof document !== 'undefined') {
                 const documentLoaded = document.querySelector("#init-monaco-editor") != null;
 
                 // console.log("documentLoaded", documentLoaded, !loading)
