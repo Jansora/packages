@@ -35,7 +35,9 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
      */
     default boolean editable(EntityFactory entity) {
         if (entity.exist()) {
-            return AuthContext.auth().getAuthId().equals(entity.getId());
+            if (entity instanceof Accessor enable) {
+                return AuthContext.auth().getAuthId().equals(enable.getUserId());
+            }
         }
         return AuthContext.auth().getAuthId() != null;
     }

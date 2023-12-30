@@ -2,6 +2,7 @@ package com.jansora.repo.core.payload.valobj;
 
 import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.utils.JsonUtils;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,6 +17,7 @@ import java.util.Objects;
  * @date 2022/8/9 PM12:19 <br>
  * @since 1.0 <br>
  */
+@Getter
 public class AuthValueObject extends BaseValueObject {
 
     private static final Map<Long, AuthValueObject> cache = new HashMap<>();
@@ -50,14 +52,6 @@ public class AuthValueObject extends BaseValueObject {
     public AuthValueObject(Long authId, String role) {
         this.authId = authId;
         this.role = Role.of(role);
-    }
-
-    public Long getAuthId() {
-        return authId;
-    }
-
-    public Role getRole() {
-        return role;
     }
 
 
