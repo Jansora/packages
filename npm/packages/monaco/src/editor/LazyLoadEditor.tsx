@@ -17,19 +17,19 @@ const LazyLoadEditor = (props: Props) => {
         const interval = setInterval(() => {
             // console.log("loading", window.monaco)
             // @ts-ignore
-            if (window.monaco) {
+            if (window.monaco && window.document) {
                 setLoading(false)
                 clearInterval(interval)
 
 
-                const documentLoaded = document.querySelector("#init-monaco-editor") != null;
+                const documentLoaded = window.document.querySelector("#init-monaco-editor") != null;
 
                 // console.log("documentLoaded", documentLoaded, !loading)
                 if (!documentLoaded) {
-                    const wrapper = document.createElement('div');
+                    const wrapper = window.document.createElement('div');
                     wrapper.setAttribute("id", "init-monaco-editor")
-                    document.body.appendChild(wrapper);
-                    const script = document.createElement('script');
+                    window.document.body.appendChild(wrapper);
+                    const script = window.document.createElement('script');
                     script.type = 'text/javascript';
                     script.async = true;
                     script.src = proxyUrl;
