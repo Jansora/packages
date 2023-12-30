@@ -20,23 +20,26 @@ const LazyLoadEditor = (props: Props) => {
             if (window.monaco) {
                 setLoading(false)
                 clearInterval(interval)
+
+
+                const documentLoaded = document.querySelector("#init-monaco-editor") != null;
+
+                // console.log("documentLoaded", documentLoaded, !loading)
+                if (!documentLoaded) {
+                    const wrapper = document.createElement('div');
+                    wrapper.setAttribute("id", "init-monaco-editor")
+                    document.body.appendChild(wrapper);
+                    const script = document.createElement('script');
+                    script.type = 'text/javascript';
+                    script.async = true;
+                    script.src = proxyUrl;
+                    wrapper.appendChild(script);
+                }
             }
         }, 100)
     }, [])
 
-    const documentLoaded = document.querySelector("#init-monaco-editor") != null;
 
-    // console.log("documentLoaded", documentLoaded, !loading)
-    if (!documentLoaded) {
-        const wrapper = document.createElement('div');
-        wrapper.setAttribute("id", "init-monaco-editor")
-        document.body.appendChild(wrapper);
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.async = true;
-        script.src = proxyUrl;
-        wrapper.appendChild(script);
-    }
     return !loading;
 }
 
