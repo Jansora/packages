@@ -51,5 +51,4 @@ jobs:
         working-directory: npm/packages
         run: |
           lerna run build
-          lerna run publish -y --exact ${VERSION} 
-
+          lerna publish -y --no-git-tag-version --exact ${VERSION} 
