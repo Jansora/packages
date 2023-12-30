@@ -1,0 +1,28 @@
+{
+  "name": "@jansora/monaco",
+  "version": "0.0.6",
+  "description": "monaco editor",
+  "license": "MIT",
+  "keywords": [
+    "monaco",
+    "jansora"
+  ],
+  "repository": "https://github.com/jansora/packages/npm/packages/monaco",
+  "bugs": "https://github.com/jansora/packages/issues",
+  "author": "Jansora <zhangyue1936@gmail.com> (https://www.jansora.com)",
+  "sideEffects": false,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "react": "18.2.0"
+  },
+  "scripts": {
+
+  },
+  "xo": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}

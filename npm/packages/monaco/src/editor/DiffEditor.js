@@ -6,7 +6,7 @@
 
 
 import React, {useEffect, useRef, useState} from "react";
-import LazyLoadEditor from "./LazyLoadEditor";
+import LazyLoadEditor from "./LazyLoadEditor.js";
 // import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 // import * as monaco from 'monaco-editor/esm/vs/editor/editor.main';
 // import styled from "styled-components";

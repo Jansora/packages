@@ -6,7 +6,7 @@
 
 
 import React, {useEffect, useRef, useState} from "react";
-import LazyLoadEditor from "./LazyLoadEditor";
+import LazyLoadEditor from "./LazyLoadEditor.js";
 
 
 const CodeEditor = (props) => {
