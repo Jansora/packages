@@ -51,6 +51,5 @@ jobs:
         working-directory: npm/packages
         run: |
           lerna run build
+          lerna run publish --exact ${VERSION} 
 
-          lerna run --scope @jansora/monaco build
-          lerna run --scope @jansora/monaco publish --exact ${VERSION} 
