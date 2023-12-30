@@ -50,5 +50,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         working-directory: npm/packages
         run: |
+          lerna run build
+
           lerna run --scope @jansora/monaco build
-          lerna run --scope @jansora/monaco publish --new-version ${VERSION} 
+          lerna run --scope @jansora/monaco publish --exact ${VERSION} 

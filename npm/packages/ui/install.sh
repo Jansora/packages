@@ -46,3 +46,6 @@ npx shadcn-ui@latest add toggle
 npx shadcn-ui@latest add toggle-group
 npx shadcn-ui@latest add tooltip
 
+
+# yarn global add @vercel/ncc
+
