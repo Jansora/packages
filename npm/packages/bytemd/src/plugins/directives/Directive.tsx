@@ -4,6 +4,7 @@
 /// <reference types="mdast-util-directive" />
 
 import {BytemdPlugin} from "bytemd";
+// @ts-ignore
 import remarkDirective from 'remark-directive'
 
 

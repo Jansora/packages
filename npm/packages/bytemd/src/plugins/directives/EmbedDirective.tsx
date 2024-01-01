@@ -16,7 +16,7 @@ function EmbedDirective() {
      * @returns {undefined}
      *   Nothing.
      */
-    return (tree, file) => {
+    return (tree: any, file: any) => {
         visit(tree, function (node) {
             if (
                 node.type === 'containerDirective' ||
@@ -27,10 +27,11 @@ function EmbedDirective() {
                 console.log("node:", node)
 
                 if (node.name !== 'embed') return
+                // @ts-ignore
                 console.log("embed:", node.children.filter(child => child.type === "link").length === 1)
-
+                // @ts-ignore
                 if (!node.children && node.children.filter(child => child.type === "link").length !== 1) return
-
+                // @ts-ignore
                 console.log("embed2:", node.children.filter(child => child.type === "link")[0])
 
                 const data = node.data || (node.data = {})
@@ -49,6 +50,7 @@ function EmbedDirective() {
                     data.hName = 'iframe'
                     data.hProperties = {
                         ...defaultProperties,
+                        // @ts-ignore
                         src: node.children.filter(child => child.type === "link")[0].url
                     }
                     console.log("ttbx")
