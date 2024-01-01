@@ -3,7 +3,7 @@ import {clsx} from "clsx"
 import React from 'react';
 import {Viewer, ViewerProps} from '@bytemd/react';
 
-import LazyLoadEditor from "./LazyLoadEditor";
+// import LazyLoadEditor from "./LazyLoadEditor";
 
 
 import breaks from '@bytemd/plugin-breaks';
@@ -87,7 +87,7 @@ export const ByteViewer = (props: CustomViewerProps) => {
 
     const {value, className} = props
 
-    LazyLoadEditor();
+    // LazyLoadEditor();
     return (
         <div className={clsx(className, "byte-viewer")}>
             <Viewer
