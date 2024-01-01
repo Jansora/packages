@@ -1,3 +1,5 @@
+"use client";
+
 import {ByteEditor, ByteLightEditor} from "./Editor";
 
 import {ByteViewer} from "./Viewer";
