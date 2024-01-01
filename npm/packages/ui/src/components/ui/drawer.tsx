@@ -16,6 +16,7 @@ const Drawer = ({
 )
 Drawer.displayName = "Drawer"
 
+// @ts-ignore
 const DrawerTrigger = DrawerPrimitive.Trigger
 
 const DrawerPortal = DrawerPrimitive.Portal

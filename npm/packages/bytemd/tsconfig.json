@@ -3,9 +3,6 @@
   "include": ["src"],
   "compilerOptions": {
     "outDir": "./cjs",
-    "baseUrl": ".",
-  },
-  "exclude": [
-    "src/components/ui/drawer.tsx"
-  ]
+    "baseUrl": "."
+  }
 }
