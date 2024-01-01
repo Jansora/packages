@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import {clsx} from "clsx"
 
@@ -15,9 +15,9 @@ import {Editor, EditorProps, Viewer, ViewerProps} from '@bytemd/react';
 import LazyLoadEditor from "./LazyLoadEditor";
 
 import 'bytemd/dist/index.css'
-import './theme/github-markdown.scss'
+import './theme/github-markdown.less'
 // import './theme/scrolls.scss'
-import './code-mirror.scss'
+import './code-mirror.less'
 // import 'highlight.js/styles/vs2015.css';
 import breaks from '@bytemd/plugin-breaks';
 
