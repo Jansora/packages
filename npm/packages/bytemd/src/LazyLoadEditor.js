@@ -1,5 +1,3 @@
-"use client"
-
 const LazyLoadEditor = (props) => {
 
     if (typeof document == 'undefined') {
