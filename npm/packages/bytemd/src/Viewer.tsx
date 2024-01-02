@@ -8,7 +8,7 @@ import {Viewer, ViewerProps} from '@bytemd/react';
 import {plugins, sanitize, simplePlugins} from "./util";
 
 
-export interface CustomViewerProps extends React.FC<ViewerProps> {
+export interface CustomViewerProps extends ViewerProps {
     value: string,
     className?: string,
 }

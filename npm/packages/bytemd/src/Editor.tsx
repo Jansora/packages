@@ -7,7 +7,7 @@ import {Editor, EditorProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins, uploadImages} from "./util";
 
-export interface CustomLightEditorProps extends React.FC<EditorProps> {
+export interface CustomLightEditorProps extends EditorProps {
     value: string,
     setValue: Dispatch<SetStateAction<string>>,
     className?: string,
