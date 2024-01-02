@@ -60,6 +60,6 @@ jobs:
         working-directory: npm/packages
         run: |
           sudo apt install jq -y
-          jq --arg version "$VERSION" '.dependencies["@jansora/bytemd"] = $version | .dependencies["@jansora/monaco"] = $version | .dependencies["@jansora/ui"] = $version' next/package.json > tmp && mv tmp next/package.json
+          jq --arg version "$VERSION" '.dependencies["@jansora/ui"] = $version | .dependencies["@jansora/ui"] = $version | .dependencies["@jansora/ui"] = $version' next/package.json > tmp && mv tmp next/package.json
           lerna publish -y --no-git-tag-version --exact ${VERSION} 
 
