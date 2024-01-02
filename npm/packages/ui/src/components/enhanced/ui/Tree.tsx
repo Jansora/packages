@@ -1,10 +1,11 @@
 import React from "react";
-import {cn} from "@/lib/utils";
+
+import {cn} from "../../../lib/utils";
 
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "@jansora/ui/esm/components/ui/accordion"
-import {ListItemProps} from "@/lib/declares/declares";
-import {NavLink} from "@/components/enhanced/next/NavLink";
-import {IconFont} from "@/components/custom/iconfont/IconFont";
+import {ListItemProps} from "../../../lib/declares";
+import {NavLink} from "../next/NavLink";
+import {IconFont} from "./iconfont/IconFont";
 
 export interface TreeProps extends ListItemProps {
     title: string

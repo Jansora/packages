@@ -1,9 +1,11 @@
 "use client"
 
 import Link from "next/link";
-import {cn} from "@/lib/utils";
-import {FunctionComponentProps} from "@/lib/declares/declares";
+import {cn} from "../../../lib/utils";
+
 import {usePathname} from "next/navigation";
+import {FunctionComponentProps} from "../../../lib/declares";
+
 
 
 interface Props extends FunctionComponentProps {
