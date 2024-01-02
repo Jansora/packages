@@ -16,9 +16,9 @@
   "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.18.6",
-    "@jansora/bytemd": "0.0.42",
-    "@jansora/monaco": "0.0.42",
-    "@jansora/ui": "0.0.42",
+    "@jansora/bytemd": "0.0.11",
+    "@jansora/monaco": "0.0.11",
+    "@jansora/ui": "0.0.11",
     "ahooks": "^3.7.8",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.1",
