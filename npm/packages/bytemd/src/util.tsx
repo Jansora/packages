@@ -60,8 +60,6 @@ export const sanitize = (): Schema => ({
     tagNames: defaultSchema.tagNames?.concat(["iframe", "embed"])
 })
 
-
-
 export const uploadImages = async (files: File[], uploadFn: any) => {
     if (files.length < 1) return ['']
     const data = await uploadFn(files)

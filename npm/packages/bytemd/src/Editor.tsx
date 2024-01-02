@@ -7,11 +7,13 @@ import {Editor, EditorProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins, uploadImages} from "./util";
 
-export interface CustomEditorProps extends React.FC<EditorProps> {
+export interface CustomLightEditorProps extends React.FC<EditorProps> {
     value: string,
     setValue: Dispatch<SetStateAction<string>>,
-    uploadFn: React.FC,
     className?: string,
+}
+export interface CustomEditorProps extends CustomLightEditorProps {
+    uploadFn: React.FC,
 }
 export const ByteEditor = (props: CustomEditorProps) => {
 
@@ -32,7 +34,7 @@ export const ByteEditor = (props: CustomEditorProps) => {
 }
 
 
-export const ByteLightEditor = (props: CustomEditorProps) => {
+export const ByteLightEditor = (props: CustomLightEditorProps) => {
 
     const {value, setValue, className} = props
 
