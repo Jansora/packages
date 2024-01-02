@@ -6,12 +6,13 @@ import React from 'react';
 import {Viewer, ViewerProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins} from "./util";
-
+import './index.less'
 
 export interface CustomViewerProps extends ViewerProps {
     value: string,
     className?: string,
 }
+
 export const ByteViewer = (props: CustomViewerProps) => {
 
     const {value, className} = props

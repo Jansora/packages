@@ -6,7 +6,7 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {Editor, EditorProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins, uploadImages} from "./util";
-
+import './index.less'
 export interface CustomLightEditorProps extends EditorProps {
     value: string,
     setValue: Dispatch<SetStateAction<string>>,
