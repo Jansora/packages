@@ -1,6 +1,6 @@
 {
   "name": "@jansora/next",
-  "version": "0.0.17",
+  "version": "0.0.20",
   "description": "jansora next project management",
   "license": "MIT",
   "keywords": [
@@ -16,9 +16,9 @@
   "type": "module",
   "dependencies": {
     "@babel/runtime": "^7.18.6",
-    "@jansora/bytemd": "0.0.11",
-    "@jansora/monaco": "0.0.11",
-    "@jansora/ui": "0.0.11",
+    "@jansora/bytemd": "workspace:*",
+    "@jansora/monaco": "workspace:*",
+    "@jansora/ui": "workspace:*",
     "ahooks": "^3.7.8",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.1",
