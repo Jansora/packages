@@ -52,7 +52,6 @@ jobs:
         run: |
           lerna run build
           lerna run css:build
-          lerna publish -y --no-git-tag-version --exact ${VERSION} 
 
       - name: Publish Npm Package
         env:
