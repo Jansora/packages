@@ -6,7 +6,13 @@ import React from 'react';
 import {Viewer, ViewerProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins} from "./util";
-import './index.less'
+
+import "bytemd/dist/index.css";
+import "katex/dist/katex.min.css";
+
+import './theme/github-markdown.less';
+import "./plugins/prismplus.css";
+import './index.less';
 
 export interface CustomViewerProps extends ViewerProps {
     value: string,

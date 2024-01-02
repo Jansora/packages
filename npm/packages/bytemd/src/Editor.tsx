@@ -6,7 +6,16 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {Editor, EditorProps} from '@bytemd/react';
 
 import {plugins, sanitize, simplePlugins, uploadImages} from "./util";
-import './index.less'
+
+
+import "bytemd/dist/index.css";
+import "katex/dist/katex.min.css";
+
+import './theme/github-markdown.less';
+import "./plugins/prismplus.css";
+import './code-mirror.less';
+import './index.less';
+
 export interface CustomLightEditorProps extends EditorProps {
     value: string,
     setValue: Dispatch<SetStateAction<string>>,
