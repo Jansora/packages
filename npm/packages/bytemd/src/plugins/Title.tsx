@@ -28,7 +28,7 @@ const remarkCodeTitle: unified.Plugin<[], mdast.Root> = () => {
             };
 
             // @ts-ignore
-            console.log("xxx", parent.children, parent.children[index])
+            // console.log("xxx", parent.children, parent.children[index])
             // @ts-ignore
             parent.children.splice(index, 0, titleNode);
             // parent.children.splice(index + 1, 0, titleNode);
