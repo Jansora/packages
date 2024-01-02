@@ -2,6 +2,8 @@
 
 import {ByteEditor, ByteLightEditor} from "./Editor";
 
-import {ByteViewer} from "./Viewer";
+import {ByteLightViewer, ByteViewer} from "./Viewer";
 
-export default {ByteViewer, ByteEditor, ByteLightEditor};
+import './index.less'
+
+export default {ByteViewer, ByteEditor, ByteLightEditor, ByteLightViewer};
