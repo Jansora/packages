@@ -1,4 +1,4 @@
-import {Separator} from "@jansora/ui/esm/components/ui/separator";
+import {Separator} from "../../ui/separator";
 import React from "react";
 import {FunctionComponentProps} from "../../../lib/declares";
 
