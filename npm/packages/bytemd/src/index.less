@@ -115,16 +115,16 @@
 
     div[name="user-content-title"] {
         /* 这里是你的样式规则 */
-        float: right;
-        //position: absolute;
-        height: 32px;
-        //line-height: 2;
-        position: absolute;
+        height: 30px;
+        line-height: 30px;
+        padding-right: 1rem;
+        position: relative;
         text-align: right;
-        margin-top: 5px;
-        font-size: 13px;
-        margin-left: 60px;
-        color:  rgb(209 213 219/1);
+        margin-top: -30px;
+        padding-top: 30px;
+        font-size: 0.75rem;
+        /* margin-left: 60px; */
+        color: #d1d5db;
         z-index: 1;
     }
 
@@ -145,9 +145,7 @@
             width: 100%;
             //margin-left: -8px;
             //margin-bottom: 2px;
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAOCAMAAABaWb9VAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAFZaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CkzCJ1kAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACHUExURUdwTMxCKdc8NvdYT/9hVyLJPABBAGubKNiIOv+/K+ytJBakH9aZG+5QR5VZDOBDPhmtJ8+VGuGjH/CwJR26MR6+NBq0LPW1KBmwKetNRfJUTONHP92fHuSmIeFEPhu3LR29M/BTS+mqIuqsI5qdHyLKPP++Kv9gVf9lW//KLSXXQCTQP//FLMVm5KQAAAAldFJOUwAlPPz7+woBBPu8Mzu+FlRRKmvnweeG+Wqg6mVNXmuc1OCbmjZJWF/9AAABKklEQVQoz3WS6XaCMBCFRzAM++KGsqhtDwES3//5OtmA2uP9A9zwzRoAgBC0QgQrdA68OZsDr229YGHoIEj7Pl0ZOgjKa5lYJ4Rd1vijn3nuD4Qurjmv48o6RFyfbGDnS6DeEXZfk5ZfuBhdPb9I87ECNMh1EFJKIU6agWzaa01NbmLkxznSmmObJBkkUxrERf3i+ftRiZi7ShPCYY64UhTx1AR5CDYoMXkOKEY7GmTcTzeD/FiER68DfSLgSRqEIBoB3P8h3x8RZhBXGJGusJdD6rfCBl0YqvZNkrV9zej2cWlfJWG6fRpyM41qYH+GTPPi2yFLQYC0Qybm5o96lW77kMbcrBKtgeWTsthVamNXFF4I6x0DTPuugsVRFyYpyxzWqNvHJwed8ws7QyP1UwjNjwAAAABJRU5ErkJggg==) 10px 10px no-repeat;
-            background-size: 40px;
-
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAOCAMAAABaWb9VAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAFZaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CkzCJ1kAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACHUExURUdwTMxCKdc8NvdYT/9hVyLJPABBAGubKNiIOv+/K+ytJBakH9aZG+5QR5VZDOBDPhmtJ8+VGuGjH/CwJR26MR6+NBq0LPW1KBmwKetNRfJUTONHP92fHuSmIeFEPhu3LR29M/BTS+mqIuqsI5qdHyLKPP++Kv9gVf9lW//KLSXXQCTQP//FLMVm5KQAAAAldFJOUwAlPPz7+woBBPu8Mzu+FlRRKmvnweeG+Wqg6mVNXmuc1OCbmjZJWF/9AAABKklEQVQoz3WS6XaCMBCFRzAM++KGsqhtDwES3//5OtmA2uP9A9zwzRoAgBC0QgQrdA68OZsDr229YGHoIEj7Pl0ZOgjKa5lYJ4Rd1vijn3nuD4Qurjmv48o6RFyfbGDnS6DeEXZfk5ZfuBhdPb9I87ECNMh1EFJKIU6agWzaa01NbmLkxznSmmObJBkkUxrERf3i+ftRiZi7ShPCYY64UhTx1AR5CDYoMXkOKEY7GmTcTzeD/FiER68DfSLgSRqEIBoB3P8h3x8RZhBXGJGusJdD6rfCBl0YqvZNkrV9zej2cWlfJWG6fRpyM41qYH+GTPPi2yFLQYC0Qybm5o96lW77kMbcrBKtgeWTsthVamNXFF4I6x0DTPuugsVRFyYpyxzWqNvHJwed8ws7QyP1UwjNjwAAAABJRU5ErkJggg==) 0 8px no-repeat;
             .copy {
                 float: right;
                 //background-image: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 w-4 h-4" data-state="closed"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>

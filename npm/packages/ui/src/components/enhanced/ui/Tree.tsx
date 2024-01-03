@@ -16,7 +16,7 @@ export interface TreeProps extends ListItemProps {
     children?: TreeProps[]
 }
 export default function Tree({nodes, className}: {nodes: TreeProps[], className?: string}) {
-    return <div className={cn("px-2",className)}>
+    return <div className={cn("pr-2",className)}>
         {RenderTree(nodes)}
     </div>
 }
