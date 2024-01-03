@@ -2,7 +2,7 @@ import React from "react";
 
 import {cn} from "../../../lib/utils";
 
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "@jansora/ui/esm/components/ui/accordion"
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "../../ui/accordion"
 import {ListItemProps} from "../../../lib/declares";
 import {NavLink} from "../next/NavLink";
 import {IconFont} from "./iconfont/IconFont";

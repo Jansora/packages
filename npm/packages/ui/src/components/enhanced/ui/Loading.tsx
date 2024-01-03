@@ -4,7 +4,6 @@ import React from "react";
 import {Loader} from "lucide-react";
 import {cn} from "../../../lib/utils";
 
-
 interface Props {
     loading: boolean
     className: string
