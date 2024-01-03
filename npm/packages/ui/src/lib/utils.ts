@@ -5,8 +5,8 @@ import * as dayjs from "dayjs";
 import 'dayjs/locale/zh-cn' // ES 2015
 import _copy from 'copy-to-clipboard';
 import {toast} from "../components/ui/use-toast";
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')
 
