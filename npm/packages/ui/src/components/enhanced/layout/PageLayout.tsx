@@ -3,7 +3,7 @@ import React from "react";
 import {FunctionComponentProps} from "../../../lib/declares";
 
 
-export default async function PageLayout({children}: FunctionComponentProps) {
+const PageLayout = ({children}: FunctionComponentProps) => {
 
 
     return (
@@ -15,4 +15,5 @@ export default async function PageLayout({children}: FunctionComponentProps) {
     )
 }
 
+export default PageLayout;
 

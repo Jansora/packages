@@ -5,7 +5,7 @@ import '../../../css/default.css'
 import {FunctionComponentProps} from "../../../lib/declares";
 
 
-export default async function RootLayout({children}: FunctionComponentProps) {
+const RootLayout = ({children}: FunctionComponentProps) => {
 
     return (
         <html lang="zh" suppressHydrationWarning>
@@ -19,5 +19,7 @@ export default async function RootLayout({children}: FunctionComponentProps) {
 
     )
 }
+
+export default RootLayout;
 
 
