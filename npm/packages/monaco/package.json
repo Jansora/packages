@@ -7,16 +7,13 @@
     "monaco",
     "jansora"
   ],
-  "main": "./cjs/index.js",
+  "main": "./esm/index.js",
   "module": "./esm/index.js",
   "repository": "https://github.com/jansora/packages/npm/packages/monaco",
   "bugs": "https://github.com/jansora/packages/issues",
   "author": "Jansora <zhangyue1936@gmail.com> (https://www.jansora.com)",
   "files": [
-    "dist",
-    "src",
-    "esm",
-    "cjs"
+    "esm"
   ],
   "type": "module",
   "dependencies": {

@@ -8,15 +8,14 @@
     "shadcn-ui",
     "jansora"
   ],
+  "main": "./esm/index.js",
+  "module": "./esm/index.js",
   "repository": "https://github.com/jansora/packages/npm/packages/ui",
   "bugs": "https://github.com/jansora/packages/issues",
   "author": "Jansora <zhangyue1936@gmail.com> (https://www.jansora.com)",
   "sideEffects": false,
   "files": [
-    "dist",
-    "src",
-    "esm",
-    "cjs"
+    "esm"
   ],
   "type": "module",
   "dependencies": {
