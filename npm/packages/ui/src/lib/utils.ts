@@ -4,7 +4,7 @@ import * as dayjs from "dayjs";
 // import * as zhCn from 'moment/locale/zh-cn';
 import 'dayjs/locale/zh-cn' // ES 2015
 import _copy from 'copy-to-clipboard';
-import {toast} from "@jansora/ui/esm/components/ui/use-toast";
+import {toast} from "../components/ui/use-toast";
 
 const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
