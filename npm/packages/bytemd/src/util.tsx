@@ -25,7 +25,7 @@ export const plugins = [
     gfm(),
     breaks(),
     prismPlus({
-        ignoreMissing: false,
+        ignoreMissing: true,
         showLineNumbers: true,
         defaultLanguage: "bash"
     }),
