@@ -9,7 +9,7 @@ const PaddedFullPageLayout = ({children}: FunctionComponentProps) => {
 
     return (
         <PageLayout>
-            <div className="pt-12 w-full" style={{height: "calc(100vh - 3rem)"}}>
+            <div className="mt-12 w-full" style={{height: "calc(100vh - 3rem)"}}>
                 {children}
             </div>
         </PageLayout>
