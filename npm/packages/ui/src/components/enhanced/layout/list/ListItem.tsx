@@ -2,7 +2,7 @@ import {ListItemProps} from "../../../../lib/declares";
 import {IconFont} from "../../ui/iconfont/IconFont";
 
 
-export function ListItem({title, description, icon}: ListItemProps) {
+const ListItem = ({title, description, icon}: ListItemProps) => {
 
     return (
         <div className="flex items-center justify-between h-8 w-full px-3 rounded-sm hover:bg-secondary dark:hover:bg-secondary">
@@ -18,3 +18,5 @@ export function ListItem({title, description, icon}: ListItemProps) {
         </div>
     )
 }
+
+export default ListItem;

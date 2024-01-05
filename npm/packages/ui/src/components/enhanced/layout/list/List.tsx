@@ -2,10 +2,8 @@
 
 import * as React from "react"
 // import { Icons } from "@/components/icons"
-
-
 import {NavLink} from "../../next/NavLink";
-import {ListItem} from "./ListItem";
+import ListItem from "./ListItem";
 import {IconFont} from "../../ui/iconfont/IconFont";
 import {cn} from "../../../../lib/utils";
 import {FunctionComponentProps, ListProps} from "../../../../lib/declares";
@@ -16,7 +14,7 @@ type Props = ListProps & FunctionComponentProps & {
 }
 
 
-export function List({className, items, loading}: Props) {
+const List =({className, items, loading}: Props) => {
 
     return (
         <ul className={cn("grid gap-2", className)}>
@@ -39,3 +37,5 @@ export function List({className, items, loading}: Props) {
         </ul>
     )
 }
+
+export default List;
