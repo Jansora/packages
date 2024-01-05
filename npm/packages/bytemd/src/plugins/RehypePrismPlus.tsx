@@ -1,5 +1,5 @@
 import type {BytemdPlugin} from 'bytemd'
-import rehypePrism from 'rehype-prism-plus/common'
+import rehypePrism from 'rehype-prism-plus'
 
 export default function prismPlusSSR({
                                          ignoreMissing = true,
