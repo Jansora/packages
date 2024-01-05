@@ -4,17 +4,17 @@ import {FunctionComponentProps} from "../../../lib/declares";
 import PageLayout from "./PageLayout";
 
 
-const PaddedPageLayout = ({children}: FunctionComponentProps) => {
+const PaddedFullPageLayout = ({children}: FunctionComponentProps) => {
 
 
     return (
         <PageLayout>
-            <div className="pt-12">
+            <div className="pt-12 w-full" style={{height: "calc(100vh - 3rem)"}}>
                 {children}
             </div>
         </PageLayout>
     )
 }
 
-export default PaddedPageLayout;
+export default PaddedFullPageLayout;
 
