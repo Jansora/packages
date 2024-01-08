@@ -31,7 +31,7 @@ function RenderTree(nodes: TreeProps[]) {
         return  <Accordion key={node.value} type="multiple" defaultValue={node.defaultOpenValues || []} className={cn("w-full pl-4", node.className)}>
                 <AccordionItem value={node.value}>
                     {RenderNode(node)}
-                    <AccordionContent>
+                    <AccordionContent className="grid gap-2">
                         { RenderTree(node.children) }
                     </AccordionContent>
                 </AccordionItem>

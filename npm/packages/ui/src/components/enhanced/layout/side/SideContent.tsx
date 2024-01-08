@@ -10,7 +10,7 @@ interface Props extends FunctionComponentProps {
 const SideContent = ({children, className}: Props) => {
 
     return (
-        <div className={cn("flex-auto", className)}>
+        <div className={cn("w-full", className)}>
                 {children}
         </div>
     )
