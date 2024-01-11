@@ -4,7 +4,6 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.elasticsearch.client.RestClientBuilder;
 import org.springframework.boot.autoconfigure.elasticsearch.RestClientBuilderCustomizer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -25,10 +24,10 @@ import java.time.Duration;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ElasticsearchAutoConfiguration {
 
-    @Bean
-    RestClientBuilderCustomizer keepAliveCustomizer() {
-        return new KeepAliveCustomizer();
-    }
+//    @Bean
+//    RestClientBuilderCustomizer keepAliveCustomizer() {
+//        return new KeepAliveCustomizer();
+//    }
 
     static class KeepAliveCustomizer implements RestClientBuilderCustomizer {
         @Override

@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>3.100.5</version>
+		<version>3.100.6</version>
 	</parent>
 	<artifactId>dubbo</artifactId>
-	<version>3.100.5</version>
+	<version>3.100.6</version>
 	<packaging>jar</packaging>
 	<name>dubbo</name>
 	<description>dubbo</description>
