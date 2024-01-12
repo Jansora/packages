@@ -1,7 +1,6 @@
 package com.jansora.repo.cache.serialize;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -37,7 +36,7 @@ public class CustomJacksonRedisSerializer<T> implements RedisSerializer<T> {
     public T deserialize(byte[] bytes) throws SerializationException {
         try {
             JavaType javaType = objectMapper.constructType(type);
-            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             return objectMapper.readValue(bytes, javaType);
         } catch (Exception e) {
             throw new SerializationException("deserialize by type fail", e);
