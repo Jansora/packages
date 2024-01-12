@@ -57,6 +57,6 @@ public class AuthValueObject extends BaseValueObject {
 
     @Override
     public String toString() {
-        return this.getClass().getName() + ":" + JsonUtils.toNonPrettyJsonIgnoreError(this);
+        return JsonUtils.toNonPrettyJsonIgnoreError(this);
     }
 }
