@@ -1,10 +1,19 @@
 import PageLayout from "./PageLayout";
 import React from "react";
 import RootLayout from "./RootLayout";
+import {FunctionComponentProps} from "../../../lib/declares";
 
-export default function ErrorPage({ title, description }: { title: string, description: string }) {
+interface Props extends FunctionComponentProps {
+    title: string,
+    description: string
+    initialNode?: React.ReactNode
+}
+export default function ErrorPage({ title, description, children, initialNode }: Props) {
     return (
         <RootLayout>
+            {
+                initialNode
+            }
             <PageLayout>
                 <div className="relative isolate flex items-center h-screen pb-14 -mb-14">
 
@@ -23,6 +32,9 @@ export default function ErrorPage({ title, description }: { title: string, descr
                                 {description ? description : ""}
                             </p>
                             <div className="mt-10 flex items-center justify-center gap-x-6">
+                                {
+                                    children
+                                }
                             </div>
                         </div>
                     </div>
