@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 @NoArgsConstructor
 //@AllArgsConstructor
-public abstract class Base implements Serializable {
+public class Base implements Serializable {
     @Override
     public String toString() {
         return this.getClass().getName() + ":" + JsonUtils.toJsonIgnoreError(this);

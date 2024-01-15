@@ -26,7 +26,7 @@ import java.util.Date;
 //@NoArgsConstructor
 //@AllArgsConstructor
 //@EqualsAndHashCode(callSuper = true)
-public abstract class BaseEntity extends Base implements EntityFactory {
+public class BaseEntity extends Base implements EntityFactory {
 
     /**
      * 唯一标识
