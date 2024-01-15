@@ -1,8 +1,6 @@
 package com.jansora.repo.core.payload;
 
 import com.jansora.repo.core.utils.JsonUtils;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -16,8 +14,8 @@ import java.io.Serializable;
  * @CreateDate 2022/8/1 AM11:58 <br>
  * @since 1.0 <br>
  */
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public abstract class Base implements Serializable {
     @Override
     public String toString() {
