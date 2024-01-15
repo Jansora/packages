@@ -1,8 +1,9 @@
 package com.jansora.repo.core.payload.entity;
 
 import io.mybatis.provider.Entity;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @description:
@@ -10,7 +11,8 @@ import lombok.EqualsAndHashCode;
  * @date: 2023-04-24 10:32:25
  */
 @EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
 public class ClassifiableEntity extends BaseEntity {
 
     /**
