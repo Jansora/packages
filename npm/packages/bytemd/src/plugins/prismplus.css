@@ -48,6 +48,7 @@ pre {
 
 pre[class*="language-"],
 code[class*="language-"] {
+    margin-top: 3px;
     color: #d4d4d4;
     font-size: 13px;
     text-shadow: none;
@@ -83,7 +84,7 @@ code[class*="language-"] *::selection {
 }
 
 pre[class*="language-"] {
-    padding: 0 1em;
+    padding: 0 1rem 0.5rem 0.8rem;
     margin: 0;
     overflow: auto;
     background: #1e1e1e;
