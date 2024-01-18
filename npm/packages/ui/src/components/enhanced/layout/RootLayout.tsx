@@ -1,4 +1,4 @@
-import {Toaster} from "../../ui/toaster";
+import {Toaster} from "../../ui/sonner";
 import {ThemeProvider} from "../plugins/theme/theme-provider";
 import React from "react";
 import '../../../css/default.css'
