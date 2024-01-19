@@ -20,8 +20,8 @@ export const NavLink = ({active, className, children, href}: Props) => {
 
     return <Link href={href}
                  className={cn(
-                         "block rounded-md hover:bg-muted",
-                         _active && "bg-muted ",
+                         "text-muted-foreground hover:text-foreground block rounded-md",
+                         _active && "text-muted-foreground",
                          className
                  )}
     >
