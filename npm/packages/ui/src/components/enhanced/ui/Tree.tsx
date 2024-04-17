@@ -15,9 +15,19 @@ export interface TreeProps extends ListItemProps {
     element?: React.ReactNode
     children?: TreeProps[]
 }
+
+
+/*
+*  Tree
+* @desc A tree component
+* @param {TreeProps[]} nodes
+* @param {string} className
+* @return {JSX.Element}
+ */
 export default function Tree({nodes, className}: {nodes: TreeProps[], className?: string}) {
-    return <div className={cn("pr-2",className)}>
+    return <div className={cn("pr-2", className)}>
         {RenderTree(nodes)}
+
     </div>
 }
 
