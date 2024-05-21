@@ -16,7 +16,7 @@ interface Props extends FunctionComponentProps {
 export const NavLink = ({active, className, children, href}: Props) => {
 
     const pathname = usePathname()
-    const _active = active == undefined ? decodeURIComponent(pathname || "") === decodeURIComponent(href || "") : false;
+    const _active = active == undefined ? decodeURIComponent(pathname || "") === decodeURIComponent(href || "") : active;
 
     return <Link href={href}
                  className={cn(
