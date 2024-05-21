@@ -30,7 +30,7 @@ const CodeEditor = (props) => {
 
 
     useEffect(() => {
-        console.log("xxx", language, theme)
+        // console.log("xxx", language, theme)
         setLoading(true)
         // model && model.dispose()
         // setModel(window.monaco.editor.createModel(value, language))
