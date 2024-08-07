@@ -1,6 +1,5 @@
 package com.jansora.repo.core.payload.model;
 
-import com.jansora.repo.core.payload.Accessor;
 import io.mybatis.provider.Entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +17,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity.Table(value = "classify", remark = "系统用户", autoResultMap = true)
-public abstract class ClassifiableDo extends BaseDo implements Accessor {
+public abstract class ClassifiableDo extends BaseDo {
 
     /**
      * 名称
