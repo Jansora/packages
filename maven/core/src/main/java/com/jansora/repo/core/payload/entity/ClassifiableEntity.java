@@ -1,5 +1,6 @@
 package com.jansora.repo.core.payload.entity;
 
+import com.jansora.repo.core.payload.Accessor;
 import io.mybatis.provider.Entity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = true)
 @Getter
 @Setter
-public class ClassifiableEntity extends BaseEntity {
+public class ClassifiableEntity extends BaseEntity implements Accessor {
 
     /**
      * 名称
