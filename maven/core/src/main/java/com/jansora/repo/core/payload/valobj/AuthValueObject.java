@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * <Description> <br>
@@ -27,33 +28,43 @@ public class AuthValueObject extends BaseValueObject {
      */
     Long authId;
 
+    /**
+     * 认证id
+     */
+    String requestId;
 
     /**
      * 角色
      */
     Role role;
 
-    public static AuthValueObject of(Long authId, String role) {
+    public static AuthValueObject of(Long authId, String role, String requestId) {
         if (Objects.nonNull(authId) && authId < 128 && authId > -128) {
             AuthValueObject auth = cache.get(authId);
             if (Objects.nonNull(auth)) {
                 return auth;
             }
-            cache.put(authId, new AuthValueObject(authId, role));
+            cache.put(authId, new AuthValueObject(authId, role, requestId));
         }
-        return new AuthValueObject(authId, role);
+        return new AuthValueObject(authId, role, requestId);
     }
 
     public AuthValueObject() {
         this.authId = -1L;
         this.role = Role.NULL;
+        this.requestId = requestId();
     }
 
-    public AuthValueObject(Long authId, String role) {
+    public AuthValueObject(Long authId, String role, String requestId) {
         this.authId = authId;
         this.role = Role.of(role);
+        this.requestId = requestId;
     }
 
+
+    public static String requestId() {
+        return UUID.randomUUID().toString();
+    }
 
     @Override
     public String toString() {

@@ -14,8 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import static com.jansora.repo.rpc.constants.AuthConstants.ROLE;
-import static com.jansora.repo.rpc.constants.AuthConstants.USER_ID;
+import static com.jansora.repo.rpc.constants.AuthConstants.*;
 
 /**
  * <Description> <br>
@@ -42,10 +41,11 @@ public class RpcConfig implements WebMvcConfigurer {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
-            log.debug("request: {} {} {}", requestTemplate.method(), requestTemplate.feignTarget().url() + requestTemplate.path(), AuthContext.auth());
+            log.info("request: {} {} {}", requestTemplate.method(), requestTemplate.feignTarget().url() + requestTemplate.path(), AuthContext.auth());
             // 添加上下文信息到请求头
             requestTemplate.header(USER_ID, AuthContext.auth().getAuthId().toString());
             requestTemplate.header(ROLE, AuthContext.auth().getRole().toString());
+            requestTemplate.header(REQUEST_ID, AuthContext.auth().getRequestId());
         };
     }
 

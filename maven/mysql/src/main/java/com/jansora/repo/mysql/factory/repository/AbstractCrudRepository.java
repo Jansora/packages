@@ -1,5 +1,6 @@
 package com.jansora.repo.mysql.factory.repository;
 
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
@@ -90,7 +91,12 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Transactional
     public Long save(ENTITY entity) throws BaseException {
 
-        AssertUtils.isTrue(() -> this.editable(entity), ForbiddenException::new);
+        boolean editable = this.editable(entity);
+        if (!editable) {
+            log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+        }
+        
+        AssertUtils.isTrue(() -> editable,  ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
 

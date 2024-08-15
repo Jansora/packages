@@ -11,8 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import static com.jansora.repo.rpc.constants.AuthConstants.ROLE;
-import static com.jansora.repo.rpc.constants.AuthConstants.USER_ID;
+import static com.jansora.repo.rpc.constants.AuthConstants.*;
 
 /**
  * <Description> 权限验证 <br>
@@ -33,16 +32,20 @@ public class RpcInterceptor implements HandlerInterceptor {
 
         String userId = request.getHeader(USER_ID);
         String role = request.getHeader(ROLE);
+        String requestId = request.getHeader(REQUEST_ID);
+
         if (StringUtils.hasText(userId)) {
-            AuthContext.setContext(new AuthValueObject(Long.valueOf(userId), role));
+            AuthContext.setContext(new AuthValueObject(Long.valueOf(userId), role, requestId));
         }
-        log.debug("response: {} {} {}", request.getMethod(), request.getRequestURI(), AuthContext.auth());
+
+        log.debug("context interceptor: {} {} {}", request.getMethod(), request.getRequestURL(), AuthContext.auth());
 
         return true;
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
+        log.debug("context reject: {} {} {}", request.getMethod(), request.getRequestURL(), AuthContext.auth());
         AuthContext.clear();
     }
 }

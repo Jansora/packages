@@ -27,37 +27,6 @@ public class ResultDto<T> extends BaseDto {
 
     }
 
-    public boolean isStatus() {
-        return this.status;
-    }
-
-    public T getData() {
-        return this.data;
-    }
-
-    public String getErrorCode() {
-        return this.errorCode;
-    }
-
-    public String getErrorDesc() {
-        return this.errorDesc;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public void setErrorDesc(String errorDesc) {
-        this.errorDesc = errorDesc;
-    }
 
     /*
         default true.

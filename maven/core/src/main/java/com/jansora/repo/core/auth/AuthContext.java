@@ -31,7 +31,7 @@ public class AuthContext {
         AuthValueObject auth = context.get();
 
         if (Objects.isNull(auth)) {
-            context.set(new AuthValueObject(-1L, Role.NULL.role()));
+            context.set(new AuthValueObject(-1L, Role.NULL.role(), AuthValueObject.requestId()));
             return context.get();
         }
         return auth;

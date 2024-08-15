@@ -26,7 +26,7 @@ public class AuthProviderFilter implements Filter {
         String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ID);
         String authRole = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ROLE);
         try {
-            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole) : new AuthValueObject());
+            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole, null) : new AuthValueObject());
         }
         catch (NumberFormatException e) {
             LOGGER.error("validate token failed. ", e);

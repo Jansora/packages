@@ -9,5 +9,6 @@ public final class AuthConstants {
 
     public static final String USER_ID = "X-User-Id";
     public static final String ROLE = "X-User-Role";
+    public static final String REQUEST_ID = "X-Galaxy-Request-Id";
 
 }
