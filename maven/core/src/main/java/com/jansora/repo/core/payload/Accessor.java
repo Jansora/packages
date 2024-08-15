@@ -14,12 +14,14 @@ public interface Accessor {
      * @return
      */
     public Boolean getEnabled();
+    public void setEnabled(final Boolean enabled);
 
     /**
      * 用户信息
      * @return
      */
     public Long getUserId();
+    public void setUserId(final Long userId) ;
 
     /**
      * 可访问的

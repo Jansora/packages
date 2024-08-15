@@ -12,6 +12,7 @@ import com.jansora.repo.core.payload.Accessor;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.model.ClassifiableDo;
 import com.jansora.repo.core.utils.AssertUtils;
+import com.jansora.repo.core.utils.JsonUtils;
 import io.mybatis.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -92,7 +93,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
         if (entity instanceof Accessor enable) {
             boolean readable = enable.accessible();
             if (!readable) {
-                log.info("no readable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+                log.info("no readable permission.  entity: {}  auth: {}", JsonUtils.toNonPrettyJsonIgnoreError(entity), AuthContext.auth());
             }
             return readable;
         }
