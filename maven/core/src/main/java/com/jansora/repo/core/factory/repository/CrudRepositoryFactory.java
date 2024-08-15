@@ -1,10 +1,8 @@
 package com.jansora.repo.core.factory.repository;
 
-import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
-import com.jansora.repo.core.payload.Accessor;
 
 import java.util.List;
 
@@ -23,23 +21,15 @@ public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
     /**
      * 可读性
      */
-    default boolean readable(EntityFactory entity) {
-        if (entity instanceof Accessor enable) {
-            return enable.accessible();
-        }
-        return true;
+    default boolean readable(EntityFactory entity) throws BaseException {
+        throw new NotImplementException();
     }
 
     /**
      * 可编辑性
      */
-    default boolean editable(EntityFactory entity) {
-        if (entity.exist()) {
-            if (entity instanceof Accessor enable) {
-                return AuthContext.auth().getAuthId().equals(enable.getUserId());
-            }
-        }
-        return AuthContext.auth().getAuthId() != null;
+    default boolean editable(EntityFactory entity) throws BaseException {
+        throw new NotImplementException();
     }
 
 

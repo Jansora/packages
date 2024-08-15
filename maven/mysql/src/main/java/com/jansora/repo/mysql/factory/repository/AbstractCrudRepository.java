@@ -8,6 +8,7 @@ import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
 import com.jansora.repo.core.factory.repository.CacheableCrudRepository;
 import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
 import com.jansora.repo.core.factory.repository.entity.EntityFactory;
+import com.jansora.repo.core.payload.Accessor;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.model.ClassifiableDo;
 import com.jansora.repo.core.utils.AssertUtils;
@@ -81,6 +82,50 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     }
 
     /**
+     * 可读性
+     *
+     * @param entity
+     */
+    @Override
+    public boolean readable(EntityFactory entity) {
+
+        if (entity instanceof Accessor enable) {
+            boolean readable = enable.accessible();
+            if (!readable) {
+                log.info("no readable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+            }
+            return readable;
+        }
+
+        return true;
+
+    }
+
+    /**
+     * 可编辑性
+     *
+     * @param entity
+     */
+    @Override
+    public boolean editable(EntityFactory entity) {
+        boolean editable;
+        if (entity.exist()) {
+            if (entity instanceof Accessor enable) {
+                editable = AuthContext.auth().getAuthId().equals(enable.getUserId());
+                if (!editable) {
+                    log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+                }
+                return editable;
+            }
+        }
+        editable = AuthContext.auth().getAuthId() != null;
+        if (!editable) {
+            log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+        }
+        return editable;
+    }
+
+    /**
      * 保存实体
      * 有实体主键则更新， 没有则保存
      *
@@ -91,12 +136,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
     @Transactional
     public Long save(ENTITY entity) throws BaseException {
 
-        boolean editable = this.editable(entity);
-        if (!editable) {
-            log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
-        }
-        
-        AssertUtils.isTrue(() -> editable,  ForbiddenException::new);
+        AssertUtils.isTrue(() -> this.editable(entity),  ForbiddenException::new);
 
         MODEL record = converter().toModel(entity);
 
