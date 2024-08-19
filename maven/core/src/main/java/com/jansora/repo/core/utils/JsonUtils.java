@@ -32,8 +32,12 @@ public class JsonUtils {
 
     static {
         instance.enable(SerializationFeature.INDENT_OUTPUT);
+        instance.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
+
         instance.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         compact_instance.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        compact_instance.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
+
     }
 
     /**
