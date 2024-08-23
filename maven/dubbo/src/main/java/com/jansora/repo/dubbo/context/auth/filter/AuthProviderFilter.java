@@ -19,14 +19,18 @@ import org.springframework.util.StringUtils;
  */
 //@Activate(group = CommonConstants.PROVIDER, value = DubboFilterConstant.AUTH_TOKEN)
 public class AuthProviderFilter implements Filter {
+    
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthProviderFilter.class);
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
+
         String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ID);
         String authRole = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ROLE);
+        String requestId = RpcContext.getContext().getAttachment(DubboFilterConstant.REQUEST_ID);
+
         try {
-            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole, null) : new AuthValueObject());
+            AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole, requestId) : new AuthValueObject(requestId));
         }
         catch (NumberFormatException e) {
             LOGGER.error("validate token failed. ", e);

@@ -20,9 +20,11 @@ public class AuthConsumerFilter implements Filter {
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         Long authId = AuthContext.auth().getAuthId();
         String token = AuthContext.auth().getRole().role();
+        String requestId = AuthContext.auth().getRequestId();
 
         RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ID, authId.toString());
         RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ROLE, token);
+        RpcContext.getContext().setAttachment(DubboFilterConstant.REQUEST_ID, requestId);
 
         return invoker.invoke(invocation);
     }

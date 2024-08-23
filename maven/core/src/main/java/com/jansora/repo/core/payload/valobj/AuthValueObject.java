@@ -54,7 +54,11 @@ public class AuthValueObject extends BaseValueObject {
         this.role = Role.NULL;
         this.requestId = requestId();
     }
-
+    public AuthValueObject(String requestId) {
+        this.authId = -1L;
+        this.role = Role.NULL;
+        this.requestId = requestId;
+    }
     public AuthValueObject(Long authId, String role, String requestId) {
         this.authId = authId;
         this.role = Role.of(role);

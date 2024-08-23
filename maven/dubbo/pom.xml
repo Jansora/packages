@@ -31,10 +31,10 @@
 			<artifactId>dubbo-registry-nacos</artifactId>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>com.jansora.repo</groupId>-->
-<!--			<artifactId>core</artifactId>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.jansora.repo</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
 
 
 <!--		<dependency>-->
