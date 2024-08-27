@@ -10,7 +10,7 @@
 
 	<groupId>com.jansora.repo</groupId>
 	<artifactId>repo-parent</artifactId>
-	<version>3.100.25</version>
+	<version>3.100.26</version>
 	<packaging>pom</packaging>
 	<name>repo-parent</name>
 	<description>repo-parent</description>
@@ -33,7 +33,7 @@
 
 <!--		<spring-cloud-tencent.version>1.6.0-2021.0.3</spring-cloud-tencent.version>-->
 
-		<dubbo.version>3.0.10</dubbo.version>
+		<dubbo.version>3.2.15</dubbo.version>
 		<caffeine.version>3.1.6</caffeine.version>
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
@@ -85,82 +85,82 @@
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>core</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>cache</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>demo</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>rocketmq</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 <!--			<dependency>-->
 <!--				<groupId>com.jansora.repo</groupId>-->
 <!--				<artifactId>spring</artifactId>-->
-<!--				<version>3.100.25</version>-->
+<!--				<version>3.100.26</version>-->
 <!--			</dependency>-->
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>mysql</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 <!--			<dependency>-->
 <!--				<groupId>com.jansora.repo</groupId>-->
 <!--				<artifactId>cloud</artifactId>-->
-<!--				<version>3.100.25</version>-->
+<!--				<version>3.100.26</version>-->
 <!--			</dependency>-->
 <!--			<dependency>-->
 <!--				<groupId>com.jansora.repo</groupId>-->
 <!--				<artifactId>pulsar</artifactId>-->
-<!--				<version>3.100.25</version>-->
+<!--				<version>3.100.26</version>-->
 <!--			</dependency>-->
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>elasticsearch</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>dubbo</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>storage</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>rpc</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>graphql</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>monitor</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 			</dependency>
 			<dependency>
 				<groupId>com.jansora.repo</groupId>
 				<artifactId>boot</artifactId>
-				<version>3.100.25</version>
+				<version>3.100.26</version>
 				<type>pom</type>
 			</dependency>
 			<dependency>
