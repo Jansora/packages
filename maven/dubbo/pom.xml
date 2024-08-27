@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>3.100.26</version>
+		<version>3.100.27</version>
 	</parent>
 	<artifactId>dubbo</artifactId>
-	<version>3.100.26</version>
+	<version>3.100.27</version>
 	<packaging>jar</packaging>
 	<name>dubbo</name>
 	<description>dubbo</description>
@@ -16,16 +16,30 @@
 
 	<dependencies>
 		<!--		 dubbo -->
-		<dependency>
-			<groupId>org.apache.dubbo</groupId>
-			<artifactId>dubbo</artifactId>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.dubbo</groupId>-->
+<!--			<artifactId>dubbo</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.apache.dubbo</groupId>
 			<artifactId>dubbo-dependencies-zookeeper-curator5</artifactId>
 			<type>pom</type>
 		</dependency>
-
+<!--		<dependency>-->
+<!--			<groupId>org.apache.dubbo</groupId>-->
+<!--			<artifactId>dubbo-dependencies-zookeeper</artifactId>-->
+<!--			<version>${dubbo.version}</version>-->
+<!--			<type>pom</type>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba.fastjson2</groupId>
+			<artifactId>fastjson2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-spring-boot-starter</artifactId>
+			<version>${dubbo.version}</version>
+		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.apache.dubbo</groupId>-->
 <!--			<artifactId>dubbo-registry-nacos</artifactId>-->
