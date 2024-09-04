@@ -32,7 +32,7 @@ public class DateUtils {
     public static String formatNowTime() {
         return tf.format(new Date());
     }
-    
+
     public static String formatNowTimestamp() {
         return tm.format(new Date());
     }
