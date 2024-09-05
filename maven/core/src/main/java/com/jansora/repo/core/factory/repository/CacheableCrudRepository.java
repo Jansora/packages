@@ -2,7 +2,6 @@ package com.jansora.repo.core.factory.repository;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-07-09 17:35:14
  */
-public interface CacheableCrudRepository<ENTITY extends EntityFactory, ID> {
+public interface CacheableCrudRepository<ENTITY, ID> {
 
 
     /**
