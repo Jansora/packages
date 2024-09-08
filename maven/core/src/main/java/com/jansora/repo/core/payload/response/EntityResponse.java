@@ -1,6 +1,5 @@
 package com.jansora.repo.core.payload.response;
 
-import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class EntityResponse extends BaseResponse implements EntityResponseFactory {
+public class EntityResponse extends BaseResponse  {
 
     private Long id;
 

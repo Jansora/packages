@@ -2,8 +2,8 @@ package com.jansora.repo.core.factory.search;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
+import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.HighlightResponse;
 import com.jansora.repo.core.payload.response.PageResponse;
@@ -30,7 +30,7 @@ public interface SearchProviderFactory<REQUEST extends SearchableRequest, RESPON
     /**
      * 高级搜索
      */
-    default PageResponse<HighlightResponse> search(REQUEST request) {
+    default PageResponse<HighlightResponse> search(REQUEST request) throws InvalidArgumentException {
         return advancedSearchRepositoryFactory().search(request);
     }
 
@@ -38,7 +38,7 @@ public interface SearchProviderFactory<REQUEST extends SearchableRequest, RESPON
     /**
      * 搜索正文
      */
-    default PageResponse<RESPONSE> classify(ClassifiableRequest request) throws BaseException {
+    default PageResponse<RESPONSE> dbSearch(SearchableRequest request) throws BaseException {
         List<Long> ids = new ArrayList<>();
         if (advancedSearchRepositoryFactory() != null) {
             SearchableRequest _request = new SearchableRequest();

@@ -1,6 +1,5 @@
 package com.jansora.repo.core.payload.request;
 
-import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +15,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ClassifiableRequest extends PageRequest implements EntityRequestFactory {
+public class ClassifiableEntityRequest extends EntityRequest {
 
     /**
      * 主键 id

@@ -36,7 +36,7 @@ public interface SearchControllerFactory<REQUEST extends SearchableRequest, RESP
      */
     @GetMapping("search")
     default ResultDto<PageResponse<RESPONSE>> classify(REQUEST request) throws BaseException {
-        return ResultDto.SUCCESS(searchFactory().classify(request));
+        return ResultDto.SUCCESS(searchFactory().dbSearch(request));
     }
 
     /**

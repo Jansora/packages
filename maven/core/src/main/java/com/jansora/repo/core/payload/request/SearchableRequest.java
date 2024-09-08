@@ -15,10 +15,37 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SearchableRequest extends ClassifiableRequest {
+public class SearchableRequest extends PageRequest {
 
     /**
      * 关键字
      */
     String keywords;
+
+    /**
+     * 是否启用
+     */
+    private Boolean enabled;
+
+    /**
+     * 名称
+     */
+    private String name;
+
+    /**
+     * 分类
+     */
+    private String classify;
+
+    /**
+     * 标签
+     */
+    private String tag;
+
+    /**
+     * 标签
+     */
+
+    private Long userId;
+
 }

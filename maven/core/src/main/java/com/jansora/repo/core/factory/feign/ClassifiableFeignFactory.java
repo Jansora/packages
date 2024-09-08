@@ -1,53 +1,53 @@
-package com.jansora.repo.core.factory.feign;
-
-import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.request.ClassifiableRequest;
-import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.SearchResponse;
-import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
-
-/**
- * <Description> <br>
- *
- * @author jansora (zhang.yangyuan) <br>
- * @version 1.0 <br>
- * @email zhangyue1936@gmail.com
- * @date 2022/8/10 AM10:58 <br>
- * @since 1.0 <br>
- */
-public interface ClassifiableFeignFactory<REQUEST extends ClassifiableRequest, RESPONSE extends SearchResponse>
-     {
-
-    /**
-     * 搜索正文
-     */
-    @GetMapping("search")
-    PageResponse<RESPONSE> search(@SpringQueryMap REQUEST request) throws BaseException;
-
-    /**
-     * 搜索 classify
-     */
-    @GetMapping("classifyCounts")
-    List<KVDto<Long>> fetchClassifyCounts() throws BaseException ;
-
-    /**
-     * 搜索 tag
-     *
-     * @param classify
-     */
-    @GetMapping("tags")
-    List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) throws BaseException;
-
-    /**
-     * 搜索 logo
-     */
-    @GetMapping("logos")
-    List<KVDto<String>> fetchLogos() throws BaseException;
-
-
-}
+//package com.jansora.repo.core.factory.feign;
+//
+//import com.jansora.repo.core.exception.BaseException;
+//import com.jansora.repo.core.payload.dto.KVDto;
+//import com.jansora.repo.core.payload.request.ClassifiableRequest;
+//import com.jansora.repo.core.payload.response.PageResponse;
+//import com.jansora.repo.core.payload.response.SearchResponse;
+//import org.springframework.cloud.openfeign.SpringQueryMap;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//
+//import java.util.List;
+//
+///**
+// * <Description> <br>
+// *
+// * @author jansora (zhang.yangyuan) <br>
+// * @version 1.0 <br>
+// * @email zhangyue1936@gmail.com
+// * @date 2022/8/10 AM10:58 <br>
+// * @since 1.0 <br>
+// */
+//public interface ClassifiableFeignFactory<REQUEST extends ClassifiableRequest, RESPONSE extends SearchResponse>
+//     {
+//
+//    /**
+//     * 搜索正文
+//     */
+//    @GetMapping("search")
+//    PageResponse<RESPONSE> search(@SpringQueryMap REQUEST request) throws BaseException;
+//
+//    /**
+//     * 搜索 classify
+//     */
+//    @GetMapping("classifyCounts")
+//    List<KVDto<Long>> fetchClassifyCounts() throws BaseException ;
+//
+//    /**
+//     * 搜索 tag
+//     *
+//     * @param classify
+//     */
+//    @GetMapping("tags")
+//    List<KVDto<Long>> fetchTags(@RequestParam(required = false) String classify) throws BaseException;
+//
+//    /**
+//     * 搜索 logo
+//     */
+//    @GetMapping("logos")
+//    List<KVDto<String>> fetchLogos() throws BaseException;
+//
+//
+//}

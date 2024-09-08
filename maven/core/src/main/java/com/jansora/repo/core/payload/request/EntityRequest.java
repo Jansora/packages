@@ -1,6 +1,5 @@
 package com.jansora.repo.core.payload.request;
 
-import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +10,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class EntityRequest extends BaseRequest implements EntityRequestFactory {
+public class EntityRequest extends BaseRequest {
 
     /**
      * 主键

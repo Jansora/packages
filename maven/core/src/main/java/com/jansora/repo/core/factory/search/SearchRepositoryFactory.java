@@ -4,7 +4,6 @@ import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.repository.mapper.ClassifyMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.HighlightResponse;
 import com.jansora.repo.core.payload.response.PageResponse;
@@ -44,7 +43,7 @@ public interface SearchRepositoryFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> dbSearch(ClassifiableRequest req, List<Long> ids) throws InvalidArgumentException {
+    default PageResponse<SearchResponse> dbSearch(SearchableRequest req, List<Long> ids) throws InvalidArgumentException {
         PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();
@@ -69,7 +68,7 @@ public interface SearchRepositoryFactory {
     /**
      * 搜索正文
      */
-    default PageResponse<SearchResponse> search(ClassifiableRequest req) throws InvalidArgumentException {
+    default PageResponse<SearchResponse> dbSearch(SearchableRequest req) throws InvalidArgumentException {
         PageResponse<SearchResponse> result = new PageResponse<>();
         int pageSize = req.getPageSize();
         int pageNum = req.getPageNum();

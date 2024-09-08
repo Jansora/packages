@@ -1,62 +1,62 @@
-package com.jansora.repo.core.factory.controller;
-
-import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.feign.ClassifiableFeignFactory;
-import com.jansora.repo.core.payload.dto.KVDto;
-import com.jansora.repo.core.payload.dto.ResultDto;
-import com.jansora.repo.core.payload.request.ClassifiableRequest;
-import com.jansora.repo.core.payload.response.PageResponse;
-import com.jansora.repo.core.payload.response.SearchResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
-
-/**
- * <Description>  <br>
- *
- * @author jansora (zhang.yangyuan) <br>
- * @version 1.0 <br>
- * @email zhangyue1936@gmail.com
- * @date 2022/8/10 PM02:16 <br>
- * @since 1.0 <br>
- */
-public interface ClassifiableControllerFactory<REQUEST extends ClassifiableRequest, RESPONSE extends SearchResponse> {
-    
-    ClassifiableFeignFactory<REQUEST, RESPONSE> searchFactory();
-
-    /**
-     * 搜索正文
-     *
-     */
-    @GetMapping("search")
-    default ResultDto<PageResponse<RESPONSE>> search(REQUEST request) throws BaseException {
-        return ResultDto.SUCCESS(searchFactory().search(request));
-    }
-
-    /**
-     * 搜索 classify
-     */
-    @GetMapping("classifyCounts")
-    default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseException  {
-        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
-    }
-
-    /**
-     * 搜索 tag
-     *
-     * @param classify
-     */
-    @GetMapping("tags")
-    default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseException  {
-        return ResultDto.SUCCESS(searchFactory().fetchTags(classify));
-    }
-
-    /**
-     * 搜索 logo
-     */
-    @GetMapping("logos")
-    default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseException  {
-        return ResultDto.SUCCESS(searchFactory().fetchLogos());
-    }
-
-}
+//package com.jansora.repo.core.factory.controller;
+//
+//import com.jansora.repo.core.exception.BaseException;
+//import com.jansora.repo.core.factory.feign.ClassifiableFeignFactory;
+//import com.jansora.repo.core.payload.dto.KVDto;
+//import com.jansora.repo.core.payload.dto.ResultDto;
+//import com.jansora.repo.core.payload.request.ClassifiableRequest;
+//import com.jansora.repo.core.payload.response.PageResponse;
+//import com.jansora.repo.core.payload.response.SearchResponse;
+//import org.springframework.web.bind.annotation.GetMapping;
+//
+//import java.util.List;
+//
+///**
+// * <Description>  <br>
+// *
+// * @author jansora (zhang.yangyuan) <br>
+// * @version 1.0 <br>
+// * @email zhangyue1936@gmail.com
+// * @date 2022/8/10 PM02:16 <br>
+// * @since 1.0 <br>
+// */
+//public interface ClassifiableControllerFactory<REQUEST extends ClassifiableRequest, RESPONSE extends SearchResponse> {
+//
+//    ClassifiableFeignFactory<REQUEST, RESPONSE> searchFactory();
+//
+//    /**
+//     * 搜索正文
+//     *
+//     */
+//    @GetMapping("search")
+//    default ResultDto<PageResponse<RESPONSE>> search(REQUEST request) throws BaseException {
+//        return ResultDto.SUCCESS(searchFactory().search(request));
+//    }
+//
+//    /**
+//     * 搜索 classify
+//     */
+//    @GetMapping("classifyCounts")
+//    default ResultDto<List<KVDto<Long>>> fetchClassifyCounts() throws BaseException  {
+//        return ResultDto.SUCCESS(searchFactory().fetchClassifyCounts());
+//    }
+//
+//    /**
+//     * 搜索 tag
+//     *
+//     * @param classify
+//     */
+//    @GetMapping("tags")
+//    default ResultDto<List<KVDto<Long>>> fetchTags(String classify) throws BaseException  {
+//        return ResultDto.SUCCESS(searchFactory().fetchTags(classify));
+//    }
+//
+//    /**
+//     * 搜索 logo
+//     */
+//    @GetMapping("logos")
+//    default ResultDto<List<KVDto<String>>> fetchLogos() throws BaseException  {
+//        return ResultDto.SUCCESS(searchFactory().fetchLogos());
+//    }
+//
+//}
