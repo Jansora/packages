@@ -4,7 +4,7 @@
 //import com.jansora.repo.core.factory.converter.CrudConverter;
 //import com.jansora.repo.core.factory.entity.EntityRequestFactory;
 //import com.jansora.repo.core.factory.entity.EntityResponseFactory;
-//import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+//import com.jansora.repo.core.factory.crud.CrudRepositoryFactory;
 //import com.jansora.repo.core.payload.entity.BaseEntity;
 //import com.jansora.repo.core.payload.model.BaseDo;
 //

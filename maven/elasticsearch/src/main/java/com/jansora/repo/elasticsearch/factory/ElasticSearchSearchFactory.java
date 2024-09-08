@@ -10,7 +10,7 @@ import co.elastic.clients.util.ObjectBuilder;
 import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.repository.AdvancedSearchRepositoryFactory;
+import com.jansora.repo.core.factory.search.SearchRepositoryFactory;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.HighlightResponse;
 import com.jansora.repo.core.payload.response.PageResponse;
@@ -29,7 +29,7 @@ import java.util.function.Function;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-05-25 09:04:06
  */
-public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & IndexName> extends AdvancedSearchRepositoryFactory {
+public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & IndexName> extends SearchRepositoryFactory {
 
     /**
      * 通过反射获取文件类型
@@ -66,20 +66,20 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
     /**
      * 高级搜索
      */
-    default PageResponse<HighlightResponse> advancedSearch(String keywords) {
+    default PageResponse<HighlightResponse> search(String keywords) {
         //        this.flush();
         SearchableRequest request = new SearchableRequest();
         request.setKeywords(keywords);
         request.setPageNum(0);
         request.setPageSize(10);
-        return advancedSearch(request);
+        return search(request);
     }
 
 
     /**
      * 高级搜索
      */
-    default PageResponse<HighlightResponse> advancedSearch(SearchableRequest request) {
+    default PageResponse<HighlightResponse> search(SearchableRequest request) {
 
         return this.advancedSearch(s -> s
                 .index(this.indexName())

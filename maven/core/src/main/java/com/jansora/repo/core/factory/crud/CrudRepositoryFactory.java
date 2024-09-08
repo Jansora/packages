@@ -1,8 +1,8 @@
-package com.jansora.repo.core.factory.repository;
+package com.jansora.repo.core.factory.crud;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.factory.repository.entity.EntityFactory;
+import com.jansora.repo.core.payload.entity.BaseEntity;
 
 import java.util.List;
 
@@ -16,19 +16,19 @@ import java.util.List;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<ENTITY extends EntityFactory, ID> {
+public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
 
     /**
      * 可读性
      */
-    default boolean readable(EntityFactory entity) throws BaseException {
+    default boolean readable(BaseEntity entity) throws BaseException {
         throw new NotImplementException();
     }
 
     /**
      * 可编辑性
      */
-    default boolean editable(EntityFactory entity) throws BaseException {
+    default boolean editable(BaseEntity entity) throws BaseException {
         throw new NotImplementException();
     }
 

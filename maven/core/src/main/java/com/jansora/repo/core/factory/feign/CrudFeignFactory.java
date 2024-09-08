@@ -1,8 +1,8 @@
 package com.jansora.repo.core.factory.feign;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
+import com.jansora.repo.core.payload.request.EntityRequest;
+import com.jansora.repo.core.payload.response.EntityResponse;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-26 18:32:08
  */
-public interface CrudFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> extends FeignFactory {
+public interface CrudFeignFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> extends FeignFactory {
 
     /**
      * 根据主键查找

@@ -1,12 +1,11 @@
-package com.jansora.repo.core.factory.controller;
+package com.jansora.repo.core.factory.crud;
 
 import com.jansora.repo.core.auth.Auth;
 import com.jansora.repo.core.auth.Role;
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.feign.CrudFeignFactory;
-import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.ResultDto;
+import com.jansora.repo.core.payload.request.EntityRequest;
+import com.jansora.repo.core.payload.response.EntityResponse;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
  * @author: jansora (zhang.yangyuan)
  * @date: 2023-02-24 12:47:57
  */
-public interface CrudControllerFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory> {
+public interface CrudControllerFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> {
 
-    CrudFeignFactory<REQUEST, RESPONSE> crudFactory();
+    CrudProviderFactory<REQUEST, RESPONSE> crudFactory();
 
     /**
      * 查询单条数据

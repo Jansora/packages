@@ -1,7 +1,7 @@
 package com.jansora.repo.elasticsearch.factory;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
+import com.jansora.repo.core.factory.crud.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.elasticsearch.converter.DocumentConverter;
 import com.jansora.repo.elasticsearch.index.ClassifiableDocument;

@@ -1,34 +1,31 @@
-package com.jansora.repo.core.factory.domain;
+package com.jansora.repo.core.factory.crud;
 
 import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.factory.converter.CrudConverter;
-import com.jansora.repo.core.factory.crud.CrudRepositoryFactory;
 import com.jansora.repo.core.payload.Accessor;
 import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.request.EntityRequest;
 import com.jansora.repo.core.payload.response.EntityResponse;
 
-import java.util.List;
-
 /**
  * @description:
  * @author: jansora (zhang.yangyuan)
- * @date: 2023-04-24 12:25:33
+ * @date: 2024-09-06 10:29:57
  */
-public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends EntityRequest, RESPONSE extends EntityResponse, MODEL extends BaseDo> {
+public interface CrudProviderFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> {
 
-    public abstract CrudRepositoryFactory<ENTITY, Long> crudRepositoryFactory();
+    <ENTITY extends BaseEntity> CrudRepositoryFactory<ENTITY, Long> repository();
 
-    public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> crudConverter();
+    <ENTITY extends BaseEntity, MODEL extends BaseDo> CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
 
-    /**
-     * 查找所有
-     */
-    default List<RESPONSE> findAll() throws BaseException {
-        return crudConverter().toResponses(crudRepositoryFactory().findAll());
-    }
+//    /**
+//     * 查找所有
+//     */
+//    default List<RESPONSE> findAll() throws BaseException {
+//        return converter().toResponses(repository().findAll());
+//    }
 
     /**
      * 根据主键查找
@@ -36,7 +33,7 @@ public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends En
      * @return 返回值
      */
     default RESPONSE findById(Long id) throws BaseException {
-        return crudConverter().toResponse(crudRepositoryFactory().findById(id));
+        return converter().toResponse(repository().findById(id));
     }
 
     /**
@@ -46,11 +43,11 @@ public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends En
      * @return 实体
      */
     default RESPONSE save(REQUEST req) throws BaseException  {
-        ENTITY entity = crudConverter().toEntity(req);
+        BaseEntity entity = converter().toEntity(req);
         if (entity instanceof Accessor accessor) {
             accessor.setUserId(AuthContext.auth().getAuthId());
         }
-        return this.findById(crudRepositoryFactory().save(entity));
+        return this.findById(repository().save(entity));
 
     }
 
@@ -60,7 +57,8 @@ public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends En
      * @return 被删除的实体
      */
     default RESPONSE deleteById(Long id) throws BaseException {
-        return crudConverter().toResponse(crudRepositoryFactory().deleteById(id));
+        return converter().toResponse(repository().deleteById(id));
     }
+
 
 }

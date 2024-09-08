@@ -1,6 +1,5 @@
 package com.jansora.repo.core.payload.response;
 
-import com.jansora.repo.core.payload.Base;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HighlightResponse extends Base {
+public class HighlightResponse extends BaseResponse {
 
     public HighlightResponse(Long id, String name, String payload) {
         this.id = id;

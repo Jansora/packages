@@ -5,10 +5,10 @@ import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.auth.ForbiddenException;
 import com.jansora.repo.core.exception.dao.DataNotFoundException;
 import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
+import com.jansora.repo.core.factory.crud.CrudRepositoryFactory;
 import com.jansora.repo.core.factory.repository.CacheableCrudRepository;
-import com.jansora.repo.core.factory.repository.CrudRepositoryFactory;
-import com.jansora.repo.core.factory.repository.entity.EntityFactory;
 import com.jansora.repo.core.payload.Accessor;
+import com.jansora.repo.core.payload.entity.BaseEntity;
 import com.jansora.repo.core.payload.model.BaseDo;
 import com.jansora.repo.core.payload.model.ClassifiableDo;
 import com.jansora.repo.core.utils.AssertUtils;
@@ -25,7 +25,7 @@ import java.util.List;
  * @date: 2023-06-06 14:27:42
  */
 @Slf4j
-public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL extends BaseDo> implements CrudRepositoryFactory<ENTITY, Long> {
+public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL extends BaseDo> implements CrudRepositoryFactory<ENTITY, Long> {
 
     abstract public MODEL model();
 
@@ -88,7 +88,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      * @param entity
      */
     @Override
-    public boolean readable(EntityFactory entity) {
+    public boolean readable(BaseEntity entity) {
 
         if (entity instanceof Accessor enable) {
             boolean readable = enable.accessible();
@@ -108,7 +108,7 @@ public abstract class AbstractCrudRepository<ENTITY extends EntityFactory, MODEL
      * @param entity
      */
     @Override
-    public boolean editable(EntityFactory entity) {
+    public boolean editable(BaseEntity entity) {
         boolean editable;
         if (entity.exist()) {
             if (entity instanceof Accessor enable) {

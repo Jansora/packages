@@ -1,8 +1,6 @@
 package com.jansora.repo.core.factory.feign;
 
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.factory.repository.entity.EntityRequestFactory;
-import com.jansora.repo.core.factory.repository.entity.EntityResponseFactory;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.ClassifiableRequest;
 import com.jansora.repo.core.payload.response.PageResponse;
@@ -22,14 +20,14 @@ import java.util.List;
  * @date 2022/8/10 AM10:58 <br>
  * @since 1.0 <br>
  */
-public interface ClassifiableFeignFactory<REQUEST extends EntityRequestFactory, RESPONSE extends EntityResponseFactory>
-        extends CrudFeignFactory<REQUEST, RESPONSE> {
+public interface ClassifiableFeignFactory<REQUEST extends ClassifiableRequest, RESPONSE extends SearchResponse>
+     {
 
     /**
      * 搜索正文
      */
     @GetMapping("search")
-    PageResponse<SearchResponse> search(@SpringQueryMap ClassifiableRequest request) throws BaseException;
+    PageResponse<RESPONSE> search(@SpringQueryMap REQUEST request) throws BaseException;
 
     /**
      * 搜索 classify
