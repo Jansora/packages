@@ -19,7 +19,7 @@ import java.util.List;
  */
 public interface CrudDomainFactory<ENTITY extends BaseEntity, REQUEST extends EntityRequest, RESPONSE extends EntityResponse, MODEL extends BaseDo> {
 
-    public abstract CrudRepositoryFactory<ENTITY, Long> crudRepositoryFactory();
+    public abstract CrudRepositoryFactory<ENTITY> crudRepositoryFactory();
 
     public abstract CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> crudConverter();
 

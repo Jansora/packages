@@ -16,7 +16,7 @@ import java.util.List;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
+public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
 
     /**
      * 可读性
@@ -38,7 +38,7 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
      * @param id 主键
      * @return 返回值
      */
-    default ENTITY findById(ID id) throws BaseException {
+    default ENTITY findById(Long id) throws BaseException {
         throw new NotImplementException();
     }
 
@@ -64,7 +64,7 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity, ID> {
      * @param id 主键
      * @return 被删除的实体
      */
-    default ENTITY deleteById(ID id) throws BaseException  {
+    default ENTITY deleteById(Long id) throws BaseException  {
         throw new NotImplementException();
     }
 

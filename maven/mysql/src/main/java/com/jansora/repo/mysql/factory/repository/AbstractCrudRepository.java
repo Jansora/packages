@@ -25,7 +25,7 @@ import java.util.List;
  * @date: 2023-06-06 14:27:42
  */
 @Slf4j
-public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL extends BaseDo> implements CrudRepositoryFactory<ENTITY, Long> {
+public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL extends BaseDo> implements CrudRepositoryFactory<ENTITY> {
 
     abstract public MODEL model();
 
