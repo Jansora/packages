@@ -2,6 +2,7 @@ package com.jansora.repo.dubbo.context.auth.filter;
 
 import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.dubbo.constants.DubboFilterConstant;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.rpc.*;
 
 /**
@@ -13,6 +14,7 @@ import org.apache.dubbo.rpc.*;
  * @date 2022/8/9 PM02:01 <br>
  * @since 1.0 <br>
  */
+@Slf4j
 //@Activate(group = CommonConstants.CONSUMER, value = DubboFilterConstant.AUTH_TOKEN)
 public class AuthConsumerFilter implements Filter {
 
@@ -26,6 +28,9 @@ public class AuthConsumerFilter implements Filter {
         RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ROLE, token);
         RpcContext.getContext().setAttachment(DubboFilterConstant.REQUEST_ID, requestId);
 
+        log.info("dubbo consumer start: {}#{} {} arguments: {} auth: {} ",
+                invocation.getServiceName(), invocation.getMethodName(), requestId, invocation.getArguments(), AuthContext.auth()
+        );
         return invoker.invoke(invocation);
     }
 }
