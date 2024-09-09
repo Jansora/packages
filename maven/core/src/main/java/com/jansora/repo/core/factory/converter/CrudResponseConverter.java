@@ -21,7 +21,7 @@ public interface CrudResponseConverter<ENTITY extends BaseEntity, RESPONSE exten
             @Mapping(target = "createdAt", expression = "java(com.jansora.repo.core.utils.DateUtils.formatTime(entity.getCreatedAt()))"),
             @Mapping(target = "updatedAt", expression = "java(com.jansora.repo.core.utils.DateUtils.formatTime(entity.getUpdatedAt()))"),
     })
-    RESPONSE toResponse(BaseEntity entity);
+    RESPONSE toResponse(ENTITY entity);
 
 
     List<RESPONSE> toResponses(List<ENTITY> entities);

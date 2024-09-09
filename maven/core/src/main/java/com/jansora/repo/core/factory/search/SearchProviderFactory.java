@@ -2,7 +2,6 @@ package com.jansora.repo.core.factory.search;
 
 import com.jansora.repo.core.exception.BaseException;
 import com.jansora.repo.core.exception.system.NotImplementException;
-import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.payload.dto.KVDto;
 import com.jansora.repo.core.payload.request.SearchableRequest;
 import com.jansora.repo.core.payload.response.HighlightResponse;
@@ -30,7 +29,7 @@ public interface SearchProviderFactory<REQUEST extends SearchableRequest, RESPON
     /**
      * 高级搜索
      */
-    default PageResponse<HighlightResponse> search(REQUEST request) throws InvalidArgumentException {
+    default PageResponse<HighlightResponse> search(REQUEST request) throws BaseException {
         return advancedSearchRepositoryFactory().search(request);
     }
 

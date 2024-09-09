@@ -1,6 +1,7 @@
 package com.jansora.repo.core.factory.search;
 
 import com.jansora.repo.core.auth.AuthContext;
+import com.jansora.repo.core.exception.system.NotImplementException;
 import com.jansora.repo.core.exception.web.InvalidArgumentException;
 import com.jansora.repo.core.factory.repository.mapper.ClassifyMapper;
 import com.jansora.repo.core.payload.dto.KVDto;
@@ -24,7 +25,9 @@ public interface SearchRepositoryFactory {
     /**
      * 高级搜索
      */
-    PageResponse<HighlightResponse> search(SearchableRequest request);
+    default PageResponse<HighlightResponse> search(SearchableRequest request) throws NotImplementException {
+        throw new NotImplementException();
+    }
 
 
 
