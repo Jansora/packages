@@ -33,9 +33,7 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
 
-    public CacheableCrudRepository cache() {
-        return null;
-    };
+    abstract public CacheableCrudRepository cache();
 
     public boolean cacheable() {
         return cache() != null;
