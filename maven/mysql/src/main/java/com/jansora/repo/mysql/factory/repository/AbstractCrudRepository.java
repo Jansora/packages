@@ -33,9 +33,7 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
 
     abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
 
-    // fix
-    // Caused by: com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "source" (class com.jansora.repo.core.payload.entity.BaseEntity), not marked as ignorable (3 known properties: "id", "updatedAt", "createdAt"])
-    public <CACHE_ENTITY> CacheableCrudRepository<CACHE_ENTITY, Long> cache() {
+    public CacheableCrudRepository cache() {
         return null;
     };
 
@@ -56,7 +54,7 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
 
         // 查缓存
         if (cacheable()) {
-            entity = (ENTITY) cache().findById(id);
+            entity = cache().findById(id);
         }
         else {
             entity = converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
@@ -77,7 +75,7 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
     public List<ENTITY> findAll() throws BaseException {
         // 走缓存
         if (cacheable()) {
-            return (List) cache().findAll();
+            return cache().findAll();
         }
 
         List<MODEL> records = mapper().selectList(model());
