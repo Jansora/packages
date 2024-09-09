@@ -25,8 +25,8 @@ public class AuthProviderFilter implements Filter {
 
         String authId = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ID);
         String authRole = RpcContext.getContext().getAttachment(DubboFilterConstant.AUTH_ROLE);
-//        String requestId = RpcContext.getContext().getAttachment(DubboFilterConstant.REQUEST_ID);
-        String requestId = AuthValueObject.requestId();
+        String requestId = RpcContext.getContext().getAttachment(DubboFilterConstant.REQUEST_ID);
+//        String requestId = AuthValueObject.requestId();
 
         try {
             AuthContext.setContext(StringUtils.hasLength(authId) ? new AuthValueObject(Long.parseLong(authId), authRole, requestId) : new AuthValueObject(requestId));
