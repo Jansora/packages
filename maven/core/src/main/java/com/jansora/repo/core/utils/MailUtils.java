@@ -16,7 +16,7 @@ import org.springframework.util.StringUtils;
  * @date: 2024-09-11 10:48:39
  */
 @Slf4j
-public final class MainUtils {
+public final class MailUtils {
 
     public static boolean sendEmail(String apiKey, SendEmailRequest request) throws ResendException {
 
