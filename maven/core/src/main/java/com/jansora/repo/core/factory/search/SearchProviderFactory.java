@@ -8,9 +8,7 @@ import com.jansora.repo.core.payload.response.HighlightResponse;
 import com.jansora.repo.core.payload.response.PageResponse;
 import com.jansora.repo.core.payload.response.SearchResponse;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @description:
@@ -21,16 +19,12 @@ public interface SearchProviderFactory<REQUEST extends SearchableRequest, RESPON
 
     SearchRepositoryFactory searchRepository();
 
-    default SearchRepositoryFactory advancedSearchRepositoryFactory() {
-        return null;
-    }
-
 
     /**
      * 高级搜索
      */
     default PageResponse<HighlightResponse> search(REQUEST request) throws BaseException {
-        return advancedSearchRepositoryFactory().search(request);
+        return searchRepository().search(request);
     }
 
 
@@ -38,20 +32,20 @@ public interface SearchProviderFactory<REQUEST extends SearchableRequest, RESPON
      * 搜索正文
      */
     default PageResponse<RESPONSE> dbSearch(SearchableRequest request) throws BaseException {
-        List<Long> ids = new ArrayList<>();
-        if (advancedSearchRepositoryFactory() != null) {
-            SearchableRequest _request = new SearchableRequest();
-            _request.setKeywords(request.getName());
-            _request.setPageNum(request.getPageNum() - 1);
-            _request.setPageSize(request.getPageSize());
-            PageResponse<HighlightResponse> response = advancedSearchRepositoryFactory().search(_request);
-            if (response.getTotal() > 0) {
-                ids = response.getData().stream().map(HighlightResponse::getId).collect(Collectors.toList());
-            }
-        }
+//        List<Long> ids = new ArrayList<>();
+//        if (searchRepository() != null) {
+//            SearchableRequest _request = new SearchableRequest();
+//            _request.setKeywords(request.getName());
+//            _request.setPageNum(request.getPageNum() - 1);
+//            _request.setPageSize(request.getPageSize());
+//            PageResponse<HighlightResponse> response = searchRepository().search(_request);
+//            if (response.getTotal() > 0) {
+//                ids = response.getData().stream().map(HighlightResponse::getId).collect(Collectors.toList());
+//            }
+//        }
 
 
-        return (PageResponse<RESPONSE>) searchRepository().dbSearch(request, ids);
+        return (PageResponse<RESPONSE>) searchRepository().dbSearch(request, List.of());
     }
 
 

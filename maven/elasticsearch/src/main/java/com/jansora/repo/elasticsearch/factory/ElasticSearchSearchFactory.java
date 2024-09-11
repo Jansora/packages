@@ -21,6 +21,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
@@ -81,7 +82,7 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
      */
     default PageResponse<HighlightResponse> search(SearchableRequest request) {
 
-        return this.advancedSearch(s -> s
+        return this.search(s -> s
                 .index(this.indexName())
                 .query(q -> {
                             // 非 Admin 权限只能看到公开的
@@ -114,7 +115,7 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
     /**
      * 高级搜索
      */
-    default PageResponse<HighlightResponse> advancedSearch(Function<SearchRequest.Builder, ObjectBuilder<SearchRequest>> fn) {
+    default PageResponse<HighlightResponse> search(Function<SearchRequest.Builder, ObjectBuilder<SearchRequest>> fn) {
 
         // Create the low-level client
         try {
@@ -131,7 +132,7 @@ public interface ElasticSearchSearchFactory<T extends ClassifiableDocument & Ind
                 return document;
             }).toList();
 
-            return PageResponse.build(documents, response.hits().total().value());
+            return PageResponse.build(new ArrayList<>(documents), response.hits().total().value());
         }
         catch (IOException e) {
             throw new BaseException(e).toRuntimeException();
