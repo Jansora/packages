@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Base64;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -96,4 +97,19 @@ public class FileUtils {
         }
         return true;
     }
+
+    public static String encodeFileToBase64(String filename) throws IOException {
+        return Base64.getEncoder().encodeToString(loadResourceFile(filename));
+    }
+
+    private static byte[] loadResourceFile(String filename) throws IOException {
+        ClassLoader classLoader = FileUtils.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(filename);
+        if (inputStream == null) {
+            throw new IOException("Resource not found: " + filename);
+        }
+        return inputStream.readAllBytes();
+    }
+
+
 }
