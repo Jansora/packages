@@ -141,6 +141,8 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
 
         // 先新建
         if (!entity.exist()) {
+            log.info("insert.  entity: {} ", entity);
+
             if (record instanceof ClassifiableDo classify && classify.getEnabled() == null) {
                 ((ClassifiableDo) record).setEnabled(false);
             }
@@ -149,11 +151,13 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
         }
         // 更新
         else {
+            log.info("update.  entity: {} ", entity);
             mapper().updateByPrimaryKeySelective(record);
         }
 
         // 清理缓存
         if (cacheable()) {
+            log.info("clean cache.  entity: {} ", entity);
             cache().delete(entity);
         }
 
@@ -175,6 +179,7 @@ public abstract class AbstractCrudRepository<ENTITY extends BaseEntity, MODEL ex
         mapper().deleteByPrimaryKey(id);
 
         if (cacheable()) {
+            log.info("clean cache.  entity: {} ", entity);
             cache().delete(entity);
         }
         return entity;
