@@ -1,8 +1,20 @@
 package com.jansora.repo.core.factory.crud;
 
+import com.jansora.repo.core.auth.AuthContext;
 import com.jansora.repo.core.exception.BaseException;
-import com.jansora.repo.core.exception.system.NotImplementException;
+import com.jansora.repo.core.exception.auth.ForbiddenException;
+import com.jansora.repo.core.exception.dao.DataNotFoundException;
+import com.jansora.repo.core.factory.converter.CrudPersistenceConverter;
+import com.jansora.repo.core.factory.repository.CacheableCrudRepository;
+import com.jansora.repo.core.payload.Accessor;
 import com.jansora.repo.core.payload.entity.BaseEntity;
+import com.jansora.repo.core.payload.model.BaseDo;
+import com.jansora.repo.core.payload.model.ClassifiableDo;
+import com.jansora.repo.core.utils.AssertUtils;
+import com.jansora.repo.core.utils.JsonUtils;
+import io.mybatis.mapper.BaseMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -16,20 +28,60 @@ import java.util.List;
  * @CreateDate 2022/7/28 AM09:41 <br>
  * @since 1.0 <br>
  */
-public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
+public interface CrudRepositoryFactory<ENTITY extends BaseEntity, MODEL extends BaseDo> {
+
+    static final Logger log = LoggerFactory.getLogger(CrudRepositoryFactory.class);
+
+    abstract public MODEL model();
+
+    abstract public BaseMapper<MODEL, Long> mapper();
+
+    abstract public CrudPersistenceConverter<ENTITY, MODEL> converter();
+
+    abstract public CacheableCrudRepository<ENTITY> cache();
+
+    default public boolean cacheable() {
+        return cache() != null;
+    }
 
     /**
      * 可读性
      */
-    default boolean readable(BaseEntity entity) throws BaseException {
-        throw new NotImplementException();
+    default boolean readable(ENTITY entity) throws BaseException {
+
+        if (entity instanceof Accessor enable) {
+            boolean readable = enable.accessible();
+            if (!readable) {
+                log.info("no readable permission.  entity: {}  auth: {}", JsonUtils.toNonPrettyJsonIgnoreError(entity), AuthContext.auth());
+            }
+            return readable;
+        }
+
+        return true;
+
     }
 
     /**
      * 可编辑性
      */
-    default boolean editable(BaseEntity entity) throws BaseException {
-        throw new NotImplementException();
+    default boolean editable(ENTITY entity) throws BaseException {
+        boolean editable;
+        if (entity.exist()) {
+
+            if (entity instanceof Accessor enable) {
+                editable = AuthContext.auth().getAuthId().equals(enable.getUserId());
+                if (!editable) {
+                    log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+                }
+                return editable;
+            }
+
+        }
+        editable = AuthContext.auth().getAuthId() != null;
+        if (!editable) {
+            log.info("no editable permission.  entity: {}  auth: {}", entity, AuthContext.auth());
+        }
+        return editable;
     }
 
 
@@ -39,7 +91,21 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
      * @return 返回值
      */
     default ENTITY findById(Long id) throws BaseException {
-        throw new NotImplementException();
+
+        ENTITY entity;
+
+        // 查缓存
+        if (cacheable()) {
+            entity = cache().findById(id);
+        }
+        else {
+            entity = converter().toEntity(mapper().selectByPrimaryKey(id).orElseThrow(DataNotFoundException::new));
+        }
+
+        if (readable(entity)) {
+            return entity;
+        }
+        throw new ForbiddenException("没有访问权限");
     }
 
     /**
@@ -47,8 +113,15 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
      * @return 返回值
      */
     default List<ENTITY> findAll() throws BaseException {
-        throw new NotImplementException();
+        // 走缓存
+        if (cacheable()) {
+            return cache().findAll();
+        }
+
+        List<MODEL> records = mapper().selectList(model());
+        return converter().modelsToEntities(records);
     }
+
     /**
      * 保存实体
      * 有实体主键则更新， 没有则保存
@@ -56,7 +129,33 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
      * @return 实体
      */
     default Long save(ENTITY entity) throws BaseException {
-        throw new NotImplementException();
+        AssertUtils.isTrue(() -> this.editable(entity),  ForbiddenException::new);
+
+        MODEL record = converter().toModel(entity);
+
+        // 先新建
+        if (!entity.exist()) {
+            log.info("insert.  entity: {} ", entity);
+
+            if (record instanceof ClassifiableDo classify && classify.getEnabled() == null) {
+                ((ClassifiableDo) record).setEnabled(false);
+            }
+            mapper().insert(record);
+            entity.setId(record.getId());
+        }
+        // 更新
+        else {
+            log.info("update.  entity: {} ", entity);
+            mapper().updateByPrimaryKeySelective(record);
+        }
+
+        // 清理缓存
+        if (cacheable()) {
+            log.info("clean cache.  entity: {} ", entity);
+            cache().delete(entity);
+        }
+
+        return entity.getId();
     }
 
     /**
@@ -65,7 +164,15 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity> {
      * @return 被删除的实体
      */
     default ENTITY deleteById(Long id) throws BaseException  {
-        throw new NotImplementException();
+        ENTITY entity = this.findById(id);
+        AssertUtils.isTrue(() -> this.editable(entity), ForbiddenException::new);
+        mapper().deleteByPrimaryKey(id);
+
+        if (cacheable()) {
+            log.info("clean cache.  entity: {} ", entity);
+            cache().delete(entity);
+        }
+        return entity;
     }
 
 }

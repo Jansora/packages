@@ -5,10 +5,10 @@
 	<parent>
 		<groupId>com.jansora.repo</groupId>
 		<artifactId>repo-parent</artifactId>
-		<version>3.100.44</version>
+		<version>3.100.45</version>
 	</parent>
 	<artifactId>core</artifactId>
-	<version>3.100.44</version>
+	<version>3.100.45</version>
 	<packaging>jar</packaging>
 	<name>core</name>
 	<description>core</description>
@@ -74,7 +74,10 @@
 			<groupId>com.resend</groupId>
 			<artifactId>resend-java</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>io.mybatis</groupId>
+			<artifactId>mybatis-mapper</artifactId>
+		</dependency>
 	</dependencies>
 
 

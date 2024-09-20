@@ -22,7 +22,7 @@ public interface ElasticsearchSyncFactory<T extends ClassifiableDocument, ID, EN
 
     ElasticsearchRepository<T, ID> repository();
 
-    CrudRepositoryFactory<ENTITY> crudRepository();
+    CrudRepositoryFactory crudRepository();
 
     /**
      * 刷新数据到 ES

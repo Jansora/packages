@@ -16,7 +16,7 @@ import com.jansora.repo.core.payload.response.EntityResponse;
  */
 public interface CrudProviderFactory<REQUEST extends EntityRequest, RESPONSE extends EntityResponse> {
 
-    <ENTITY extends BaseEntity> CrudRepositoryFactory<ENTITY> repository();
+    <ENTITY extends BaseEntity, MODEL extends BaseDo> CrudRepositoryFactory<ENTITY, MODEL> repository();
 
     <ENTITY extends BaseEntity, MODEL extends BaseDo> CrudConverter<ENTITY, REQUEST, RESPONSE, MODEL> converter();
 
