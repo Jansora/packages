@@ -16,6 +16,8 @@ import io.mybatis.mapper.BaseMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -32,7 +34,28 @@ public interface CrudRepositoryFactory<ENTITY extends BaseEntity, MODEL extends 
 
     static final Logger log = LoggerFactory.getLogger(CrudRepositoryFactory.class);
 
-    abstract public MODEL model();
+    default public MODEL model() {
+        /**
+         * 通过反射获取文件类型
+         */
+
+        try {
+            for (Type type: this.getClass().getGenericInterfaces()) {
+                if (type instanceof ParameterizedType parameterizedType
+                        && parameterizedType.getRawType() instanceof Class<?> clazz
+                        && clazz.getName().equals(CrudRepositoryFactory.class.getName())) {
+                    return (MODEL) parameterizedType.getActualTypeArguments()[1].getClass().getDeclaredConstructor().newInstance();
+                }
+            }
+        }
+        catch (Exception e) {
+            log.error("获取实体类失败", e);
+        }
+
+
+        throw new BaseException("获取实体类失败").toRuntimeException();
+
+    }
 
     abstract public BaseMapper<MODEL, Long> mapper();
 

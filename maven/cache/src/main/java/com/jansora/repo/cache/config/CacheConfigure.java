@@ -18,6 +18,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.time.Duration;
@@ -200,40 +201,44 @@ public interface CacheConfigure {
                 .filter(clazz -> Objects.nonNull(AnnotationUtils.findAnnotation(clazz, CacheConfig.class)))
                 .forEach(clazz -> {
                             ReflectionUtils.doWithMethods(clazz, method -> {
-                                if (!method.trySetAccessible()) {
+                                Arrays.stream(CacheableCrudRepository.class.getMethods()).map(Method::getName)
+                                        .filter(name -> name.equals(method.getName()))
+                                        .forEach(name -> {
+                                            if (!method.trySetAccessible()) {
 
-                                    LOGGER.debug("buildInitCaches binding CacheableCrudRepository method failed. method: {}", method);
-                                    return;
-                                }
-                                Cacheable cacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
-                                if (Objects.nonNull(cacheable)) {
-
-                                    ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericInterfaces()[0];
-                                    Type actualClass = parameterizedType.getActualTypeArguments()[0];
-
-                                    for (String cache : cacheable.cacheNames()) {
-                                        RedisSerializationContext.SerializationPair<Object> sp = RedisSerializationContext.SerializationPair
-                                                .fromSerializer(new CustomJacksonRedisSerializer<>(actualClass));
-
-                                        // 优先去方法上的值
-                                        if (cacheManager.equals(cacheable.cacheManager())) {
-                                            cacheConfigMap.put(cache, buildTtl(duration).serializeValuesWith(sp));
-                                        }
-                                        // 没有指定的话, 取类上的默认值
-                                        else if (StringUtils.isEmpty(cacheable.cacheManager())) {
-                                            Cacheable clazzCacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
-
-                                            // 类上也没有指定的话, 取 -1
-                                            if (Objects.isNull(clazzCacheable) || StringUtils.isEmpty(clazzCacheable.cacheManager())) {
-                                                cacheConfigMap.put(cache, buildTtl(Duration.ofSeconds(-1)).serializeValuesWith(sp));
+                                                LOGGER.debug("buildInitCaches binding CacheableCrudRepository method failed. method: {}", method);
+                                                return;
                                             }
-                                            else if (cacheManager.equals(clazzCacheable.cacheManager())) {
-                                                cacheConfigMap.put(cache, buildTtl(duration).serializeValuesWith(sp));
-                                            }
-                                        }
+                                            Cacheable cacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
+                                            if (Objects.nonNull(cacheable)) {
 
-                                    }
-                                }
+                                                ParameterizedType parameterizedType = (ParameterizedType) clazz.getGenericInterfaces()[0];
+                                                Type actualClass = parameterizedType.getActualTypeArguments()[0];
+
+                                                for (String cache : cacheable.cacheNames()) {
+                                                    RedisSerializationContext.SerializationPair<Object> sp = RedisSerializationContext.SerializationPair
+                                                            .fromSerializer(new CustomJacksonRedisSerializer<>(actualClass));
+
+                                                    // 优先去方法上的值
+                                                    if (cacheManager.equals(cacheable.cacheManager())) {
+                                                        cacheConfigMap.put(cache, buildTtl(duration).serializeValuesWith(sp));
+                                                    }
+                                                    // 没有指定的话, 取类上的默认值
+                                                    else if (StringUtils.isEmpty(cacheable.cacheManager())) {
+                                                        Cacheable clazzCacheable = AnnotationUtils.findAnnotation(method, Cacheable.class);
+
+                                                        // 类上也没有指定的话, 取 -1
+                                                        if (Objects.isNull(clazzCacheable) || StringUtils.isEmpty(clazzCacheable.cacheManager())) {
+                                                            cacheConfigMap.put(cache, buildTtl(Duration.ofSeconds(-1)).serializeValuesWith(sp));
+                                                        }
+                                                        else if (cacheManager.equals(clazzCacheable.cacheManager())) {
+                                                            cacheConfigMap.put(cache, buildTtl(duration).serializeValuesWith(sp));
+                                                        }
+                                                    }
+
+                                                }
+                                            }
+                                        });
                             });
                         }
                 );
