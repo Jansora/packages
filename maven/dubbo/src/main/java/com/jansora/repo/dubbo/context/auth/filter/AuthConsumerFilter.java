@@ -28,9 +28,14 @@ public class AuthConsumerFilter implements Filter {
         RpcContext.getContext().setAttachment(DubboFilterConstant.AUTH_ROLE, token);
         RpcContext.getContext().setAttachment(DubboFilterConstant.REQUEST_ID, requestId);
 
-        log.info("dubbo consumer start: {}#{} {} arguments: {} auth: {} ",
-                invocation.getServiceName(), invocation.getMethodName(), requestId, invocation.getArguments(), AuthContext.auth()
+        String serviceName = invocation.getServiceName().split("\\.")[invocation.getServiceName().split("\\.").length -1];
+        log.info("dubbo consumer start: {}#{} requestId: {} auth_id: {} role: {} arguments: {}",
+                serviceName, invocation.getMethodName(), requestId,  AuthContext.auth().getAuthId(), AuthContext.auth().getRole(), invocation.getArguments()
         );
-        return invoker.invoke(invocation);
+        Result result = invoker.invoke(invocation);
+        log.info("dubbo consumer end: {}#{} requestId: {} ",
+                serviceName, invocation.getMethodName(), requestId
+        );
+        return result;
     }
 }

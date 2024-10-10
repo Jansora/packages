@@ -36,10 +36,16 @@ public class AuthProviderFilter implements Filter {
             throw new RpcException("validate token failed. ", e);
         }
 
-        log.info("dubbo provider start: {}#{} {} arguments: {} auth: {} ",
-                invocation.getServiceName(), invocation.getMethodName(), requestId, invocation.getArguments(), AuthContext.auth()
-        );
 
-        return invoker.invoke(invocation);
+        String serviceName = invocation.getServiceName().split("\\.")[invocation.getServiceName().split("\\.").length -1];
+
+        log.info("dubbo provider start: {}#{} requestId: {} auth_id: {} role: {} arguments: {}",
+                serviceName, invocation.getMethodName(), requestId,  AuthContext.auth().getAuthId(), AuthContext.auth().getRole(), invocation.getArguments()
+        );
+        Result result = invoker.invoke(invocation);
+        log.info("dubbo provider end: {}#{} requestId: {} ",
+                serviceName, invocation.getMethodName(), requestId
+        );
+        return result;
     }
 }
